@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Hydrogen",
+    "symbol": "H",
+    "atomicNumber": 1,
+    "group": 1,
+    "period": 1,
+    "category": "Nonmetal",
+    "fact": "Hydrogen is the most common element in the universe. Stars are basically giant hydrogen-powered fusion machines."
+  },
+  {
+    "name": "Helium",
+    "symbol": "He",
+    "atomicNumber": 2,
+    "group": 18,
+    "period": 1,
+    "category": "Noble Gas",
+    "fact": "Helium is the stuff that makes balloons float and voices sound funny. Because it�s a noble gas, it mostly refuses to react with anything."
+  },
+
+  {
+    "name": "Lithium",
+    "symbol": "Li",
+    "number": 3,
+    "group": 1,
+    "period": 2,
+    "fact": "Lithium powers a lot of modern batteries, so your phone kind of owes it one."
+  },
+  {
+    "name": "Beryllium",
+    "symbol": "Be",
+    "number": 4,
+    "group": 2,
+    "period": 2,
+    "fact": "Beryllium is super light and strong, which makes it useful in aerospace equipment."
+  },
+  {
+    "name": "Boron",
+    "symbol": "B",
+    "number": 5,
+    "group": 13,
+    "period": 2,
+    "fact": "Boron helps make strong glass and detergents, and plants actually need a little of it too."
+  },
+  {
+    "name": "Carbon",
+    "symbol": "C",
+    "number": 6,
+    "group": 14,
+    "period": 2,
+    "fact": "Carbon is basically the backbone of life and can show up as graphite or diamond."
+  },
+  {
+    "name": "Nitrogen",
+    "symbol": "N",
+    "number": 7,
+    "group": 15,
+    "period": 2,
+    "fact": "Nitrogen makes up most of the air, even though your body can�t use it directly."
+  },
+  {
+    "name": "Oxygen",
+    "symbol": "O",
+    "number": 8,
+    "group": 16,
+    "period": 2,
+    "fact": "Oxygen helps you breathe and loves reacting with other elements."
+  },
+  {
+    "name": "Fluorine",
+    "symbol": "F",
+    "number": 9,
+    "group": 17,
+    "period": 2,
+    "fact": "Fluorine is insanely reactive, so pure fluorine is not something you casually handle."
+  },
+  {
+    "name": "Neon",
+    "symbol": "Ne",
+    "number": 10,
+    "group": 18,
+    "period": 2,
+    "fact": "Neon is famous for glowing in signs, even though many neon signs use other gases too."
+  }
+
+
+]

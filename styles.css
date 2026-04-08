@@ -1,0 +1,266 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, 70px);
+    grid-template-rows: repeat(10, 70px);
+    gap: 8px;
+    justify-content: center;
+    margin: 40px auto;
+    box-shadow: 0 0 40px rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.element {
+    background: #1e293b;
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    .element:hover {
+        transform: scale(1.08) translateY(-4px);
+        box-shadow: 0 0 20px, 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    .element.lanthanide::after,
+    .element.actinide::after {
+        content: "*";
+        font-size: 10px;
+    }
+
+    .element:active {
+        transform: scale(0.95);
+    }
+
+.number {
+    font-size: 10px;
+    align-self: flex-start;
+}
+
+.symbol {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.name {
+    font-size: 11px;
+}
+
+#info-panel {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 320px;
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    text-align: left;
+    border-left: 5px solid currentColor;
+}
+
+#close-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+/* CATEGORY COLORS */
+.alkali {
+    background: #ef4444;
+}
+/* red */
+.alkaline {
+    background: #f97316;
+}
+/* orange */
+.transition {
+    background: #eab308;
+}
+/* yellow */
+.post-transition {
+    background: #22c55e;
+}
+/* green */
+.metalloid {
+    background: #14b8a6;
+}
+/* teal */
+.nonmetal {
+    background: #3b82f6;
+}
+/* blue */
+.halogen {
+    background: #8b5cf6;
+}
+/* purple */
+.noble {
+    background: #ec4899;
+}
+/* pink */
+
+.lanthanide {
+    background: #06b6d4;
+}
+
+.actinide {
+    background: #a855f7;
+}
+/* Quiz stuff*/
+
+#quiz-section {
+    margin-bottom: 30px;
+}
+
+#answer-input {
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    margin: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#answer-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.answer-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+    .answer-btn:disabled {
+        opacity: 0.7;
+        cursor: default;
+    }
+
+.correct-choice {
+    background: #22c55e;
+    color: white;
+}
+
+.wrong-choice {
+    background: #ef4444;
+    color: white;
+}
+
+#quiz-controls {
+    margin-top: 15px;
+}
+
+#feedback {
+    margin-top: 15px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+#report-section {
+    margin-top: 30px;
+    text-align: left;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.review-item {
+    background: #0f172a;
+    border-left: 5px solid #475569;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+}
+
+    .review-item.correct {
+        border-left-color: #22c55e;
+    }
+
+    .review-item.wrong {
+        border-left-color: #ef4444;
+    }
+
+.review-question {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.review-answer {
+    margin: 4px 0;
+}
+
+.practice-btn {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#quit-practice-btn {
+    margin-left: 10px;
+}
+
+#mute-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(30, 41, 59, 0.9);
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    #mute-btn:hover {
+        background: #334155;
+        box-shadow: 0 0 10px #475569;
+    }

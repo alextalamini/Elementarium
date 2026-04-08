@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementarium</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Elementarium</h1>
+        <p>Interactive Periodic Table</p>
+    </header>
+
+    <audio id="bg-music" autoplay loop>
+        <source src="nastelbom-ambient-495893.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="mute-btn">Mute</button>
+
+    <main>
+
+        <section id="quiz-section">
+            <h2 id="quiz-title">Quiz Mode</h2>
+
+            <p id="question-text">Press Start to Begin</p>
+
+            <div id="answer-buttons">
+                <button class="answer-btn" id="btn0"></button>
+                <button class="answer-btn" id="btn1"></button>
+                <button class="answer-btn" id="btn2"></button>
+                <button class="answer-btn" id="btn3"></button>
+            </div>
+
+            <div id="quiz-controls">
+                <button id="next-btn">Next</button>
+                <button id="start-btn">Start Quiz</button>
+                <button id="quit-btn">Quit Quiz</button>
+                <button id="quit-practice-btn" class="hidden">Quit Practice</button>
+            </div>
+
+            <p id="feedback"></p>
+            <p id="score-display">Score: 0 / 0</p>
+        </section>
+
+        <section id="report-section" class="hidden">
+            <h2>Quiz Report</h2>
+            <p id="report-summary"></p>
+            <div id="review-list"></div>
+        </section>
+
+        <section id="periodic-table"></section>
+
+        <div id="info-panel" class="hidden">
+            <button id="close-btn">X</button>
+            <h2 id="element-name"></h2>
+            <p id="element-symbol"></p>
+            <p id="element-number"></p>
+            <p id="element-group"></p>
+            <p id="element-period"></p>
+            <p id="element-category"></p>
+            <p id="element-fact"></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
