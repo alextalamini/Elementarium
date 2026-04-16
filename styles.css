@@ -62,32 +62,67 @@ body {
     font-size: 11px;
 }
 
-#info-panel {
-    position: fixed;
-    right: 20px;
-    top: 100px;
-    width: 320px;
-    background: #1e293b;
-    color: white;
-    padding: 20px;
+#info-card {
+    position: absolute;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.96);
+    color: #111827;
+    padding: 16px;
     border-radius: 14px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     text-align: left;
-    border-left: 5px solid currentColor;
+    z-index: 2000;
+    animation: popIn 0.2s ease;
 }
 
+    #info-card img {
+        width: 100%;
+        max-height: 120px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    #info-card h2 {
+        margin: 0 0 10px 0;
+        font-size: 24px;
+    }
+
+    #info-card p {
+        margin: 6px 0;
+        line-height: 1.45;
+        font-size: 15px;
+    }
+
 #close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
     background: transparent;
-    color: white;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
-    float: right;
+    color: #111827;
+    z-index: 10;
 }
 
 .hidden {
     display: none;
 }
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 /* CATEGORY COLORS */
 .alkali {

@@ -7,6 +7,7 @@ const elements = [
         group: 1,
         period: 1,
         category: "Nonmetal",
+        image: "images/hydrogen.png",
         fact: "Hydrogen is the most common element in the universe."
     },
     {
@@ -16,6 +17,7 @@ const elements = [
         group: 18,
         period: 1,
         category: "Noble Gas",
+        image: "images/helium.png",
         fact: "Helium makes balloons float and doesn’t react with much."
     },
     {
@@ -25,6 +27,7 @@ const elements = [
         group: 1,
         period: 2,
         category: "Alkali Metal",
+        image: "images/lithium.png",
         fact: "Lithium powers a lot of modern batteries, so your phone kind of owes it one."
     },
     {
@@ -34,6 +37,7 @@ const elements = [
         group: 2,
         period: 2,
         category: "Alkaline Earth Metal",
+        image: "images/beryllium.png",
         fact: "Beryllium is super light and strong, which makes it useful in aerospace equipment."
     },
     {
@@ -43,6 +47,7 @@ const elements = [
         group: 13,
         period: 2,
         category: "Metalloid",
+        image: "images/boron.png",
         fact: "Boron helps make strong glass and detergents, and plants actually need a little of it too."
     },
     {
@@ -52,6 +57,7 @@ const elements = [
         group: 14,
         period: 2,
         category: "Nonmetal",
+        image: "images/carbon.png",
         fact: "Carbon is basically the backbone of life and can show up as graphite or diamond."
     },
     {
@@ -61,6 +67,7 @@ const elements = [
         group: 15,
         period: 2,
         category: "Nonmetal",
+        image: "images/nitrogen.png",
         fact: "Nitrogen makes up most of the air, even though your body can’t use it directly."
     },
     {
@@ -70,6 +77,7 @@ const elements = [
         group: 16,
         period: 2,
         category: "Nonmetal",
+        image: "images/oxygen.png",
         fact: "Oxygen helps you breathe and loves reacting with other elements."
     },
     {
@@ -79,6 +87,7 @@ const elements = [
         group: 17,
         period: 2,
         category: "Halogen",
+        image: "images/fluorine.png",
         fact: "Fluorine is insanely reactive, so pure fluorine is not something you casually handle."
     },
     {
@@ -88,6 +97,7 @@ const elements = [
         group: 18,
         period: 2,
         category: "Noble Gas",
+        image: "images/neon.png",
         fact: "Neon is famous for glowing in signs, even though many neon signs use other gases too."
     },
     {
@@ -97,6 +107,7 @@ const elements = [
         group: 1,
         period: 3,
         category: "Alkali Metal",
+        image: "images/sodium.png",
         fact: "Sodium reacts violently with water, which is why it’s always stored carefully."
     },
     {
@@ -106,6 +117,7 @@ const elements = [
         group: 2,
         period: 3,
         category: "Alkaline Earth Metal",
+        image: "images/magnesium.png",
         fact: "Magnesium burns with a super bright white flame and is used in fireworks."
     },
     {
@@ -115,6 +127,7 @@ const elements = [
         group: 13,
         period: 3,
         category: "Post-Transition Metal",
+        image: "images/aluminum.png",
         fact: "Aluminum is lightweight, strong, and used everywhere from cans to airplanes."
     },
     {
@@ -124,6 +137,7 @@ const elements = [
         group: 14,
         period: 3,
         category: "Metalloid",
+        image: "images/silicon.png",
         fact: "Silicon is the backbone of computer chips and modern electronics."
     },
     {
@@ -133,6 +147,7 @@ const elements = [
         group: 15,
         period: 3,
         category: "Nonmetal",
+        image: "images/phosphorus.png",
         fact: "Phosphorus is essential for life and glows faintly in some forms."
     },
     {
@@ -142,6 +157,7 @@ const elements = [
         group: 16,
         period: 3,
         category: "Nonmetal",
+        image: "images/sulfur.png",
         fact: "Sulfur is known for its strong smell and is used in fertilizers."
     },
     {
@@ -151,6 +167,7 @@ const elements = [
         group: 17,
         period: 3,
         category: "Halogen",
+        image: "images/chlorine.png",
         fact: "Chlorine is used to disinfect water but is toxic in pure gas form."
     },
     {
@@ -160,6 +177,7 @@ const elements = [
         group: 18,
         period: 3,
         category: "Noble Gas",
+        image: "images/argon.png",
         fact: "Argon is a noble gas that doesn’t react and is used in light bulbs."
     },
     {
@@ -169,6 +187,7 @@ const elements = [
         group: 1,
         period: 4,
         category: "Alkali Metal",
+        image: "images/potassium.png",
         fact: "Potassium reacts fast with water and is also important for your nerves and muscles."
     },
     {
@@ -178,6 +197,7 @@ const elements = [
         group: 2,
         period: 4,
         category: "Alkaline Earth Metal",
+        image: "images/calcium.png",
         fact: "Calcium helps build strong bones and teeth, and it also shows up in cement and rocks."
     },
     {
@@ -187,6 +207,7 @@ const elements = [
         group: 3,
         period: 4,
         category: "Transition Metal",
+        image: "images/scandium.png",
         fact: "Scandium is lightweight and helps make aluminum alloys stronger without adding much weight."
     },
     {
@@ -196,6 +217,7 @@ const elements = [
         group: 4,
         period: 4,
         category: "Transition Metal",
+        image: "images/titanium.png",
         fact: "Titanium is super strong for its weight and shows up in aircraft, implants, and high-end gear."
     },
     {
@@ -205,6 +227,7 @@ const elements = [
         group: 5,
         period: 4,
         category: "Transition Metal",
+        image: "images/vanadium.png",
         fact: "Vanadium helps make steel tougher and is also used in some advanced battery systems."
     },
     {
@@ -214,6 +237,7 @@ const elements = [
         group: 6,
         period: 4,
         category: "Transition Metal",
+        image: "images/chromium.png",
         fact: "Chromium gives chrome its shine and helps stainless steel resist rust."
     },
     {
@@ -223,6 +247,7 @@ const elements = [
         group: 7,
         period: 4,
         category: "Transition Metal",
+        image: "images/manganese.png",
         fact: "Manganese is used in steel production and helps make metal stronger and more durable."
     },
     {
@@ -232,6 +257,7 @@ const elements = [
         group: 8,
         period: 4,
         category: "Transition Metal",
+        image: "images/iron.png",
         fact: "Iron is one of the most important building metals on Earth, and your blood uses it too."
     },
     {
@@ -241,6 +267,7 @@ const elements = [
         group: 9,
         period: 4,
         category: "Transition Metal",
+        image: "images/cobalt.png",
         fact: "Cobalt is used in batteries and also makes that deep rich blue color in glass and ceramics."
     },
     {
@@ -250,6 +277,7 @@ const elements = [
         group: 10,
         period: 4,
         category: "Transition Metal",
+        image: "images/nickel.png",
         fact: "Nickel helps make stainless steel and shows up in coins, batteries, and Earth’s core."
     },
     {
@@ -259,6 +287,7 @@ const elements = [
         group: 11,
         period: 4,
         category: "Transition Metal",
+        image: "images/copper.png",
         fact: "Copper is amazing at conducting electricity, which is why so much wiring depends on it."
     },
     {
@@ -268,6 +297,7 @@ const elements = [
         group: 12,
         period: 4,
         category: "Transition Metal",
+        image: "images/zinc.png",
         fact: "Zinc protects steel from rust and also helps support your immune system."
     },
     {
@@ -277,6 +307,7 @@ const elements = [
         group: 13,
         period: 4,
         category: "Post-Transition Metal",
+        image: "images/gallium.png",
         fact: "Gallium can melt in your hand because its melting point is just a little above room temperature."
     },
     {
@@ -286,6 +317,7 @@ const elements = [
         group: 14,
         period: 4,
         category: "Metalloid",
+        image: "images/germanium.png",
         fact: "Germanium helped early electronics and still shows up in fiber optics and infrared tech."
     },
     {
@@ -295,6 +327,7 @@ const elements = [
         group: 15,
         period: 4,
         category: "Metalloid",
+        image: "images/arsenic.png",
         fact: "Arsenic is famous for being poisonous, but it also has uses in semiconductors and alloys."
     },
     {
@@ -304,6 +337,7 @@ const elements = [
         group: 16,
         period: 4,
         category: "Nonmetal",
+        image: "images/selenium.png",
         fact: "Selenium is needed in tiny amounts by the body and is also used in glass and electronics."
     },
     {
@@ -313,6 +347,7 @@ const elements = [
         group: 17,
         period: 4,
         category: "Halogen",
+        image: "images/bromine.png",
         fact: "Bromine is one of the only elements that’s liquid at room temperature, which is a little unsettling."
     },
     {
@@ -322,6 +357,7 @@ const elements = [
         group: 18,
         period: 4,
         category: "Noble Gas",
+        image: "images/krypton.png",
         fact: "Krypton is a noble gas used in lighting and lasers, even if Superman made the name way more famous."
     },
     {
@@ -331,6 +367,7 @@ const elements = [
         group: 1,
         period: 5,
         category: "Alkali Metal",
+        image: "images/rubidium.png",
         fact: "Rubidium is extremely reactive and can ignite on contact with air or water."
     },
     {
@@ -340,6 +377,7 @@ const elements = [
         group: 2,
         period: 5,
         category: "Alkaline Earth Metal",
+        image: "images/strontium.png",
         fact: "Strontium gives fireworks that bright red color you see in explosions."
     },
     {
@@ -349,6 +387,7 @@ const elements = [
         group: 3,
         period: 5,
         category: "Transition Metal",
+        image: "images/yttrium.png",
         fact: "Yttrium is used in LEDs and superconductors, even if most people have never heard of it."
     },
     {
@@ -358,6 +397,7 @@ const elements = [
         group: 4,
         period: 5,
         category: "Transition Metal",
+        image: "images/zirconium.png",
         fact: "Zirconium resists corrosion so well it’s used in nuclear reactors and medical tools."
     },
     {
@@ -367,6 +407,7 @@ const elements = [
         group: 5,
         period: 5,
         category: "Transition Metal",
+        image: "images/niobium.png",
         fact: "Niobium strengthens steel and is used in superconducting magnets."
     },
     {
@@ -376,6 +417,7 @@ const elements = [
         group: 6,
         period: 5,
         category: "Transition Metal",
+        image: "images/molybdenum.png",
         fact: "Molybdenum helps steel handle high temperatures without losing strength."
     },
     {
@@ -385,6 +427,7 @@ const elements = [
         group: 7,
         period: 5,
         category: "Transition Metal",
+        image: "images/technetium.png",
         fact: "Technetium is radioactive and was the first element made artificially in a lab."
     },
     {
@@ -394,6 +437,7 @@ const elements = [
         group: 8,
         period: 5,
         category: "Transition Metal",
+        image: "images/ruthenium.png",
         fact: "Ruthenium is used in electronics and can make materials harder and more durable."
     },
     {
@@ -403,6 +447,7 @@ const elements = [
         group: 9,
         period: 5,
         category: "Transition Metal",
+        image: "images/rhodium.png",
         fact: "Rhodium is super shiny and extremely valuable, often used in catalytic converters."
     },
     {
@@ -412,6 +457,7 @@ const elements = [
         group: 10,
         period: 5,
         category: "Transition Metal",
+        image: "images/palladium.png",
         fact: "Palladium is used in electronics and catalytic converters and is rarer than gold."
     },
     {
@@ -421,6 +467,7 @@ const elements = [
         group: 11,
         period: 5,
         category: "Transition Metal",
+        image: "images/silver.png",
         fact: "Silver is one of the best electrical conductors and has been used as money for centuries."
     },
     {
@@ -430,6 +477,7 @@ const elements = [
         group: 12,
         period: 5,
         category: "Transition Metal",
+        image: "images/cadmium.png",
         fact: "Cadmium is toxic but used in batteries and protective coatings."
     },
     {
@@ -439,6 +487,7 @@ const elements = [
         group: 13,
         period: 5,
         category: "Post-Transition Metal",
+        image: "images/indium.png",
         fact: "Indium is soft enough to cut with a knife and is used in touchscreens."
     },
     {
@@ -448,6 +497,7 @@ const elements = [
         group: 14,
         period: 5,
         category: "Post-Transition Metal",
+        image: "images/tin.png",
         fact: "Tin has been used since ancient times and is a key part of bronze."
     },
     {
@@ -457,6 +507,7 @@ const elements = [
         group: 15,
         period: 5,
         category: "Metalloid",
+        image: "images/antimony.png",
         fact: "Antimony is used in flame retardants and was known to ancient civilizations."
     },
     {
@@ -466,6 +517,7 @@ const elements = [
         group: 16,
         period: 5,
         category: "Metalloid",
+        image: "images/tellurium.png",
         fact: "Tellurium is rare and used in solar panels and advanced electronics."
     },
     {
@@ -475,6 +527,7 @@ const elements = [
         group: 17,
         period: 5,
         category: "Halogen",
+        image: "images/iodine.png",
         fact: "Iodine is essential for your thyroid and can sublimate into a purple vapor."
     },
     {
@@ -484,6 +537,7 @@ const elements = [
         group: 18,
         period: 5,
         category: "Noble Gas",
+        image: "images/xenon.png",
         fact: "Xenon is used in high-intensity lamps and can even form rare compounds."
     },
     {
@@ -493,6 +547,7 @@ const elements = [
         group: 1,
         period: 6,
         category: "Alkali Metal",
+        image: "images/cesium.png",
         fact: "Cesium is one of the most reactive metals and can explode when it touches water."
     },
     {
@@ -502,6 +557,7 @@ const elements = [
         group: 2,
         period: 6,
         category: "Alkaline Earth Metal",
+        image: "images/barium.png",
         fact: "Barium is used in medical imaging because barium compounds can show up clearly on X-rays."
     },
     {
@@ -511,6 +567,7 @@ const elements = [
         group: 3,
         period: 6,
         category: "Lanthanide",
+        image: "images/lanthanum.png",
         fact: "This is a placeholder for the lanthanide series."
     },
     {
@@ -520,6 +577,7 @@ const elements = [
         group: 3,
         period: 8,
         category: "Lanthanide",
+        image: "images/lanthanum.png",
         fact: "Lanthanum is a soft silvery metal used in camera lenses and special battery materials."
     },
     {
@@ -529,6 +587,7 @@ const elements = [
         group: 4,
         period: 8,
         category: "Lanthanide",
+        image: "images/cerium.png",
         fact: "Cerium is used in lighter flints and glass polishing powders."
     },
     {
@@ -538,6 +597,7 @@ const elements = [
         group: 5,
         period: 8,
         category: "Lanthanide",
+        image: "images/praseodymium.png",
         fact: "Praseodymium is used to make strong magnets and special yellow-green glass."
     },
     {
@@ -547,6 +607,7 @@ const elements = [
         group: 6,
         period: 8,
         category: "Lanthanide",
+        image: "images/neodymium.png",
         fact: "Neodymium is famous for making incredibly strong permanent magnets."
     },
     {
@@ -556,6 +617,7 @@ const elements = [
         group: 7,
         period: 8,
         category: "Lanthanide",
+        image: "images/promethium.png",
         fact: "Promethium is radioactive and is very rare in nature."
     },
     {
@@ -565,6 +627,7 @@ const elements = [
         group: 8,
         period: 8,
         category: "Lanthanide",
+        image: "images/samarium.png",
         fact: "Samarium is used in magnets and in some cancer treatment technologies."
     },
     {
@@ -574,6 +637,7 @@ const elements = [
         group: 9,
         period: 8,
         category: "Lanthanide",
+        image: "images/europium.png",
         fact: "Europium helps make red and blue colors in TV and monitor screens."
     },
     {
@@ -583,6 +647,7 @@ const elements = [
         group: 10,
         period: 8,
         category: "Lanthanide",
+        image: "images/gadolinium.png",
         fact: "Gadolinium is used in MRI contrast agents and absorbs neutrons really well."
     },
     {
@@ -592,6 +657,7 @@ const elements = [
         group: 11,
         period: 8,
         category: "Lanthanide",
+        image: "images/terbium.png",
         fact: "Terbium is used in green phosphors and some electronic devices."
     },
     {
@@ -601,6 +667,7 @@ const elements = [
         group: 12,
         period: 8,
         category: "Lanthanide",
+        image: "images/dysprosium.png",
         fact: "Dysprosium helps magnets stay strong even at high temperatures."
     },
     {
@@ -610,6 +677,7 @@ const elements = [
         group: 13,
         period: 8,
         category: "Lanthanide",
+        image: "images/holmium.png",
         fact: "Holmium has one of the highest magnetic strengths of any element."
     },
     {
@@ -619,6 +687,7 @@ const elements = [
         group: 14,
         period: 8,
         category: "Lanthanide",
+        image: "images/erbium.png",
         fact: "Erbium is used in fiber optic cables to help carry signals long distances."
     },
     {
@@ -628,6 +697,7 @@ const elements = [
         group: 15,
         period: 8,
         category: "Lanthanide",
+        image: "images/thulium.png",
         fact: "Thulium is one of the rarest lanthanides and is used in some portable X-ray devices."
     },
     {
@@ -637,6 +707,7 @@ const elements = [
         group: 16,
         period: 8,
         category: "Lanthanide",
+        image: "images/ytterbium.png",
         fact: "Ytterbium is used in lasers and certain kinds of atomic clocks."
     },
     {
@@ -646,6 +717,7 @@ const elements = [
         group: 17,
         period: 8,
         category: "Lanthanide",
+        image: "images/lutetium.png",
         fact: "Lutetium is one of the hardest and densest lanthanides and is used in PET scan detectors."
     },
     {
@@ -655,6 +727,7 @@ const elements = [
         group: 4,
         period: 6,
         category: "Transition Metal",
+        image: "images/hafnium.png",
         fact: "Hafnium is used in nuclear control rods because it absorbs neutrons really well."
     },
     {
@@ -664,6 +737,7 @@ const elements = [
         group: 5,
         period: 6,
         category: "Transition Metal",
+        image: "images/tantalum.png",
         fact: "Tantalum resists corrosion and is used in electronics and medical implants."
     },
     {
@@ -673,6 +747,7 @@ const elements = [
         group: 6,
         period: 6,
         category: "Transition Metal",
+        image: "images/tungsten.png",
         fact: "Tungsten has the highest melting point of any metal."
     },
     {
@@ -682,6 +757,7 @@ const elements = [
         group: 7,
         period: 6,
         category: "Transition Metal",
+        image: "images/rhenium.png",
         fact: "Rhenium is extremely rare and is used in jet engines and high-temperature alloys."
     },
     {
@@ -691,6 +767,7 @@ const elements = [
         group: 8,
         period: 6,
         category: "Transition Metal",
+        image: "images/osmium.png",
         fact: "Osmium is one of the densest elements known."
     },
     {
@@ -700,6 +777,7 @@ const elements = [
         group: 9,
         period: 6,
         category: "Transition Metal",
+        image: "images/iridium.png",
         fact: "Iridium is extremely corrosion-resistant and is linked to the asteroid impact that helped wipe out the dinosaurs."
     },
     {
@@ -709,6 +787,7 @@ const elements = [
         group: 10,
         period: 6,
         category: "Transition Metal",
+        image: "images/platinum.png",
         fact: "Platinum is valuable, resistant to corrosion, and used in catalytic converters and jewelry."
     },
     {
@@ -718,6 +797,7 @@ const elements = [
         group: 11,
         period: 6,
         category: "Transition Metal",
+        image: "images/gold.png",
         fact: "Gold doesn’t tarnish easily and has been prized by humans for thousands of years."
     },
     {
@@ -727,6 +807,7 @@ const elements = [
         group: 12,
         period: 6,
         category: "Transition Metal",
+        image: "images/mercury.png",
         fact: "Mercury is a metal that is liquid at room temperature."
     },
     {
@@ -736,6 +817,7 @@ const elements = [
         group: 13,
         period: 6,
         category: "Post-Transition Metal",
+        image: "images/thallium.png",
         fact: "Thallium is highly toxic and was once used in rat poison."
     },
     {
@@ -745,6 +827,7 @@ const elements = [
         group: 14,
         period: 6,
         category: "Post-Transition Metal",
+        image: "images/lead.png",
         fact: "Lead is dense and useful for shielding radiation, but it is also toxic."
     },
     {
@@ -754,6 +837,7 @@ const elements = [
         group: 15,
         period: 6,
         category: "Post-Transition Metal",
+        image: "images/bismuth.png",
         fact: "Bismuth forms cool rainbow oxide crystals and is less toxic than many heavy metals."
     },
     {
@@ -763,6 +847,7 @@ const elements = [
         group: 16,
         period: 6,
         category: "Metalloid",
+        image: "images/polonium.png",
         fact: "Polonium is extremely radioactive and was discovered by Marie Curie."
     },
     {
@@ -772,6 +857,7 @@ const elements = [
         group: 17,
         period: 6,
         category: "Halogen",
+        image: "images/astatine.png",
         fact: "Astatine is incredibly rare and is one of the least understood elements."
     },
     {
@@ -781,6 +867,7 @@ const elements = [
         group: 18,
         period: 6,
         category: "Noble Gas",
+        image: "images/radon.png",
         fact: "Radon is a radioactive gas that can build up in homes."
     },
     {
@@ -790,6 +877,7 @@ const elements = [
         group: 1,
         period: 7,
         category: "Alkali Metal",
+        image: "images/francium.png",
         fact: "Francium is extremely radioactive and one of the rarest elements on Earth."
     },
     {
@@ -799,6 +887,7 @@ const elements = [
         group: 2,
         period: 7,
         category: "Alkaline Earth Metal",
+        image: "images/radium.png",
         fact: "Radium glows faintly due to its radioactivity and was once used in luminous paint."
     },
     {
@@ -808,10 +897,9 @@ const elements = [
         group: 3,
         period: 7,
         category: "Actinide",
+        image: "images/actinium.png",
         fact: "This is a placeholder for the actinide series."
     },
-
-    // ACTINIDES ROW (bottom)
     {
         name: "Actinium",
         symbol: "Ac",
@@ -819,6 +907,7 @@ const elements = [
         group: 3,
         period: 9,
         category: "Actinide",
+        image: "images/actinium.png",
         fact: "Actinium is highly radioactive and was discovered in 1899."
     },
     {
@@ -828,6 +917,7 @@ const elements = [
         group: 4,
         period: 9,
         category: "Actinide",
+        image: "images/thorium.png",
         fact: "Thorium can be used as a nuclear fuel and is more abundant than uranium."
     },
     {
@@ -837,6 +927,7 @@ const elements = [
         group: 5,
         period: 9,
         category: "Actinide",
+        image: "images/protactinium.png",
         fact: "Protactinium is rare, radioactive, and very difficult to study."
     },
     {
@@ -846,6 +937,7 @@ const elements = [
         group: 6,
         period: 9,
         category: "Actinide",
+        image: "images/uranium.png",
         fact: "Uranium is widely known for its use in nuclear power and weapons."
     },
     {
@@ -855,6 +947,7 @@ const elements = [
         group: 7,
         period: 9,
         category: "Actinide",
+        image: "images/neptunium.png",
         fact: "Neptunium is a synthetic radioactive element used in research."
     },
     {
@@ -864,6 +957,7 @@ const elements = [
         group: 8,
         period: 9,
         category: "Actinide",
+        image: "images/plutonium.png",
         fact: "Plutonium is used in nuclear weapons and power generation."
     },
     {
@@ -873,6 +967,7 @@ const elements = [
         group: 9,
         period: 9,
         category: "Actinide",
+        image: "images/americium.png",
         fact: "Americium is used in smoke detectors."
     },
     {
@@ -882,6 +977,7 @@ const elements = [
         group: 10,
         period: 9,
         category: "Actinide",
+        image: "images/curium.png",
         fact: "Curium is used in scientific research and space missions."
     },
     {
@@ -891,6 +987,7 @@ const elements = [
         group: 11,
         period: 9,
         category: "Actinide",
+        image: "images/berkelium.png",
         fact: "Berkelium is a synthetic element created in nuclear reactors."
     },
     {
@@ -900,6 +997,7 @@ const elements = [
         group: 12,
         period: 9,
         category: "Actinide",
+        image: "images/californium.png",
         fact: "Californium is used in neutron sources and cancer treatment."
     },
     {
@@ -909,6 +1007,7 @@ const elements = [
         group: 13,
         period: 9,
         category: "Actinide",
+        image: "images/einsteinium.png",
         fact: "Einsteinium was discovered in the debris of a hydrogen bomb test."
     },
     {
@@ -918,6 +1017,7 @@ const elements = [
         group: 14,
         period: 9,
         category: "Actinide",
+        image: "images/fermium.png",
         fact: "Fermium is a synthetic radioactive element with no commercial use."
     },
     {
@@ -927,6 +1027,7 @@ const elements = [
         group: 15,
         period: 9,
         category: "Actinide",
+        image: "images/mendelevium.png",
         fact: "Mendelevium is named after Dmitri Mendeleev, creator of the periodic table."
     },
     {
@@ -936,6 +1037,7 @@ const elements = [
         group: 16,
         period: 9,
         category: "Actinide",
+        image: "images/nobelium.png",
         fact: "Nobelium is a synthetic radioactive element named after Alfred Nobel."
     },
     {
@@ -945,9 +1047,9 @@ const elements = [
         group: 17,
         period: 9,
         category: "Actinide",
+        image: "images/lawrencium.png",
         fact: "Lawrencium is the last actinide and is named after the inventor of the cyclotron."
     },
-
     {
         name: "Rutherfordium",
         symbol: "Rf",
@@ -955,6 +1057,7 @@ const elements = [
         group: 4,
         period: 7,
         category: "Transition Metal",
+        image: "images/rutherfordium.png",
         fact: "Rutherfordium is a synthetic element named after physicist Ernest Rutherford."
     },
     {
@@ -964,6 +1067,7 @@ const elements = [
         group: 5,
         period: 7,
         category: "Transition Metal",
+        image: "images/dubnium.png",
         fact: "Dubnium is highly radioactive and exists only in laboratories."
     },
     {
@@ -973,6 +1077,7 @@ const elements = [
         group: 6,
         period: 7,
         category: "Transition Metal",
+        image: "images/seaborgium.png",
         fact: "Seaborgium is named after Glenn Seaborg, a pioneer in transuranium elements."
     },
     {
@@ -982,6 +1087,7 @@ const elements = [
         group: 7,
         period: 7,
         category: "Transition Metal",
+        image: "images/bohrium.png",
         fact: "Bohrium is named after Niels Bohr and is extremely unstable."
     },
     {
@@ -991,6 +1097,7 @@ const elements = [
         group: 8,
         period: 7,
         category: "Transition Metal",
+        image: "images/hassium.png",
         fact: "Hassium is named after the German state of Hesse."
     },
     {
@@ -1000,6 +1107,7 @@ const elements = [
         group: 9,
         period: 7,
         category: "Transition Metal",
+        image: "images/meitnerium.png",
         fact: "Meitnerium is named after physicist Lise Meitner."
     },
     {
@@ -1009,6 +1117,7 @@ const elements = [
         group: 10,
         period: 7,
         category: "Transition Metal",
+        image: "images/darmstadtium.png",
         fact: "Darmstadtium was first created in Darmstadt, Germany."
     },
     {
@@ -1018,6 +1127,7 @@ const elements = [
         group: 11,
         period: 7,
         category: "Transition Metal",
+        image: "images/roentgenium.png",
         fact: "Roentgenium is named after Wilhelm Röntgen, who discovered X-rays."
     },
     {
@@ -1027,6 +1137,7 @@ const elements = [
         group: 12,
         period: 7,
         category: "Transition Metal",
+        image: "images/copernicium.png",
         fact: "Copernicium is named after Nicolaus Copernicus."
     },
     {
@@ -1036,6 +1147,7 @@ const elements = [
         group: 13,
         period: 7,
         category: "Post-Transition Metal",
+        image: "images/nihonium.png",
         fact: "Nihonium is named after Japan (Nihon)."
     },
     {
@@ -1045,6 +1157,7 @@ const elements = [
         group: 14,
         period: 7,
         category: "Post-Transition Metal",
+        image: "images/flerovium.png",
         fact: "Flerovium is named after the Flerov Laboratory of Nuclear Reactions."
     },
     {
@@ -1054,6 +1167,7 @@ const elements = [
         group: 15,
         period: 7,
         category: "Post-Transition Metal",
+        image: "images/moscovium.png",
         fact: "Moscovium is named after the Moscow region."
     },
     {
@@ -1063,6 +1177,7 @@ const elements = [
         group: 16,
         period: 7,
         category: "Post-Transition Metal",
+        image: "images/livermorium.png",
         fact: "Livermorium is named after Lawrence Livermore National Laboratory."
     },
     {
@@ -1072,6 +1187,7 @@ const elements = [
         group: 17,
         period: 7,
         category: "Halogen",
+        image: "images/tennessine.png",
         fact: "Tennessine is named after the state of Tennessee."
     },
     {
@@ -1081,6 +1197,7 @@ const elements = [
         group: 18,
         period: 7,
         category: "Noble Gas",
+        image: "images/oganesson.png",
         fact: "Oganesson is one of the heaviest elements ever created."
     }
 
@@ -1116,6 +1233,8 @@ function getCategoryClass(category) {
     }
 }
 
+const infoCard = document.getElementById("info-card");
+
 elements.forEach(e => {
     const div = document.createElement("div");
     div.classList.add("element");
@@ -1139,25 +1258,47 @@ elements.forEach(e => {
     div.addEventListener("click", () => {
         if (quizActive) return;
 
+        const img = document.getElementById("element-image");
+
         document.getElementById("element-name").textContent = e.name;
         document.getElementById("element-symbol").textContent = "Symbol: " + e.symbol;
         document.getElementById("element-number").textContent = "Atomic Number: " + e.number;
         document.getElementById("element-group").textContent = "Group: " + e.group;
         document.getElementById("element-period").textContent = "Period: " + e.period;
         document.getElementById("element-category").textContent = "Category: " + e.category;
-        document.getElementById("element-fact").textContent = e.fact;
+        document.getElementById("element-description").textContent = e.description || e.fact;
 
-        document.getElementById("info-panel").classList.remove("hidden");
-        document.getElementById("info-panel").style.borderColor = getComputedStyle(div).backgroundColor;
+        if (e.image) {
+            img.src = e.image;
+            img.alt = e.name;
+            img.style.display = "block";
+        } else {
+            img.style.display = "none";
+        }
+
+        const rect = div.getBoundingClientRect();
+        const cardWidth = 300;
+        const spaceRight = window.innerWidth - rect.right;
+
+        if (spaceRight > cardWidth + 20) {
+            // place on right
+            infoCard.style.left = (window.scrollX + rect.right + 12) + "px";
+        } else {
+            // place on left
+            infoCard.style.left = (window.scrollX + rect.left - cardWidth - 12) + "px";
+        }
+
+        infoCard.style.top = (window.scrollY + rect.top) + "px";
+
+        infoCard.classList.remove("hidden");
     });
 
     table.appendChild(div);
 });
 
 document.getElementById("close-btn").onclick = () => {
-    document.getElementById("info-panel").classList.add("hidden");
+    infoCard.classList.add("hidden");
 };
-
 let score = 0;
 let totalQuestions = 0;
 let currentQuestion = null;
@@ -1170,7 +1311,7 @@ let practiceMode = false;
 let practiceType = null;
 
 function getDifficultyRange() {
-    if (totalQuestions < 5) {
+    if (totalQuestions < 3) {
         return 40;
     }
 
@@ -1322,8 +1463,12 @@ function showQuestion() {
     const title = document.getElementById("quiz-title");
 
     if (practiceMode) {
+
         title.textContent = "Practice Mode";
-    } else {
+    }
+
+    else {
+
         title.textContent = "Quiz Mode";
     }
 
@@ -1444,7 +1589,7 @@ function startQuiz() {
 
     document.getElementById("score-display").textContent = "Score: 0 / 0";
     document.getElementById("feedback").textContent = "";
-    document.getElementById("info-panel").classList.add("hidden");
+    document.getElementById("info-card").classList.add("hidden");
     document.getElementById("report-section").classList.add("hidden");
     document.getElementById("review-list").innerHTML = "";
     document.getElementById("report-summary").textContent = "";
