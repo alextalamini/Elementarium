@@ -8,7 +8,12 @@ const elements = [
         period: 1,
         category: "Nonmetal",
         image: "images/hydrogen.png",
-        fact: "Hydrogen is the most common element in the universe."
+        fact: `Hydrogen is the lightest element in the entire universe, and also the most abundant. 
+        Seriously, most of the stars you see are basically giant hydrogen engines. It's incredibly simple,
+        just one proton and one electron, but it powers nuclear fusion and keeps stars shining for
+        billions of years. Here on Earth, it's often found combined with other elements, like in water.
+        Hydrogen is currently also being explored as a clean fuel source, which could be a big deal 
+        for the future. Not bad for something that weighs almost nothing!`
     },
     {
         name: "Helium",
@@ -18,7 +23,12 @@ const elements = [
         period: 1,
         category: "Noble Gas",
         image: "images/helium.png",
-        fact: "Helium makes balloons float and doesn’t react with much."
+        fact: `Helium is the second most abundant element in the universe, right behind hydrogen, 
+        and it's incredibly stable. Because it doesn't react with other elements, it's classified as 
+        a noble gas. On Earth, it's best known for filling balloons since it's lighter than air, but 
+        it's also used in things like MRI machines and cryogenics due to its ability to reach extremely
+        low temperatures. Helium is so unreactive that it basically refuses to bond with anything.
+        It just exists, does its job, and moves on.`
     },
     {
         name: "Lithium",
@@ -28,7 +38,12 @@ const elements = [
         period: 2,
         category: "Alkali Metal",
         image: "images/lithium.png",
-        fact: "Lithium powers a lot of modern batteries, so your phone kind of owes it one."
+        fact: `Lithium is a very light metal that plays a huge role in modern technology, especially
+        in lithium - ion batteries used in phones, laptops, and electric vehicles. It's highly reactive,
+        so it's usually found combined with other elements rather than on its own. Its ability to store
+        and release energy efficiently makes it one of the most important elements for portable power.
+        Lithium is also used in some medications, particularly for mood stabilization.
+        Small element, big impact.`
     },
     {
         name: "Beryllium",
@@ -38,7 +53,12 @@ const elements = [
         period: 2,
         category: "Alkaline Earth Metal",
         image: "images/beryllium.png",
-        fact: "Beryllium is super light and strong, which makes it useful in aerospace equipment."
+        fact: `Beryllium is a lightweight but extremely strong metal, which makes it valuable in
+        aerospace and high- performance applications. It's used in things like satellites, aircraft parts,
+        and precision instruments where both strength and low weight matter. Despite its usefulness,
+        beryllium is toxic if inhaled as dust, so it has to be handled carefully. Its stiffness and 
+        stability make it ideal for situations where precision is critical. It's not common in everyday life,
+        but it shows up in some very important places.`
     },
     {
         name: "Boron",
@@ -48,7 +68,12 @@ const elements = [
         period: 2,
         category: "Metalloid",
         image: "images/boron.png",
-        fact: "Boron helps make strong glass and detergents, and plants actually need a little of it too."
+        fact: `Boron is a somewhat overlooked element, you probably don't even know what it does! but it's
+        essential in a variety of applications. It's used to make strong, heat- resistant glass, like the 
+        kind found in lab equipment and cookware. Boron also appears in detergents and plays a role in
+        agriculture, since plants need small amounts of it to grow properly.In materials science, it helps 
+        improve strength and durability. Not the most famous element, but definitely one that keeps things 
+        working behind the scenes.`
     },
     {
         name: "Carbon",
@@ -1206,6 +1231,456 @@ const elements = [
 
 const table = document.getElementById("periodic-table");
 
+const alkaliMetals = ["Lithium", "Sodium", "Potassium", "Rubidium", "Cesium", "Francium"];
+
+const alkalineEarthMetals = ["Beryllium", "Magnesium", "Calcium", "Strontium", "Barium", "Radium"];
+
+const transitionMetals = [
+    "Scandium", "Titanium", "Vanadium", "Chromium", "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc",
+    "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium",
+    "Hafnium", "Tantalum", "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury",
+    "Rutherfordium", "Dubnium", "Seaborgium", "Bohrium", "Hassium", "Meitnerium", "Darmstadtium", "Roentgenium", "Copernicium"
+];
+
+const lanthanides = [
+    "Lanthanum", "Cerium", "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium",
+    "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium"
+];
+
+const actinides = [
+    "Actinium", "Thorium", "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium",
+    "Curium", "Berkelium", "Californium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium"
+];
+
+const postTransitionMetals = [
+    "Aluminum", "Gallium", "Indium", "Tin", "Thallium", "Lead", "Bismuth", "Nihonium", "Flerovium", "Moscovium", "Livermorium"
+];
+
+const metalloids = ["Boron", "Silicon", "Germanium", "Arsenic", "Antimony", "Tellurium", "Polonium"];
+
+const nonmetals = ["Hydrogen", "Carbon", "Nitrogen", "Oxygen", "Phosphorus", "Sulfur", "Selenium"];
+
+const halogens = ["Fluorine", "Chlorine", "Bromine", "Iodine", "Astatine", "Tennessine"];
+
+const nobleGases = ["Helium", "Neon", "Argon", "Krypton", "Xenon", "Radon", "Oganesson"];
+
+
+const knowledgeQuestions = [
+    // ===== 1–10 =====
+    {
+        question: "Which element is the lightest and most abundant in the universe?",
+        answer: "Hydrogen",
+        explanation: "Hydrogen is the lightest and most abundant element."
+    },
+    {
+        question: "Which element is used in balloons because it is lighter than air and nonreactive?",
+        answer: "Helium",
+        explanation: "Helium is used in balloons because it is lighter than air."
+    },
+    {
+        question: "Which element is used in rechargeable batteries for electronics?",
+        answer: "Lithium",
+        explanation: "Lithium is used in lithium-ion batteries."
+    },
+    {
+        question: "Which element is used in aerospace because it is lightweight and strong?",
+        answer: "Beryllium",
+        explanation: "Beryllium is used in aerospace materials."
+    },
+    {
+        question: "Which element is used to make strong glass and detergents?",
+        answer: "Boron",
+        explanation: "Boron is used in glass and cleaning products."
+    },
+    {
+        question: "Which element is the backbone of all organic life?",
+        answer: "Carbon",
+        explanation: "Carbon forms the basis of life."
+    },
+    {
+        question: "Which element makes up most of Earth's atmosphere?",
+        answer: "Nitrogen",
+        explanation: "Nitrogen makes up about 78% of the atmosphere."
+    },
+    {
+        question: "Which element makes up about 21% of Earth's atmosphere?",
+        answer: "Oxygen",
+        explanation: "Oxygen is essential for respiration."
+    },
+    {
+        question: "Which element is the most reactive halogen?",
+        answer: "Fluorine",
+        explanation: "Fluorine is the most reactive halogen."
+    },
+    {
+        question: "Which element is famous for glowing in signs?",
+        answer: "Neon",
+        explanation: "Neon is used in bright signs."
+    },
+
+    // ===== 11–20 =====
+    {
+        question: "Which element reacts violently with water and is part of table salt?",
+        answer: "Sodium",
+        explanation: "Sodium forms salt with chlorine."
+    },
+    {
+        question: "Which element burns with a bright white flame in fireworks?",
+        answer: "Magnesium",
+        explanation: "Magnesium produces bright white light."
+    },
+    {
+        question: "Which element is lightweight and used in cans and aircraft?",
+        answer: "Aluminum",
+        explanation: "Aluminum is widely used due to its strength and low weight."
+    },
+    {
+        question: "Which element is used in computer chips and electronics?",
+        answer: "Silicon",
+        explanation: "Silicon is essential for electronics."
+    },
+    {
+        question: "Which element is used in matches and DNA?",
+        answer: "Phosphorus",
+        explanation: "Phosphorus is biologically important."
+    },
+    {
+        question: "Which element is used in fertilizers and smells strongly in some compounds?",
+        answer: "Sulfur",
+        explanation: "Sulfur is used in fertilizers."
+    },
+    {
+        question: "Which element is used to disinfect water and pools?",
+        answer: "Chlorine",
+        explanation: "Chlorine kills bacteria in water."
+    },
+    {
+        question: "Which element is used in light bulbs and is chemically inactive?",
+        answer: "Argon",
+        explanation: "Argon is a noble gas used in bulbs."
+    },
+    {
+        question: "Which element is essential for muscles and nerves and reacts with water?",
+        answer: "Potassium",
+        explanation: "Potassium is vital for the body."
+    },
+    {
+        question: "Which element is essential for bones and teeth?",
+        answer: "Calcium",
+        explanation: "Calcium strengthens bones."
+    },
+
+    // ===== 21–30 =====
+    {
+        question: "Which element is used in lightweight alloys and electronics?",
+        answer: "Scandium",
+        explanation: "Scandium strengthens alloys."
+    },
+    {
+        question: "Which element is used in aircraft and implants due to strength?",
+        answer: "Titanium",
+        explanation: "Titanium is strong and corrosion-resistant."
+    },
+    {
+        question: "Which element strengthens steel and tools?",
+        answer: "Vanadium",
+        explanation: "Vanadium improves steel strength."
+    },
+    {
+        question: "Which element gives chrome plating its shine?",
+        answer: "Chromium",
+        explanation: "Chromium is used in plating."
+    },
+    {
+        question: "Which element is used in steel and batteries?",
+        answer: "Manganese",
+        explanation: "Manganese improves steel."
+    },
+    {
+        question: "Which element is used in steel and carries oxygen in blood?",
+        answer: "Iron",
+        explanation: "Iron is essential in hemoglobin."
+    },
+    {
+        question: "Which element is used in batteries and blue pigments?",
+        answer: "Cobalt",
+        explanation: "Cobalt gives blue color."
+    },
+    {
+        question: "Which element is used in coins and stainless steel?",
+        answer: "Nickel",
+        explanation: "Nickel resists corrosion."
+    },
+    {
+        question: "Which element is widely used in electrical wiring?",
+        answer: "Copper",
+        explanation: "Copper conducts electricity well."
+    },
+    {
+        question: "Which element protects steel from rust?",
+        answer: "Zinc",
+        explanation: "Zinc coating prevents corrosion."
+    },
+
+    // ===== 31–40 =====
+    {
+        question: "Which element can melt in your hand?",
+        answer: "Gallium",
+        explanation: "Gallium has a low melting point."
+    },
+    {
+        question: "Which element is used in semiconductors and fiber optics?",
+        answer: "Germanium",
+        explanation: "Germanium is used in electronics."
+    },
+    {
+        question: "Which element is known as a poison but used in semiconductors?",
+        answer: "Arsenic",
+        explanation: "Arsenic is toxic but useful in electronics."
+    },
+    {
+        question: "Which element is used in electronics and glass?",
+        answer: "Selenium",
+        explanation: "Selenium is used in tech and glass."
+    },
+    {
+        question: "Which element is a liquid at room temperature besides mercury?",
+        answer: "Bromine",
+        explanation: "Bromine is a liquid halogen."
+    },
+    {
+        question: "Which element is used in lighting and lasers?",
+        answer: "Krypton",
+        explanation: "Krypton is used in lighting."
+    },
+    {
+        question: "Which element is highly reactive and used in atomic clocks?",
+        answer: "Rubidium",
+        explanation: "Rubidium is used in precise clocks."
+    },
+    {
+        question: "Which element gives fireworks a red color?",
+        answer: "Strontium",
+        explanation: "Strontium produces red flames."
+    },
+    {
+        question: "Which element is used in LEDs and superconductors?",
+        answer: "Yttrium",
+        explanation: "Yttrium is used in advanced electronics."
+    },
+    {
+        question: "Which element resists corrosion and is used in nuclear reactors?",
+        answer: "Zirconium",
+        explanation: "Zirconium is corrosion-resistant."
+    },
+
+    // ===== 41–50 =====
+    {
+        question: "Which element strengthens steel and is used in superconductors?",
+        answer: "Niobium",
+        explanation: "Niobium improves steel."
+    },
+    {
+        question: "Which element helps steel resist high temperatures?",
+        answer: "Molybdenum",
+        explanation: "Molybdenum improves heat resistance."
+    },
+    {
+        question: "Which element is radioactive and used in medical imaging?",
+        answer: "Technetium",
+        explanation: "Technetium is used in scans."
+    },
+    {
+        question: "Which element is used in electronics and corrosion-resistant alloys?",
+        answer: "Ruthenium",
+        explanation: "Ruthenium is used in electronics."
+    },
+    {
+        question: "Which element is valuable and used in catalytic converters?",
+        answer: "Rhodium",
+        explanation: "Rhodium is rare and valuable."
+    },
+    {
+        question: "Which element is rarer than gold and used in electronics?",
+        answer: "Palladium",
+        explanation: "Palladium is used in tech."
+    },
+    {
+        question: "Which element has been used as money and conducts electricity well?",
+        answer: "Silver",
+        explanation: "Silver is an excellent conductor."
+    },
+    {
+        question: "Which element is toxic and used in batteries?",
+        answer: "Cadmium",
+        explanation: "Cadmium is used in batteries."
+    },
+    {
+        question: "Which element is used in touchscreens?",
+        answer: "Indium",
+        explanation: "Indium is used in displays."
+    },
+    {
+        question: "Which element is used in solder and has a low melting point?",
+        answer: "Tin",
+        explanation: "Tin is used in solder."
+    },
+
+    // ===== 51–60 =====
+    {
+        question: "Which element is used in flame retardants?",
+        answer: "Antimony",
+        explanation: "Antimony is used in fire-resistant materials."
+    },
+    {
+        question: "Which element is used in solar panels?",
+        answer: "Tellurium",
+        explanation: "Tellurium is used in solar tech."
+    },
+    {
+        question: "Which element is essential for the thyroid?",
+        answer: "Iodine",
+        explanation: "Iodine supports thyroid function."
+    },
+    {
+        question: "Which element is used in high-intensity lamps?",
+        answer: "Xenon",
+        explanation: "Xenon is used in lighting."
+    },
+    {
+        question: "Which element explodes in water and is extremely reactive?",
+        answer: "Cesium",
+        explanation: "Cesium reacts violently with water."
+    },
+    {
+        question: "Which element is used in X-ray imaging compounds?",
+        answer: "Barium",
+        explanation: "Barium helps imaging."
+    },
+    {
+        question: "Which element is used in lighter flints?",
+        answer: "Cerium",
+        explanation: "Cerium sparks in lighters."
+    },
+    {
+        question: "Which element is used in powerful magnets?",
+        answer: "Neodymium",
+        explanation: "Neodymium magnets are very strong."
+    },
+    {
+        question: "Which element is radioactive and very rare?",
+        answer: "Promethium",
+        explanation: "Promethium is rare and unstable."
+    },
+    {
+        question: "Which element is used in MRI contrast agents?",
+        answer: "Gadolinium",
+        explanation: "Gadolinium improves imaging."
+    },
+
+    // ===== 61–80 =====
+    {
+        question: "Which element is used in green phosphors?",
+        answer: "Terbium",
+        explanation: "Terbium is used in displays."
+    },
+    {
+        question: "Which element is used in high-temp magnets?",
+        answer: "Dysprosium",
+        explanation: "Dysprosium stabilizes magnets."
+    },
+    {
+        question: "Which element has one of the strongest magnetic properties?",
+        answer: "Holmium",
+        explanation: "Holmium is highly magnetic."
+    },
+    {
+        question: "Which element is used in fiber optics?",
+        answer: "Erbium",
+        explanation: "Erbium boosts signals."
+    },
+    {
+        question: "Which element is rare and used in X-ray devices?",
+        answer: "Thulium",
+        explanation: "Thulium is used in portable X-rays."
+    },
+    {
+        question: "Which element is used in atomic clocks?",
+        answer: "Ytterbium",
+        explanation: "Ytterbium is used in precision clocks."
+    },
+    {
+        question: "Which element is used in PET scan detectors?",
+        answer: "Lutetium",
+        explanation: "Lutetium is used in medical imaging."
+    },
+    {
+        question: "Which element absorbs neutrons in reactors?",
+        answer: "Hafnium",
+        explanation: "Hafnium controls reactions."
+    },
+    {
+        question: "Which element is corrosion-resistant and used in implants?",
+        answer: "Tantalum",
+        explanation: "Tantalum resists corrosion."
+    },
+    {
+        question: "Which element has the highest melting point?",
+        answer: "Tungsten",
+        explanation: "Tungsten has the highest melting point."
+    },
+
+    // ===== IMPORTANT HEAVY =====
+    {
+        question: "Which element is used in nuclear fuel?",
+        answer: "Uranium",
+        explanation: "Uranium powers nuclear reactors."
+    },
+    {
+        question: "Which element is used in smoke detectors?",
+        answer: "Americium",
+        explanation: "Americium is used in detectors."
+    },
+    {
+        question: "Which element is used in nuclear weapons and reactors?",
+        answer: "Plutonium",
+        explanation: "Plutonium is used in nuclear tech."
+    },
+
+    // ===== NAMING (100+) =====
+    {
+        question: "Which element is named after Dmitri Mendeleev?",
+        answer: "Mendelevium",
+        explanation: "Named after creator of periodic table."
+    },
+    {
+        question: "Which element is named after Alfred Nobel?",
+        answer: "Nobelium",
+        explanation: "Named after Nobel."
+    },
+    {
+        question: "Which element is named after Nicolaus Copernicus?",
+        answer: "Copernicium",
+        explanation: "Named after Copernicus."
+    },
+    {
+        question: "Which element is named after Ernest Rutherford?",
+        answer: "Rutherfordium",
+        explanation: "Named after Rutherford."
+    },
+    {
+        question: "Which element is named after Japan?",
+        answer: "Nihonium",
+        explanation: "Named after Japan."
+    },
+    {
+        question: "Which element is named after Tennessee?",
+        answer: "Tennessine",
+        explanation: "Named after Tennessee."
+    }
+];
+
+
 function getCategoryClass(category) {
     switch (category) {
         case "Alkali Metal":
@@ -1311,7 +1786,7 @@ let practiceMode = false;
 let practiceType = null;
 
 function getDifficultyRange() {
-    if (totalQuestions < 3) {
+    if (totalQuestions < 2) {
         return 40;
     }
 
@@ -1319,12 +1794,636 @@ function getDifficultyRange() {
 
     if (percent < 50) {
         return 40;
-    } else if (percent < 80) {
+    }
+    else if (percent <= 80) {
         return 90;
-    } else {
+    }
+    else {
         return 118;
     }
 }
+
+function categoryQuestionsUnlocked() {
+    if (totalQuestions < 3) {
+        return false;
+    }
+
+    let percent = (score / totalQuestions) * 100;
+
+    if (percent < 50) {
+        return false;
+    }
+    else if (percent <= 80) {
+        return true;
+    }
+    else {
+        return true;
+    }
+}
+
+function knowledgeQuestionsUnlocked() {
+    if (totalQuestions < 4) {
+        return false;
+    }
+
+    let percent = (score / totalQuestions) * 100;
+    return percent >= 70;
+}
+
+function getElementsUpToDifficulty() {
+    let maxNumber = getDifficultyRange();
+    return elements.filter(e => e.number <= maxNumber);
+}
+
+function getRandomFromArray(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function getCategoryPool(categoryName) {
+    if (categoryName === "Alkali Metal") {
+        return alkaliMetals;
+    }
+    else if (categoryName === "Alkaline Earth Metal") {
+        return alkalineEarthMetals;
+    }
+    else if (categoryName === "Transition Metal") {
+        return transitionMetals;
+    }
+    else if (categoryName === "Lanthanide") {
+        return lanthanides;
+    }
+    else if (categoryName === "Actinide") {
+        return actinides;
+    }
+    else if (categoryName === "Post-Transition Metal") {
+        return postTransitionMetals;
+    }
+    else if (categoryName === "Metalloid") {
+        return metalloids;
+    }
+    else if (categoryName === "Nonmetal") {
+        return nonmetals;
+    }
+    else if (categoryName === "Halogen") {
+        return halogens;
+    }
+    else if (categoryName === "Noble Gas") {
+        return nobleGases;
+    }
+
+    return [];
+}
+
+function getElementsNotInCategory(categoryName) {
+    let pool = getElementsUpToDifficulty();
+    let categoryPool = getCategoryPool(categoryName);
+
+    return pool.filter(e => !categoryPool.includes(e.name));
+}
+
+function getElementsInCategory(categoryName) {
+    let pool = getElementsUpToDifficulty();
+    let categoryPool = getCategoryPool(categoryName);
+
+    return pool.filter(e => categoryPool.includes(e.name));
+}
+
+
+
+function generateWhichIsAlkaliMetalQuestion() {
+    let correctPool = getElementsInCategory("Alkali Metal");
+    let wrongPool = getElementsNotInCategory("Alkali Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is an Alkali Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is an Alkali Metal.",
+        questionType: 5
+    };
+}
+
+function generateWhichIsNotAlkaliMetalQuestion() {
+    let correctPool = getElementsNotInCategory("Alkali Metal");
+    let wrongPool = getElementsInCategory("Alkali Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not an Alkali Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not an Alkali Metal.",
+        questionType: 6
+    };
+}
+
+
+function generateWhichIsAlkalineEarthMetalQuestion() {
+    let correctPool = getElementsInCategory("Alkaline Earth Metal");
+    let wrongPool = getElementsNotInCategory("Alkaline Earth Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is an Alkaline Earth Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is an Alkaline Earth Metal.",
+        questionType: 7
+    };
+}
+
+function generateWhichIsNotAlkalineEarthMetalQuestion() {
+    let correctPool = getElementsNotInCategory("Alkaline Earth Metal");
+    let wrongPool = getElementsInCategory("Alkaline Earth Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not an Alkaline Earth Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not an Alkaline Earth Metal.",
+        questionType: 8
+    };
+}
+function generateWhichIsTransitionMetalQuestion() {
+    let correctPool = getElementsInCategory("Transition Metal");
+    let wrongPool = getElementsNotInCategory("Transition Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Transition Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Transition Metal.",
+        questionType: 9
+    };
+}
+
+function generateWhichIsNotTransitionMetalQuestion() {
+    let correctPool = getElementsNotInCategory("Transition Metal");
+    let wrongPool = getElementsInCategory("Transition Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Transition Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Transition Metal.",
+        questionType: 10
+    };
+}
+function generateWhichIsLanthanideQuestion() {
+    let correctPool = getElementsInCategory("Lanthanide");
+    let wrongPool = getElementsNotInCategory("Lanthanide");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Lanthanide?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Lanthanide.",
+        questionType: 11
+    };
+}
+
+function generateWhichIsNotLanthanideQuestion() {
+    let correctPool = getElementsNotInCategory("Lanthanide");
+    let wrongPool = getElementsInCategory("Lanthanide");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Lanthanide?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Lanthanide.",
+        questionType: 12
+    };
+}
+function generateWhichIsActinideQuestion() {
+    let correctPool = getElementsInCategory("Actinide");
+    let wrongPool = getElementsNotInCategory("Actinide");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is an Actinide?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is an Actinide.",
+        questionType: 13
+    };
+}
+
+function generateWhichIsNotActinideQuestion() {
+    let correctPool = getElementsNotInCategory("Actinide");
+    let wrongPool = getElementsInCategory("Actinide");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not an Actinide?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not an Actinide.",
+        questionType: 14
+    };
+}
+function generateWhichIsPostTransitionMetalQuestion() {
+    let correctPool = getElementsInCategory("Post-Transition Metal");
+    let wrongPool = getElementsNotInCategory("Post-Transition Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Post-Transition Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Post-Transition Metal.",
+        questionType: 15
+    };
+}
+
+function generateWhichIsNotPostTransitionMetalQuestion() {
+    let correctPool = getElementsNotInCategory("Post-Transition Metal");
+    let wrongPool = getElementsInCategory("Post-Transition Metal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Post-Transition Metal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Post-Transition Metal.",
+        questionType: 16
+    };
+}
+
+function generateWhichIsMetalloidQuestion() {
+    let correctPool = getElementsInCategory("Metalloid");
+    let wrongPool = getElementsNotInCategory("Metalloid");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Metalloid?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Metalloid.",
+        questionType: 17
+    };
+}
+
+function generateWhichIsNotMetalloidQuestion() {
+    let correctPool = getElementsNotInCategory("Metalloid");
+    let wrongPool = getElementsInCategory("Metalloid");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Metalloid?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Metalloid.",
+        questionType: 18
+    };
+}
+function generateWhichIsNonmetalQuestion() {
+    let correctPool = getElementsInCategory("Nonmetal");
+    let wrongPool = getElementsNotInCategory("Nonmetal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Nonmetal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Nonmetal.",
+        questionType: 19
+    };
+}
+
+function generateWhichIsNotNonmetalQuestion() {
+    let correctPool = getElementsNotInCategory("Nonmetal");
+    let wrongPool = getElementsInCategory("Nonmetal");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Nonmetal?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Nonmetal.",
+        questionType: 20
+    };
+}
+function generateWhichIsHalogenQuestion() {
+    let correctPool = getElementsInCategory("Halogen");
+    let wrongPool = getElementsNotInCategory("Halogen");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Halogen?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Halogen.",
+        questionType: 21
+    };
+}
+
+function generateWhichIsNotHalogenQuestion() {
+    let correctPool = getElementsNotInCategory("Halogen");
+    let wrongPool = getElementsInCategory("Halogen");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Halogen?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Halogen.",
+        questionType: 22
+    };
+}
+
+function generateWhichIsNobleGasQuestion() {
+    let correctPool = getElementsInCategory("Noble Gas");
+    let wrongPool = getElementsNotInCategory("Noble Gas");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is a Noble Gas?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is a Noble Gas.",
+        questionType: 23
+    };
+}
+
+function generateWhichIsNotNobleGasQuestion() {
+    let correctPool = getElementsNotInCategory("Noble Gas");
+    let wrongPool = getElementsInCategory("Noble Gas");
+
+    let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
+    let choices = [correctElement.name];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: "Which element is not a Noble Gas?",
+        answer: correctElement.name,
+        choices: choices,
+        explanation: correctElement.name + " is not a Noble Gas.",
+        questionType: 24
+    };
+}
+
+function generateKnowledgeQuestion() {
+    let maxNumber = getDifficultyRange();
+    let availableKnowledgeQuestions = knowledgeQuestions.filter(kq => {
+        let answerElement = elements.find(e => e.name === kq.answer);
+        return answerElement && answerElement.number <= maxNumber;
+    });
+
+    if (availableKnowledgeQuestions.length === 0) {
+        return generateOriginalQuestion();
+    }
+
+    let selected = availableKnowledgeQuestions[Math.floor(Math.random() * availableKnowledgeQuestions.length)];
+    let correctElement = elements.find(e => e.name === selected.answer);
+
+    let wrongPool = elements.filter(e =>
+        e.number <= maxNumber &&
+        e.name !== selected.answer
+    );
+
+    let choices = [selected.answer];
+
+    while (choices.length < 4) {
+        let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+        if (!choices.includes(wrongElement.name)) {
+            choices.push(wrongElement.name);
+        }
+    }
+
+    shuffleArray(choices);
+
+    return {
+        question: selected.question,
+        answer: selected.answer,
+        choices: choices,
+        explanation: selected.explanation,
+        questionType: 25
+    };
+}
+
 
 function getRandomElement() {
     let maxNumber = getDifficultyRange();
@@ -1375,10 +2474,111 @@ function getTypeName(questionType) {
     if (questionType === 1) return "name";
     if (questionType === 2) return "group";
     if (questionType === 3) return "period";
-    return "category";
+    if (questionType === 4) return "category";
+
+    if (questionType === 5 || questionType === 6) return "alkali metal";
+    if (questionType === 7 || questionType === 8) return "alkaline earth metal";
+    if (questionType === 9 || questionType === 10) return "transition metal";
+    if (questionType === 11 || questionType === 12) return "lanthanide";
+    if (questionType === 13 || questionType === 14) return "actinide";
+    if (questionType === 15 || questionType === 16) return "post-transition metal";
+    if (questionType === 17 || questionType === 18) return "metalloid";
+    if (questionType === 19 || questionType === 20) return "nonmetal";
+    if (questionType === 21 || questionType === 22) return "halogen";
+    if (questionType === 23 || questionType === 24) return "noble gas";
+    if (questionType === 25) return "knowledge";
+
+    return "question";
 }
 
 function generateQuestion(forcedType = null) {
+    if (forcedType !== null) {
+        if (forcedType === 0 || forcedType === 1 || forcedType === 2 || forcedType === 3 || forcedType === 4) {
+            return generateOriginalQuestion(forcedType);
+        }
+        else if (forcedType === 5) return generateWhichIsAlkaliMetalQuestion();
+        else if (forcedType === 6) return generateWhichIsNotAlkaliMetalQuestion();
+        else if (forcedType === 7) return generateWhichIsAlkalineEarthMetalQuestion();
+        else if (forcedType === 8) return generateWhichIsNotAlkalineEarthMetalQuestion();
+        else if (forcedType === 9) return generateWhichIsTransitionMetalQuestion();
+        else if (forcedType === 10) return generateWhichIsNotTransitionMetalQuestion();
+        else if (forcedType === 11) return generateWhichIsLanthanideQuestion();
+        else if (forcedType === 12) return generateWhichIsNotLanthanideQuestion();
+        else if (forcedType === 13) return generateWhichIsActinideQuestion();
+        else if (forcedType === 14) return generateWhichIsNotActinideQuestion();
+        else if (forcedType === 15) return generateWhichIsPostTransitionMetalQuestion();
+        else if (forcedType === 16) return generateWhichIsNotPostTransitionMetalQuestion();
+        else if (forcedType === 17) return generateWhichIsMetalloidQuestion();
+        else if (forcedType === 18) return generateWhichIsNotMetalloidQuestion();
+        else if (forcedType === 19) return generateWhichIsNonmetalQuestion();
+        else if (forcedType === 20) return generateWhichIsNotNonmetalQuestion();
+        else if (forcedType === 21) return generateWhichIsHalogenQuestion();
+        else if (forcedType === 22) return generateWhichIsNotHalogenQuestion();
+        else if (forcedType === 23) return generateWhichIsNobleGasQuestion();
+        else if (forcedType === 24) return generateWhichIsNotNobleGasQuestion();
+        else if (forcedType === 25) return generateKnowledgeQuestion();
+    }
+
+    let questionPool = [0, 1, 2, 3, 4];
+
+    if (categoryQuestionsUnlocked()) {
+        questionPool.push(5);
+        questionPool.push(6);
+        questionPool.push(7);
+        questionPool.push(8);
+        questionPool.push(9);
+        questionPool.push(10);
+        questionPool.push(11);
+        questionPool.push(12);
+        questionPool.push(13);
+        questionPool.push(14);
+        questionPool.push(15);
+        questionPool.push(16);
+        questionPool.push(17);
+        questionPool.push(18);
+        questionPool.push(19);
+        questionPool.push(20);
+        questionPool.push(21);
+        questionPool.push(22);
+        questionPool.push(23);
+        questionPool.push(24);
+    }
+
+    if (knowledgeQuestionsUnlocked()) {
+        questionPool.push(25);
+    }
+
+    let chosenType = questionPool[Math.floor(Math.random() * questionPool.length)];
+
+    if (chosenType === 0 || chosenType === 1 || chosenType === 2 || chosenType === 3 || chosenType === 4) {
+        return generateOriginalQuestion(chosenType);
+    }
+    else if (chosenType === 5) return generateWhichIsAlkaliMetalQuestion();
+    else if (chosenType === 6) return generateWhichIsNotAlkaliMetalQuestion();
+    else if (chosenType === 7) return generateWhichIsAlkalineEarthMetalQuestion();
+    else if (chosenType === 8) return generateWhichIsNotAlkalineEarthMetalQuestion();
+    else if (chosenType === 9) return generateWhichIsTransitionMetalQuestion();
+    else if (chosenType === 10) return generateWhichIsNotTransitionMetalQuestion();
+    else if (chosenType === 11) return generateWhichIsLanthanideQuestion();
+    else if (chosenType === 12) return generateWhichIsNotLanthanideQuestion();
+    else if (chosenType === 13) return generateWhichIsActinideQuestion();
+    else if (chosenType === 14) return generateWhichIsNotActinideQuestion();
+    else if (chosenType === 15) return generateWhichIsPostTransitionMetalQuestion();
+    else if (chosenType === 16) return generateWhichIsNotPostTransitionMetalQuestion();
+    else if (chosenType === 17) return generateWhichIsMetalloidQuestion();
+    else if (chosenType === 18) return generateWhichIsNotMetalloidQuestion();
+    else if (chosenType === 19) return generateWhichIsNonmetalQuestion();
+    else if (chosenType === 20) return generateWhichIsNotNonmetalQuestion();
+    else if (chosenType === 21) return generateWhichIsHalogenQuestion();
+    else if (chosenType === 22) return generateWhichIsNotHalogenQuestion();
+    else if (chosenType === 23) return generateWhichIsNobleGasQuestion();
+    else if (chosenType === 24) return generateWhichIsNotNobleGasQuestion();
+    else if (chosenType === 25) return generateKnowledgeQuestion();
+
+    return generateOriginalQuestion(0);
+}
+
+function generateOriginalQuestion(forcedType = null) {
     let e = getRandomElement();
     let questionType;
 
@@ -1426,6 +2626,66 @@ function generateQuestion(forcedType = null) {
     };
 }
 
+function generatePracticeQuestion(typeName) {
+    if (typeName === "alkali metal") {
+        let types = [5, 6];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "alkaline earth metal") {
+        let types = [7, 8];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "transition metal") {
+        let types = [9, 10];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "lanthanide") {
+        let types = [11, 12];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "actinide") {
+        let types = [13, 14];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "post-transition metal") {
+        let types = [15, 16];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "metalloid") {
+        let types = [17, 18];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "nonmetal") {
+        let types = [19, 20];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "halogen") {
+        let types = [21, 22];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "noble gas") {
+        let types = [23, 24];
+        let chosenType = types[Math.floor(Math.random() * types.length)];
+        return generateQuestion(chosenType);
+    }
+    else if (typeName === "knowledge") {
+        return generateQuestion(25);
+    }
+    else {
+        return generateQuestion();
+    }
+}
+
+
 function updateQuizButtons() {
     const startBtn = document.getElementById("start-btn");
     const quitBtn = document.getElementById("quit-btn");
@@ -1455,7 +2715,7 @@ function showQuestion() {
     }
 
     if (practiceMode) {
-        currentQuestion = generateQuestion(practiceType);
+        currentQuestion = generatePracticeQuestion(practiceType);
     } else {
         currentQuestion = generateQuestion();
     }
@@ -1564,7 +2824,7 @@ function quitPractice() {
     quizActive = false;
 
     document.getElementById("feedback").textContent = "";
-    document.getElementById("question-text").textContent = "Practice ended. Review your results above.";
+    document.getElementById("question-text").textContent = "Practice ended. Good Work!";
     document.getElementById("score-display").textContent = "";
 
     updateQuizButtons();
@@ -1675,13 +2935,13 @@ function showReport(wasQuit) {
 
 function startPractice(type) {
     practiceMode = true;
-    practiceType = type;
+    practiceType = getTypeName(type);
     quizActive = true;
     answered = false;
 
     document.getElementById("report-section").classList.add("hidden");
     document.getElementById("feedback").textContent =
-        `Practice mode: working on ${getTypeName(type)} questions.`;
+        `Practice mode: working on ${practiceType} questions.`;
     updateQuizButtons();
     showQuestion();
 }
