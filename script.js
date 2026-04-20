@@ -155,7 +155,11 @@ const elements = [
         period: 3,
         category: "Alkali Metal",
         image: "images/sodium.png",
-        fact: "Sodium reacts violently with water, which is why it’s always stored carefully."
+        fact: `Sodium is a highly reactive metal that's best known for being part of table salt
+        (sodium chloride). On its own, it reacts violently with water, which is why it's always
+        stored carefully in labs. Despite that, sodium compounds are essential for life, especially
+        in maintaining fluid balance and nerve function in the body. It's also used in street lighting,
+        producing that distinct yellow glow. On its own it's dangerous, but in compounds it's everywhere.`
     },
     {
         name: "Magnesium",
@@ -165,7 +169,11 @@ const elements = [
         period: 3,
         category: "Alkaline Earth Metal",
         image: "images/magnesium.png",
-        fact: "Magnesium burns with a super bright white flame and is used in fireworks."
+        fact: `Magnesium is a lightweight metal that burns with a bright white flame, which is why it's
+        used in fireworks and flares. It's also an important structural material in alloys, especially 
+        where strength and low weight are needed. In biology, magnesium plays a key role in muscle and
+        nerve function, and it's actually part of chlorophyll in plants. Because of its properties,
+        it shows up in both industrial and biological systems. It's one of those elements that's quietly doing a lot.`
     },
     {
         name: "Aluminum",
@@ -175,7 +183,11 @@ const elements = [
         period: 3,
         category: "Post-Transition Metal",
         image: "images/aluminum.png",
-        fact: "Aluminum is lightweight, strong, and used everywhere from cans to airplanes."
+        fact: `Aluminum is a lightweight, corrosion resistant metal that's widely used in cans, foil, and 
+        aircraft construction. It doesn't rust like iron, which makes it incredibly useful for everyday
+        applications. Aluminum is also highly recyclable, and a large portion of it gets reused repeatedly.
+        Despite being so common now, it was once considered a precious metal due to how difficult it was to
+        extract. Today, it's one of the most practical materials we have.`
     },
     {
         name: "Silicon",
@@ -185,7 +197,11 @@ const elements = [
         period: 3,
         category: "Metalloid",
         image: "images/silicon.png",
-        fact: "Silicon is the backbone of computer chips and modern electronics."
+        fact: `Silicon is the foundation of modern electronics, making it essential for computer chips and 
+        semiconductors. It's a metalloid, meaning it has properties between metals and nonmetals, which makes
+        it perfect for controlling electrical signals. Silicon is also a major component of sand and glass,
+        so it's more common than you might expect. Its ability to act as a semiconductor is what makes modern
+        technology possible. Without silicon, no phones, no computers, no internet.`
     },
     {
         name: "Phosphorus",
@@ -195,7 +211,11 @@ const elements = [
         period: 3,
         category: "Nonmetal",
         image: "images/phosphorus.png",
-        fact: "Phosphorus is essential for life and glows faintly in some forms."
+        fact: `Phosphorus is a reactive nonmetal that's used in things like matches, fertilizers, and biological
+        molecules like DNA. It plays a critical role in energy transfer within cells, especially in molecules like
+        ATP. Phosphorus exists in several forms, some of which can glow in the dark or ignite spontaneously. In
+        agriculture, it's essential for plant growth, making it a key component of fertilizers. It's not as visible
+        as some elements, but it's absolutely essential for life.`
     },
     {
         name: "Sulfur",
@@ -205,7 +225,11 @@ const elements = [
         period: 3,
         category: "Nonmetal",
         image: "images/sulfur.png",
-        fact: "Sulfur is known for its strong smell and is used in fertilizers."
+        fact: `Sulfur is a nonmetal best known for its role in fertilizers and chemicals, and for the strong 
+        smell of some of its compounds. It's commonly found in volcanic areas and can appear as bright yellow
+        crystals in nature. Sulfur is essential for life, being part of certain amino acids and proteins. It's
+        also used in the production of sulfuric acid, one of the most important industrial chemicals. Not the
+        best smell, but extremely useful.`
     },
     {
         name: "Chlorine",
@@ -215,7 +239,11 @@ const elements = [
         period: 3,
         category: "Halogen",
         image: "images/chlorine.png",
-        fact: "Chlorine is used to disinfect water but is toxic in pure gas form."
+        fact: `Chlorine is a highly reactive nonmetal that's widely used to disinfect water, including drinking 
+        water and swimming pools. It's part of the halogen group and readily forms compounds with many elements,
+        especially metals. Chlorine is also used in making plastics like PVC and in various cleaning products. In
+        its pure form, it's a toxic gas, which is why it's handled carefully. Controlled properly, it plays a 
+        major role in public health.`
     },
     {
         name: "Argon",
@@ -225,7 +253,11 @@ const elements = [
         period: 3,
         category: "Noble Gas",
         image: "images/argon.png",
-        fact: "Argon is a noble gas that doesn’t react and is used in light bulbs."
+        fact: `Argon is a noble gas that makes up about 1% of Earth's atmosphere and is almost completely 
+        unreactive. Because it doesn't easily form compounds, it's often used in environments where reactions
+        need to be prevented, like in welding or light bulbs. Argon provides an inert atmosphere that keeps
+        materials stable. It's also used in some types of lasers and scientific equipment. It doesn't do much 
+        chemically, and that's exactly why it's useful.`
     },
     {
         name: "Potassium",
@@ -235,7 +267,10 @@ const elements = [
         period: 4,
         category: "Alkali Metal",
         image: "images/potassium.png",
-        fact: "Potassium reacts fast with water and is also important for your nerves and muscles."
+        fact: `Potassium is a very reactive metal that plays a crucial role in muscle function and nerve signaling 
+        in the human body.Like sodium, it reacts strongly with water and is never found freely in nature. Potassium
+        compounds are commonly used in fertilizers because plants need it to grow properly. It's also an essential
+        dietary mineral for humans. Reactive on its own, but vital in the right form.`
     },
     {
         name: "Calcium",
@@ -245,7 +280,11 @@ const elements = [
         period: 4,
         category: "Alkaline Earth Metal",
         image: "images/calcium.png",
-        fact: "Calcium helps build strong bones and teeth, and it also shows up in cement and rocks."
+        fact: `Calcium is a metal that's essential for bones and teeth, making it one of the most important 
+        elements in the human body. It's also involved in muscle contraction, nerve signaling, and blood clotting.
+        Calcium is commonly found in minerals like limestone and in foods such as milk and dairy products.
+        In industry, it's used in construction materials like cement.It's one of those elements that's both 
+        biologically and structurally important.`
     },
     {
         name: "Scandium",
@@ -255,7 +294,12 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/scandium.png",
-        fact: "Scandium is lightweight and helps make aluminum alloys stronger without adding much weight."
+        fact: `Scandium is a relatively rare metal that's often used to strengthen aluminum alloys, especially
+        in aerospace and high-performance equipment. Even small amounts of scandium can significantly improve
+        strength and durability without adding much weight. Because of its rarity, it's not widely used in everyday
+        products, but it shows up in specialized applications like sports equipment and advanced materials. It also
+        has uses in certain types of lighting, including high intensity lamps.Not very common, but when it shows up,
+        it makes a difference.`
     },
     {
         name: "Titanium",
@@ -265,7 +309,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/titanium.png",
-        fact: "Titanium is super strong for its weight and shows up in aircraft, implants, and high-end gear."
+        fact: `Titanium is a strong, lightweight metal known for its excellent strength to weight ratio and 
+        resistance to corrosion. It's widely used in aircraft, spacecraft, and even medical implants because it
+        doesn't react with the human body. Despite being as strong as steel, it's much lighter, which makes it
+        extremely valuable in engineering. Titanium is also used in pigments, giving white color to things like 
+        paint and sunscreen. Strong, durable, and surprisingly versatile.`
     },
     {
         name: "Vanadium",
@@ -275,7 +323,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/vanadium.png",
-        fact: "Vanadium helps make steel tougher and is also used in some advanced battery systems."
+        fact: `Vanadium is a metal primarily used to strengthen steel, making tools, structures, and machinery 
+        more durable and resistant to wear. Even in small amounts, it improves toughness and resistance to corrosion.
+        It's also used in some advanced battery technologies, particularly vanadium redox batteries for energy storage.
+        Vanadium compounds can display a range of colors, which makes them interesting in chemistry as well. It's not
+        very well- known, but it quietly improves a lot of materials.`
     },
     {
         name: "Chromium",
@@ -285,7 +337,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/chromium.png",
-        fact: "Chromium gives chrome its shine and helps stainless steel resist rust."
+        fact: `Chromium is best known for giving metals a shiny, polished finish, often seen in chrome plating. 
+        It's also a key component in stainless steel, helping prevent rust and corrosion. Chromium is widely used
+        in decorative coatings as well as industrial applications where durability matters. Some of its compounds
+        are brightly colored and have been used in pigments. It's the reason a lot of metal looks clean and reflective,
+        basically the element that makes things look expensive!`
     },
     {
         name: "Manganese",
@@ -295,7 +351,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/manganese.png",
-        fact: "Manganese is used in steel production and helps make metal stronger and more durable."
+        fact: `Manganese is an important metal used in steel production, where it improves strength, toughness, 
+        and resistance to wear. It's also used in batteries, particularly in alkaline batteries, making it part
+        of everyday electronics. In biology, manganese is a trace element that plays a role in enzyme function.
+        It's found in many minerals and is widely distributed in the Earth's crust. Not the most popular element,
+        but extremely important behind the scenes.`
     },
     {
         name: "Iron",
@@ -305,7 +365,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/iron.png",
-        fact: "Iron is one of the most important building metals on Earth, and your blood uses it too."
+        fact: `Iron is one of the most important elements in both industry and biology. It's the main component 
+        of steel, making it essential for buildings, infrastructure, tools, and machines.In the human body, iron
+        is part of hemoglobin, the molecule that carries oxygen in the blood.Iron is abundant in the Earth's crust
+        and has been used by humans for thousands of years, marking entire historical periods like the Iron Age.
+        It's one of those elements that quite literally holds modern civilization together.`
     },
     {
         name: "Cobalt",
@@ -315,7 +379,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/cobalt.png",
-        fact: "Cobalt is used in batteries and also makes that deep rich blue color in glass and ceramics."
+        fact: `Cobalt is a metal known for its use in batteries and blue pigments. It plays a key role in lithium ion
+        batteries, especially in stabilizing their performance, which makes it important for electronics and electric
+        vehicles. Cobalt compounds have been used for centuries to produce a deep blue color in glass and ceramics.
+        It's also used in high strength alloys that can withstand extreme temperatures. Even if you don't know about 
+        its existence, it tends to show up in some very important places.`
     },
     {
         name: "Nickel",
@@ -325,7 +393,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/nickel.png",
-        fact: "Nickel helps make stainless steel and shows up in coins, batteries, and Earth’s core."
+        fact: `Nickel is a versatile metal used in coins, stainless steel, and corrosion resistant alloys. It helps 
+        prevent rust and adds strength to materials, which is why it's often combined with iron and other metals.
+        Nickel is also used in rechargeable batteries and various industrial processes. It's found in the Earth's core
+        along with iron, making it more common than you might think. And yes, it's literally where the name of the
+        coin comes from... not exactly subtle!`
     },
     {
         name: "Copper",
@@ -335,7 +407,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/copper.png",
-        fact: "Copper is amazing at conducting electricity, which is why so much wiring depends on it."
+        fact: `Copper is one of the best electrical conductors, which makes it essential for wiring, electronics, 
+        and power systems. It's been used by humans for thousands of years, even before the Iron Age. Copper is also
+        naturally antimicrobial, (meaning it can kill certain bacteria on contact). Its distinctive reddish color and
+        ability to resist corrosion make it useful in plumbing and construction as well. It's one of the most practical
+        and widely used metals around.`
     },
     {
         name: "Zinc",
@@ -345,7 +421,11 @@ const elements = [
         period: 4,
         category: "Transition Metal",
         image: "images/zinc.png",
-        fact: "Zinc protects steel from rust and also helps support your immune system."
+        fact: `Zinc is commonly used to protect steel from rusting: a process known as galvanization. By coating steel 
+        with zinc, it prevents corrosion and extends the lifespan of structures and materials.Zinc is also important in
+        biology, playing a role in immune function and enzyme activity.It's used in batteries, alloys, and even dietary
+        supplements. Probably an element you've heard of, but never known its exact use, but it does a lot of protective 
+        work behind the scenes!`
     },
     {
         name: "Gallium",
@@ -355,7 +435,11 @@ const elements = [
         period: 4,
         category: "Post-Transition Metal",
         image: "images/gallium.png",
-        fact: "Gallium can melt in your hand because its melting point is just a little above room temperature."
+        fact: `Gallium is a metal with a surprisingly low melting point, it can actually melt in your hand at around 30°C
+        (86°F). Despite that, it's not commonly found in pure form and is usually extracted as a byproduct of refining
+        other metals. Gallium is important in electronics, especially in semiconductors like gallium arsenide, which are
+        used in LEDs, solar panels, and high speed devices.It also expands when it solidifies, which is unusual for metals.
+        A solid metal that melts like that tends to leave an impression.`
     },
     {
         name: "Germanium",
@@ -365,7 +449,11 @@ const elements = [
         period: 4,
         category: "Metalloid",
         image: "images/germanium.png",
-        fact: "Germanium helped early electronics and still shows up in fiber optics and infrared tech."
+        fact: `Germanium is a metalloid that played an important role in the early development of semiconductors and 
+        electronics. Before silicon became dominant, germanium was used in the first transistors.Today, it's still used
+        in fiber optics, infrared optics, and some specialized electronics.It has properties that allow it to control
+        electrical conductivity, making it useful for signal transmission.Germanium sits right between metals and nonmetals
+        in behavior, which is exactly what makes it useful in technology.`
     },
     {
         name: "Arsenic",
@@ -375,7 +463,11 @@ const elements = [
         period: 4,
         category: "Metalloid",
         image: "images/arsenic.png",
-        fact: "Arsenic is famous for being poisonous, but it also has uses in semiconductors and alloys."
+        fact: `Arsenic is well known for its toxicity, but it also has important uses in electronics and semiconductors.
+        It's often combined with gallium to form gallium arsenide, a material used in high- speed electronics and LEDs.
+        Arsenic compounds have been used historically in pesticides and even medicines, though many uses are now restricted
+        due to safety concerns. In nature, it can be found in minerals and groundwater in certain regions. It's a good example
+        of an element that's both dangerous and useful, depending on how it's handled.`
     },
     {
         name: "Selenium",
@@ -385,7 +477,11 @@ const elements = [
         period: 4,
         category: "Nonmetal",
         image: "images/selenium.png",
-        fact: "Selenium is needed in tiny amounts by the body and is also used in glass and electronics."
+        fact: `Selenium is a nonmetal that's used in electronics, glassmaking, and photocells. It has the interesting 
+        property of changing its electrical conductivity when exposed to light, which makes it useful in sensors and
+        solar cells. Selenium is also an essential trace element for humans, playing a role in metabolism and antioxidant
+        systems. In glass production, it can be used to remove color or create red pigments. Its ability to respond to
+        light gives it an unique role in both technology and chemistry.`
     },
     {
         name: "Bromine",
@@ -395,7 +491,10 @@ const elements = [
         period: 4,
         category: "Halogen",
         image: "images/bromine.png",
-        fact: "Bromine is one of the only elements that’s liquid at room temperature, which is a little unsettling."
+        fact: `Bromine is one of the few elements that is liquid at room temperature, appearing as a dark reddish brown 
+        fluid. It belongs to the halogen group and is highly reactive, though less so than fluorine or chlorine. Bromine
+        is used in flame retardants, water treatment, and certain chemicals. Its vapors are toxic and have a strong, unpleasant
+        smell, so it's handled carefully. Seeing a liquid element that isn't mercury is a bit unexpected.`
     },
     {
         name: "Krypton",
@@ -405,7 +504,11 @@ const elements = [
         period: 4,
         category: "Noble Gas",
         image: "images/krypton.png",
-        fact: "Krypton is a noble gas used in lighting and lasers, even if Superman made the name way more famous."
+        fact: `Krypton is a noble gas that's used in specialized lighting and lasers, especially where a bright, stable 
+        light is needed. It's chemically inert, meaning it doesn't react much with other elements, which makes it useful
+        in controlled environments. Krypton is also used in high- performance light bulbs and photographic flashes. It's
+        rare in Earth's atmosphere, making up only a tiny fraction of the air. And no, it doesn't weaken superheroes, at least
+        not outside of comics!`
     },
     {
         name: "Rubidium",
@@ -415,7 +518,11 @@ const elements = [
         period: 5,
         category: "Alkali Metal",
         image: "images/rubidium.png",
-        fact: "Rubidium is extremely reactive and can ignite on contact with air or water."
+        fact: `Rubidium is a highly reactive alkali metal that can ignite when exposed to air and reacts violently with 
+        water. Because of its extreme reactivity, it's usually stored in sealed containers or under oil. Rubidium is used
+        in atomic clocks, where its precise energy transitions help keep extremely accurate time. It's also studied in
+        research involving quantum physics and advanced technologies. Not something you'd handle casually, but very useful
+        in precise scientific applications.`
     },
     {
         name: "Strontium",
@@ -425,7 +532,11 @@ const elements = [
         period: 5,
         category: "Alkaline Earth Metal",
         image: "images/strontium.png",
-        fact: "Strontium gives fireworks that bright red color you see in explosions."
+        fact: `Strontium is best known for producing the bright red color in fireworks and flares. Its compounds emit a 
+        vivid red light when burned, making it a key ingredient in pyrotechnics. Strontium is also used in some medical
+        imaging applications and in certain types of glass and ceramics. It's chemically similar to calcium, which means
+        it can interact with biological systems in specific ways. The next time you see a red firework, there's a good 
+        chance strontium is behind it!`
     },
     {
         name: "Yttrium",
@@ -435,7 +546,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/yttrium.png",
-        fact: "Yttrium is used in LEDs and superconductors, even if most people have never heard of it."
+        fact: `Yttrium is a metal used in LEDs, superconductors, and advanced materials.It plays a role in producing 
+        certain colors in displays, especially in phosphors used for lighting and screens. Yttrium is also used in high
+        temperature superconductors, which can conduct electricity with little to no resistance under certain conditions.
+        It often appears alongside rare earth elements and is important in modern electronics. It's not widely recognized,
+        but it shows up in a lot of advanced technology.`
     },
     {
         name: "Zirconium",
@@ -445,7 +560,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/zirconium.png",
-        fact: "Zirconium resists corrosion so well it’s used in nuclear reactors and medical tools."
+        fact: `Zirconium is a corrosion resistant metal that's widely used in nuclear reactors and high temperature 
+        environments. It doesn't react easily with water or steam at high temperatures, which makes it ideal for reactor
+        components. Zirconium compounds are also used in ceramics and heat - resistant materials. In jewelry, zircon
+        (a mineral containing zirconium) is sometimes used as a diamond substitute. It's built for environments where
+        durability really matters.`
     },
     {
         name: "Niobium",
@@ -455,7 +574,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/niobium.png",
-        fact: "Niobium strengthens steel and is used in superconducting magnets."
+        fact: `Niobium is a metal used to strengthen steel and improve its resistance to heat and corrosion. Even in 
+        small amounts, it makes materials much more durable, which is why it's used in pipelines, buildings, and
+        structural components. Niobium is also important in superconductors, materials that can carry electricity with
+        little to no resistance under certain conditions. These are used in things like MRI machines and advanced research
+        equipment. It's a key material where both strength and performance matters.`
     },
     {
         name: "Molybdenum",
@@ -465,7 +588,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/molybdenum.png",
-        fact: "Molybdenum helps steel handle high temperatures without losing strength."
+        fact: `Molybdenum is a metal known for helping materials withstand extremely high temperatures. It's commonly 
+        added to steel alloys to improve strength and resistance to heat and pressure, especially in engines and
+        industrial equipment. Molybdenum is also used in electronics and as a catalyst in chemical reactions. Its high
+        melting point makes it useful in environments where other metals would fail. It's built for situations where
+        heat is a constant challenge.`
     },
     {
         name: "Technetium",
@@ -475,7 +602,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/technetium.png",
-        fact: "Technetium is radioactive and was the first element made artificially in a lab."
+        fact: `Technetium is a radioactive element and was the first element ever produced artificially in a laboratory.
+        It doesn't occur naturally in large amounts, so it had to be created through nuclear reactions. Today, it's widely
+        used in medical imaging, especially in diagnostic scans that help doctors see inside the body. Its radioactive
+        properties make it ideal for tracing processes in the body without causing long- term damage. It's one of the most
+        important elements in modern nuclear medicine.`
     },
     {
         name: "Ruthenium",
@@ -485,7 +616,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/ruthenium.png",
-        fact: "Ruthenium is used in electronics and can make materials harder and more durable."
+        fact: `Ruthenium is a rare metal used in electronics, catalysts, and wear resistant coatings. It can improve the 
+        durability and efficiency of other materials, especially in chemical reactions and electrical contacts. Ruthenium
+        is also used in some specialized alloys to increase hardness and resistance to corrosion. In electronics, it helps
+        maintain stable performance over time. It's often used in small amounts, but it plays a big role in improving
+        material performance.`
     },
     {
         name: "Rhodium",
@@ -495,7 +630,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/rhodium.png",
-        fact: "Rhodium is super shiny and extremely valuable, often used in catalytic converters."
+        fact: `Rhodium is a rare and extremely valuable metal best known for its use in catalytic converters, where it 
+        helps reduce harmful emissions from vehicles.It's highly reflective and resistant to corrosion, which also makes
+        it useful in coatings and high- end finishes. Rhodium doesn't tarnish easily, so it's sometimes used in jewelry to
+        maintain a bright appearance. Its rarity and usefulness in emission control make it one of the most expensive metals.
+        It's a small component with a major environmental impact.`
     },
     {
         name: "Palladium",
@@ -505,7 +644,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/palladium.png",
-        fact: "Palladium is used in electronics and catalytic converters and is rarer than gold."
+        fact: `Palladium is a rare metal widely used in catalytic converters, where it helps reduce harmful emissions from
+        vehicles. It can absorb large amounts of hydrogen, which makes it interesting for hydrogen storage and fuel
+        technologies. Palladium is also used in electronics, dentistry, and jewelry due to its durability and resistance
+        to corrosion. Its rarity and demand in industry have made it quite valuable.It plays a major role in cleaner energy
+        and environmental protection.`
     },
     {
         name: "Silver",
@@ -515,7 +658,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/silver.png",
-        fact: "Silver is one of the best electrical conductors and has been used as money for centuries."
+        fact: `Silver is one of the best electrical conductors of any element, making it essential for electronics, wiring,
+        and high performance components. It's also been used as currency and in jewelry for thousands of years due to its
+        appearance and durability. Silver has natural antimicrobial properties, which allows it to kill certain bacteria
+        on contact. Because of this, it's used in medical equipment, coatings, and even some fabrics. It combines practical
+        performance with long standing cultural value.`
     },
     {
         name: "Cadmium",
@@ -525,7 +672,11 @@ const elements = [
         period: 5,
         category: "Transition Metal",
         image: "images/cadmium.png",
-        fact: "Cadmium is toxic but used in batteries and protective coatings."
+        fact: `Cadmium is a metal used in rechargeable batteries, coatings, and pigments. It resists corrosion well, which
+        makes it useful for protecting other metals. However, cadmium is also toxic, so its use is carefully controlled
+        and regulated in many applications. It has been used in nickel-cadmium batteries, though newer technologies are
+        gradually replacing it. Despite its risks, it has been an important material in both industry and energy storage.
+        Cadmium may be toxic but it's used in batteries and protective coatings.`
     },
     {
         name: "Indium",
@@ -535,7 +686,11 @@ const elements = [
         period: 5,
         category: "Post-Transition Metal",
         image: "images/indium.png",
-        fact: "Indium is soft enough to cut with a knife and is used in touchscreens."
+        fact: `Indium is a soft metal that plays a key role in touchscreens, LCD displays, and modern electronics. It's
+        commonly used in the form of indium tin oxide, a transparent conductive material that allows screens to both
+        display images and respond to touch. Indium is also used in semiconductors and solar panels. Because it's
+        relatively rare and mostly obtained as a byproduct, supply can be limited. It's one of the elements that quietly
+        makes modern devices possible.`
     },
     {
         name: "Tin",
@@ -545,7 +700,11 @@ const elements = [
         period: 5,
         category: "Post-Transition Metal",
         image: "images/tin.png",
-        fact: "Tin has been used since ancient times and is a key part of bronze."
+        fact: `Tin is a metal known for its use in solder, which connects electronic components together. It has a 
+        relatively low melting point, making it easy to work with in manufacturing and electronics. Tin is also used to
+        coat other metals, helping prevent corrosion, that's where the term "tin can" comes from, even though the base
+        metal is usually steel. Historically, it was combined with copper to make bronze, one of the earliest important
+        alloys. It's been part of human technology for a very long time.`
     },
     {
         name: "Antimony",
@@ -837,7 +996,7 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/gold.png",
-        fact: "Gold doesn’t tarnish easily and has been prized by humans for thousands of years."
+        fact: "Gold doesn't tarnish easily and has been prized by humans for thousands of years."
     },
     {
         name: "Mercury",
