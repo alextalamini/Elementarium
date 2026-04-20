@@ -33,9 +33,10 @@
             </div>
 
             <div id="quiz-controls">
-                <button id="next-btn">Next</button>
+                <button id="next-btn" class="hidden">Next</button>
                 <button id="start-btn">Start Quiz</button>
                 <button id="quit-btn">Quit Quiz</button>
+                <button id="lesson-btn">Lesson</button>
                 <button id="quit-practice-btn" class="hidden">Quit Practice</button>
             </div>
 
@@ -45,8 +46,12 @@
 
         <section id="report-section" class="hidden">
             <h2>Quiz Report</h2>
-            <p id="report-summary"></p>
-            <div id="review-list"></div>
+            <button id="toggle-report-btn" class="hidden">Minimize Report</button>
+
+            <div id="report-content">
+                <p id="report-summary"></p>
+                <div id="review-list"></div>
+            </div>
         </section>
 
         <section id="periodic-table"></section>
@@ -62,6 +67,51 @@
             <p id="element-category"></p>
             <p id="element-description"></p>
         </div>
+
+        <div id="lesson-overlay" class="hidden"></div>
+        <div id="lesson-card" class="hidden">
+            <button id="close-lesson-btn">X</button>
+            
+            <h2>Lesson / Help</h2>
+
+            <h3>Basic Question Types</h3>
+            <p><strong>Symbol:</strong> The symbol is the one or two letter abbreviation for an element, like H for Hydrogen or O for Oxygen.</p>
+            <p><strong>Group:</strong> A group is a vertical column on the periodic table. Elements in the same group often behave similarly.</p>
+            <p><strong>Period:</strong> A period is a horizontal row on the periodic table.</p>
+            <p><strong>Category:</strong> A category describes what kind of element it is, such as Nonmetal, Halogen, or Noble Gas.</p>
+
+            <h3>How to Find These</h3>
+            <p><strong>How to find the symbol:</strong> Look at the large letters inside the element box.</p>
+            <p><strong>How to find the group:</strong> Count which vertical column the element is in. The group number is shown on the card too.</p>
+            <p><strong>How to find the period:</strong> Count which horizontal row the element is in. The period number is shown on the card too.</p>
+            
+                <strong>How to find the category:</strong> Open the element card or use the color and placement of the element to help identify
+                its family.
+            </p>
+
+            <h3>Element Families / Categories</h3>
+            <p><strong>Alkali Metals:</strong> These are very reactive metals in Group 1, like Lithium, Sodium, and Potassium.</p>
+            <p><strong>Alkaline Earth Metals:</strong> These are reactive metals in Group 2, like Beryllium, Magnesium, and Calcium.</p>
+            <p><strong>Transition Metals:</strong> These are the large block of metals in the center of the table, usually Groups 3 through 12.</p>
+            <p><strong>Lanthanides:</strong> These are the upper detached row at the bottom of the table, elements 57 through 71.</p>
+            <p><strong>Actinides:</strong> These are the lower detached row at the bottom of the table, elements 89 through 103.</p>
+            <p>
+                <strong>Post-Transition Metals:</strong> These are metals to the right of the transition metals, including elements
+                like Aluminum, Tin, and Lead.
+            </p>
+            <p><strong>Metalloids:</strong> These have properties between metals and nonmetals, such as Boron and Silicon.</p>
+            <p><strong>Nonmetals:</strong> These include important elements like Hydrogen, Carbon, Nitrogen, Oxygen, Phosphorus, and Sulfur.</p>
+            <p><strong>Halogens:</strong> These are very reactive nonmetals in Group 17, like Fluorine, Chlorine, and Bromine.</p>
+            <p><strong>Noble Gases:</strong> These are the least reactive gases in Group 18, like Helium, Neon, and Argon.</p>
+
+            <h3>Knowledge Questions</h3>
+            <p>
+                <strong>Knowledge questions</strong> are based on facts specific to each element, such as its uses, behavior,
+                naming origin, or other important details. These are usually things you either already know or learn by reading the
+                descriptions on each element card. Study carefully!
+            </p>
+        </div>
+
     </main>
 
     <script src="script.js"></script>

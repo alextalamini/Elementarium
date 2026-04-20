@@ -83,7 +83,11 @@ const elements = [
         period: 2,
         category: "Nonmetal",
         image: "images/carbon.png",
-        fact: "Carbon is basically the backbone of life and can show up as graphite or diamond."
+        fact: `Carbon is the foundation of all known life, forming the backbone of molecules like DNA,
+        proteins, and sugars. What makes it special is its ability to bond with many other elements,
+        including itself, creating incredibly complex structures. It exists in very different forms,
+        from soft graphite in pencils to incredibly hard diamonds. Carbon is also a key part of fuels 
+        like coal, oil, and natural gas. Without carbon, life as we know it simply wouldn't exist.`
     },
     {
         name: "Nitrogen",
@@ -93,7 +97,12 @@ const elements = [
         period: 2,
         category: "Nonmetal",
         image: "images/nitrogen.png",
-        fact: "Nitrogen makes up most of the air, even though your body can’t use it directly."
+        fact: `Nitrogen makes up about 78% of Earth's atmosphere, making it the most abundant gas in 
+        the air you breathe. Despite that, it's relatively unreactive in its natural form, which is 
+        why it just sits in the atmosphere most of the time. It becomes useful when converted into 
+        compounds like ammonia, which are essential for fertilizers and food production. Nitrogen 
+        is also a key component of proteins and DNA in living organisms. It's everywhere but
+        just usually not in a form you can see or use directly.`
     },
     {
         name: "Oxygen",
@@ -103,7 +112,11 @@ const elements = [
         period: 2,
         category: "Nonmetal",
         image: "images/oxygen.png",
-        fact: "Oxygen helps you breathe and loves reacting with other elements."
+        fact: `Oxygen makes up about 21% of Earth's atmosphere and is essential for respiration in
+        most living things. It plays a major role in combustion, which is why fires need oxygen to 
+        burn. Oxygen is also part of water, making it critical for life in more ways than one. 
+        In industry and medicine, it's used in processes ranging from steel production to oxygen 
+        therapy. It's one of the most important elements for both life and chemistry.`
     },
     {
         name: "Fluorine",
@@ -113,7 +126,12 @@ const elements = [
         period: 2,
         category: "Halogen",
         image: "images/fluorine.png",
-        fact: "Fluorine is insanely reactive, so pure fluorine is not something you casually handle."
+        fact: `Fluorine is the most reactive element in the periodic table, meaning it bonds with 
+        almost anything it can. Because of that, it's rarely found in its pure form and is usually
+        part of compounds. Fluorine based compounds are used in things like toothpaste, helping 
+        prevent cavities, and in nonstick coatings like Teflon. Its extreme reactivity makes it 
+        both useful and dangerous, depending on how it's handled. It's not something you'd want 
+        to encounter on its own.`
     },
     {
         name: "Neon",
@@ -123,7 +141,11 @@ const elements = [
         period: 2,
         category: "Noble Gas",
         image: "images/neon.png",
-        fact: "Neon is famous for glowing in signs, even though many neon signs use other gases too."
+        fact: `Neon is a noble gas that's best known for its use in bright, glowing signs. When 
+        electricity passes through neon gas, it emits a distinct reddish - orange light, which made
+        it famous in advertising. Like other noble gases, neon is very stable and doesn't react 
+        easily with other elements. It's also used in high - voltage indicators and some types of
+        lasers. Simple element, very recognizable effect.`
     },
     {
         name: "Sodium",
@@ -585,16 +607,8 @@ const elements = [
         image: "images/barium.png",
         fact: "Barium is used in medical imaging because barium compounds can show up clearly on X-rays."
     },
-    {
-        name: "Lanthanum Placeholder",
-        symbol: "La",
-        number: 57,
-        group: 3,
-        period: 6,
-        category: "Lanthanide",
-        image: "images/lanthanum.png",
-        fact: "This is a placeholder for the lanthanide series."
-    },
+
+
     {
         name: "Lanthanum",
         symbol: "La",
@@ -915,16 +929,7 @@ const elements = [
         image: "images/radium.png",
         fact: "Radium glows faintly due to its radioactivity and was once used in luminous paint."
     },
-    {
-        name: "Actinide Placeholder",
-        symbol: "Ac",
-        number: 89,
-        group: 3,
-        period: 7,
-        category: "Actinide",
-        image: "images/actinium.png",
-        fact: "This is a placeholder for the actinide series."
-    },
+
     {
         name: "Actinium",
         symbol: "Ac",
@@ -1715,13 +1720,6 @@ elements.forEach(e => {
     div.classList.add("element");
     div.classList.add(getCategoryClass(e.category));
 
-    if (
-        (e.number === 57 && e.period === 6 && e.group === 3) ||
-        (e.number === 89 && e.period === 7 && e.group === 3)
-    ) {
-        div.classList.add("series-marker");
-    }
-
     div.style.gridColumn = e.group;
     div.style.gridRow = e.period;
 
@@ -1770,6 +1768,27 @@ elements.forEach(e => {
 
     table.appendChild(div);
 });
+
+function createSeriesMarker(number, symbol, group, period, categoryClass) {
+    const div = document.createElement("div");
+    div.classList.add("element");
+    div.classList.add(categoryClass);
+    div.classList.add("series-marker");
+
+    div.style.gridColumn = group;
+    div.style.gridRow = period;
+
+    div.innerHTML = `
+        <div class="number">${number}</div>
+        <div class="symbol">${symbol}</div>
+        <div class="asterisk">*</div>
+    `;
+
+    table.appendChild(div);
+}
+
+createSeriesMarker(57, "La", 3, 6, "lanthanide");
+createSeriesMarker(89, "Ac", 3, 7, "actinide");
 
 document.getElementById("close-btn").onclick = () => {
     infoCard.classList.add("hidden");
@@ -2627,7 +2646,22 @@ function generateOriginalQuestion(forcedType = null) {
 }
 
 function generatePracticeQuestion(typeName) {
-    if (typeName === "alkali metal") {
+    if (typeName === "symbol") {
+        return generateQuestion(0);
+    }
+    else if (typeName === "name") {
+        return generateQuestion(1);
+    }
+    else if (typeName === "group") {
+        return generateQuestion(2);
+    }
+    else if (typeName === "period") {
+        return generateQuestion(3);
+    }
+    else if (typeName === "category") {
+        return generateQuestion(4);
+    }
+    else if (typeName === "alkali metal") {
         let types = [5, 6];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
@@ -2681,15 +2715,32 @@ function generatePracticeQuestion(typeName) {
         return generateQuestion(25);
     }
     else {
-        return generateQuestion();
+        return generateQuestion(0);
     }
 }
-
 
 function updateQuizButtons() {
     const startBtn = document.getElementById("start-btn");
     const quitBtn = document.getElementById("quit-btn");
     const quitPracticeBtn = document.getElementById("quit-practice-btn");
+    const lessonBtn = document.getElementById("lesson-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    if (quizActive) {
+        nextBtn.style.display = "inline-block";
+    } else {
+        nextBtn.style.display = "none";
+    }
+
+    if (quizActive) {
+        lessonBtn.disabled = true;
+        lessonBtn.style.opacity = "0.5";
+        lessonBtn.style.cursor = "not-allowed";
+    } else {
+        lessonBtn.disabled = false;
+        lessonBtn.style.opacity = "1";
+        lessonBtn.style.cursor = "pointer";
+    }
 
     if (practiceMode) {
         startBtn.classList.add("hidden");
@@ -2736,7 +2787,7 @@ function showQuestion() {
 
     if (practiceMode) {
         document.getElementById("question-text").textContent =
-            `Practice Mode (${getTypeName(practiceType)}): ${currentQuestion.question}`;
+            `Practice Mode (${practiceType}): ${currentQuestion.question}`;
 
         document.getElementById("score-display").textContent = "";
     } else {
@@ -2856,6 +2907,10 @@ function startQuiz() {
 
     updateQuizButtons();
     showQuestion();
+
+    toggleReportBtn.classList.add("hidden");
+    reportContent.classList.remove("hidden");
+    reportMinimized = false;
 }
 
 function endQuiz(wasQuit) {
@@ -2879,6 +2934,11 @@ function endQuiz(wasQuit) {
 
     updateQuizButtons();
     showReport(wasQuit);
+
+    toggleReportBtn.classList.remove("hidden");
+    toggleReportBtn.textContent = "Minimize Report";
+    reportMinimized = false;
+    reportContent.classList.remove("hidden");
 }
 
 function showReport(wasQuit) {
@@ -2944,6 +3004,9 @@ function startPractice(type) {
         `Practice mode: working on ${practiceType} questions.`;
     updateQuizButtons();
     showQuestion();
+    toggleReportBtn.classList.add("hidden");
+    reportContent.classList.remove("hidden");
+    reportMinimized = false;
 }
 
 document.getElementById("btn0").onclick = function () {
@@ -3001,3 +3064,38 @@ document.addEventListener("click", () => {
         music.play().catch(() => { });
     }
 }, { once: true });
+
+const lessonBtn = document.getElementById("lesson-btn");
+const lessonCard = document.getElementById("lesson-card");
+const closeLessonBtn = document.getElementById("close-lesson-btn");
+
+
+const overlay = document.getElementById("lesson-overlay");
+
+lessonBtn.addEventListener("click", () => {
+    if (quizActive) return;
+    lessonCard.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+});
+
+closeLessonBtn.addEventListener("click", () => {
+    lessonCard.classList.add("hidden");
+    overlay.classList.add("hidden");
+});
+
+let reportMinimized = false;
+
+const toggleReportBtn = document.getElementById("toggle-report-btn");
+const reportContent = document.getElementById("report-content");
+
+toggleReportBtn.addEventListener("click", () => {
+    reportMinimized = !reportMinimized;
+
+    if (reportMinimized) {
+        reportContent.classList.add("hidden");
+        toggleReportBtn.textContent = "Expand Report";
+    } else {
+        reportContent.classList.remove("hidden");
+        toggleReportBtn.textContent = "Minimize Report";
+    }
+});
