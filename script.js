@@ -714,7 +714,11 @@ const elements = [
         period: 5,
         category: "Metalloid",
         image: "images/antimony.png",
-        fact: "Antimony is used in flame retardants and was known to ancient civilizations."
+        fact: `Antimony is a metalloid used in flame retardants, alloys, and electronics. It helps materials resist 
+        burning, which makes it useful in safety applications like plastics and textiles. When combined with metals like
+        lead, it improves hardness and durability, especially in batteries and ammunition. Antimony compounds have also
+        been used historically in medicine, though with caution due to toxicity. It's a mix of metal and nonmetal behavior,
+        which is exactly what makes it versatile.`
     },
     {
         name: "Tellurium",
@@ -724,7 +728,11 @@ const elements = [
         period: 5,
         category: "Metalloid",
         image: "images/tellurium.png",
-        fact: "Tellurium is rare and used in solar panels and advanced electronics."
+        fact: `Tellurium is a rare metalloid used in solar panels, thermoelectric devices, and alloys. It can convert 
+        heat into electricity, which makes it useful in specialized energy applications. Tellurium is often combined
+        with other materials to improve efficiency in semiconductors and renewable energy systems. It's not very abundant,
+        so it's usually obtained as a byproduct of refining other metals. Its role in energy technology makes it
+        especially relevant today.`
     },
     {
         name: "Iodine",
@@ -734,7 +742,11 @@ const elements = [
         period: 5,
         category: "Halogen",
         image: "images/iodine.png",
-        fact: "Iodine is essential for your thyroid and can sublimate into a purple vapor."
+        fact: `Iodine is a halogen that's essential for human health, especially for proper thyroid function. It's
+        commonly added to table salt to prevent iodine deficiency, which can lead to health problems. odine is also
+        used as a disinfectant because it can kill bacteria and other microorganisms. In medicine, it's used in imaging
+        and treatments involving the thyroid gland. It's one of the few elements where even small amounts make a big
+        biological difference.`
     },
     {
         name: "Xenon",
@@ -744,7 +756,11 @@ const elements = [
         period: 5,
         category: "Noble Gas",
         image: "images/xenon.png",
-        fact: "Xenon is used in high-intensity lamps and can even form rare compounds."
+        fact: `Xenon is a noble gas used in high-intensity lamps, flash photography, and spacecraft propulsion systems.
+        When electrically excited, it produces a bright white-blue light, making it useful in lighting and imaging. Xenon
+        is also used in ion thrusters, where it helps propel spacecraft efficiently over long distances. Unlike most noble
+        gases, Xenon can form some compounds under specific conditions. It's rare in the atmosphere, but extremely useful
+        in advanced technology.`
     },
     {
         name: "Cesium",
@@ -754,7 +770,11 @@ const elements = [
         period: 6,
         category: "Alkali Metal",
         image: "images/cesium.png",
-        fact: "Cesium is one of the most reactive metals and can explode when it touches water."
+        fact: `Cesium is a highly reactive metal that's best known for its use in atomic clocks, which are the most accurate
+        timekeeping devices in the world. It melts at just above room temperature, meaning it can become liquid very easily.
+        Cesium reacts explosively with water, so it's stored carefully in controlled environments. Its precise atomic
+        properties make it essential for defining the standard unit of time, the second. It's one of the key elements behind
+        modern precision timing.`
     },
     {
         name: "Barium",
@@ -764,7 +784,10 @@ const elements = [
         period: 6,
         category: "Alkaline Earth Metal",
         image: "images/barium.png",
-        fact: "Barium is used in medical imaging because barium compounds can show up clearly on X-rays."
+        fact: `Barium is a reactive metal used in medical imaging and industrial applications. Used in medicine, barium
+        compounds are used in X-ray imaging of the digestive system because they block radiation and make internal structures
+        visible. It's also used in drilling fluids for oil and gas exploration. Pure Barium reacts strongly with air and water,
+        so it's not found freely in nature. Its compounds are where most of its practical uses come from.`
     },
 
 
@@ -776,7 +799,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/lanthanum.png",
-        fact: "Lanthanum is a soft silvery metal used in camera lenses and special battery materials."
+        fact: `Lanthanum is the first element in the lanthanide series. The main use is camera lenses, batteries, and optical
+        equipment. It helps improve the clarity and performance of lenses by increasing refractive index. Lanthanum is also
+        used in nickel metal hydride batteries, which are found in some hybrid vehicles. Despite being grouped with rare earth
+        elements, it's actually more abundant than the name suggests.It marks the start of a group of elements that are heavily
+        used in modern technology.`
     },
     {
         name: "Cerium",
@@ -786,7 +813,10 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/cerium.png",
-        fact: "Cerium is used in lighter flints and glass polishing powders."
+        fact: `Cerium is one of the most abundant rare earth elements and is used in catalytic converters, glass polishing, 
+        and lighter flints. It can easily switch between oxidation states, which makes it useful in chemical reactions and
+        pollution control. Cerium oxide is commonly used to polish glass surfaces to a high finish. It's also a key component
+        in lighter flints, where it produces sparks when struck. It shows up in both everyday tools and industrial systems.`
     },
     {
         name: "Praseodymium",
@@ -796,7 +826,10 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/praseodymium.png",
-        fact: "Praseodymium is used to make strong magnets and special yellow-green glass."
+        fact: `Praseodymium is used in strong magnets, aircraft engines, and specialized glass and ceramics. It helps create
+        materials that can withstand high temperatures and mechanical stress. In glassmaking, it can produce a yellow/green
+        color and filter certain wavelengths of light. Praseodymium is also part of alloys used in high performance
+        applications. It's one of the elements that contributes to advanced materials in engineering.`
     },
     {
         name: "Neodymium",
@@ -806,7 +839,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/neodymium.png",
-        fact: "Neodymium is famous for making incredibly strong permanent magnets."
+        fact: `Neodymium is iconic for making powerful permanent magnets, which are used in headphones, speakers, electric 
+        motors, and wind turbines. These magnets are among the strongest available and are essential in many modern devices.
+        Neodymium magnets allow electronics to be smaller while still producing strong magnetic fields. They're also used in
+        generators for renewable energy systems. If you've used headphones or earbuds recently, you've probably been right
+        next to one of these magnets they're stronger than they look!`
     },
     {
         name: "Promethium",
@@ -816,7 +853,12 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/promethium.png",
-        fact: "Promethium is radioactive and is very rare in nature."
+        fact: `Promethium is a radioactive element that doesn't occur naturally in significant amounts on Earth. It's 
+        typically produced in nuclear reactors and is used in specialized applications like nuclear batteries and
+        luminous paint. Because it emits radiation, it can generate energy over long periods without needing
+        replacement. Promethium is one of the few elements named after a mythological figure, Prometheus, reflecting
+        its connection to energy and fire.Its rarity and radioactivity limit its everyday use, but it has very specific
+        technological applications.`
     },
     {
         name: "Samarium",
@@ -826,7 +868,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/samarium.png",
-        fact: "Samarium is used in magnets and in some cancer treatment technologies."
+        fact: `Samarium is used in powerful magnets, nuclear reactors, and medical treatments. Samarium cobalt magnets
+        are strong and resistant to high temperatures, making them useful in aerospace and electronics. It's also used
+        in cancer treatment, where certain isotopes help target and destroy cancer cells. In addition, samarium can
+        absorb neutrons, which makes it valuable in controlling nuclear reactions. It's a key material where both precision
+        and stability are important.`
     },
     {
         name: "Europium",
@@ -836,7 +882,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/europium.png",
-        fact: "Europium helps make red and blue colors in TV and monitor screens."
+        fact: `Europium is probably  best known for producing bright red and blue colors in screens and lighting. It's 
+        used in phosphors for TVs, monitors, and LED lights, helping create vivid and accurate colors.Europium compounds 
+        glow under ultraviolet light, which makes them useful in security features like anti- counterfeiting measures.
+        It's also used in fluorescent lamps and other lighting technologies.Much of the color you see on modern screens
+        depends on elements like europium.`
     },
     {
         name: "Gadolinium",
@@ -846,7 +896,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/gadolinium.png",
-        fact: "Gadolinium is used in MRI contrast agents and absorbs neutrons really well."
+        fact: `Gadolinium is used in MRI scans and advanced magnetic materials. In medicine (common theme now, eh?), 
+        gadolinium based compounds are used as contrast agents to improve the clarity of imaging. It also has strong
+        magnetic properties, which makes it useful in research and certain types of electronic devices. Gadolinium reacts
+        strongly to magnetic fields, even at room temperature, which is somewhat unusual.Its combination of medical and
+        physical applications makes it especially versatile.`
     },
     {
         name: "Terbium",
@@ -856,7 +910,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/terbium.png",
-        fact: "Terbium is used in green phosphors and some electronic devices."
+        fact: `Terbium is used in green phosphors, solid- state devices, and advanced materials. It helps produce green
+        light in display screens and is often used alongside europium for color balance. Terbium is also used in specialized
+        alloys that respond to magnetic fields, which can be useful in sensors and actuators.Its compounds can enhance the
+        performance of electronic and optical systems. It plays a supporting role in many technologies that rely on precise
+        color and responsiveness.`
     },
     {
         name: "Dysprosium",
@@ -866,7 +924,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/dysprosium.png",
-        fact: "Dysprosium helps magnets stay strong even at high temperatures."
+        fact: `Dysprosium is used in high performance magnets, especially those that need to operate at high temperatures.
+        It's often added to neodymium magnets to improve their stability and resistance to heat, which is important in electric
+        vehicles and wind turbines. Dysprosium also has strong magnetic properties of its own, making it valuable in advanced
+        materials. It's relatively rare and usually obtained as part of rare earth mineral processing. Its role becomes critical
+        in technologies that push materials to their limits.`
     },
     {
         name: "Holmium",
@@ -876,7 +938,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/holmium.png",
-        fact: "Holmium has one of the highest magnetic strengths of any element."
+        fact: `Holmium has one of the strongest magnetic properties of any element, which makes it useful in specialized magnetic
+        applications (Bet you saw that coming, most Lanthanides have strong magnetic properties). It's used in certain types of 
+        lasers, particularly in medical and dental procedures.Holmium can also absorb neutrons, making it useful in nuclear 
+        control systems. Its compounds are sometimes used to create colored glass. It's not widely used, but in the right situations,
+        its properties are very specific and valuable.`
     },
     {
         name: "Erbium",
@@ -886,7 +952,10 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/erbium.png",
-        fact: "Erbium is used in fiber optic cables to help carry signals long distances."
+        fact: `Erbium is used in fiber optic communication systems, where it helps amplify signals over long distances. It's 
+        essential for keeping internet and data transmissions strong and reliable. Erbium is also used in lasers and can produce
+        a pink color in glass and ceramics. Its ability to enhance signal strength makes it important in modern communication
+        infrastructure. It plays a direct role in how information travels across the world.`
     },
     {
         name: "Thulium",
@@ -896,7 +965,10 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/thulium.png",
-        fact: "Thulium is one of the rarest lanthanides and is used in some portable X-ray devices."
+        fact: `Thulium is one of the least abundant lanthanides and is used in portable X - ray devices and certain laser systems.
+        It can emit radiation in a controlled way, which makes it useful for imaging applications. Thulium is also studied for
+        use in nuclear medicine and energy technologies.Because it's so rare, it's typically used only in specialized applications.
+        Its uses are focused and precise rather than widespread.`
     },
     {
         name: "Ytterbium",
@@ -906,7 +978,10 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/ytterbium.png",
-        fact: "Ytterbium is used in lasers and certain kinds of atomic clocks."
+        fact: `Ytterbium is used in lasers, atomic clocks, and stress measurement devices. It can
+        help improve the accuracy of timekeeping systems and is used in research involving precision measurement. Ytterbium is
+        also added to alloys to improve strength and resistance to wear. In some cases, it's used to monitor changes in materials
+        under pressure.Its applications focus on accuracy, measurement, and controlled performance.`
     },
     {
         name: "Lutetium",
@@ -916,7 +991,11 @@ const elements = [
         period: 8,
         category: "Lanthanide",
         image: "images/lutetium.png",
-        fact: "Lutetium is one of the hardest and densest lanthanides and is used in PET scan detectors."
+        fact: `Lutetium is the last element in the lanthanide series and is used in medical imaging and cancer treatments. 
+        Certain isotopes of lutetium are used in targeted radiation therapy, where they help destroy cancer cells while
+        minimizing damage to surrounding tissue.It's also used in PET scan detectors because of its ability to detect
+        radiation efficiently. Lutetium is relatively rare and expensive, so its use is focused on high value applications.
+        It marks the transition from the lanthanides back into the transition metals.`
     },
     {
         name: "Hafnium",
@@ -926,7 +1005,11 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/hafnium.png",
-        fact: "Hafnium is used in nuclear control rods because it absorbs neutrons really well."
+        fact: `Getting back into metals, Hafnium is a metal used in nuclear reactors and high temperature alloys. It has
+        a strong ability to absorb neutrons, which makes it useful for controlling nuclear reactions safely. Hafnium is
+        also used in microelectronics, particularly in advanced processors where it helps improve transistor performance.
+        Its resistance to heat and corrosion makes it valuable in demanding environments. It often appears alongside
+        zirconium due to their similar chemical properties.`
     },
     {
         name: "Tantalum",
@@ -936,7 +1019,11 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/tantalum.png",
-        fact: "Tantalum resists corrosion and is used in electronics and medical implants."
+        fact: `Tantalum is widely used in electronics, especially capacitors found in phones, computers, and other devices.
+        It can store and release electrical energy efficiently, making it ideal for compact electronic components.
+        Tantalum is also highly resistant to corrosion, which allows it to be used in medical implants and chemical equipment.
+        Its reliability makes it a key material in modern electronics.It's one of the elements that helps keep devices
+        stable and consistent.`
     },
     {
         name: "Tungsten",
@@ -946,7 +1033,10 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/tungsten.png",
-        fact: "Tungsten has the highest melting point of any metal."
+        fact: `Tungsten has the highest melting point of any metal, which makes it incredibly useful in extreme heat 
+        environments. It's used in things like light bulb filaments, cutting tools, and high temperature machinery. Tungsten
+        is also very dense and hard, which adds to its durability. Its ability to withstand heat without melting makes it
+        stand out among metals. It basically looks at extreme temperatures and says "That all you got?!"!`
     },
     {
         name: "Rhenium",
@@ -956,7 +1046,11 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/rhenium.png",
-        fact: "Rhenium is extremely rare and is used in jet engines and high-temperature alloys."
+        fact: `Rhenium is a rare metal used in jet engines and high- performance alloys. It helps materials maintain
+        strength under extreme heat and stress, which is critical in aerospace applications. Rhenium is also used as a
+        catalyst in refining petroleum, improving the efficiency of chemical processes.Because of its rarity, it's used
+        in small amounts but has a large impact on performance. It's a key element in environments where failure isn't
+        an option.`
     },
     {
         name: "Osmium",
@@ -966,7 +1060,10 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/osmium.png",
-        fact: "Osmium is one of the densest elements known."
+        fact: `One of the densest elements known, making it extremely heavy for its size. It's used in specialized alloys
+        where durability and hardness are important, such as in fountain pen tips and electrical contacts. Osmium is also
+        highly resistant to wear, which helps it maintain its shape over time. However, it can form toxic compounds when
+        exposed to air, so it's handled carefully. Its density and toughness make it stand out among metals.`
     },
     {
         name: "Iridium",
@@ -976,7 +1073,11 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/iridium.png",
-        fact: "Iridium is extremely corrosion-resistant and is linked to the asteroid impact that helped wipe out the dinosaurs."
+        fact: `Iridium is a very dense and corrosion resistant metal that's used in spark plugs, electronics, and high 
+        temperature equipment. It can withstand extreme environments without degrading, which makes it valuable in both
+        industrial and scientific applications. Iridium is also found in meteorites and is associated with the asteroid
+        impact that contributed to the extinction of the dinosaurs! Its resistance to heat and corrosion makes it one of
+        the most durable elements. It's built to last under conditions that would destroy most materials.`
     },
     {
         name: "Platinum",
@@ -986,7 +1087,10 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/platinum.png",
-        fact: "Platinum is valuable, resistant to corrosion, and used in catalytic converters and jewelry."
+        fact: `Platinum is a rare metal used in catalytic converters, electronics, and jewelry. It plays a key role in 
+        reducing vehicle emissions by helping chemical reactions occur more efficiently. Platinum is also highly resistant
+        to corrosion and maintains its appearance over time, which makes it desirable in jewelry.In industry, it's used
+        in chemical processing and laboratory equipment. Its combination of stability and reactivity makes it very versatile.`
     },
     {
         name: "Gold",
@@ -996,7 +1100,10 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/gold.png",
-        fact: "Gold doesn't tarnish easily and has been prized by humans for thousands of years."
+        fact: `Gold is a well- known metal valued for its use in jewelry, electronics, and currency. It doesn't corrode or
+        tarnish, which is why it maintains its appearance over long periods of time. Gold is also an excellent conductor of
+        electricity, so it's used in high reliability electronic components. Its softness makes it easy to shape and work
+        with. It's basically been humanity's favorite shiny object for thousands of years!`
     },
     {
         name: "Mercury",
@@ -1006,7 +1113,11 @@ const elements = [
         period: 6,
         category: "Transition Metal",
         image: "images/mercury.png",
-        fact: "Mercury is a metal that is liquid at room temperature."
+        fact: `While classified as a metal, Mercury is actually a liquid at room temperature, which makes it very different
+        from most other metals. It has been used in thermometers, barometers, and switches because of its ability to flow
+        and conduct electricity. Mercury is also used in some industrial processes and older types of lighting. However,
+        it is highly toxic, so its use is now heavily restricted and carefully controlled. Its unique liquid form makes it
+        easy to recognize, but also something to handle with caution.`
     },
     {
         name: "Thallium",
@@ -1016,7 +1127,11 @@ const elements = [
         period: 6,
         category: "Post-Transition Metal",
         image: "images/thallium.png",
-        fact: "Thallium is highly toxic and was once used in rat poison."
+        fact: `Thallium is a soft, dense metal that has been used in electronics, optical lenses, and specialized glass. It
+        can improve the performance of certain materials by altering their electrical or optical properties. Thallium compounds
+        were once used in rat poison due to their high toxicity, but this use has largely been discontinued for safety reasons.
+        Today, it's used more carefully in controlled industrial and scientific applications. Its toxicity makes it important
+        to handle with strict precautions.`
     },
     {
         name: "Lead",
@@ -1026,7 +1141,11 @@ const elements = [
         period: 6,
         category: "Post-Transition Metal",
         image: "images/lead.png",
-        fact: "Lead is dense and useful for shielding radiation, but it is also toxic."
+        fact: `Lead is a dense metal known for its use in batteries, radiation shielding, and construction materials. It's very
+        effective at blocking radiation, which makes it useful in medical and nuclear settings. Lead has been used for thousands
+        of years, including in pipes and paints, though many of these uses have been reduced due to health concerns. It's also
+        a key component in lead- acid batteries, which are still widely used today. Its combination of density and malleability
+        makes it useful in specific, controlled applications.`
     },
     {
         name: "Bismuth",
@@ -1036,7 +1155,10 @@ const elements = [
         period: 6,
         category: "Post-Transition Metal",
         image: "images/bismuth.png",
-        fact: "Bismuth forms cool rainbow oxide crystals and is less toxic than many heavy metals."
+        fact: `Bismuth is a metal known for its low toxicity and unique crystal structures, which often form colorful, geometric 
+        patterns. It's used in pharmaceuticals, cosmetics, and low- melting alloys.Bismuth compounds are found in some medications,
+        including treatments for stomach issues. It also expands when it solidifies, which is unusual and useful in certain casting
+        applications. Its visual appearance and safer profile compared to similar metals make it stand out!`
     },
     {
         name: "Polonium",
@@ -1046,7 +1168,11 @@ const elements = [
         period: 6,
         category: "Metalloid",
         image: "images/polonium.png",
-        fact: "Polonium is extremely radioactive and was discovered by Marie Curie."
+        fact: `Polonium is a highly radioactive element that was discovered by Marie Curie. It emits a significant amount of 
+        radiation and heat, which makes it useful in specialized applications like antistatic devices and certain power
+        sources. Because of its intense radioactivity, it is extremely dangerous to handle without proper protection. Polonium
+        has also been historically associated with poisoning cases due to its toxicity. Its use is limited to highly 
+        controlled environments.`
     },
     {
         name: "Astatine",
@@ -1056,7 +1182,11 @@ const elements = [
         period: 6,
         category: "Halogen",
         image: "images/astatine.png",
-        fact: "Astatine is incredibly rare and is one of the least understood elements."
+        fact: `One of the rarest naturally occuring elements: Astatine is also radioactive. Very little is known about it 
+        compared to other elements because it exists in such small quantities and decays quickly. It is classified as a halogen,
+        but its properties are not fully studied due to its instability. Astatine is being researched for potential use in
+        targeted cancer treatments, where its radiation could be used to destroy tumor cells. It remains one of the least
+        understood elements on the periodic table.`
     },
     {
         name: "Radon",
@@ -1066,7 +1196,11 @@ const elements = [
         period: 6,
         category: "Noble Gas",
         image: "images/radon.png",
-        fact: "Radon is a radioactive gas that can build up in homes."
+        fact: `Radon is a radioactive noble gas that forms naturally from the decay of uranium in rocks and soil. It's
+        colorless and odorless, which makes it difficult to detect without special equipment. Radon can accumulate in
+        enclosed spaces like basements, where long term exposure can pose health risks. Because of this, it's commonly
+        monitored in homes and buildings. Despite being a noble gas, its radioactivity makes it far more dangerous than
+        others in its group.`
     },
     {
         name: "Francium",
@@ -1076,7 +1210,11 @@ const elements = [
         period: 7,
         category: "Alkali Metal",
         image: "images/francium.png",
-        fact: "Francium is extremely radioactive and one of the rarest elements on Earth."
+        fact: `Francium is an extremely rare and highly radioactive metal that exists only in tiny amounts at any given 
+        time. It decays very quickly, so it's difficult to study and has almost no practical applications. Francium is part
+        of the alkali metal group, meaning it would be highly reactive if enough of it could be collected. Most of what
+        scientists know about it comes from theoretical predictions and limited experiments. It's one of the least accessible
+        elements on the periodic table.`
     },
     {
         name: "Radium",
@@ -1086,7 +1224,11 @@ const elements = [
         period: 7,
         category: "Alkaline Earth Metal",
         image: "images/radium.png",
-        fact: "Radium glows faintly due to its radioactivity and was once used in luminous paint."
+        fact: `Radium is a radioactive metal that was once used in glow in the dark paints and medical treatments. It emits 
+        radiation continuously, which causes certain materials to glow without needing light. Radium played an important role
+        in early research on radioactivity, but its health risks were not fully understood at the time.Today, it is handled
+        very carefully due to its dangerous radiation. It literally glows in the dark,  just not in a way you'd want anywhere
+        near you!`
     },
 
     {
@@ -1097,7 +1239,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/actinium.png",
-        fact: "Actinium is highly radioactive and was discovered in 1899."
+        fact: `Starting off the Actidides, Actinium is a highly radioactive element. It emits radiation and is used in specialized
+        applications, including research and some forms of cancer treatment. Actinium based isotopes are studied for their ability
+        to deliver targeted radiation therapy. It's not found in large quantities and is typically handled only in controlled
+        environments. Its role is mainly in scientific and medical research.`
     },
     {
         name: "Thorium",
@@ -1107,7 +1252,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/thorium.png",
-        fact: "Thorium can be used as a nuclear fuel and is more abundant than uranium."
+        fact: `Thorium is a radioactive metal that has been studied as a potential alternative nuclear fuel .It is more abundant
+        than uranium and can produce energy through nuclear reactions.Thorium has also been used in gas mantles for lighting and
+        in certain alloys. Because of its properties, it has gained attention as a possible cleaner option for nuclear power. Its
+        role in future energy systems is still being explored.`
     },
     {
         name: "Protactinium",
@@ -2887,7 +3035,9 @@ function updateQuizButtons() {
 
     if (quizActive) {
         nextBtn.style.display = "inline-block";
-    } else {
+    }
+
+    else {
         nextBtn.style.display = "none";
     }
 
@@ -2895,7 +3045,9 @@ function updateQuizButtons() {
         lessonBtn.disabled = true;
         lessonBtn.style.opacity = "0.5";
         lessonBtn.style.cursor = "not-allowed";
-    } else {
+    }
+
+    else {
         lessonBtn.disabled = false;
         lessonBtn.style.opacity = "1";
         lessonBtn.style.cursor = "pointer";
@@ -2926,7 +3078,9 @@ function showQuestion() {
 
     if (practiceMode) {
         currentQuestion = generatePracticeQuestion(practiceType);
-    } else {
+    }
+
+    else {
         currentQuestion = generateQuestion();
     }
 
@@ -2988,7 +3142,9 @@ function selectAnswer(choice, buttonClicked) {
         buttonClicked.classList.add("correct-choice");
         document.getElementById("feedback").textContent =
             `Correct! ${currentQuestion.explanation}`;
-    } else {
+    }
+
+    else {
         buttonClicked.classList.add("wrong-choice");
 
         for (let i = 0; i < 4; i++) {
