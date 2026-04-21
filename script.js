@@ -1156,7 +1156,7 @@ const elements = [
         category: "Post-Transition Metal",
         image: "images/bismuth.png",
         fact: `Bismuth is a metal known for its low toxicity and unique crystal structures, which often form colorful, geometric 
-        patterns. It's used in pharmaceuticals, cosmetics, and low- melting alloys.Bismuth compounds are found in some medications,
+        patterns. It's used in pharmaceuticals, cosmetics, and low melting alloys. Bismuth compounds are found in some medications,
         including treatments for stomach issues. It also expands when it solidifies, which is unusual and useful in certain casting
         applications. Its visual appearance and safer profile compared to similar metals make it stand out!`
     },
@@ -1265,7 +1265,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/protactinium.png",
-        fact: "Protactinium is rare, radioactive, and very difficult to study."
+        fact: `Very rare, Protactinium is a radioactive element that appears in the decay chain of uranium. It’s extremely difficult
+        to isolate, so it has very limited practical use outside of scientific research. Protactinium is highly toxic and radioactive,
+        which makes it challenging to study safely. Most of what we know about it comes from controlled laboratory work. It mainly
+        exists as a stepping stone in nuclear processes rather than as a widely used material.`
     },
     {
         name: "Uranium",
@@ -1275,7 +1278,11 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/uranium.png",
-        fact: "Uranium is widely known for its use in nuclear power and weapons."
+        fact: `Uranium is a heavy radioactive metal best known for its role in nuclear power and nuclear weapons. Certain isotopes
+        of uranium can undergo fission, releasing large amounts of energy, which is harnessed in nuclear reactors. It’s also used
+        in military applications and has been studied extensively for energy production. Uranium is naturally occurring but must be
+        processed to be useful in most applications. It’s the element that can power entire cities or do a lot worse if things
+        go wrong!`
     },
     {
         name: "Neptunium",
@@ -1285,7 +1292,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/neptunium.png",
-        fact: "Neptunium is a synthetic radioactive element used in research."
+        fact: `Neptunium is a synthetic radioactive element produced in nuclear reactors as a byproduct of uranium processing. 
+        It’s not found in significant natural amounts and is mainly used in research and nuclear science. Neptunium can undergo
+        radioactive decay into other elements, including plutonium. It’s also studied for potential use in nuclear fuel cycles.
+        Its role is mostly behind the scenes in nuclear chemistry.`
     },
     {
         name: "Plutonium",
@@ -1295,7 +1305,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/plutonium.png",
-        fact: "Plutonium is used in nuclear weapons and power generation."
+        fact: `Plutonium is a highly radioactive element used in nuclear weapons and nuclear reactors. It can undergo fission 
+        like uranium, making it a powerful energy source as well as a major safety concern. Plutonium is produced in reactors
+        rather than mined directly from the Earth. It has also been used in radioisotope thermoelectric generators to power
+        spacecraft. Its extreme energy potential comes with equally serious risks.`
     },
     {
         name: "Americium",
@@ -1305,7 +1318,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/americium.png",
-        fact: "Americium is used in smoke detectors."
+        fact: `Americium is a radioactive element commonly used in smoke detectors, where it helps detect smoke particles in
+        the air. It emits radiation that interacts with air inside the detector, and any disruption triggers the alarm.
+        Americium is also used in some industrial gauges and research applications. It’s typically produced in nuclear reactors
+        rather than found naturally. It’s a small but important part of everyday safety systems.`
     },
     {
         name: "Curium",
@@ -1315,7 +1331,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/curium.png",
-        fact: "Curium is used in scientific research and space missions."
+        fact: `Curium is a radioactive element produced in nuclear reactors and named after Marie and Pierre Curie. It’s used
+        in research and has been studied for potential use in space exploration, where its heat output could be useful for
+        power generation. Curium emits strong radiation, which makes it difficult to handle safely. It’s also used in the
+        production of heavier elements through nuclear reactions.Its role is mostly within advanced nuclear science.`
     },
     {
         name: "Berkelium",
@@ -1325,7 +1344,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/berkelium.png",
-        fact: "Berkelium is a synthetic element created in nuclear reactors."
+        fact: `Berkelium is a synthetic radioactive element created in laboratories and used primarily in scientific research.
+        It has been important in the discovery of even heavier elements, acting as a starting material in nuclear experiments.
+        Berkelium doesn’t have widespread practical applications due to its instability and limited availability. Most of what
+        we know about it comes from controlled experiments.It’s a stepping stone element in the study of nuclear chemistry.`
     },
     {
         name: "Californium",
@@ -1335,7 +1357,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/californium.png",
-        fact: "Californium is used in neutron sources and cancer treatment."
+        fact: `Californium is a powerful radioactive element used as a neutron source. It’s used in applications like starting
+        nuclear reactors, detecting gold and silver in mining, and even in some medical treatments.Californium can release a
+        large number of neutrons, which makes it extremely useful in both industry and research. Because of its radioactivity,
+        it’s handled with strict safety measures.It’s one of the few heavy elements with practical, real world uses.`
     },
     {
         name: "Einsteinium",
@@ -1345,7 +1370,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/einsteinium.png",
-        fact: "Einsteinium was discovered in the debris of a hydrogen bomb test."
+        fact: `Einsteinium is a synthetic element produced in nuclear reactions and is mainly used in scientific research. It 
+        was first discovered in the debris of nuclear explosions, which highlights the extreme conditions required to create it.
+        Einsteinium is highly radioactive and exists only in small amounts. It has been used to help create even heavier elements.
+        Its importance lies in expanding our understanding of atomic structure.`
     },
     {
         name: "Fermium",
@@ -1355,7 +1383,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/fermium.png",
-        fact: "Fermium is a synthetic radioactive element with no commercial use."
+        fact: `And element number one hundred is...Fermium! This is a synthetic radioactive element that is also produced under 
+        extreme conditions, such as nuclear reactions. It has no practical applications outside of research, largely due to its
+        short half life and difficulty in production. Fermium is studied to better understand the behavior of heavy atomic nuclei.
+        Like einsteinium, it plays a role in the creation of even heavier elements.It exists mainly as part of advanced nuclear experiments.`
     },
     {
         name: "Mendelevium",
@@ -1365,7 +1396,11 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/mendelevium.png",
-        fact: "Mendelevium is named after Dmitri Mendeleev, creator of the periodic table."
+        fact: `Mendelevium is a synthetic radioactive element named after Dmitri Mendeleev, the creator of the periodic table.
+        It was one of the first elements produced one atom at a time in a laboratory, highlighting how difficult these heavy
+        elements are to create. Mendelevium has no practical uses outside of scientific research due to its short half life.
+        It’s mainly studied to better understand the behavior of heavy atomic nuclei. Its name reflects its importance in the
+        history of chemistry.`
     },
     {
         name: "Nobelium",
@@ -1375,7 +1410,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/nobelium.png",
-        fact: "Nobelium is a synthetic radioactive element named after Alfred Nobel."
+        fact: `Nobelium is a synthetic element named after Alfred Nobel, the inventor of dynamite and founder of the Nobel Prize.
+        It’s produced in particle accelerators and exists only for short periods before decaying. Like many elements in this range,
+        it’s used purely for research into nuclear structure and stability. Nobelium helps scientists study how atomic nuclei behave
+        under extreme conditions.`
     },
     {
         name: "Lawrencium",
@@ -1385,7 +1423,10 @@ const elements = [
         period: 9,
         category: "Actinide",
         image: "images/lawrencium.png",
-        fact: "Lawrencium is the last actinide and is named after the inventor of the cyclotron."
+        fact: `Lawrencium is named after Ernest Lawrence, the inventor of the cyclotron, a device used to create many synthetic
+        elements. It marks the end of the actinide series and represents a transition into the heaviest elements on the periodic
+        table. Lawrencium is highly unstable and exists only in controlled laboratory conditions. It’s studied to understand the
+        limits of atomic structure. Its discovery reflects the advancement of particle physics and experimental chemistry.`
     },
     {
         name: "Rutherfordium",
@@ -1395,7 +1436,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/rutherfordium.png",
-        fact: "Rutherfordium is a synthetic element named after physicist Ernest Rutherford."
+        fact: `Rutherfordium is named after Ernest Rutherford, a key figure in the development of nuclear physics. It is yet another
+        synthetic element created in particle accelerators and exists only for very short periods. Rutherfordium’s properties are
+        predicted based on its position in the periodic table, as direct observation is limited. It helps scientists test theories
+        about how heavy elements should behave. Its name honors one of the pioneers of atomic science.`
     },
     {
         name: "Dubnium",
@@ -1405,7 +1449,11 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/dubnium.png",
-        fact: "Dubnium is highly radioactive and exists only in laboratories."
+        fact: `Dubnium is named after the city of Dubna, Russia, where it was discovered and important nuclear research has taken
+        place. It is another synthetic element produced in laboratories and has no practical applications outside of research.
+        Like most elements toward the end of the table, Dubnium exists only briefly before decaying into lighter elements. It
+        is used to study nuclear reactions and the properties of superheavy elements. Its discovery is part of the ongoing effort
+        to explore the limits of the periodic table.`
     },
     {
         name: "Seaborgium",
@@ -1415,7 +1463,11 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/seaborgium.png",
-        fact: "Seaborgium is named after Glenn Seaborg, a pioneer in transuranium elements."
+        fact: `Seaborgium is a synthetic element named after Glenn T.Seaborg, a key figure in nuclear chemistry. It’s created in
+        particle accelerators and as expected exists only for a very short time before decaying.Scientists study seaborgium to
+        better understand how superheavy elements behave and how far the periodic table can extend.Its properties are mostly
+        predicted based on its position, since it’s difficult to observe directly.It represents a major step in human made
+        element discovery.`
     },
     {
         name: "Bohrium",
@@ -1425,7 +1477,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/bohrium.png",
-        fact: "Bohrium is named after Niels Bohr and is extremely unstable."
+        fact: `Bohrium is named after Niels Bohr, one of the pioneers of atomic theory. Like other elements in this range, it 
+        is synthetic and highly unstable, existing only briefly after being created. Bohrium is produced in laboratories through
+        nuclear fusion reactions. It has no practical applications outside of research. Like the others, its main purpose is to
+        help scientists explore the structure and limits of atomic nuclei.`
     },
     {
         name: "Hassium",
@@ -1435,7 +1490,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/hassium.png",
-        fact: "Hassium is named after the German state of Hesse."
+        fact: `Hassium is a synthetic element named after the German state of Hesse, where it was first discovered. It is thought
+        to have properties similar to osmium, based on its position in the periodic table. Hassium exists for only fractions of a
+        second, making direct study extremely difficult. Researchers rely on theoretical models and limited experimental data
+        to understand it. It’s part of the ongoing effort to map out superheavy elements.`
     },
     {
         name: "Meitnerium",
@@ -1445,7 +1503,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/meitnerium.png",
-        fact: "Meitnerium is named after physicist Lise Meitner."
+        fact: `Meitnerium is named after Lise Meitner, a physicist who contributed to the discovery of nuclear fission. It is
+        another synthetic element that exists only briefly before decaying. Meitnerium has no known practical uses and is studied
+        purely for scientific research. Its discovery helps confirm theories about how heavy elements behave. It’s one of many
+        elements that exist mainly to expand our understanding of atomic science.`
     },
     {
         name: "Darmstadtium",
@@ -1455,7 +1516,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/darmstadtium.png",
-        fact: "Darmstadtium was first created in Darmstadt, Germany."
+        fact: `Darmstadtium is named after Darmstadt, Germany, where it was first created. It is a synthetic superheavy element
+        that decays almost immediately after formation. Scientists study it to test predictions about the stability and structure
+        of very heavy atoms. Its properties are largely theoretical due to its short existence. Darmstadtium represents how far
+        modern science has pushed the creation of new elements.`
     },
     {
         name: "Roentgenium",
@@ -1465,7 +1529,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/roentgenium.png",
-        fact: "Roentgenium is named after Wilhelm Röntgen, who discovered X-rays."
+        fact: `Roentgenium is a synthetic element named after Wilhelm Rontgen, the discoverer of X - rays.It is created in particle
+        accelerators and exists only for a very short time before decaying. Scientists believe it may have properties similar to gold,
+        based on its position in the periodic table, but this is mostly theoretical. Roentgenium has no practical applications due to
+        its instability. Its main purpose is to help researchers understand superheavy elements.`
     },
     {
         name: "Copernicium",
@@ -1475,7 +1542,10 @@ const elements = [
         period: 7,
         category: "Transition Metal",
         image: "images/copernicium.png",
-        fact: "Copernicium is named after Nicolaus Copernicus."
+        fact: `Copernicium is named after Nicolaus Copernicus, the astronomer who proposed the heliocentric model of the solar system.
+        It is a synthetic element that decays rapidly after being created. Some predictions suggest it may behave more like a noble
+        gas than a metal, which would make it unusual compared to nearby elements. Because of its extremely short lifespan, its properties
+        are still being studied indirectly. It exists almost entirely in theory and brief experiments.`
     },
     {
         name: "Nihonium",
@@ -1485,7 +1555,10 @@ const elements = [
         period: 7,
         category: "Post-Transition Metal",
         image: "images/nihonium.png",
-        fact: "Nihonium is named after Japan (Nihon)."
+        fact: `Nihonium is named after Japan("Nihon"), where it was first discovered. It is one of the few elements discovered in 
+        Asia and represents a major milestone in modern chemistry. Nihonium is highly unstable and exists only for fractions of a
+        second. Its properties are predicted based on its position in the periodic table, likely resembling heavier versions of post
+        transition metals. It’s one of the newest additions to the periodic table.`
     },
     {
         name: "Flerovium",
@@ -1495,7 +1568,10 @@ const elements = [
         period: 7,
         category: "Post-Transition Metal",
         image: "images/flerovium.png",
-        fact: "Flerovium is named after the Flerov Laboratory of Nuclear Reactions."
+        fact: `Flerovium is named after the Flerov Laboratory of Nuclear Reactions in Russia. It is a synthetic superheavy element 
+        that may show unusual behavior compared to typical metals, possibly acting more like a noble gas in some conditions.
+        Flerovium is part of ongoing research into the "island of stability," a theory suggesting some heavy elements could be more
+        stable than expected. Its existence is extremely short lived. It represents one of the frontiers of nuclear science.`
     },
     {
         name: "Moscovium",
@@ -1505,7 +1581,10 @@ const elements = [
         period: 7,
         category: "Post-Transition Metal",
         image: "images/moscovium.png",
-        fact: "Moscovium is named after the Moscow region."
+        fact: `Moscovium is named after the Moscow region, where it was discovered. It is a synthetic element created in particle
+        accelerators and decays almost immediately. Scientists study it to better understand nuclear reactions and the limits of
+        atomic structure. Like many elements in this range, its properties are mostly theoretical. It contributes to research on
+        how heavy elements form and behave.`
     },
     {
         name: "Livermorium",
@@ -1515,7 +1594,10 @@ const elements = [
         period: 7,
         category: "Post-Transition Metal",
         image: "images/livermorium.png",
-        fact: "Livermorium is named after Lawrence Livermore National Laboratory."
+        fact: `Livermorium is named after the Lawrence Livermore National Laboratory in the United States. It is a synthetic element
+        that exists only briefly after being created. Livermorium is part of the effort to explore the limits of the periodic table
+        and understand superheavy nuclei. Its properties are predicted rather than directly observed. It reflects international
+        collaboration in modern element discovery.`
     },
     {
         name: "Tennessine",
@@ -1525,7 +1607,10 @@ const elements = [
         period: 7,
         category: "Halogen",
         image: "images/tennessine.png",
-        fact: "Tennessine is named after the state of Tennessee."
+        fact: `Tennessine is named after the state of Tennessee, recognizing contributions from research institutions there. It
+        is a synthetic element classified as a halogen, though its behavior may differ due to its extreme size and instability.
+        Tennessine decays very quickly and is studied only in laboratory conditions. Its discovery required advanced nuclear
+        techniques and collaboration across multiple countries. It’s one of the newest members of the periodic table.`
     },
     {
         name: "Oganesson",
@@ -1535,7 +1620,10 @@ const elements = [
         period: 7,
         category: "Noble Gas",
         image: "images/oganesson.png",
-        fact: "Oganesson is one of the heaviest elements ever created."
+        fact: `Oganesson is named after Yuri Oganessian, a leading scientist in the discovery of superheavy elements. It is 
+        currently the heaviest known element and is classified as a noble gas, though it may not behave like one due to its
+        extreme atomic structure. Oganesson exists for only a tiny fraction of a second before decaying. Its properties challenge
+        existing theories about how elements should behave. It marks the current end of the periodic table... for now.`
     }
 
 ];
