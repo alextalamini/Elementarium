@@ -19,6 +19,52 @@ body {
     border-radius: 20px;
 }
 
+#search-section {
+    margin: 30px auto 0 auto;
+    width: 500px;
+    max-width: 90%;
+    text-align: center;
+}
+
+#element-search {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+}
+
+#search-results {
+    margin-top: 8px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-height: 220px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.search-result-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .search-result-item:hover {
+        background: #f0f0f0;
+    }
+
+.search-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .element {
     background: #1e293b;
     border-radius: 10px;
@@ -63,8 +109,10 @@ body {
 }
 
 #info-card {
-    position: absolute;
+    position: fixed;
     width: 300px;
+    max-height: calc(100vh - 24px);
+    overflow-y: auto;
     background: rgba(255, 255, 255, 0.96);
     color: #111827;
     padding: 16px;
@@ -90,7 +138,7 @@ body {
     }
 
     #info-card p {
-        margin: 6px 0;
+        margin: 4px 0;
         line-height: 1.45;
         font-size: 15px;
     }

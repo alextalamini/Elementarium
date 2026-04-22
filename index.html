@@ -54,24 +54,39 @@
             </div>
         </section>
 
+        <div id="search-section">
+            <h2>Search for an Element</h2>
+            <input type="text" id="element-search" placeholder="Type an element name..." autocomplete="off">
+            <div id="search-results" class="hidden"></div>
+        </div>
+
         <section id="periodic-table"></section>
 
+
+
         <div id="info-card" class="hidden">
-            <button id="close-btn">X</button>
             <img id="element-image" src="" alt="">
             <h2 id="element-name"></h2>
+
             <p id="element-symbol"></p>
             <p id="element-number"></p>
+
+            <p id="element-mass"></p> 
+
             <p id="element-group"></p>
             <p id="element-period"></p>
             <p id="element-category"></p>
+
+            <p id="element-state"></p> 
+            <p id="element-danger"></p> 
+
             <p id="element-description"></p>
         </div>
 
         <div id="lesson-overlay" class="hidden"></div>
         <div id="lesson-card" class="hidden">
             <button id="close-lesson-btn">X</button>
-            
+
             <h2>Lesson / Help</h2>
 
             <h3>Basic Question Types</h3>
@@ -84,10 +99,9 @@
             <p><strong>How to find the symbol:</strong> Look at the large letters inside the element box.</p>
             <p><strong>How to find the group:</strong> Count which vertical column the element is in. The group number is shown on the card too.</p>
             <p><strong>How to find the period:</strong> Count which horizontal row the element is in. The period number is shown on the card too.</p>
-            
-                <strong>How to find the category:</strong> Open the element card or use the color and placement of the element to help identify
-                its family.
-            </p>
+
+            <strong>How to find the category:</strong> Open the element card or use the color and placement of the element to help identify
+            its family.
 
             <h3>Element Families / Categories</h3>
             <p><strong>Alkali Metals:</strong> These are very reactive metals in Group 1, like Lithium, Sodium, and Potassium.</p>

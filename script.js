@@ -4,9 +4,12 @@ const elements = [
         name: "Hydrogen",
         symbol: "H",
         number: 1,
+        mass: "1.008",
         group: 1,
         period: 1,
         category: "Nonmetal",
+        state: "Gas",
+        danger: "2/10 - Extremely flammable and explosive when mixed with oxygen, but not toxic on its own.",
         image: "images/hydrogen.png",
         fact: `Hydrogen is the lightest element in the entire universe, and also the most abundant. 
         Seriously, most of the stars you see are basically giant hydrogen engines. It's incredibly simple,
@@ -19,9 +22,12 @@ const elements = [
         name: "Helium",
         symbol: "He",
         number: 2,
+        mass: "4.0026",
         group: 18,
         period: 1,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "0/10 - Completely inert and non-toxic, but can displace oxygen in confined spaces.",
         image: "images/helium.png",
         fact: `Helium is the second most abundant element in the universe, right behind hydrogen, 
         and it's incredibly stable. Because it doesn't react with other elements, it's classified as 
@@ -34,12 +40,15 @@ const elements = [
         name: "Lithium",
         symbol: "Li",
         number: 3,
+        mass: "6.94",
         group: 1,
         period: 2,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "7/10 - Highly reactive metal that can ignite or explode when exposed to water.",
         image: "images/lithium.png",
         fact: `Lithium is a very light metal that plays a huge role in modern technology, especially
-        in lithium - ion batteries used in phones, laptops, and electric vehicles. It's highly reactive,
+        in lithium-ion batteries used in phones, laptops, and electric vehicles. It's highly reactive,
         so it's usually found combined with other elements rather than on its own. Its ability to store
         and release energy efficiently makes it one of the most important elements for portable power.
         Lithium is also used in some medications, particularly for mood stabilization.
@@ -49,12 +58,15 @@ const elements = [
         name: "Beryllium",
         symbol: "Be",
         number: 4,
+        mass: "9.0122",
         group: 2,
         period: 2,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "8/10 - Toxic if inhaled as dust and can cause serious lung disease.",
         image: "images/beryllium.png",
         fact: `Beryllium is a lightweight but extremely strong metal, which makes it valuable in
-        aerospace and high- performance applications. It's used in things like satellites, aircraft parts,
+        aerospace and high-performance applications. It's used in things like satellites, aircraft parts,
         and precision instruments where both strength and low weight matter. Despite its usefulness,
         beryllium is toxic if inhaled as dust, so it has to be handled carefully. Its stiffness and 
         stability make it ideal for situations where precision is critical. It's not common in everyday life,
@@ -64,14 +76,17 @@ const elements = [
         name: "Boron",
         symbol: "B",
         number: 5,
+        mass: "10.81",
         group: 13,
         period: 2,
         category: "Metalloid",
+        state: "Solid",
+        danger: "3/10 - Low toxicity but can be harmful in high amounts or industrial exposure.",
         image: "images/boron.png",
         fact: `Boron is a somewhat overlooked element, you probably don't even know what it does! but it's
-        essential in a variety of applications. It's used to make strong, heat- resistant glass, like the 
+        essential in a variety of applications. It's used to make strong, heat-resistant glass, like the 
         kind found in lab equipment and cookware. Boron also appears in detergents and plays a role in
-        agriculture, since plants need small amounts of it to grow properly.In materials science, it helps 
+        agriculture, since plants need small amounts of it to grow properly. In materials science, it helps 
         improve strength and durability. Not the most famous element, but definitely one that keeps things 
         working behind the scenes.`
     },
@@ -79,9 +94,12 @@ const elements = [
         name: "Carbon",
         symbol: "C",
         number: 6,
+        mass: "12.011",
         group: 14,
         period: 2,
         category: "Nonmetal",
+        state: "Solid",
+        danger: "2/10 - Generally safe, but forms dangerous compounds like carbon monoxide.",
         image: "images/carbon.png",
         fact: `Carbon is the foundation of all known life, forming the backbone of molecules like DNA,
         proteins, and sugars. What makes it special is its ability to bond with many other elements,
@@ -93,9 +111,12 @@ const elements = [
         name: "Nitrogen",
         symbol: "N",
         number: 7,
+        mass: "14.007",
         group: 15,
         period: 2,
         category: "Nonmetal",
+        state: "Gas",
+        danger: "1/10 - Non-toxic but can displace oxygen and cause suffocation in enclosed spaces.",
         image: "images/nitrogen.png",
         fact: `Nitrogen makes up about 78% of Earth's atmosphere, making it the most abundant gas in 
         the air you breathe. Despite that, it's relatively unreactive in its natural form, which is 
@@ -108,9 +129,12 @@ const elements = [
         name: "Oxygen",
         symbol: "O",
         number: 8,
+        mass: "15.999",
         group: 16,
         period: 2,
         category: "Nonmetal",
+        state: "Gas",
+        danger: "4/10 - Not toxic, but highly reactive and greatly accelerates combustion.",
         image: "images/oxygen.png",
         fact: `Oxygen makes up about 21% of Earth's atmosphere and is essential for respiration in
         most living things. It plays a major role in combustion, which is why fires need oxygen to 
@@ -122,9 +146,12 @@ const elements = [
         name: "Fluorine",
         symbol: "F",
         number: 9,
+        mass: "18.998",
         group: 17,
         period: 2,
         category: "Halogen",
+        state: "Gas",
+        danger: "10/10 - Extremely toxic and violently reactive with most substances.",
         image: "images/fluorine.png",
         fact: `Fluorine is the most reactive element in the periodic table, meaning it bonds with 
         almost anything it can. Because of that, it's rarely found in its pure form and is usually
@@ -137,23 +164,29 @@ const elements = [
         name: "Neon",
         symbol: "Ne",
         number: 10,
+        mass: "20.180",
         group: 18,
         period: 2,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "0/10 - Completely inert and non-toxic, but can displace oxygen in confined spaces.",
         image: "images/neon.png",
         fact: `Neon is a noble gas that's best known for its use in bright, glowing signs. When 
-        electricity passes through neon gas, it emits a distinct reddish - orange light, which made
+        electricity passes through neon gas, it emits a distinct reddish-orange light, which made
         it famous in advertising. Like other noble gases, neon is very stable and doesn't react 
-        easily with other elements. It's also used in high - voltage indicators and some types of
+        easily with other elements. It's also used in high voltage indicators and some types of
         lasers. Simple element, very recognizable effect.`
     },
     {
         name: "Sodium",
         symbol: "Na",
         number: 11,
+        mass: "22.990",
         group: 1,
         period: 3,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "9/10 - Reacts violently with water and can explode or ignite on contact.",
         image: "images/sodium.png",
         fact: `Sodium is a highly reactive metal that's best known for being part of table salt
         (sodium chloride). On its own, it reacts violently with water, which is why it's always
@@ -165,9 +198,12 @@ const elements = [
         name: "Magnesium",
         symbol: "Mg",
         number: 12,
+        mass: "24.305",
         group: 2,
         period: 3,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "5/10 - Burns intensely at high temperatures and can be difficult to extinguish.",
         image: "images/magnesium.png",
         fact: `Magnesium is a lightweight metal that burns with a bright white flame, which is why it's
         used in fireworks and flares. It's also an important structural material in alloys, especially 
@@ -179,9 +215,12 @@ const elements = [
         name: "Aluminum",
         symbol: "Al",
         number: 13,
+        mass: "26.982",
         group: 13,
         period: 3,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Generally safe, though fine dust can be flammable and inhalation can be harmful.",
         image: "images/aluminum.png",
         fact: `Aluminum is a lightweight, corrosion resistant metal that's widely used in cans, foil, and 
         aircraft construction. It doesn't rust like iron, which makes it incredibly useful for everyday
@@ -193,9 +232,12 @@ const elements = [
         name: "Silicon",
         symbol: "Si",
         number: 14,
+        mass: "28.085",
         group: 14,
         period: 3,
         category: "Metalloid",
+        state: "Solid",
+        danger: "3/10 - Relatively stable, but dust can irritate lungs and be harmful if inhaled.",
         image: "images/silicon.png",
         fact: `Silicon is the foundation of modern electronics, making it essential for computer chips and 
         semiconductors. It's a metalloid, meaning it has properties between metals and nonmetals, which makes
@@ -207,9 +249,12 @@ const elements = [
         name: "Phosphorus",
         symbol: "P",
         number: 15,
+        mass: "30.974",
         group: 15,
         period: 3,
         category: "Nonmetal",
+        state: "Solid",
+        danger: "7/10 - Highly reactive; some forms can ignite spontaneously and are toxic.",
         image: "images/phosphorus.png",
         fact: `Phosphorus is a reactive nonmetal that's used in things like matches, fertilizers, and biological
         molecules like DNA. It plays a critical role in energy transfer within cells, especially in molecules like
@@ -221,9 +266,12 @@ const elements = [
         name: "Sulfur",
         symbol: "S",
         number: 16,
+        mass: "32.06",
         group: 16,
         period: 3,
         category: "Nonmetal",
+        state: "Solid",
+        danger: "4/10 - Generally safe, but forms toxic gases like sulfur dioxide when burned.",
         image: "images/sulfur.png",
         fact: `Sulfur is a nonmetal best known for its role in fertilizers and chemicals, and for the strong 
         smell of some of its compounds. It's commonly found in volcanic areas and can appear as bright yellow
@@ -235,9 +283,12 @@ const elements = [
         name: "Chlorine",
         symbol: "Cl",
         number: 17,
+        mass: "35.45",
         group: 17,
         period: 3,
         category: "Halogen",
+        state: "Gas",
+        danger: "9/10 - Highly toxic gas that can damage lungs and react dangerously with other substances.",
         image: "images/chlorine.png",
         fact: `Chlorine is a highly reactive nonmetal that's widely used to disinfect water, including drinking 
         water and swimming pools. It's part of the halogen group and readily forms compounds with many elements,
@@ -249,9 +300,12 @@ const elements = [
         name: "Argon",
         symbol: "Ar",
         number: 18,
+        mass: "39.948",
         group: 18,
         period: 3,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "0/10 - Inert and non-toxic, but can displace oxygen in confined spaces.",
         image: "images/argon.png",
         fact: `Argon is a noble gas that makes up about 1% of Earth's atmosphere and is almost completely 
         unreactive. Because it doesn't easily form compounds, it's often used in environments where reactions
@@ -263,12 +317,15 @@ const elements = [
         name: "Potassium",
         symbol: "K",
         number: 19,
+        mass: "39.098",
         group: 1,
         period: 4,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "9/10 - Reacts violently with water and can ignite or explode on contact.",
         image: "images/potassium.png",
         fact: `Potassium is a very reactive metal that plays a crucial role in muscle function and nerve signaling 
-        in the human body.Like sodium, it reacts strongly with water and is never found freely in nature. Potassium
+        in the human body. Like sodium, it reacts strongly with water and is never found freely in nature. Potassium
         compounds are commonly used in fertilizers because plants need it to grow properly. It's also an essential
         dietary mineral for humans. Reactive on its own, but vital in the right form.`
     },
@@ -276,38 +333,47 @@ const elements = [
         name: "Calcium",
         symbol: "Ca",
         number: 20,
+        mass: "40.078",
         group: 2,
         period: 4,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "3/10 - Reactive metal that can irritate skin and reacts with water, but less violently than alkali metals.",
         image: "images/calcium.png",
         fact: `Calcium is a metal that's essential for bones and teeth, making it one of the most important 
         elements in the human body. It's also involved in muscle contraction, nerve signaling, and blood clotting.
         Calcium is commonly found in minerals like limestone and in foods such as milk and dairy products.
-        In industry, it's used in construction materials like cement.It's one of those elements that's both 
+        In industry, it's used in construction materials like cement. It's one of those elements that's both 
         biologically and structurally important.`
     },
     {
         name: "Scandium",
         symbol: "Sc",
         number: 21,
+        mass: "44.956",
         group: 3,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, but fine dust can be irritating if inhaled.",
         image: "images/scandium.png",
         fact: `Scandium is a relatively rare metal that's often used to strengthen aluminum alloys, especially
         in aerospace and high-performance equipment. Even small amounts of scandium can significantly improve
         strength and durability without adding much weight. Because of its rarity, it's not widely used in everyday
         products, but it shows up in specialized applications like sports equipment and advanced materials. It also
-        has uses in certain types of lighting, including high intensity lamps.Not very common, but when it shows up,
+        has uses in certain types of lighting, including high intensity lamps. Not very common, but when it shows up,
         it makes a difference.`
     },
     {
         name: "Titanium",
         symbol: "Ti",
         number: 22,
+        mass: "47.867",
         group: 4,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally safe, but fine powder can be flammable and inhalation may be harmful.",
         image: "images/titanium.png",
         fact: `Titanium is a strong, lightweight metal known for its excellent strength to weight ratio and 
         resistance to corrosion. It's widely used in aircraft, spacecraft, and even medical implants because it
@@ -319,23 +385,29 @@ const elements = [
         name: "Vanadium",
         symbol: "V",
         number: 23,
+        mass: "50.942",
         group: 5,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "4/10 - Some compounds are toxic and can cause health issues with prolonged exposure.",
         image: "images/vanadium.png",
         fact: `Vanadium is a metal primarily used to strengthen steel, making tools, structures, and machinery 
         more durable and resistant to wear. Even in small amounts, it improves toughness and resistance to corrosion.
         It's also used in some advanced battery technologies, particularly vanadium redox batteries for energy storage.
         Vanadium compounds can display a range of colors, which makes them interesting in chemistry as well. It's not
-        very well- known, but it quietly improves a lot of materials.`
+        very well-known, but it quietly improves a lot of materials.`
     },
     {
         name: "Chromium",
         symbol: "Cr",
         number: 24,
+        mass: "51.996",
         group: 6,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "6/10 - Some forms, especially hexavalent chromium, are highly toxic and carcinogenic.",
         image: "images/chromium.png",
         fact: `Chromium is best known for giving metals a shiny, polished finish, often seen in chrome plating. 
         It's also a key component in stainless steel, helping prevent rust and corrosion. Chromium is widely used
@@ -347,9 +419,12 @@ const elements = [
         name: "Manganese",
         symbol: "Mn",
         number: 25,
+        mass: "54.938",
         group: 7,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "5/10 - Essential in small amounts but toxic in high exposure, especially to the nervous system.",
         image: "images/manganese.png",
         fact: `Manganese is an important metal used in steel production, where it improves strength, toughness, 
         and resistance to wear. It's also used in batteries, particularly in alkaline batteries, making it part
@@ -361,13 +436,16 @@ const elements = [
         name: "Iron",
         symbol: "Fe",
         number: 26,
+        mass: "55.845",
         group: 8,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Essential for life, but excessive amounts or dust exposure can be harmful.",
         image: "images/iron.png",
         fact: `Iron is one of the most important elements in both industry and biology. It's the main component 
-        of steel, making it essential for buildings, infrastructure, tools, and machines.In the human body, iron
-        is part of hemoglobin, the molecule that carries oxygen in the blood.Iron is abundant in the Earth's crust
+        of steel, making it essential for buildings, infrastructure, tools, and machines. In the human body, iron
+        is part of hemoglobin, the molecule that carries oxygen in the blood. Iron is abundant in the Earth's crust
         and has been used by humans for thousands of years, marking entire historical periods like the Iron Age.
         It's one of those elements that quite literally holds modern civilization together.`
     },
@@ -375,11 +453,14 @@ const elements = [
         name: "Cobalt",
         symbol: "Co",
         number: 27,
+        mass: "58.933",
         group: 9,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "5/10 - Toxic in high amounts and can cause health issues with prolonged exposure.",
         image: "images/cobalt.png",
-        fact: `Cobalt is a metal known for its use in batteries and blue pigments. It plays a key role in lithium ion
+        fact: `Cobalt is a metal known for its use in batteries and blue pigments. It plays a key role in lithium-ion
         batteries, especially in stabilizing their performance, which makes it important for electronics and electric
         vehicles. Cobalt compounds have been used for centuries to produce a deep blue color in glass and ceramics.
         It's also used in high strength alloys that can withstand extreme temperatures. Even if you don't know about 
@@ -389,9 +470,12 @@ const elements = [
         name: "Nickel",
         symbol: "Ni",
         number: 28,
+        mass: "58.693",
         group: 10,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "4/10 - Can cause allergic reactions and is harmful in high exposure.",
         image: "images/nickel.png",
         fact: `Nickel is a versatile metal used in coins, stainless steel, and corrosion resistant alloys. It helps 
         prevent rust and adds strength to materials, which is why it's often combined with iron and other metals.
@@ -403,9 +487,12 @@ const elements = [
         name: "Copper",
         symbol: "Cu",
         number: 29,
+        mass: "63.546",
         group: 11,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally safe, but high exposure can be toxic and cause irritation.",
         image: "images/copper.png",
         fact: `Copper is one of the best electrical conductors, which makes it essential for wiring, electronics, 
         and power systems. It's been used by humans for thousands of years, even before the Iron Age. Copper is also
@@ -417,13 +504,16 @@ const elements = [
         name: "Zinc",
         symbol: "Zn",
         number: 30,
+        mass: "65.38",
         group: 12,
         period: 4,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Essential nutrient but can be harmful in excessive amounts or inhaled as fumes.",
         image: "images/zinc.png",
         fact: `Zinc is commonly used to protect steel from rusting: a process known as galvanization. By coating steel 
-        with zinc, it prevents corrosion and extends the lifespan of structures and materials.Zinc is also important in
-        biology, playing a role in immune function and enzyme activity.It's used in batteries, alloys, and even dietary
+        with zinc, it prevents corrosion and extends the lifespan of structures and materials. Zinc is also important in
+        biology, playing a role in immune function and enzyme activity. It's used in batteries, alloys, and even dietary
         supplements. Probably an element you've heard of, but never known its exact use, but it does a lot of protective 
         work behind the scenes!`
     },
@@ -431,40 +521,49 @@ const elements = [
         name: "Gallium",
         symbol: "Ga",
         number: 31,
+        mass: "69.723",
         group: 13,
         period: 4,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Low toxicity overall, but can be harmful in certain compounds and industrial exposure.",
         image: "images/gallium.png",
         fact: `Gallium is a metal with a surprisingly low melting point, it can actually melt in your hand at around 30°C
         (86°F). Despite that, it's not commonly found in pure form and is usually extracted as a byproduct of refining
         other metals. Gallium is important in electronics, especially in semiconductors like gallium arsenide, which are
-        used in LEDs, solar panels, and high speed devices.It also expands when it solidifies, which is unusual for metals.
+        used in LEDs, solar panels, and high speed devices. It also expands when it solidifies, which is unusual for metals.
         A solid metal that melts like that tends to leave an impression.`
     },
     {
         name: "Germanium",
         symbol: "Ge",
         number: 32,
+        mass: "72.630",
         group: 14,
         period: 4,
         category: "Metalloid",
+        state: "Solid",
+        danger: "3/10 - Relatively low toxicity, but dust and some compounds can be harmful if inhaled or swallowed.",
         image: "images/germanium.png",
         fact: `Germanium is a metalloid that played an important role in the early development of semiconductors and 
-        electronics. Before silicon became dominant, germanium was used in the first transistors.Today, it's still used
-        in fiber optics, infrared optics, and some specialized electronics.It has properties that allow it to control
-        electrical conductivity, making it useful for signal transmission.Germanium sits right between metals and nonmetals
+        electronics. Before silicon became dominant, germanium was used in the first transistors. Today, it's still used
+        in fiber optics, infrared optics, and some specialized electronics. It has properties that allow it to control
+        electrical conductivity, making it useful for signal transmission. Germanium sits right between metals and nonmetals
         in behavior, which is exactly what makes it useful in technology.`
     },
     {
         name: "Arsenic",
         symbol: "As",
         number: 33,
+        mass: "74.922",
         group: 15,
         period: 4,
         category: "Metalloid",
+        state: "Solid",
+        danger: "10/10 - Highly toxic and poisonous, with serious health risks even at low exposure.",
         image: "images/arsenic.png",
         fact: `Arsenic is well known for its toxicity, but it also has important uses in electronics and semiconductors.
-        It's often combined with gallium to form gallium arsenide, a material used in high- speed electronics and LEDs.
+        It's often combined with gallium to form gallium arsenide, a material used in high-speed electronics and LEDs.
         Arsenic compounds have been used historically in pesticides and even medicines, though many uses are now restricted
         due to safety concerns. In nature, it can be found in minerals and groundwater in certain regions. It's a good example
         of an element that's both dangerous and useful, depending on how it's handled.`
@@ -473,23 +572,29 @@ const elements = [
         name: "Selenium",
         symbol: "Se",
         number: 34,
+        mass: "78.971",
         group: 16,
         period: 4,
         category: "Nonmetal",
+        state: "Solid",
+        danger: "4/10 - Essential in tiny amounts, but toxic in larger doses.",
         image: "images/selenium.png",
         fact: `Selenium is a nonmetal that's used in electronics, glassmaking, and photocells. It has the interesting 
         property of changing its electrical conductivity when exposed to light, which makes it useful in sensors and
         solar cells. Selenium is also an essential trace element for humans, playing a role in metabolism and antioxidant
         systems. In glass production, it can be used to remove color or create red pigments. Its ability to respond to
-        light gives it an unique role in both technology and chemistry.`
+        light gives it a unique role in both technology and chemistry.`
     },
     {
         name: "Bromine",
         symbol: "Br",
         number: 35,
+        mass: "79.904",
         group: 17,
         period: 4,
         category: "Halogen",
+        state: "Liquid",
+        danger: "9/10 - Toxic, corrosive, and dangerous to skin, eyes, and lungs.",
         image: "images/bromine.png",
         fact: `Bromine is one of the few elements that is liquid at room temperature, appearing as a dark reddish brown 
         fluid. It belongs to the halogen group and is highly reactive, though less so than fluorine or chlorine. Bromine
@@ -500,13 +605,16 @@ const elements = [
         name: "Krypton",
         symbol: "Kr",
         number: 36,
+        mass: "83.798",
         group: 18,
         period: 4,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "0/10 - Inert and non-toxic, but can displace oxygen in confined spaces.",
         image: "images/krypton.png",
         fact: `Krypton is a noble gas that's used in specialized lighting and lasers, especially where a bright, stable 
         light is needed. It's chemically inert, meaning it doesn't react much with other elements, which makes it useful
-        in controlled environments. Krypton is also used in high- performance light bulbs and photographic flashes. It's
+        in controlled environments. Krypton is also used in high-performance light bulbs and photographic flashes. It's
         rare in Earth's atmosphere, making up only a tiny fraction of the air. And no, it doesn't weaken superheroes, at least
         not outside of comics!`
     },
@@ -514,9 +622,12 @@ const elements = [
         name: "Rubidium",
         symbol: "Rb",
         number: 37,
+        mass: "85.468",
         group: 1,
         period: 5,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "10/10 - Extremely reactive metal that can ignite in air and explode on contact with water.",
         image: "images/rubidium.png",
         fact: `Rubidium is a highly reactive alkali metal that can ignite when exposed to air and reacts violently with 
         water. Because of its extreme reactivity, it's usually stored in sealed containers or under oil. Rubidium is used
@@ -528,9 +639,12 @@ const elements = [
         name: "Strontium",
         symbol: "Sr",
         number: 38,
+        mass: "87.62",
         group: 2,
         period: 5,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "4/10 - Reactive metal; some compounds can be harmful and flammable.",
         image: "images/strontium.png",
         fact: `Strontium is best known for producing the bright red color in fireworks and flares. Its compounds emit a 
         vivid red light when burned, making it a key ingredient in pyrotechnics. Strontium is also used in some medical
@@ -542,11 +656,14 @@ const elements = [
         name: "Yttrium",
         symbol: "Y",
         number: 39,
+        mass: "88.906",
         group: 3,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, though dust and compounds can be irritating if inhaled.",
         image: "images/yttrium.png",
-        fact: `Yttrium is a metal used in LEDs, superconductors, and advanced materials.It plays a role in producing 
+        fact: `Yttrium is a metal used in LEDs, superconductors, and advanced materials. It plays a role in producing 
         certain colors in displays, especially in phosphors used for lighting and screens. Yttrium is also used in high
         temperature superconductors, which can conduct electricity with little to no resistance under certain conditions.
         It often appears alongside rare earth elements and is important in modern electronics. It's not widely recognized,
@@ -556,13 +673,16 @@ const elements = [
         name: "Zirconium",
         symbol: "Zr",
         number: 40,
+        mass: "91.224",
         group: 4,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally safe, but fine powder can be flammable and inhalation may be harmful.",
         image: "images/zirconium.png",
         fact: `Zirconium is a corrosion resistant metal that's widely used in nuclear reactors and high temperature 
         environments. It doesn't react easily with water or steam at high temperatures, which makes it ideal for reactor
-        components. Zirconium compounds are also used in ceramics and heat - resistant materials. In jewelry, zircon
+        components. Zirconium compounds are also used in ceramics and heat-resistant materials. In jewelry, zircon
         (a mineral containing zirconium) is sometimes used as a diamond substitute. It's built for environments where
         durability really matters.`
     },
@@ -570,9 +690,12 @@ const elements = [
         name: "Niobium",
         symbol: "Nb",
         number: 41,
+        mass: "92.906",
         group: 5,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Low toxicity and generally safe, though dust can be irritating if inhaled.",
         image: "images/niobium.png",
         fact: `Niobium is a metal used to strengthen steel and improve its resistance to heat and corrosion. Even in 
         small amounts, it makes materials much more durable, which is why it's used in pipelines, buildings, and
@@ -584,9 +707,12 @@ const elements = [
         name: "Molybdenum",
         symbol: "Mo",
         number: 42,
+        mass: "95.95",
         group: 6,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally low toxicity, but high exposure can cause health issues.",
         image: "images/molybdenum.png",
         fact: `Molybdenum is a metal known for helping materials withstand extremely high temperatures. It's commonly 
         added to steel alloys to improve strength and resistance to heat and pressure, especially in engines and
@@ -598,25 +724,31 @@ const elements = [
         name: "Technetium",
         symbol: "Tc",
         number: 43,
+        mass: "[98]",
         group: 7,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "8/10 - Radioactive element that can pose health risks with exposure.",
         image: "images/technetium.png",
         fact: `Technetium is a radioactive element and was the first element ever produced artificially in a laboratory.
         It doesn't occur naturally in large amounts, so it had to be created through nuclear reactions. Today, it's widely
         used in medical imaging, especially in diagnostic scans that help doctors see inside the body. Its radioactive
-        properties make it ideal for tracing processes in the body without causing long- term damage. It's one of the most
+        properties make it ideal for tracing processes in the body without causing long-term damage. It's one of the most
         important elements in modern nuclear medicine.`
     },
     {
         name: "Ruthenium",
         symbol: "Ru",
         number: 44,
+        mass: "101.07",
         group: 8,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "4/10 - Some compounds are toxic and can be harmful with prolonged exposure.",
         image: "images/ruthenium.png",
-        fact: `Ruthenium is a rare metal used in electronics, catalysts, and wear resistant coatings. It can improve the 
+        fact: `Ruthenium is a rare metal used in electronics, catalysts, and wear-resistant coatings. It can improve the 
         durability and efficiency of other materials, especially in chemical reactions and electrical contacts. Ruthenium
         is also used in some specialized alloys to increase hardness and resistance to corrosion. In electronics, it helps
         maintain stable performance over time. It's often used in small amounts, but it plays a big role in improving
@@ -626,13 +758,16 @@ const elements = [
         name: "Rhodium",
         symbol: "Rh",
         number: 45,
+        mass: "102.91",
         group: 9,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally low toxicity, but compounds can be hazardous in certain conditions.",
         image: "images/rhodium.png",
         fact: `Rhodium is a rare and extremely valuable metal best known for its use in catalytic converters, where it 
-        helps reduce harmful emissions from vehicles.It's highly reflective and resistant to corrosion, which also makes
-        it useful in coatings and high- end finishes. Rhodium doesn't tarnish easily, so it's sometimes used in jewelry to
+        helps reduce harmful emissions from vehicles. It's highly reflective and resistant to corrosion, which also makes
+        it useful in coatings and high-end finishes. Rhodium doesn't tarnish easily, so it's sometimes used in jewelry to
         maintain a bright appearance. Its rarity and usefulness in emission control make it one of the most expensive metals.
         It's a small component with a major environmental impact.`
     },
@@ -640,23 +775,29 @@ const elements = [
         name: "Palladium",
         symbol: "Pd",
         number: 46,
+        mass: "106.42",
         group: 10,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally low toxicity, but prolonged exposure to compounds can be harmful.",
         image: "images/palladium.png",
         fact: `Palladium is a rare metal widely used in catalytic converters, where it helps reduce harmful emissions from
         vehicles. It can absorb large amounts of hydrogen, which makes it interesting for hydrogen storage and fuel
         technologies. Palladium is also used in electronics, dentistry, and jewelry due to its durability and resistance
-        to corrosion. Its rarity and demand in industry have made it quite valuable.It plays a major role in cleaner energy
+        to corrosion. Its rarity and demand in industry have made it quite valuable. It plays a major role in cleaner energy
         and environmental protection.`
     },
     {
         name: "Silver",
         symbol: "Ag",
         number: 47,
+        mass: "107.87",
         group: 11,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, though excessive exposure can cause health issues.",
         image: "images/silver.png",
         fact: `Silver is one of the best electrical conductors of any element, making it essential for electronics, wiring,
         and high performance components. It's also been used as currency and in jewelry for thousands of years due to its
@@ -668,9 +809,12 @@ const elements = [
         name: "Cadmium",
         symbol: "Cd",
         number: 48,
+        mass: "112.41",
         group: 12,
         period: 5,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "9/10 - Highly toxic metal that can cause serious health issues with exposure.",
         image: "images/cadmium.png",
         fact: `Cadmium is a metal used in rechargeable batteries, coatings, and pigments. It resists corrosion well, which
         makes it useful for protecting other metals. However, cadmium is also toxic, so its use is carefully controlled
@@ -682,9 +826,12 @@ const elements = [
         name: "Indium",
         symbol: "In",
         number: 49,
+        mass: "114.82",
         group: 13,
         period: 5,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, but compounds can be harmful with prolonged exposure.",
         image: "images/indium.png",
         fact: `Indium is a soft metal that plays a key role in touchscreens, LCD displays, and modern electronics. It's
         commonly used in the form of indium tin oxide, a transparent conductive material that allows screens to both
@@ -696,9 +843,12 @@ const elements = [
         name: "Tin",
         symbol: "Sn",
         number: 50,
+        mass: "118.71",
         group: 14,
         period: 5,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Generally safe, though some compounds can be toxic in high amounts.",
         image: "images/tin.png",
         fact: `Tin is a metal known for its use in solder, which connects electronic components together. It has a 
         relatively low melting point, making it easy to work with in manufacturing and electronics. Tin is also used to
@@ -710,9 +860,12 @@ const elements = [
         name: "Antimony",
         symbol: "Sb",
         number: 51,
+        mass: "121.76",
         group: 15,
         period: 5,
         category: "Metalloid",
+        state: "Solid",
+        danger: "6/10 - Toxic in significant amounts, and some compounds can be hazardous.",
         image: "images/antimony.png",
         fact: `Antimony is a metalloid used in flame retardants, alloys, and electronics. It helps materials resist 
         burning, which makes it useful in safety applications like plastics and textiles. When combined with metals like
@@ -724,9 +877,12 @@ const elements = [
         name: "Tellurium",
         symbol: "Te",
         number: 52,
+        mass: "127.60",
         group: 16,
         period: 5,
         category: "Metalloid",
+        state: "Solid",
+        danger: "4/10 - Low to moderate toxicity, but exposure can be harmful and cause irritation.",
         image: "images/tellurium.png",
         fact: `Tellurium is a rare metalloid used in solar panels, thermoelectric devices, and alloys. It can convert 
         heat into electricity, which makes it useful in specialized energy applications. Tellurium is often combined
@@ -738,12 +894,15 @@ const elements = [
         name: "Iodine",
         symbol: "I",
         number: 53,
+        mass: "126.90",
         group: 17,
         period: 5,
         category: "Halogen",
+        state: "Solid",
+        danger: "5/10 - Essential in small amounts, but too much can be toxic and irritating.",
         image: "images/iodine.png",
         fact: `Iodine is a halogen that's essential for human health, especially for proper thyroid function. It's
-        commonly added to table salt to prevent iodine deficiency, which can lead to health problems. odine is also
+        commonly added to table salt to prevent iodine deficiency, which can lead to health problems. Iodine is also
         used as a disinfectant because it can kill bacteria and other microorganisms. In medicine, it's used in imaging
         and treatments involving the thyroid gland. It's one of the few elements where even small amounts make a big
         biological difference.`
@@ -752,9 +911,12 @@ const elements = [
         name: "Xenon",
         symbol: "Xe",
         number: 54,
+        mass: "131.29",
         group: 18,
         period: 5,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "0/10 - Inert and non-toxic, but can displace oxygen in enclosed spaces.",
         image: "images/xenon.png",
         fact: `Xenon is a noble gas used in high-intensity lamps, flash photography, and spacecraft propulsion systems.
         When electrically excited, it produces a bright white-blue light, making it useful in lighting and imaging. Xenon
@@ -766,9 +928,12 @@ const elements = [
         name: "Cesium",
         symbol: "Cs",
         number: 55,
+        mass: "132.91",
         group: 1,
         period: 6,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "10/10 - Extremely reactive metal that can explode violently on contact with water.",
         image: "images/cesium.png",
         fact: `Cesium is a highly reactive metal that's best known for its use in atomic clocks, which are the most accurate
         timekeeping devices in the world. It melts at just above room temperature, meaning it can become liquid very easily.
@@ -780,38 +945,46 @@ const elements = [
         name: "Barium",
         symbol: "Ba",
         number: 56,
+        mass: "137.33",
         group: 2,
         period: 6,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "6/10 - Reactive metal, and many soluble compounds are toxic.",
         image: "images/barium.png",
         fact: `Barium is a reactive metal used in medical imaging and industrial applications. Used in medicine, barium
         compounds are used in X-ray imaging of the digestive system because they block radiation and make internal structures
-        visible. It's also used in drilling fluids for oil and gas exploration. Pure Barium reacts strongly with air and water,
+        visible. It's also used in drilling fluids for oil and gas exploration. Pure barium reacts strongly with air and water,
         so it's not found freely in nature. Its compounds are where most of its practical uses come from.`
     },
-
 
     {
         name: "Lanthanum",
         symbol: "La",
         number: 57,
+        mass: "138.91",
         group: 3,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity overall, but dust and compounds can be harmful if inhaled or swallowed.",
         image: "images/lanthanum.png",
         fact: `Lanthanum is the first element in the lanthanide series. The main use is camera lenses, batteries, and optical
         equipment. It helps improve the clarity and performance of lenses by increasing refractive index. Lanthanum is also
         used in nickel metal hydride batteries, which are found in some hybrid vehicles. Despite being grouped with rare earth
-        elements, it's actually more abundant than the name suggests.It marks the start of a group of elements that are heavily
+        elements, it's actually more abundant than the name suggests. It marks the start of a group of elements that are heavily
         used in modern technology.`
     },
     {
         name: "Cerium",
         symbol: "Ce",
         number: 58,
+        mass: "140.12",
         group: 4,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, but fine dust can be flammable and compounds may irritate the body.",
         image: "images/cerium.png",
         fact: `Cerium is one of the most abundant rare earth elements and is used in catalytic converters, glass polishing, 
         and lighter flints. It can easily switch between oxidation states, which makes it useful in chemical reactions and
@@ -822,9 +995,12 @@ const elements = [
         name: "Praseodymium",
         symbol: "Pr",
         number: 59,
+        mass: "140.91",
         group: 5,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity overall, but dust and certain compounds can be irritating or harmful with exposure.",
         image: "images/praseodymium.png",
         fact: `Praseodymium is used in strong magnets, aircraft engines, and specialized glass and ceramics. It helps create
         materials that can withstand high temperatures and mechanical stress. In glassmaking, it can produce a yellow/green
@@ -835,9 +1011,12 @@ const elements = [
         name: "Neodymium",
         symbol: "Nd",
         number: 60,
+        mass: "144.24",
         group: 6,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though dust and compounds can be irritating and fine powder may be flammable.",
         image: "images/neodymium.png",
         fact: `Neodymium is iconic for making powerful permanent magnets, which are used in headphones, speakers, electric 
         motors, and wind turbines. These magnets are among the strongest available and are essential in many modern devices.
@@ -849,24 +1028,30 @@ const elements = [
         name: "Promethium",
         symbol: "Pm",
         number: 61,
+        mass: "[145] - no stable Isotopes",
         group: 7,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "9/10 - Radioactive element that poses health risks with exposure.",
         image: "images/promethium.png",
         fact: `Promethium is a radioactive element that doesn't occur naturally in significant amounts on Earth. It's 
         typically produced in nuclear reactors and is used in specialized applications like nuclear batteries and
         luminous paint. Because it emits radiation, it can generate energy over long periods without needing
         replacement. Promethium is one of the few elements named after a mythological figure, Prometheus, reflecting
-        its connection to energy and fire.Its rarity and radioactivity limit its everyday use, but it has very specific
+        its connection to energy and fire. Its rarity and radioactivity limit its everyday use, but it has very specific
         technological applications.`
     },
     {
         name: "Samarium",
         symbol: "Sm",
         number: 62,
+        mass: "150.36",
         group: 8,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though compounds and dust can be irritating with exposure.",
         image: "images/samarium.png",
         fact: `Samarium is used in powerful magnets, nuclear reactors, and medical treatments. Samarium cobalt magnets
         are strong and resistant to high temperatures, making them useful in aerospace and electronics. It's also used
@@ -878,41 +1063,50 @@ const elements = [
         name: "Europium",
         symbol: "Eu",
         number: 63,
+        mass: "151.96",
         group: 9,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, though compounds can be mildly hazardous with exposure.",
         image: "images/europium.png",
-        fact: `Europium is probably  best known for producing bright red and blue colors in screens and lighting. It's 
-        used in phosphors for TVs, monitors, and LED lights, helping create vivid and accurate colors.Europium compounds 
-        glow under ultraviolet light, which makes them useful in security features like anti- counterfeiting measures.
-        It's also used in fluorescent lamps and other lighting technologies.Much of the color you see on modern screens
+        fact: `Europium is probably best known for producing bright red and blue colors in screens and lighting. It's 
+        used in phosphors for TVs, monitors, and LED lights, helping create vivid and accurate colors. Europium compounds 
+        glow under ultraviolet light, which makes them useful in security features like anti-counterfeiting measures.
+        It's also used in fluorescent lamps and other lighting technologies. Much of the color you see on modern screens
         depends on elements like europium.`
     },
     {
         name: "Gadolinium",
         symbol: "Gd",
         number: 64,
+        mass: "157.25",
         group: 10,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "4/10 - Generally low toxicity, but compounds used in medicine must be carefully controlled.",
         image: "images/gadolinium.png",
         fact: `Gadolinium is used in MRI scans and advanced magnetic materials. In medicine (common theme now, eh?), 
-        gadolinium based compounds are used as contrast agents to improve the clarity of imaging. It also has strong
+        gadolinium-based compounds are used as contrast agents to improve the clarity of imaging. It also has strong
         magnetic properties, which makes it useful in research and certain types of electronic devices. Gadolinium reacts
-        strongly to magnetic fields, even at room temperature, which is somewhat unusual.Its combination of medical and
+        strongly to magnetic fields, even at room temperature, which is somewhat unusual. Its combination of medical and
         physical applications makes it especially versatile.`
     },
     {
         name: "Terbium",
         symbol: "Tb",
         number: 65,
+        mass: "158.93",
         group: 11,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though compounds and dust can be harmful with prolonged exposure.",
         image: "images/terbium.png",
-        fact: `Terbium is used in green phosphors, solid- state devices, and advanced materials. It helps produce green
+        fact: `Terbium is used in green phosphors, solid-state devices, and advanced materials. It helps produce green
         light in display screens and is often used alongside europium for color balance. Terbium is also used in specialized
-        alloys that respond to magnetic fields, which can be useful in sensors and actuators.Its compounds can enhance the
+        alloys that respond to magnetic fields, which can be useful in sensors and actuators. Its compounds can enhance the
         performance of electronic and optical systems. It plays a supporting role in many technologies that rely on precise
         color and responsiveness.`
     },
@@ -920,9 +1114,12 @@ const elements = [
         name: "Dysprosium",
         symbol: "Dy",
         number: 66,
+        mass: "162.50",
         group: 12,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though dust and compounds can be harmful with prolonged exposure.",
         image: "images/dysprosium.png",
         fact: `Dysprosium is used in high performance magnets, especially those that need to operate at high temperatures.
         It's often added to neodymium magnets to improve their stability and resistance to heat, which is important in electric
@@ -934,13 +1131,16 @@ const elements = [
         name: "Holmium",
         symbol: "Ho",
         number: 67,
+        mass: "164.93",
         group: 13,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though dust and compounds can be irritating or harmful with exposure.",
         image: "images/holmium.png",
         fact: `Holmium has one of the strongest magnetic properties of any element, which makes it useful in specialized magnetic
-        applications (Bet you saw that coming, most Lanthanides have strong magnetic properties). It's used in certain types of 
-        lasers, particularly in medical and dental procedures.Holmium can also absorb neutrons, making it useful in nuclear 
+        applications (bet you saw that coming, most lanthanides have strong magnetic properties). It's used in certain types of 
+        lasers, particularly in medical and dental procedures. Holmium can also absorb neutrons, making it useful in nuclear 
         control systems. Its compounds are sometimes used to create colored glass. It's not widely used, but in the right situations,
         its properties are very specific and valuable.`
     },
@@ -948,9 +1148,12 @@ const elements = [
         name: "Erbium",
         symbol: "Er",
         number: 68,
+        mass: "167.26",
         group: 14,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, though compounds and dust can be mildly irritating.",
         image: "images/erbium.png",
         fact: `Erbium is used in fiber optic communication systems, where it helps amplify signals over long distances. It's 
         essential for keeping internet and data transmissions strong and reliable. Erbium is also used in lasers and can produce
@@ -961,39 +1164,48 @@ const elements = [
         name: "Thulium",
         symbol: "Tm",
         number: 69,
+        mass: "168.93",
         group: 15,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though radiation-emitting isotopes and compounds require careful handling.",
         image: "images/thulium.png",
-        fact: `Thulium is one of the least abundant lanthanides and is used in portable X - ray devices and certain laser systems.
+        fact: `Thulium is one of the least abundant lanthanides and is used in portable X-ray devices and certain laser systems.
         It can emit radiation in a controlled way, which makes it useful for imaging applications. Thulium is also studied for
-        use in nuclear medicine and energy technologies.Because it's so rare, it's typically used only in specialized applications.
+        use in nuclear medicine and energy technologies. Because it's so rare, it's typically used only in specialized applications.
         Its uses are focused and precise rather than widespread.`
     },
     {
         name: "Ytterbium",
         symbol: "Yb",
         number: 70,
+        mass: "173.05",
         group: 16,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "2/10 - Low toxicity, though compounds and dust may cause irritation.",
         image: "images/ytterbium.png",
-        fact: `Ytterbium is used in lasers, atomic clocks, and stress measurement devices. It can
-        help improve the accuracy of timekeeping systems and is used in research involving precision measurement. Ytterbium is
-        also added to alloys to improve strength and resistance to wear. In some cases, it's used to monitor changes in materials
-        under pressure.Its applications focus on accuracy, measurement, and controlled performance.`
+        fact: `Ytterbium is used in lasers, atomic clocks, and stress measurement devices. It can help improve the accuracy 
+        of timekeeping systems and is used in research involving precision measurement. Ytterbium is also added to alloys to 
+        improve strength and resistance to wear. In some cases, it's used to monitor changes in materials under pressure.
+        Its applications focus on accuracy, measurement, and controlled performance.`
     },
     {
         name: "Lutetium",
         symbol: "Lu",
         number: 71,
+        mass: "174.97",
         group: 17,
         period: 8,
         category: "Lanthanide",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though compounds and dust can be harmful with prolonged exposure.",
         image: "images/lutetium.png",
         fact: `Lutetium is the last element in the lanthanide series and is used in medical imaging and cancer treatments. 
         Certain isotopes of lutetium are used in targeted radiation therapy, where they help destroy cancer cells while
-        minimizing damage to surrounding tissue.It's also used in PET scan detectors because of its ability to detect
+        minimizing damage to surrounding tissue. It's also used in PET scan detectors because of its ability to detect
         radiation efficiently. Lutetium is relatively rare and expensive, so its use is focused on high value applications.
         It marks the transition from the lanthanides back into the transition metals.`
     },
@@ -1001,11 +1213,14 @@ const elements = [
         name: "Hafnium",
         symbol: "Hf",
         number: 72,
+        mass: "178.49",
         group: 4,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally low toxicity, but fine powder can be flammable and inhalation may be harmful.",
         image: "images/hafnium.png",
-        fact: `Getting back into metals, Hafnium is a metal used in nuclear reactors and high temperature alloys. It has
+        fact: `Getting back into metals, hafnium is a metal used in nuclear reactors and high temperature alloys. It has
         a strong ability to absorb neutrons, which makes it useful for controlling nuclear reactions safely. Hafnium is
         also used in microelectronics, particularly in advanced processors where it helps improve transistor performance.
         Its resistance to heat and corrosion makes it valuable in demanding environments. It often appears alongside
@@ -1015,23 +1230,29 @@ const elements = [
         name: "Tantalum",
         symbol: "Ta",
         number: 73,
+        mass: "180.95",
         group: 5,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "2/10 - Very stable and corrosion-resistant, with low toxicity under normal conditions.",
         image: "images/tantalum.png",
         fact: `Tantalum is widely used in electronics, especially capacitors found in phones, computers, and other devices.
         It can store and release electrical energy efficiently, making it ideal for compact electronic components.
         Tantalum is also highly resistant to corrosion, which allows it to be used in medical implants and chemical equipment.
-        Its reliability makes it a key material in modern electronics.It's one of the elements that helps keep devices
+        Its reliability makes it a key material in modern electronics. It's one of the elements that helps keep devices
         stable and consistent.`
     },
     {
         name: "Tungsten",
         symbol: "W",
         number: 74,
+        mass: "183.84",
         group: 6,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "4/10 - Generally stable, but dust and compounds can be harmful if inhaled.",
         image: "images/tungsten.png",
         fact: `Tungsten has the highest melting point of any metal, which makes it incredibly useful in extreme heat 
         environments. It's used in things like light bulb filaments, cutting tools, and high temperature machinery. Tungsten
@@ -1042,13 +1263,16 @@ const elements = [
         name: "Rhenium",
         symbol: "Re",
         number: 75,
+        mass: "186.21",
         group: 7,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Low toxicity, though compounds can be harmful with prolonged exposure.",
         image: "images/rhenium.png",
-        fact: `Rhenium is a rare metal used in jet engines and high- performance alloys. It helps materials maintain
+        fact: `Rhenium is a rare metal used in jet engines and high-performance alloys. It helps materials maintain
         strength under extreme heat and stress, which is critical in aerospace applications. Rhenium is also used as a
-        catalyst in refining petroleum, improving the efficiency of chemical processes.Because of its rarity, it's used
+        catalyst in refining petroleum, improving the efficiency of chemical processes. Because of its rarity, it's used
         in small amounts but has a large impact on performance. It's a key element in environments where failure isn't
         an option.`
     },
@@ -1056,9 +1280,12 @@ const elements = [
         name: "Osmium",
         symbol: "Os",
         number: 76,
+        mass: "190.23",
         group: 8,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "7/10 - Can form highly toxic osmium tetroxide when exposed to air.",
         image: "images/osmium.png",
         fact: `One of the densest elements known, making it extremely heavy for its size. It's used in specialized alloys
         where durability and hardness are important, such as in fountain pen tips and electrical contacts. Osmium is also
@@ -1069,9 +1296,12 @@ const elements = [
         name: "Iridium",
         symbol: "Ir",
         number: 77,
+        mass: "192.22",
         group: 9,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Extremely stable and corrosion-resistant, with low toxicity under normal conditions.",
         image: "images/iridium.png",
         fact: `Iridium is a very dense and corrosion resistant metal that's used in spark plugs, electronics, and high 
         temperature equipment. It can withstand extreme environments without degrading, which makes it valuable in both
@@ -1083,24 +1313,30 @@ const elements = [
         name: "Platinum",
         symbol: "Pt",
         number: 78,
+        mass: "195.08",
         group: 10,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "3/10 - Generally low toxicity, though some compounds can be harmful.",
         image: "images/platinum.png",
         fact: `Platinum is a rare metal used in catalytic converters, electronics, and jewelry. It plays a key role in 
         reducing vehicle emissions by helping chemical reactions occur more efficiently. Platinum is also highly resistant
-        to corrosion and maintains its appearance over time, which makes it desirable in jewelry.In industry, it's used
+        to corrosion and maintains its appearance over time, which makes it desirable in jewelry. In industry, it's used
         in chemical processing and laboratory equipment. Its combination of stability and reactivity makes it very versatile.`
     },
     {
         name: "Gold",
         symbol: "Au",
         number: 79,
+        mass: "196.97",
         group: 11,
         period: 6,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "1/10 - Extremely stable and non-toxic in pure form.",
         image: "images/gold.png",
-        fact: `Gold is a well- known metal valued for its use in jewelry, electronics, and currency. It doesn't corrode or
+        fact: `Gold is a well-known metal valued for its use in jewelry, electronics, and currency. It doesn't corrode or
         tarnish, which is why it maintains its appearance over long periods of time. Gold is also an excellent conductor of
         electricity, so it's used in high reliability electronic components. Its softness makes it easy to shape and work
         with. It's basically been humanity's favorite shiny object for thousands of years!`
@@ -1109,11 +1345,14 @@ const elements = [
         name: "Mercury",
         symbol: "Hg",
         number: 80,
+        mass: "200.59",
         group: 12,
         period: 6,
         category: "Transition Metal",
+        state: "Liquid",
+        danger: "10/10 - Highly toxic, especially as vapor; can cause severe neurological damage.",
         image: "images/mercury.png",
-        fact: `While classified as a metal, Mercury is actually a liquid at room temperature, which makes it very different
+        fact: `While classified as a metal, mercury is actually a liquid at room temperature, which makes it very different
         from most other metals. It has been used in thermometers, barometers, and switches because of its ability to flow
         and conduct electricity. Mercury is also used in some industrial processes and older types of lighting. However,
         it is highly toxic, so its use is now heavily restricted and carefully controlled. Its unique liquid form makes it
@@ -1123,9 +1362,12 @@ const elements = [
         name: "Thallium",
         symbol: "Tl",
         number: 81,
+        mass: "204.38",
         group: 13,
         period: 6,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "10/10 - Extremely toxic; can cause severe neurological and organ damage.",
         image: "images/thallium.png",
         fact: `Thallium is a soft, dense metal that has been used in electronics, optical lenses, and specialized glass. It
         can improve the performance of certain materials by altering their electrical or optical properties. Thallium compounds
@@ -1137,23 +1379,29 @@ const elements = [
         name: "Lead",
         symbol: "Pb",
         number: 82,
+        mass: "207.2",
         group: 14,
         period: 6,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "9/10 - Highly toxic, especially with long-term exposure; can damage the nervous system.",
         image: "images/lead.png",
         fact: `Lead is a dense metal known for its use in batteries, radiation shielding, and construction materials. It's very
         effective at blocking radiation, which makes it useful in medical and nuclear settings. Lead has been used for thousands
         of years, including in pipes and paints, though many of these uses have been reduced due to health concerns. It's also
-        a key component in lead- acid batteries, which are still widely used today. Its combination of density and malleability
+        a key component in lead-acid batteries, which are still widely used today. Its combination of density and malleability
         makes it useful in specific, controlled applications.`
     },
     {
         name: "Bismuth",
         symbol: "Bi",
         number: 83,
+        mass: "208.98",
         group: 15,
         period: 6,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "1/10 - Very low toxicity compared to similar heavy metals.",
         image: "images/bismuth.png",
         fact: `Bismuth is a metal known for its low toxicity and unique crystal structures, which often form colorful, geometric 
         patterns. It's used in pharmaceuticals, cosmetics, and low melting alloys. Bismuth compounds are found in some medications,
@@ -1164,9 +1412,12 @@ const elements = [
         name: "Polonium",
         symbol: "Po",
         number: 84,
+        mass: "[209]",
         group: 16,
         period: 6,
         category: "Metalloid",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive and highly toxic, even in tiny amounts.",
         image: "images/polonium.png",
         fact: `Polonium is a highly radioactive element that was discovered by Marie Curie. It emits a significant amount of 
         radiation and heat, which makes it useful in specialized applications like antistatic devices and certain power
@@ -1178,11 +1429,14 @@ const elements = [
         name: "Astatine",
         symbol: "At",
         number: 85,
+        mass: "[210]",
         group: 17,
         period: 6,
         category: "Halogen",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive and unstable, posing serious health risks.",
         image: "images/astatine.png",
-        fact: `One of the rarest naturally occuring elements: Astatine is also radioactive. Very little is known about it 
+        fact: `One of the rarest naturally occurring elements, astatine is also radioactive. Very little is known about it 
         compared to other elements because it exists in such small quantities and decays quickly. It is classified as a halogen,
         but its properties are not fully studied due to its instability. Astatine is being researched for potential use in
         targeted cancer treatments, where its radiation could be used to destroy tumor cells. It remains one of the least
@@ -1192,9 +1446,12 @@ const elements = [
         name: "Radon",
         symbol: "Rn",
         number: 86,
+        mass: "[222]",
         group: 18,
         period: 6,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "9/10 - Radioactive gas that can cause lung cancer with prolonged exposure.",
         image: "images/radon.png",
         fact: `Radon is a radioactive noble gas that forms naturally from the decay of uranium in rocks and soil. It's
         colorless and odorless, which makes it difficult to detect without special equipment. Radon can accumulate in
@@ -1206,9 +1463,12 @@ const elements = [
         name: "Francium",
         symbol: "Fr",
         number: 87,
+        mass: "[223]",
         group: 1,
         period: 7,
         category: "Alkali Metal",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive and highly reactive, though rarely encountered.",
         image: "images/francium.png",
         fact: `Francium is an extremely rare and highly radioactive metal that exists only in tiny amounts at any given 
         time. It decays very quickly, so it's difficult to study and has almost no practical applications. Francium is part
@@ -1220,27 +1480,32 @@ const elements = [
         name: "Radium",
         symbol: "Ra",
         number: 88,
+        mass: "[226]",
         group: 2,
         period: 7,
         category: "Alkaline Earth Metal",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive and dangerous to biological tissue.",
         image: "images/radium.png",
         fact: `Radium is a radioactive metal that was once used in glow in the dark paints and medical treatments. It emits 
         radiation continuously, which causes certain materials to glow without needing light. Radium played an important role
-        in early research on radioactivity, but its health risks were not fully understood at the time.Today, it is handled
-        very carefully due to its dangerous radiation. It literally glows in the dark,  just not in a way you'd want anywhere
+        in early research on radioactivity, but its health risks were not fully understood at the time. Today, it is handled
+        very carefully due to its dangerous radiation. It literally glows in the dark, just not in a way you'd want anywhere
         near you!`
     },
-
     {
         name: "Actinium",
         symbol: "Ac",
         number: 89,
+        mass: "[227]",
         group: 3,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive element that poses serious health risks with exposure.",
         image: "images/actinium.png",
-        fact: `Starting off the Actidides, Actinium is a highly radioactive element. It emits radiation and is used in specialized
-        applications, including research and some forms of cancer treatment. Actinium based isotopes are studied for their ability
+        fact: `Starting off the actinides, actinium is a highly radioactive element. It emits radiation and is used in specialized
+        applications, including research and some forms of cancer treatment. Actinium-based isotopes are studied for their ability
         to deliver targeted radiation therapy. It's not found in large quantities and is typically handled only in controlled
         environments. Its role is mainly in scientific and medical research.`
     },
@@ -1248,12 +1513,15 @@ const elements = [
         name: "Thorium",
         symbol: "Th",
         number: 90,
+        mass: "232.04",
         group: 4,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "8/10 - Radioactive metal that can pose health risks with prolonged exposure.",
         image: "images/thorium.png",
-        fact: `Thorium is a radioactive metal that has been studied as a potential alternative nuclear fuel .It is more abundant
-        than uranium and can produce energy through nuclear reactions.Thorium has also been used in gas mantles for lighting and
+        fact: `Thorium is a radioactive metal that has been studied as a potential alternative nuclear fuel. It is more abundant
+        than uranium and can produce energy through nuclear reactions. Thorium has also been used in gas mantles for lighting and
         in certain alloys. Because of its properties, it has gained attention as a possible cleaner option for nuclear power. Its
         role in future energy systems is still being explored.`
     },
@@ -1261,11 +1529,14 @@ const elements = [
         name: "Protactinium",
         symbol: "Pa",
         number: 91,
+        mass: "231.04",
         group: 5,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive and toxic, posing serious health risks with exposure.",
         image: "images/protactinium.png",
-        fact: `Very rare, Protactinium is a radioactive element that appears in the decay chain of uranium. It’s extremely difficult
+        fact: `Very rare, protactinium is a radioactive element that appears in the decay chain of uranium. It's extremely difficult
         to isolate, so it has very limited practical use outside of scientific research. Protactinium is highly toxic and radioactive,
         which makes it challenging to study safely. Most of what we know about it comes from controlled laboratory work. It mainly
         exists as a stepping stone in nuclear processes rather than as a widely used material.`
@@ -1274,36 +1545,45 @@ const elements = [
         name: "Uranium",
         symbol: "U",
         number: 92,
+        mass: "238.03",
         group: 6,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Radioactive and chemically toxic; can cause severe health and environmental damage.",
         image: "images/uranium.png",
         fact: `Uranium is a heavy radioactive metal best known for its role in nuclear power and nuclear weapons. Certain isotopes
-        of uranium can undergo fission, releasing large amounts of energy, which is harnessed in nuclear reactors. It’s also used
+        of uranium can undergo fission, releasing large amounts of energy, which is harnessed in nuclear reactors. It's also used
         in military applications and has been studied extensively for energy production. Uranium is naturally occurring but must be
-        processed to be useful in most applications. It’s the element that can power entire cities or do a lot worse if things
+        processed to be useful in most applications. It's the element that can power entire cities or do a lot worse if things
         go wrong!`
     },
     {
         name: "Neptunium",
         symbol: "Np",
         number: 93,
+        mass: "[237]",
         group: 7,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive element with significant health risks.",
         image: "images/neptunium.png",
         fact: `Neptunium is a synthetic radioactive element produced in nuclear reactors as a byproduct of uranium processing. 
-        It’s not found in significant natural amounts and is mainly used in research and nuclear science. Neptunium can undergo
-        radioactive decay into other elements, including plutonium. It’s also studied for potential use in nuclear fuel cycles.
+        It's not found in significant natural amounts and is mainly used in research and nuclear science. Neptunium can undergo
+        radioactive decay into other elements, including plutonium. It's also studied for potential use in nuclear fuel cycles.
         Its role is mostly behind the scenes in nuclear chemistry.`
     },
     {
         name: "Plutonium",
         symbol: "Pu",
         number: 94,
+        mass: "[244]",
         group: 8,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive and highly toxic, even in very small amounts.",
         image: "images/plutonium.png",
         fact: `Plutonium is a highly radioactive element used in nuclear weapons and nuclear reactors. It can undergo fission 
         like uranium, making it a powerful energy source as well as a major safety concern. Plutonium is produced in reactors
@@ -1314,61 +1594,76 @@ const elements = [
         name: "Americium",
         symbol: "Am",
         number: 95,
+        mass: "[243]",
         group: 9,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "9/10 - Radioactive and toxic, though used safely in controlled amounts.",
         image: "images/americium.png",
         fact: `Americium is a radioactive element commonly used in smoke detectors, where it helps detect smoke particles in
         the air. It emits radiation that interacts with air inside the detector, and any disruption triggers the alarm.
-        Americium is also used in some industrial gauges and research applications. It’s typically produced in nuclear reactors
-        rather than found naturally. It’s a small but important part of everyday safety systems.`
+        Americium is also used in some industrial gauges and research applications. It's typically produced in nuclear reactors
+        rather than found naturally. It's a small but important part of everyday safety systems.`
     },
     {
         name: "Curium",
         symbol: "Cm",
         number: 96,
+        mass: "[247]",
         group: 10,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive element that emits intense radiation and heat.",
         image: "images/curium.png",
-        fact: `Curium is a radioactive element produced in nuclear reactors and named after Marie and Pierre Curie. It’s used
+        fact: `Curium is a radioactive element produced in nuclear reactors and named after Marie and Pierre Curie. It's used
         in research and has been studied for potential use in space exploration, where its heat output could be useful for
-        power generation. Curium emits strong radiation, which makes it difficult to handle safely. It’s also used in the
-        production of heavier elements through nuclear reactions.Its role is mostly within advanced nuclear science.`
+        power generation. Curium emits strong radiation, which makes it difficult to handle safely. It's also used in the
+        production of heavier elements through nuclear reactions. Its role is mostly within advanced nuclear science.`
     },
     {
         name: "Berkelium",
         symbol: "Bk",
         number: 97,
+        mass: "[247]",
         group: 11,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive with significant health risks on exposure.",
         image: "images/berkelium.png",
         fact: `Berkelium is a synthetic radioactive element created in laboratories and used primarily in scientific research.
         It has been important in the discovery of even heavier elements, acting as a starting material in nuclear experiments.
-        Berkelium doesn’t have widespread practical applications due to its instability and limited availability. Most of what
-        we know about it comes from controlled experiments.It’s a stepping stone element in the study of nuclear chemistry.`
+        Berkelium doesn't have widespread practical applications due to its instability and limited availability. Most of what
+        we know about it comes from controlled experiments. It's a stepping stone element in the study of nuclear chemistry.`
     },
     {
         name: "Californium",
         symbol: "Cf",
         number: 98,
+        mass: "[251]",
         group: 12,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive neutron emitter that requires strict shielding.",
         image: "images/californium.png",
-        fact: `Californium is a powerful radioactive element used as a neutron source. It’s used in applications like starting
-        nuclear reactors, detecting gold and silver in mining, and even in some medical treatments.Californium can release a
+        fact: `Californium is a powerful radioactive element used as a neutron source. It's used in applications like starting
+        nuclear reactors, detecting gold and silver in mining, and even in some medical treatments. Californium can release a
         large number of neutrons, which makes it extremely useful in both industry and research. Because of its radioactivity,
-        it’s handled with strict safety measures.It’s one of the few heavy elements with practical, real world uses.`
+        it's handled with strict safety measures. It's one of the few heavy elements with practical, real world uses.`
     },
     {
         name: "Einsteinium",
         symbol: "Es",
         number: 99,
+        mass: "[252]",
         group: 13,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Highly radioactive and exists only in tiny, hazardous amounts.",
         image: "images/einsteinium.png",
         fact: `Einsteinium is a synthetic element produced in nuclear reactions and is mainly used in scientific research. It 
         was first discovered in the debris of nuclear explosions, which highlights the extreme conditions required to create it.
@@ -1379,65 +1674,80 @@ const elements = [
         name: "Fermium",
         symbol: "Fm",
         number: 100,
+        mass: "[257]",
         group: 14,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "10/10 - Extremely radioactive and unstable, posing serious health risks.",
         image: "images/fermium.png",
-        fact: `And element number one hundred is...Fermium! This is a synthetic radioactive element that is also produced under 
+        fact: `And element number one hundred is... Fermium! This is a synthetic radioactive element that is also produced under 
         extreme conditions, such as nuclear reactions. It has no practical applications outside of research, largely due to its
         short half life and difficulty in production. Fermium is studied to better understand the behavior of heavy atomic nuclei.
-        Like einsteinium, it plays a role in the creation of even heavier elements.It exists mainly as part of advanced nuclear experiments.`
+        Like Einsteinium, it plays a role in the creation of even heavier elements. It exists mainly as part of advanced nuclear experiments.`
     },
     {
         name: "Mendelevium",
         symbol: "Md",
         number: 101,
+        mass: "[258]",
         group: 15,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "? - Exists only in tiny, short-lived amounts; radioactive but not encountered in real-world exposure.",
         image: "images/mendelevium.png",
         fact: `Mendelevium is a synthetic radioactive element named after Dmitri Mendeleev, the creator of the periodic table.
         It was one of the first elements produced one atom at a time in a laboratory, highlighting how difficult these heavy
         elements are to create. Mendelevium has no practical uses outside of scientific research due to its short half life.
-        It’s mainly studied to better understand the behavior of heavy atomic nuclei. Its name reflects its importance in the
+        It's mainly studied to better understand the behavior of heavy atomic nuclei. Its name reflects its importance in the
         history of chemistry.`
     },
     {
         name: "Nobelium",
         symbol: "No",
         number: 102,
+        mass: "[259]",
         group: 16,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "? - Highly radioactive but exists only briefly in controlled lab conditions.",
         image: "images/nobelium.png",
         fact: `Nobelium is a synthetic element named after Alfred Nobel, the inventor of dynamite and founder of the Nobel Prize.
-        It’s produced in particle accelerators and exists only for short periods before decaying. Like many elements in this range,
-        it’s used purely for research into nuclear structure and stability. Nobelium helps scientists study how atomic nuclei behave
+        It's produced in particle accelerators and exists only for short periods before decaying. Like many elements in this range,
+        it's used purely for research into nuclear structure and stability. Nobelium helps scientists study how atomic nuclei behave
         under extreme conditions.`
     },
     {
         name: "Lawrencium",
         symbol: "Lr",
         number: 103,
+        mass: "[262]",
         group: 17,
         period: 9,
         category: "Actinide",
+        state: "Solid",
+        danger: "? - Extremely unstable and only exists momentarily in laboratory environments.",
         image: "images/lawrencium.png",
         fact: `Lawrencium is named after Ernest Lawrence, the inventor of the cyclotron, a device used to create many synthetic
         elements. It marks the end of the actinide series and represents a transition into the heaviest elements on the periodic
-        table. Lawrencium is highly unstable and exists only in controlled laboratory conditions. It’s studied to understand the
+        table. Lawrencium is highly unstable and exists only in controlled laboratory conditions. It's studied to understand the
         limits of atomic structure. Its discovery reflects the advancement of particle physics and experimental chemistry.`
     },
     {
         name: "Rutherfordium",
         symbol: "Rf",
         number: 104,
+        mass: "[267]",
         group: 4,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Synthetic and extremely short-lived; no real-world exposure risk.",
         image: "images/rutherfordium.png",
         fact: `Rutherfordium is named after Ernest Rutherford, a key figure in the development of nuclear physics. It is yet another
-        synthetic element created in particle accelerators and exists only for very short periods. Rutherfordium’s properties are
+        synthetic element created in particle accelerators and exists only for very short periods. Rutherfordium's properties are
         predicted based on its position in the periodic table, as direct observation is limited. It helps scientists test theories
         about how heavy elements should behave. Its name honors one of the pioneers of atomic science.`
     },
@@ -1445,9 +1755,12 @@ const elements = [
         name: "Dubnium",
         symbol: "Db",
         number: 105,
+        mass: "[268]",
         group: 5,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Exists only in lab-created atoms and decays almost instantly.",
         image: "images/dubnium.png",
         fact: `Dubnium is named after the city of Dubna, Russia, where it was discovered and important nuclear research has taken
         place. It is another synthetic element produced in laboratories and has no practical applications outside of research.
@@ -1459,23 +1772,29 @@ const elements = [
         name: "Seaborgium",
         symbol: "Sg",
         number: 106,
+        mass: "[271]",
         group: 6,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Exists only in lab-created atoms and decays almost instantly.",
         image: "images/seaborgium.png",
-        fact: `Seaborgium is a synthetic element named after Glenn T.Seaborg, a key figure in nuclear chemistry. It’s created in
-        particle accelerators and as expected exists only for a very short time before decaying.Scientists study seaborgium to
-        better understand how superheavy elements behave and how far the periodic table can extend.Its properties are mostly
-        predicted based on its position, since it’s difficult to observe directly.It represents a major step in human made
+        fact: `Seaborgium is a synthetic element named after Glenn T. Seaborg, a key figure in nuclear chemistry. It's created in
+        particle accelerators and exists only for a very short time before decaying. Scientists study seaborgium to
+        better understand how superheavy elements behave and how far the periodic table can extend. Its properties are mostly
+        predicted based on its position, since it's difficult to observe directly. It represents a major step in human-made
         element discovery.`
     },
     {
         name: "Bohrium",
         symbol: "Bh",
         number: 107,
+        mass: "[270]",
         group: 7,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Synthetic and extremely short-lived, with no real-world exposure risk.",
         image: "images/bohrium.png",
         fact: `Bohrium is named after Niels Bohr, one of the pioneers of atomic theory. Like other elements in this range, it 
         is synthetic and highly unstable, existing only briefly after being created. Bohrium is produced in laboratories through
@@ -1486,35 +1805,44 @@ const elements = [
         name: "Hassium",
         symbol: "Hs",
         number: 108,
+        mass: "[277]",
         group: 8,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Exists only for fractions of a second in controlled lab conditions.",
         image: "images/hassium.png",
         fact: `Hassium is a synthetic element named after the German state of Hesse, where it was first discovered. It is thought
         to have properties similar to osmium, based on its position in the periodic table. Hassium exists for only fractions of a
         second, making direct study extremely difficult. Researchers rely on theoretical models and limited experimental data
-        to understand it. It’s part of the ongoing effort to map out superheavy elements.`
+        to understand it. It's part of the ongoing effort to map out superheavy elements.`
     },
     {
         name: "Meitnerium",
         symbol: "Mt",
         number: 109,
+        mass: "[278]",
         group: 9,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Extremely unstable and not encountered outside laboratory synthesis.",
         image: "images/meitnerium.png",
         fact: `Meitnerium is named after Lise Meitner, a physicist who contributed to the discovery of nuclear fission. It is
         another synthetic element that exists only briefly before decaying. Meitnerium has no known practical uses and is studied
-        purely for scientific research. Its discovery helps confirm theories about how heavy elements behave. It’s one of many
+        purely for scientific research. Its discovery helps confirm theories about how heavy elements behave. It's one of many
         elements that exist mainly to expand our understanding of atomic science.`
     },
     {
         name: "Darmstadtium",
         symbol: "Ds",
         number: 110,
+        mass: "[281]",
         group: 10,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "? - Decays almost immediately after formation; no practical exposure risk.",
         image: "images/darmstadtium.png",
         fact: `Darmstadtium is named after Darmstadt, Germany, where it was first created. It is a synthetic superheavy element
         that decays almost immediately after formation. Scientists study it to test predictions about the stability and structure
@@ -1525,11 +1853,14 @@ const elements = [
         name: "Roentgenium",
         symbol: "Rg",
         number: 111,
+        mass: "[282]",
         group: 11,
         period: 7,
         category: "Transition Metal",
+        state: "Solid",
+        danger: "?",
         image: "images/roentgenium.png",
-        fact: `Roentgenium is a synthetic element named after Wilhelm Rontgen, the discoverer of X - rays.It is created in particle
+        fact: `Roentgenium is a synthetic element named after Wilhelm Rontgen, the discoverer of X-rays. It is created in particle
         accelerators and exists only for a very short time before decaying. Scientists believe it may have properties similar to gold,
         based on its position in the periodic table, but this is mostly theoretical. Roentgenium has no practical applications due to
         its instability. Its main purpose is to help researchers understand superheavy elements.`
@@ -1538,9 +1869,12 @@ const elements = [
         name: "Copernicium",
         symbol: "Cn",
         number: 112,
+        mass: "[285]",
         group: 12,
         period: 7,
         category: "Transition Metal",
+        state: "Liquid",
+        danger: "?",
         image: "images/copernicium.png",
         fact: `Copernicium is named after Nicolaus Copernicus, the astronomer who proposed the heliocentric model of the solar system.
         It is a synthetic element that decays rapidly after being created. Some predictions suggest it may behave more like a noble
@@ -1551,22 +1885,28 @@ const elements = [
         name: "Nihonium",
         symbol: "Nh",
         number: 113,
+        mass: "[286]",
         group: 13,
         period: 7,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "?",
         image: "images/nihonium.png",
-        fact: `Nihonium is named after Japan("Nihon"), where it was first discovered. It is one of the few elements discovered in 
+        fact: `Nihonium is named after Japan ("Nihon"), where it was first discovered. It is one of the few elements discovered in 
         Asia and represents a major milestone in modern chemistry. Nihonium is highly unstable and exists only for fractions of a
-        second. Its properties are predicted based on its position in the periodic table, likely resembling heavier versions of post
-        transition metals. It’s one of the newest additions to the periodic table.`
+        second. Its properties are predicted based on its position in the periodic table, likely resembling heavier versions of post-
+        transition metals. It's one of the newest additions to the periodic table.`
     },
     {
         name: "Flerovium",
         symbol: "Fl",
         number: 114,
+        mass: "[289]",
         group: 14,
         period: 7,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "?",
         image: "images/flerovium.png",
         fact: `Flerovium is named after the Flerov Laboratory of Nuclear Reactions in Russia. It is a synthetic superheavy element 
         that may show unusual behavior compared to typical metals, possibly acting more like a noble gas in some conditions.
@@ -1577,9 +1917,12 @@ const elements = [
         name: "Moscovium",
         symbol: "Mc",
         number: 115,
+        mass: "[290]",
         group: 15,
         period: 7,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "?",
         image: "images/moscovium.png",
         fact: `Moscovium is named after the Moscow region, where it was discovered. It is a synthetic element created in particle
         accelerators and decays almost immediately. Scientists study it to better understand nuclear reactions and the limits of
@@ -1590,9 +1933,12 @@ const elements = [
         name: "Livermorium",
         symbol: "Lv",
         number: 116,
+        mass: "[293]",
         group: 16,
         period: 7,
         category: "Post-Transition Metal",
+        state: "Solid",
+        danger: "?",
         image: "images/livermorium.png",
         fact: `Livermorium is named after the Lawrence Livermore National Laboratory in the United States. It is a synthetic element
         that exists only briefly after being created. Livermorium is part of the effort to explore the limits of the periodic table
@@ -1603,28 +1949,34 @@ const elements = [
         name: "Tennessine",
         symbol: "Ts",
         number: 117,
+        mass: "[294]",
         group: 17,
         period: 7,
         category: "Halogen",
+        state: "Solid",
+        danger: "?",
         image: "images/tennessine.png",
         fact: `Tennessine is named after the state of Tennessee, recognizing contributions from research institutions there. It
         is a synthetic element classified as a halogen, though its behavior may differ due to its extreme size and instability.
         Tennessine decays very quickly and is studied only in laboratory conditions. Its discovery required advanced nuclear
-        techniques and collaboration across multiple countries. It’s one of the newest members of the periodic table.`
+        techniques and collaboration across multiple countries. It's one of the newest members of the periodic table.`
     },
     {
         name: "Oganesson",
         symbol: "Og",
         number: 118,
+        mass: "[294]",
         group: 18,
         period: 7,
         category: "Noble Gas",
+        state: "Gas",
+        danger: "?",
         image: "images/oganesson.png",
         fact: `Oganesson is named after Yuri Oganessian, a leading scientist in the discovery of superheavy elements. It is 
         currently the heaviest known element and is classified as a noble gas, though it may not behave like one due to its
         extreme atomic structure. Oganesson exists for only a tiny fraction of a second before decaying. Its properties challenge
         existing theories about how elements should behave. It marks the current end of the periodic table... for now.`
-    }
+    },
 
 ];
 
@@ -2108,7 +2460,78 @@ function getCategoryClass(category) {
     }
 }
 
+
 const infoCard = document.getElementById("info-card");
+
+function showElementCard(e, sourceDiv = null) {
+    if (quizActive) return;
+
+    const img = document.getElementById("element-image");
+
+    document.getElementById("element-name").textContent = e.name;
+    document.getElementById("element-symbol").textContent = "Symbol: " + e.symbol;
+    document.getElementById("element-number").textContent = "Atomic Number: " + e.number;
+
+    document.getElementById("element-mass").textContent = "Atomic Mass: " + e.mass; // NEW
+
+    document.getElementById("element-group").textContent = "Group: " + e.group;
+    document.getElementById("element-period").textContent = "Period: " + e.period;
+    document.getElementById("element-category").textContent = "Category: " + e.category;
+
+    document.getElementById("element-state").textContent = "State: " + e.state; // NEW
+    document.getElementById("element-danger").textContent = "Danger Level: " + e.danger; // NEW
+
+    document.getElementById("element-description").textContent = e.description || e.fact;
+
+    if (e.image) {
+        img.src = e.image;
+        img.alt = e.name;
+        img.style.display = "block";
+    } else {
+        img.style.display = "none";
+    }
+
+    infoCard.classList.remove("hidden");
+
+    infoCard.style.position = "fixed";
+    infoCard.style.transform = "none";
+
+    const margin = 12;
+    const cardWidth = 300;
+    const cardHeight = infoCard.offsetHeight;
+
+    if (sourceDiv) {
+        const rect = sourceDiv.getBoundingClientRect();
+
+        let left = rect.right + margin;
+        let top = rect.top;
+
+        if (left + cardWidth > window.innerWidth - margin) {
+            left = rect.left - cardWidth - margin;
+        }
+
+        if (left < margin) {
+            left = margin;
+        }
+
+        if (top + cardHeight > window.innerHeight - margin) {
+            top = window.innerHeight - cardHeight - margin;
+        }
+
+        if (top < margin) {
+            top = margin;
+        }
+
+        infoCard.style.left = left + "px";
+        infoCard.style.top = top + "px";
+        infoCard.style.right = "";
+    } else {
+        infoCard.style.left = "50%";
+        infoCard.style.top = "100px";
+        infoCard.style.right = "";
+        infoCard.style.transform = "translateX(-50%)";
+    }
+}
 
 elements.forEach(e => {
     const div = document.createElement("div");
@@ -2123,42 +2546,10 @@ elements.forEach(e => {
         <div class="symbol">${e.symbol}</div>
     `;
 
-    div.addEventListener("click", () => {
-        if (quizActive) return;
-
-        const img = document.getElementById("element-image");
-
-        document.getElementById("element-name").textContent = e.name;
-        document.getElementById("element-symbol").textContent = "Symbol: " + e.symbol;
-        document.getElementById("element-number").textContent = "Atomic Number: " + e.number;
-        document.getElementById("element-group").textContent = "Group: " + e.group;
-        document.getElementById("element-period").textContent = "Period: " + e.period;
-        document.getElementById("element-category").textContent = "Category: " + e.category;
-        document.getElementById("element-description").textContent = e.description || e.fact;
-
-        if (e.image) {
-            img.src = e.image;
-            img.alt = e.name;
-            img.style.display = "block";
-        } else {
-            img.style.display = "none";
-        }
-
-        const rect = div.getBoundingClientRect();
-        const cardWidth = 300;
-        const spaceRight = window.innerWidth - rect.right;
-
-        if (spaceRight > cardWidth + 20) {
-            // place on right
-            infoCard.style.left = (window.scrollX + rect.right + 12) + "px";
-        } else {
-            // place on left
-            infoCard.style.left = (window.scrollX + rect.left - cardWidth - 12) + "px";
-        }
-
-        infoCard.style.top = (window.scrollY + rect.top) + "px";
-
-        infoCard.classList.remove("hidden");
+    div.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const div = getElementDiv(e.symbol);
+        showElementCard(e, div);
     });
 
     table.appendChild(div);
@@ -2185,9 +2576,6 @@ function createSeriesMarker(number, symbol, group, period, categoryClass) {
 createSeriesMarker(57, "La", 3, 6, "lanthanide");
 createSeriesMarker(89, "Ac", 3, 7, "actinide");
 
-document.getElementById("close-btn").onclick = () => {
-    infoCard.classList.add("hidden");
-};
 let score = 0;
 let totalQuestions = 0;
 let currentQuestion = null;
@@ -3120,6 +3508,18 @@ function updateQuizButtons() {
     const quitPracticeBtn = document.getElementById("quit-practice-btn");
     const lessonBtn = document.getElementById("lesson-btn");
     const nextBtn = document.getElementById("next-btn");
+    const searchSection = document.getElementById("search-section");
+    const elementSearch = document.getElementById("element-search");
+    const searchResults = document.getElementById("search-results");
+
+    if (quizActive) {
+        searchSection.classList.add("search-disabled");
+        elementSearch.disabled = true;
+        searchResults.classList.add("hidden");
+    } else {
+        searchSection.classList.remove("search-disabled");
+        elementSearch.disabled = false;
+    }
 
     if (quizActive) {
         nextBtn.style.display = "inline-block";
@@ -3307,6 +3707,8 @@ function startQuiz() {
     document.getElementById("report-section").classList.add("hidden");
     document.getElementById("review-list").innerHTML = "";
     document.getElementById("report-summary").textContent = "";
+    document.getElementById("element-search").value = "";
+    document.getElementById("search-results").classList.add("hidden");
 
     updateQuizButtons();
     showQuestion();
@@ -3432,6 +3834,9 @@ document.getElementById("start-btn").onclick = () => {
     startQuiz();
 };
 
+document.getElementById("element-search").value = "";
+document.getElementById("search-results").classList.add("hidden");
+
 document.getElementById("next-btn").onclick = () => {
     if (!quizActive) return;
     if (!answered) return;
@@ -3502,3 +3907,59 @@ toggleReportBtn.addEventListener("click", () => {
         toggleReportBtn.textContent = "Minimize Report";
     }
 });
+
+
+const elementSearch = document.getElementById("element-search");
+const searchResults = document.getElementById("search-results");
+const searchSection = document.getElementById("search-section");
+
+elementSearch.addEventListener("input", () => {
+    if (quizActive) return;
+
+    const query = elementSearch.value.trim().toLowerCase();
+
+    searchResults.innerHTML = "";
+
+    if (query === "") {
+        searchResults.classList.add("hidden");
+        return;
+    }
+
+    let matches = elements.filter(e =>
+        e.name.toLowerCase().includes(query)
+    );
+
+    if (matches.length === 0) {
+        searchResults.classList.add("hidden");
+        return;
+    }
+
+    matches.forEach(e => {
+        const item = document.createElement("div");
+        item.classList.add("search-result-item");
+        item.textContent = `${e.name} (${e.symbol})`;
+
+        item.addEventListener("click", (event) => {
+            event.stopPropagation();
+            elementSearch.value = e.name;
+            searchResults.classList.add("hidden");
+            const div = getElementDiv(e.symbol);
+            showElementCard(e, div);
+        });
+
+        searchResults.appendChild(item);
+    });
+
+    searchResults.classList.remove("hidden");
+});
+
+document.addEventListener("click", () => {
+    if (!infoCard.classList.contains("hidden")) {
+        infoCard.classList.add("hidden");
+    }
+});
+
+function getElementDiv(symbol) {
+    return [...document.querySelectorAll(".element")]
+        .find(el => el.querySelector(".symbol").textContent === symbol);
+}
