@@ -1,5 +1,6 @@
 
 const elements = [
+
     {
         name: "Hydrogen",
         symbol: "H",
@@ -1983,6 +1984,8 @@ const elements = [
 
 const table = document.getElementById("periodic-table");
 
+let particlesEnabled = true;
+
 const alkaliMetals = ["Lithium", "Sodium", "Potassium", "Rubidium", "Cesium", "Francium"];
 
 const alkalineEarthMetals = ["Beryllium", "Magnesium", "Calcium", "Strontium", "Barium", "Radium"];
@@ -2018,7 +2021,7 @@ const nobleGases = ["Helium", "Neon", "Argon", "Krypton", "Xenon", "Radon", "Oga
 
 
 const knowledgeQuestions = [
-    // ===== 1–10 =====
+
     {
         question: "Which element is the lightest and most abundant in the universe?",
         answer: "Hydrogen",
@@ -2070,7 +2073,6 @@ const knowledgeQuestions = [
         explanation: "Neon is used in bright signs."
     },
 
-    // ===== 11–20 =====
     {
         question: "Which element reacts violently with water and is part of table salt?",
         answer: "Sodium",
@@ -2121,8 +2123,6 @@ const knowledgeQuestions = [
         answer: "Calcium",
         explanation: "Calcium strengthens bones."
     },
-
-    // ===== 21–30 =====
     {
         question: "Which element is used in lightweight alloys and electronics?",
         answer: "Scandium",
@@ -2173,8 +2173,6 @@ const knowledgeQuestions = [
         answer: "Zinc",
         explanation: "Zinc coating prevents corrosion."
     },
-
-    // ===== 31–40 =====
     {
         question: "Which element can melt in your hand?",
         answer: "Gallium",
@@ -2226,7 +2224,6 @@ const knowledgeQuestions = [
         explanation: "Zirconium is corrosion-resistant."
     },
 
-    // ===== 41–50 =====
     {
         question: "Which element strengthens steel and is used in superconductors?",
         answer: "Niobium",
@@ -2278,7 +2275,6 @@ const knowledgeQuestions = [
         explanation: "Tin is used in solder."
     },
 
-    // ===== 51–60 =====
     {
         question: "Which element is used in flame retardants?",
         answer: "Antimony",
@@ -2330,7 +2326,6 @@ const knowledgeQuestions = [
         explanation: "Gadolinium improves imaging."
     },
 
-    // ===== 61–80 =====
     {
         question: "Which element is used in green phosphors?",
         answer: "Terbium",
@@ -2382,7 +2377,6 @@ const knowledgeQuestions = [
         explanation: "Tungsten has the highest melting point."
     },
 
-    // ===== IMPORTANT HEAVY =====
     {
         question: "Which element is used in nuclear fuel?",
         answer: "Uranium",
@@ -2399,7 +2393,6 @@ const knowledgeQuestions = [
         explanation: "Plutonium is used in nuclear tech."
     },
 
-    // ===== NAMING (100+) =====
     {
         question: "Which element is named after Dmitri Mendeleev?",
         answer: "Mendelevium",
@@ -2434,27 +2427,39 @@ const knowledgeQuestions = [
 
 
 function getCategoryClass(category) {
+
     switch (category) {
+
         case "Alkali Metal":
             return "alkali";
+
         case "Alkaline Earth Metal":
             return "alkaline";
+
         case "Transition Metal":
             return "transition";
+
         case "Post-Transition Metal":
             return "post-transition";
+
         case "Metalloid":
             return "metalloid";
+
         case "Nonmetal":
             return "nonmetal";
+
         case "Halogen":
             return "halogen";
+
         case "Noble Gas":
             return "noble";
+
         case "Lanthanide":
             return "lanthanide";
+
         case "Actinide":
             return "actinide";
+
         default:
             return "";
     }
@@ -2487,7 +2492,9 @@ function showElementCard(e, sourceDiv = null) {
         img.src = e.image;
         img.alt = e.name;
         img.style.display = "block";
-    } else {
+    }
+
+    else {
         img.style.display = "none";
     }
 
@@ -2525,7 +2532,10 @@ function showElementCard(e, sourceDiv = null) {
         infoCard.style.left = left + "px";
         infoCard.style.top = top + "px";
         infoCard.style.right = "";
-    } else {
+
+    }
+
+    else {
         infoCard.style.left = "50%";
         infoCard.style.top = "100px";
         infoCard.style.right = "";
@@ -2534,6 +2544,7 @@ function showElementCard(e, sourceDiv = null) {
 }
 
 elements.forEach(e => {
+
     const div = document.createElement("div");
     div.classList.add("element");
     div.classList.add(getCategoryClass(e.category));
@@ -2588,6 +2599,7 @@ let practiceMode = false;
 let practiceType = null;
 
 function getDifficultyRange() {
+
     if (totalQuestions < 2) {
         return 40;
     }
@@ -2597,15 +2609,18 @@ function getDifficultyRange() {
     if (percent < 50) {
         return 40;
     }
+
     else if (percent <= 80) {
         return 90;
     }
+
     else {
         return 118;
     }
 }
 
 function categoryQuestionsUnlocked() {
+
     if (totalQuestions < 3) {
         return false;
     }
@@ -2615,15 +2630,18 @@ function categoryQuestionsUnlocked() {
     if (percent < 50) {
         return false;
     }
+
     else if (percent <= 80) {
         return true;
     }
+
     else {
         return true;
     }
 }
 
 function knowledgeQuestionsUnlocked() {
+
     if (totalQuestions < 4) {
         return false;
     }
@@ -2633,42 +2651,54 @@ function knowledgeQuestionsUnlocked() {
 }
 
 function getElementsUpToDifficulty() {
+
     let maxNumber = getDifficultyRange();
     return elements.filter(e => e.number <= maxNumber);
 }
 
 function getRandomFromArray(arr) {
+   
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function getCategoryPool(categoryName) {
+
     if (categoryName === "Alkali Metal") {
         return alkaliMetals;
     }
+
     else if (categoryName === "Alkaline Earth Metal") {
         return alkalineEarthMetals;
     }
+
     else if (categoryName === "Transition Metal") {
         return transitionMetals;
     }
+
     else if (categoryName === "Lanthanide") {
         return lanthanides;
     }
+
     else if (categoryName === "Actinide") {
         return actinides;
     }
+
     else if (categoryName === "Post-Transition Metal") {
         return postTransitionMetals;
     }
+
     else if (categoryName === "Metalloid") {
         return metalloids;
     }
+
     else if (categoryName === "Nonmetal") {
         return nonmetals;
     }
+
     else if (categoryName === "Halogen") {
         return halogens;
     }
+
     else if (categoryName === "Noble Gas") {
         return nobleGases;
     }
@@ -2677,6 +2707,7 @@ function getCategoryPool(categoryName) {
 }
 
 function getElementsNotInCategory(categoryName) {
+
     let pool = getElementsUpToDifficulty();
     let categoryPool = getCategoryPool(categoryName);
 
@@ -2684,6 +2715,7 @@ function getElementsNotInCategory(categoryName) {
 }
 
 function getElementsInCategory(categoryName) {
+
     let pool = getElementsUpToDifficulty();
     let categoryPool = getCategoryPool(categoryName);
 
@@ -2693,6 +2725,7 @@ function getElementsInCategory(categoryName) {
 
 
 function generateWhichIsAlkaliMetalQuestion() {
+
     let correctPool = getElementsInCategory("Alkali Metal");
     let wrongPool = getElementsNotInCategory("Alkali Metal");
 
@@ -2700,7 +2733,9 @@ function generateWhichIsAlkaliMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2709,6 +2744,7 @@ function generateWhichIsAlkaliMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is an Alkali Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2718,6 +2754,7 @@ function generateWhichIsAlkaliMetalQuestion() {
 }
 
 function generateWhichIsNotAlkaliMetalQuestion() {
+
     let correctPool = getElementsNotInCategory("Alkali Metal");
     let wrongPool = getElementsInCategory("Alkali Metal");
 
@@ -2725,7 +2762,9 @@ function generateWhichIsNotAlkaliMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2734,6 +2773,7 @@ function generateWhichIsNotAlkaliMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not an Alkali Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2744,6 +2784,7 @@ function generateWhichIsNotAlkaliMetalQuestion() {
 
 
 function generateWhichIsAlkalineEarthMetalQuestion() {
+
     let correctPool = getElementsInCategory("Alkaline Earth Metal");
     let wrongPool = getElementsNotInCategory("Alkaline Earth Metal");
 
@@ -2751,7 +2792,9 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2760,6 +2803,7 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is an Alkaline Earth Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2769,6 +2813,7 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
 }
 
 function generateWhichIsNotAlkalineEarthMetalQuestion() {
+
     let correctPool = getElementsNotInCategory("Alkaline Earth Metal");
     let wrongPool = getElementsInCategory("Alkaline Earth Metal");
 
@@ -2776,7 +2821,9 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2785,6 +2832,7 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not an Alkaline Earth Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2793,6 +2841,7 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
     };
 }
 function generateWhichIsTransitionMetalQuestion() {
+
     let correctPool = getElementsInCategory("Transition Metal");
     let wrongPool = getElementsNotInCategory("Transition Metal");
 
@@ -2800,7 +2849,9 @@ function generateWhichIsTransitionMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2809,6 +2860,7 @@ function generateWhichIsTransitionMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2818,6 +2870,7 @@ function generateWhichIsTransitionMetalQuestion() {
 }
 
 function generateWhichIsNotTransitionMetalQuestion() {
+
     let correctPool = getElementsNotInCategory("Transition Metal");
     let wrongPool = getElementsInCategory("Transition Metal");
 
@@ -2825,7 +2878,9 @@ function generateWhichIsNotTransitionMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2834,6 +2889,7 @@ function generateWhichIsNotTransitionMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2842,6 +2898,7 @@ function generateWhichIsNotTransitionMetalQuestion() {
     };
 }
 function generateWhichIsLanthanideQuestion() {
+
     let correctPool = getElementsInCategory("Lanthanide");
     let wrongPool = getElementsNotInCategory("Lanthanide");
 
@@ -2849,7 +2906,9 @@ function generateWhichIsLanthanideQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2858,6 +2917,7 @@ function generateWhichIsLanthanideQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Lanthanide?",
         answer: correctElement.name,
         choices: choices,
@@ -2867,6 +2927,7 @@ function generateWhichIsLanthanideQuestion() {
 }
 
 function generateWhichIsNotLanthanideQuestion() {
+
     let correctPool = getElementsNotInCategory("Lanthanide");
     let wrongPool = getElementsInCategory("Lanthanide");
 
@@ -2874,7 +2935,9 @@ function generateWhichIsNotLanthanideQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2883,6 +2946,7 @@ function generateWhichIsNotLanthanideQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Lanthanide?",
         answer: correctElement.name,
         choices: choices,
@@ -2891,6 +2955,7 @@ function generateWhichIsNotLanthanideQuestion() {
     };
 }
 function generateWhichIsActinideQuestion() {
+
     let correctPool = getElementsInCategory("Actinide");
     let wrongPool = getElementsNotInCategory("Actinide");
 
@@ -2898,7 +2963,9 @@ function generateWhichIsActinideQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2907,6 +2974,7 @@ function generateWhichIsActinideQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is an Actinide?",
         answer: correctElement.name,
         choices: choices,
@@ -2916,6 +2984,7 @@ function generateWhichIsActinideQuestion() {
 }
 
 function generateWhichIsNotActinideQuestion() {
+
     let correctPool = getElementsNotInCategory("Actinide");
     let wrongPool = getElementsInCategory("Actinide");
 
@@ -2923,7 +2992,9 @@ function generateWhichIsNotActinideQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2932,6 +3003,7 @@ function generateWhichIsNotActinideQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not an Actinide?",
         answer: correctElement.name,
         choices: choices,
@@ -2940,6 +3012,7 @@ function generateWhichIsNotActinideQuestion() {
     };
 }
 function generateWhichIsPostTransitionMetalQuestion() {
+
     let correctPool = getElementsInCategory("Post-Transition Metal");
     let wrongPool = getElementsNotInCategory("Post-Transition Metal");
 
@@ -2947,7 +3020,9 @@ function generateWhichIsPostTransitionMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2956,6 +3031,7 @@ function generateWhichIsPostTransitionMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Post-Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2965,6 +3041,7 @@ function generateWhichIsPostTransitionMetalQuestion() {
 }
 
 function generateWhichIsNotPostTransitionMetalQuestion() {
+
     let correctPool = getElementsNotInCategory("Post-Transition Metal");
     let wrongPool = getElementsInCategory("Post-Transition Metal");
 
@@ -2972,7 +3049,9 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -2981,6 +3060,7 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Post-Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -2990,6 +3070,7 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
 }
 
 function generateWhichIsMetalloidQuestion() {
+
     let correctPool = getElementsInCategory("Metalloid");
     let wrongPool = getElementsNotInCategory("Metalloid");
 
@@ -2997,7 +3078,9 @@ function generateWhichIsMetalloidQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3006,6 +3089,7 @@ function generateWhichIsMetalloidQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Metalloid?",
         answer: correctElement.name,
         choices: choices,
@@ -3015,6 +3099,7 @@ function generateWhichIsMetalloidQuestion() {
 }
 
 function generateWhichIsNotMetalloidQuestion() {
+
     let correctPool = getElementsNotInCategory("Metalloid");
     let wrongPool = getElementsInCategory("Metalloid");
 
@@ -3022,7 +3107,9 @@ function generateWhichIsNotMetalloidQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3031,6 +3118,7 @@ function generateWhichIsNotMetalloidQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Metalloid?",
         answer: correctElement.name,
         choices: choices,
@@ -3039,6 +3127,7 @@ function generateWhichIsNotMetalloidQuestion() {
     };
 }
 function generateWhichIsNonmetalQuestion() {
+
     let correctPool = getElementsInCategory("Nonmetal");
     let wrongPool = getElementsNotInCategory("Nonmetal");
 
@@ -3046,7 +3135,9 @@ function generateWhichIsNonmetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3055,6 +3146,7 @@ function generateWhichIsNonmetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Nonmetal?",
         answer: correctElement.name,
         choices: choices,
@@ -3064,6 +3156,7 @@ function generateWhichIsNonmetalQuestion() {
 }
 
 function generateWhichIsNotNonmetalQuestion() {
+
     let correctPool = getElementsNotInCategory("Nonmetal");
     let wrongPool = getElementsInCategory("Nonmetal");
 
@@ -3071,7 +3164,9 @@ function generateWhichIsNotNonmetalQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3080,6 +3175,7 @@ function generateWhichIsNotNonmetalQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Nonmetal?",
         answer: correctElement.name,
         choices: choices,
@@ -3088,6 +3184,7 @@ function generateWhichIsNotNonmetalQuestion() {
     };
 }
 function generateWhichIsHalogenQuestion() {
+
     let correctPool = getElementsInCategory("Halogen");
     let wrongPool = getElementsNotInCategory("Halogen");
 
@@ -3095,7 +3192,9 @@ function generateWhichIsHalogenQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3104,6 +3203,7 @@ function generateWhichIsHalogenQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Halogen?",
         answer: correctElement.name,
         choices: choices,
@@ -3113,6 +3213,7 @@ function generateWhichIsHalogenQuestion() {
 }
 
 function generateWhichIsNotHalogenQuestion() {
+
     let correctPool = getElementsNotInCategory("Halogen");
     let wrongPool = getElementsInCategory("Halogen");
 
@@ -3120,7 +3221,9 @@ function generateWhichIsNotHalogenQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3129,6 +3232,7 @@ function generateWhichIsNotHalogenQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Halogen?",
         answer: correctElement.name,
         choices: choices,
@@ -3138,6 +3242,7 @@ function generateWhichIsNotHalogenQuestion() {
 }
 
 function generateWhichIsNobleGasQuestion() {
+
     let correctPool = getElementsInCategory("Noble Gas");
     let wrongPool = getElementsNotInCategory("Noble Gas");
 
@@ -3145,7 +3250,9 @@ function generateWhichIsNobleGasQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3154,6 +3261,7 @@ function generateWhichIsNobleGasQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is a Noble Gas?",
         answer: correctElement.name,
         choices: choices,
@@ -3163,6 +3271,7 @@ function generateWhichIsNobleGasQuestion() {
 }
 
 function generateWhichIsNotNobleGasQuestion() {
+
     let correctPool = getElementsNotInCategory("Noble Gas");
     let wrongPool = getElementsInCategory("Noble Gas");
 
@@ -3170,7 +3279,9 @@ function generateWhichIsNotNobleGasQuestion() {
     let choices = [correctElement.name];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3179,6 +3290,7 @@ function generateWhichIsNotNobleGasQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: "Which element is not a Noble Gas?",
         answer: correctElement.name,
         choices: choices,
@@ -3188,13 +3300,16 @@ function generateWhichIsNotNobleGasQuestion() {
 }
 
 function generateKnowledgeQuestion() {
+
     let maxNumber = getDifficultyRange();
     let availableKnowledgeQuestions = knowledgeQuestions.filter(kq => {
         let answerElement = elements.find(e => e.name === kq.answer);
+
         return answerElement && answerElement.number <= maxNumber;
     });
 
     if (availableKnowledgeQuestions.length === 0) {
+
         return generateOriginalQuestion();
     }
 
@@ -3209,7 +3324,9 @@ function generateKnowledgeQuestion() {
     let choices = [selected.answer];
 
     while (choices.length < 4) {
+
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
+
         if (!choices.includes(wrongElement.name)) {
             choices.push(wrongElement.name);
         }
@@ -3218,6 +3335,7 @@ function generateKnowledgeQuestion() {
     shuffleArray(choices);
 
     return {
+
         question: selected.question,
         answer: selected.answer,
         choices: choices,
@@ -3228,12 +3346,15 @@ function generateKnowledgeQuestion() {
 
 
 function getRandomElement() {
+
     let maxNumber = getDifficultyRange();
     let availableElements = elements.filter(e => e.number <= maxNumber);
+
     return availableElements[Math.floor(Math.random() * availableElements.length)];
 }
 
 function shuffleArray(arr) {
+
     for (let i = arr.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         let temp = arr[i];
@@ -3243,23 +3364,33 @@ function shuffleArray(arr) {
 }
 
 function getWrongAnswers(correctElement, questionType, correctAnswer) {
+
     let maxNumber = getDifficultyRange();
     let pool = elements.filter(e => e.number <= maxNumber && e.number !== correctElement.number);
     let wrongAnswers = [];
 
     while (wrongAnswers.length < 3) {
+
         let randomElement = pool[Math.floor(Math.random() * pool.length)];
         let choice = "";
 
         if (questionType === 0) {
             choice = randomElement.symbol;
-        } else if (questionType === 1) {
+        }
+
+        else if (questionType === 1) {
             choice = randomElement.name;
-        } else if (questionType === 2) {
+        }
+
+        else if (questionType === 2) {
             choice = randomElement.group.toString();
-        } else if (questionType === 3) {
+        }
+
+        else if (questionType === 3) {
             choice = randomElement.period.toString();
-        } else if (questionType === 4) {
+        }
+
+        else if (questionType === 4) {
             choice = randomElement.category;
         }
 
@@ -3272,6 +3403,7 @@ function getWrongAnswers(correctElement, questionType, correctAnswer) {
 }
 
 function getTypeName(questionType) {
+
     if (questionType === 0) return "symbol";
     if (questionType === 1) return "name";
     if (questionType === 2) return "group";
@@ -3294,8 +3426,11 @@ function getTypeName(questionType) {
 }
 
 function generateQuestion(forcedType = null) {
+
     if (forcedType !== null) {
+
         if (forcedType === 0 || forcedType === 1 || forcedType === 2 || forcedType === 3 || forcedType === 4) {
+
             return generateOriginalQuestion(forcedType);
         }
         else if (forcedType === 5) return generateWhichIsAlkaliMetalQuestion();
@@ -3324,6 +3459,7 @@ function generateQuestion(forcedType = null) {
     let questionPool = [0, 1, 2, 3, 4];
 
     if (categoryQuestionsUnlocked()) {
+
         questionPool.push(5);
         questionPool.push(6);
         questionPool.push(7);
@@ -3347,14 +3483,17 @@ function generateQuestion(forcedType = null) {
     }
 
     if (knowledgeQuestionsUnlocked()) {
+
         questionPool.push(25);
     }
 
     let chosenType = questionPool[Math.floor(Math.random() * questionPool.length)];
 
     if (chosenType === 0 || chosenType === 1 || chosenType === 2 || chosenType === 3 || chosenType === 4) {
+
         return generateOriginalQuestion(chosenType);
     }
+
     else if (chosenType === 5) return generateWhichIsAlkaliMetalQuestion();
     else if (chosenType === 6) return generateWhichIsNotAlkaliMetalQuestion();
     else if (chosenType === 7) return generateWhichIsAlkalineEarthMetalQuestion();
@@ -3381,12 +3520,15 @@ function generateQuestion(forcedType = null) {
 }
 
 function generateOriginalQuestion(forcedType = null) {
+
     let e = getRandomElement();
     let questionType;
 
     if (forcedType === null) {
         questionType = Math.floor(Math.random() * 5);
-    } else {
+    }
+
+    else {
         questionType = forcedType;
     }
 
@@ -3398,19 +3540,27 @@ function generateOriginalQuestion(forcedType = null) {
         question = `What is the symbol for ${e.name}?`;
         answer = e.symbol;
         explanation = `${e.name} has the chemical symbol ${e.symbol}. Symbols are the abbreviations used on the periodic table.`;
-    } else if (questionType === 1) {
+    }
+
+    else if (questionType === 1) {
         question = `What is the name of the element with symbol ${e.symbol}?`;
         answer = e.name;
         explanation = `${e.symbol} stands for ${e.name}. Each element has its own unique symbol.`;
-    } else if (questionType === 2) {
+    }
+
+    else if (questionType === 2) {
         question = `What group is ${e.name} in?`;
         answer = e.group.toString();
         explanation = `${e.name} is in group ${e.group}. Groups are the vertical columns on the periodic table.`;
-    } else if (questionType === 3) {
+    }
+
+    else if (questionType === 3) {
         question = `What period is ${e.name} in?`;
         answer = e.period.toString();
         explanation = `${e.name} is in period ${e.period}. Periods are the horizontal rows on the periodic table.`;
-    } else {
+    }
+
+    else {
         question = `What category does ${e.name} belong to?`;
         answer = e.category;
         explanation = `${e.name} belongs to the category ${e.category}. Categories describe general chemical behavior and placement.`;
@@ -3420,6 +3570,7 @@ function generateOriginalQuestion(forcedType = null) {
     shuffleArray(choices);
 
     return {
+
         question: question,
         answer: answer,
         choices: choices,
@@ -3429,80 +3580,115 @@ function generateOriginalQuestion(forcedType = null) {
 }
 
 function generatePracticeQuestion(typeName) {
+
     if (typeName === "symbol") {
+
         return generateQuestion(0);
     }
+
     else if (typeName === "name") {
+
         return generateQuestion(1);
     }
+
     else if (typeName === "group") {
+
         return generateQuestion(2);
     }
+
     else if (typeName === "period") {
+
         return generateQuestion(3);
     }
+
     else if (typeName === "category") {
+
         return generateQuestion(4);
     }
+
     else if (typeName === "alkali metal") {
+
         let types = [5, 6];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "alkaline earth metal") {
+
         let types = [7, 8];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "transition metal") {
+
         let types = [9, 10];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "lanthanide") {
+
         let types = [11, 12];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "actinide") {
+
         let types = [13, 14];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "post-transition metal") {
+
         let types = [15, 16];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "metalloid") {
+
         let types = [17, 18];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "nonmetal") {
+
         let types = [19, 20];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "halogen") {
+
         let types = [21, 22];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "noble gas") {
+
         let types = [23, 24];
         let chosenType = types[Math.floor(Math.random() * types.length)];
         return generateQuestion(chosenType);
     }
+
     else if (typeName === "knowledge") {
+
         return generateQuestion(25);
     }
+
     else {
+
         return generateQuestion(0);
     }
 }
 
 function updateQuizButtons() {
+
     const startBtn = document.getElementById("start-btn");
     const quitBtn = document.getElementById("quit-btn");
     const quitPracticeBtn = document.getElementById("quit-practice-btn");
@@ -3513,19 +3699,24 @@ function updateQuizButtons() {
     const searchResults = document.getElementById("search-results");
 
     if (quizActive) {
+
         searchSection.classList.add("search-disabled");
         elementSearch.disabled = true;
         searchResults.classList.add("hidden");
-    } else {
+    }
+
+    else {
         searchSection.classList.remove("search-disabled");
         elementSearch.disabled = false;
     }
 
     if (quizActive) {
+
         nextBtn.style.display = "inline-block";
     }
 
     else {
+
         nextBtn.style.display = "none";
     }
 
@@ -3536,6 +3727,7 @@ function updateQuizButtons() {
     }
 
     else {
+
         lessonBtn.disabled = false;
         lessonBtn.style.opacity = "1";
         lessonBtn.style.cursor = "pointer";
@@ -3546,11 +3738,13 @@ function updateQuizButtons() {
         quitBtn.classList.add("hidden");
         quitPracticeBtn.classList.remove("hidden");
     }
+
     else if (quizActive) {
         startBtn.classList.add("hidden");
         quitBtn.classList.remove("hidden");
         quitPracticeBtn.classList.add("hidden");
     }
+
     else {
         startBtn.classList.remove("hidden");
         quitBtn.classList.add("hidden");
@@ -3559,8 +3753,11 @@ function updateQuizButtons() {
 }
 
 function showQuestion() {
+
     if (!practiceMode && questionNumber >= maxQuestions) {
+
         endQuiz(false);
+
         return;
     }
 
@@ -3587,11 +3784,15 @@ function showQuestion() {
     answered = false;
 
     if (practiceMode) {
+
         document.getElementById("question-text").textContent =
             `Practice Mode (${practiceType}): ${currentQuestion.question}`;
 
         document.getElementById("score-display").textContent = "";
-    } else {
+    }
+
+    else {
+
         document.getElementById("question-text").textContent =
             `Question ${questionNumber + 1} of ${maxQuestions}: ${currentQuestion.question}`;
     }
@@ -3608,7 +3809,9 @@ function showQuestion() {
 }
 
 function selectAnswer(choice, buttonClicked) {
+
     if (!quizActive || answered) {
+
         return;
     }
 
@@ -3623,6 +3826,7 @@ function selectAnswer(choice, buttonClicked) {
     let isCorrect = choice.toLowerCase() === currentQuestion.answer.toLowerCase();
 
     if (isCorrect) {
+
         if (!practiceMode) {
             score++;
         }
@@ -3633,10 +3837,13 @@ function selectAnswer(choice, buttonClicked) {
     }
 
     else {
+
         buttonClicked.classList.add("wrong-choice");
 
         for (let i = 0; i < 4; i++) {
+
             let btn = document.getElementById("btn" + i);
+
             if (btn.textContent.toLowerCase() === currentQuestion.answer.toLowerCase()) {
                 btn.classList.add("correct-choice");
             }
@@ -3648,6 +3855,7 @@ function selectAnswer(choice, buttonClicked) {
 
     // Only track history in quiz mode
     if (!practiceMode) {
+
         quizHistory.push({
             questionNumber: questionNumber,
             question: currentQuestion.question,
@@ -3664,27 +3872,33 @@ function selectAnswer(choice, buttonClicked) {
     }
 
     for (let i = 0; i < 4; i++) {
+
         document.getElementById("btn" + i).disabled = true;
     }
 
     if (!practiceMode && questionNumber >= maxQuestions) {
+
         endQuiz(false);
     }
 }
 
 function quitPractice() {
+
     practiceMode = false;
     practiceType = null;
     quizActive = false;
 
     document.getElementById("feedback").textContent = "";
-    document.getElementById("question-text").textContent = "Practice ended. Good Work!";
+    document.getElementById("question-text").textContent = "Practice ended. Good work!";
     document.getElementById("score-display").textContent = "";
 
     updateQuizButtons();
 
-    // show report again
     document.getElementById("report-section").classList.remove("hidden");
+    document.getElementById("toggle-report-btn").classList.remove("hidden");
+    document.getElementById("toggle-report-btn").textContent = "Minimize Report";
+    reportMinimized = false;
+    document.getElementById("report-content").classList.remove("hidden");
 }
 
 document.getElementById("quit-practice-btn").onclick = () => {
@@ -3692,6 +3906,7 @@ document.getElementById("quit-practice-btn").onclick = () => {
 };
 
 function startQuiz() {
+
     score = 0;
     totalQuestions = 0;
     questionNumber = 0;
@@ -3719,6 +3934,7 @@ function startQuiz() {
 }
 
 function endQuiz(wasQuit) {
+
     quizActive = false;
     practiceMode = false;
     practiceType = null;
@@ -3733,7 +3949,9 @@ function endQuiz(wasQuit) {
 
     if (wasQuit) {
         document.getElementById("feedback").textContent = "You quit the quiz. Review your answers below.";
-    } else {
+    }
+
+    else {
         document.getElementById("feedback").textContent = "Nice work. Review your answers below.";
     }
 
@@ -3747,6 +3965,7 @@ function endQuiz(wasQuit) {
 }
 
 function showReport(wasQuit) {
+
     let reportSection = document.getElementById("report-section");
     let reportSummary = document.getElementById("report-summary");
     let reviewList = document.getElementById("review-list");
@@ -3759,18 +3978,23 @@ function showReport(wasQuit) {
     if (wasQuit) {
         reportSummary.textContent =
             `You answered ${totalQuestions} question(s) before quitting. Final score: ${score} / ${totalQuestions} (${percent}%).`;
-    } else {
+    }
+
+    else {
         reportSummary.textContent =
             `You completed all ${maxQuestions} questions. Final score: ${score} / ${totalQuestions} (${percent}%).`;
     }
 
     quizHistory.forEach(item => {
+
         let div = document.createElement("div");
         div.classList.add("review-item");
 
         if (item.isCorrect) {
             div.classList.add("correct");
-        } else {
+        }
+
+        else {
             div.classList.add("wrong");
         }
 
@@ -3799,6 +4023,7 @@ function showReport(wasQuit) {
 }
 
 function startPractice(type) {
+
     practiceMode = true;
     practiceType = getTypeName(type);
     quizActive = true;
@@ -3838,12 +4063,15 @@ document.getElementById("element-search").value = "";
 document.getElementById("search-results").classList.add("hidden");
 
 document.getElementById("next-btn").onclick = () => {
+
     if (!quizActive) return;
+
     if (!answered) return;
     showQuestion();
 };
 
 document.getElementById("quit-btn").onclick = () => {
+
     if (!quizActive) return;
     endQuiz(true);
 };
@@ -3856,11 +4084,14 @@ const muteBtn = document.getElementById("mute-btn");
 music.volume = 0.25;
 
 muteBtn.onclick = () => {
+
     if (music.muted) {
         music.muted = false;
         muteBtn.textContent = "Mute";
         music.play();
-    } else {
+    }
+
+    else {
         music.muted = true;
         muteBtn.textContent = "Unmute";
     }
@@ -3868,6 +4099,7 @@ muteBtn.onclick = () => {
 
 // autoplay fallback (in case browser blocks it)
 document.addEventListener("click", () => {
+
     if (music.paused && !music.muted) {
         music.play().catch(() => { });
     }
@@ -3881,6 +4113,7 @@ const closeLessonBtn = document.getElementById("close-lesson-btn");
 const overlay = document.getElementById("lesson-overlay");
 
 lessonBtn.addEventListener("click", () => {
+
     if (quizActive) return;
     lessonCard.classList.remove("hidden");
     overlay.classList.remove("hidden");
@@ -3902,7 +4135,9 @@ toggleReportBtn.addEventListener("click", () => {
     if (reportMinimized) {
         reportContent.classList.add("hidden");
         toggleReportBtn.textContent = "Expand Report";
-    } else {
+    }
+
+    else {
         reportContent.classList.remove("hidden");
         toggleReportBtn.textContent = "Minimize Report";
     }
@@ -3914,6 +4149,7 @@ const searchResults = document.getElementById("search-results");
 const searchSection = document.getElementById("search-section");
 
 elementSearch.addEventListener("input", () => {
+
     if (quizActive) return;
 
     const query = elementSearch.value.trim().toLowerCase();
@@ -3954,6 +4190,7 @@ elementSearch.addEventListener("input", () => {
 });
 
 document.addEventListener("click", () => {
+
     if (!infoCard.classList.contains("hidden")) {
         infoCard.classList.add("hidden");
     }
@@ -3963,3 +4200,74 @@ function getElementDiv(symbol) {
     return [...document.querySelectorAll(".element")]
         .find(el => el.querySelector(".symbol").textContent === symbol);
 }
+
+const particleBg = document.getElementById("particle-bg");
+
+function spawnBurst() {
+    const colors = [
+        "#ff4d4d", // red
+        "#4da6ff", // blue
+        "#4dff88", // green
+        "#ffd24d", // yellow
+        "#ff944d"  // orange
+    ];
+
+    const burstCount = Math.floor(Math.random() * 6) + 6;
+    const centerX = Math.random() * window.innerWidth;
+    const centerY = Math.random() * window.innerHeight;
+
+    for (let i = 0; i < burstCount; i++) {
+        const p = document.createElement("div");
+        p.classList.add("particle-burst");
+
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const burstCount = Math.floor(Math.random() * 4) + 4;
+
+        p.style.background = color;
+        p.style.boxShadow = `0 0 10px ${color}`;
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 80 + 20;
+
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        p.style.left = centerX + "px";
+        p.style.top = centerY + "px";
+
+        p.animate(
+            [
+                { transform: "translate(0px, 0px) scale(0.4)", opacity: 1 },
+                { transform: `translate(${dx}px, ${dy}px) scale(1.4)`, opacity: 0 }
+            ],
+            {
+                duration: 1200,
+                easing: "ease-out",
+                fill: "forwards"
+            }
+        );
+
+        particleBg.appendChild(p);
+
+        setTimeout(() => {
+            p.remove();
+        }, 1200);
+    }
+}
+
+setInterval(() => {
+
+    if (particlesEnabled) {
+        spawnBurst();
+    }
+}, 1800);
+
+const particleToggleBtn = document.getElementById("particle-toggle-btn");
+
+particleToggleBtn.addEventListener("click", () => {
+    particlesEnabled = !particlesEnabled;
+
+    particleToggleBtn.textContent = particlesEnabled
+        ? "Particles: ON"
+        : "Particles: OFF";
+});

@@ -417,3 +417,50 @@ button {
         background: #334155;
         box-shadow: 0 0 10px #475569;
     }
+
+#particle-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle-burst {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    animation: burstFade 1.2s ease-out forwards;
+}
+
+@keyframes burstFade {
+    0% {
+        transform: scale(0.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+#particle-toggle-btn {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+    #particle-toggle-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
