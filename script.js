@@ -1,4 +1,4 @@
-
+﻿
 const elements = [
 
     {
@@ -529,8 +529,8 @@ const elements = [
         state: "Solid",
         danger: "3/10 - Low toxicity overall, but can be harmful in certain compounds and industrial exposure.",
         image: "images/gallium.png",
-        fact: `Gallium is a metal with a surprisingly low melting point, it can actually melt in your hand at around 30�C
-        (86�F). Despite that, it's not commonly found in pure form and is usually extracted as a byproduct of refining
+        fact: `Gallium is a metal with a surprisingly low melting point, it can actually melt in your hand at around 30°C
+        (86°F). Despite that, it's not commonly found in pure form and is usually extracted as a byproduct of refining
         other metals. Gallium is important in electronics, especially in semiconductors like gallium arsenide, which are
         used in LEDs, solar panels, and high speed devices. It also expands when it solidifies, which is unusual for metals.
         A solid metal that melts like that tends to leave an impression.`
@@ -1991,6 +1991,7 @@ const alkaliMetals = ["Lithium", "Sodium", "Potassium", "Rubidium", "Cesium", "F
 const alkalineEarthMetals = ["Beryllium", "Magnesium", "Calcium", "Strontium", "Barium", "Radium"];
 
 const transitionMetals = [
+
     "Scandium", "Titanium", "Vanadium", "Chromium", "Manganese", "Iron", "Cobalt", "Nickel", "Copper", "Zinc",
     "Yttrium", "Zirconium", "Niobium", "Molybdenum", "Technetium", "Ruthenium", "Rhodium", "Palladium", "Silver", "Cadmium",
     "Hafnium", "Tantalum", "Tungsten", "Rhenium", "Osmium", "Iridium", "Platinum", "Gold", "Mercury",
@@ -1998,16 +1999,19 @@ const transitionMetals = [
 ];
 
 const lanthanides = [
+
     "Lanthanum", "Cerium", "Praseodymium", "Neodymium", "Promethium", "Samarium", "Europium",
     "Gadolinium", "Terbium", "Dysprosium", "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium"
 ];
 
 const actinides = [
+
     "Actinium", "Thorium", "Protactinium", "Uranium", "Neptunium", "Plutonium", "Americium",
     "Curium", "Berkelium", "Californium", "Einsteinium", "Fermium", "Mendelevium", "Nobelium", "Lawrencium"
 ];
 
 const postTransitionMetals = [
+
     "Aluminum", "Gallium", "Indium", "Tin", "Thallium", "Lead", "Bismuth", "Nihonium", "Flerovium", "Moscovium", "Livermorium"
 ];
 
@@ -2027,6 +2031,7 @@ const knowledgeQuestions = [
         answer: "Hydrogen",
         explanation: "Hydrogen is the lightest and most abundant element."
     },
+
     {
         question: "Which element is used in balloons because it is lighter than air and nonreactive?",
         answer: "Helium",
@@ -2469,7 +2474,10 @@ function getCategoryClass(category) {
 const infoCard = document.getElementById("info-card");
 
 function showElementCard(e, sourceDiv = null) {
+
     if (quizActive) return;
+
+    currentElement = e;
 
     const img = document.getElementById("element-image");
 
@@ -2487,6 +2495,8 @@ function showElementCard(e, sourceDiv = null) {
     document.getElementById("element-danger").textContent = "Danger Level: " + e.danger; // NEW
 
     document.getElementById("element-description").textContent = e.description || e.fact;
+
+    updateFavoriteButton();
 
     if (e.image) {
         img.src = e.image;
@@ -4270,4 +4280,145 @@ particleToggleBtn.addEventListener("click", () => {
     particleToggleBtn.textContent = particlesEnabled
         ? "Particles: ON"
         : "Particles: OFF";
+});
+
+const themeToggleBtn = document.getElementById("theme-toggle-btn");
+
+function applyTheme(theme) {
+    if (theme === "light") {
+        document.body.classList.add("light-mode");
+        themeToggleBtn.textContent = "Dark Mode";
+    } else {
+        document.body.classList.remove("light-mode");
+        themeToggleBtn.textContent = "Light Mode";
+    }
+}
+
+themeToggleBtn.addEventListener("click", () => {
+    const isLight = document.body.classList.contains("light-mode");
+    const newTheme = isLight ? "dark" : "light";
+
+    applyTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+});
+
+const savedTheme = localStorage.getItem("theme") || "dark";
+applyTheme(savedTheme);
+
+let currentElement = null;
+let favorites = JSON.parse(localStorage.getItem("favoriteElements")) || [];
+
+const favoriteBtn = document.getElementById("favorite-btn");
+const favoritesBtn = document.getElementById("favorites-btn");
+const favoritesPanel = document.getElementById("favorites-panel");
+const favoritesList = document.getElementById("favorites-list");
+const closeFavoritesBtn = document.getElementById("close-favorites-btn");
+
+function saveFavorites() {
+    localStorage.setItem("favoriteElements", JSON.stringify(favorites));
+}
+
+function isFavorite(symbol) {
+    return favorites.includes(symbol);
+}
+
+function updateFavoriteButton() {
+    if (!currentElement) return;
+
+    if (isFavorite(currentElement.symbol)) {
+        favoriteBtn.textContent = "★";
+    } else {
+        favoriteBtn.textContent = "☆";
+    }
+}
+
+favoriteBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (!currentElement) return;
+
+    const symbol = currentElement.symbol;
+    const index = favorites.indexOf(symbol);
+
+    if (index === -1) {
+        favorites.push(symbol);
+    } else {
+        favorites.splice(index, 1);
+    }
+
+    saveFavorites();
+    updateFavoriteButton();
+    renderFavorites();
+});
+
+function renderFavorites() {
+    favoritesList.innerHTML = "";
+
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = "<p>No favorite elements yet.</p>";
+        return;
+    }
+
+    favorites.forEach(symbol => {
+        const element = elements.find(e => e.symbol === symbol);
+        if (!element) return;
+
+        const card = document.createElement("div");
+        card.classList.add("favorite-card");
+
+        card.innerHTML = `
+            <h3>${element.name} (${element.symbol})</h3>
+            <p>Symbol: ${element.symbol}</p>
+            <p>Atomic Number: ${element.number}</p>
+            <p>Atomic Mass: ${element.mass}</p>
+            <p>Group: ${element.group}</p>
+            <p>Period: ${element.period}</p>
+            <p>Category: ${element.category}</p>
+            <p>Danger: ${element.danger}</p>
+            <p>State: ${element.state}</p>
+            
+        `;
+
+        card.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            favoritesPanel.classList.add("hidden");
+
+            const div = getElementDiv(element.symbol);
+            showElementCard(element, div);
+        });
+
+        favoritesList.appendChild(card);
+    });
+}
+
+favoritesBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    renderFavorites();
+    favoritesPanel.classList.remove("hidden");
+});
+
+closeFavoritesBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    favoritesPanel.classList.add("hidden");
+});
+
+favoritesPanel.addEventListener("click", (event) => {
+    event.stopPropagation();
+});
+
+document.addEventListener("click", () => {
+    if (!infoCard.classList.contains("hidden")) {
+        infoCard.classList.add("hidden");
+    }
+
+    if (!favoritesPanel.classList.contains("hidden")) {
+        favoritesPanel.classList.add("hidden");
+    }
+});
+
+favorites.sort((a, b) => {
+    const elA = elements.find(e => e.symbol === a);
+    const elB = elements.find(e => e.symbol === b);
+    return elA.number - elB.number;
 });

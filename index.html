@@ -22,6 +22,12 @@
 
     <button id="particle-toggle-btn">Particles: ON</button>
 
+    <button id="theme-toggle-btn">Light Mode</button>
+
+    <button id="favorites-btn">View Favorites</button>
+
+
+
     <main>
 
         <section id="quiz-section">
@@ -70,7 +76,11 @@
 
         <div id="info-card" class="hidden">
             <img id="element-image" src="" alt="">
-            <h2 id="element-name"></h2>
+
+            <div id="info-card-header-row">
+                <h2 id="element-name"></h2>
+                <button id="favorite-btn" title="Toggle favorite">☆</button>
+            </div>
 
             <p id="element-symbol"></p>
             <p id="element-number"></p>
@@ -128,6 +138,14 @@
                 naming origin, or other important details. These are usually things you either already know or learn by reading the
                 descriptions on each element card. Study carefully!
             </p>
+        </div>
+
+        <div id="favorites-panel" class="hidden">
+            <div id="favorites-panel-header">
+                <h2>Favorite Elements</h2>
+                <button id="close-favorites-btn">Close</button>
+            </div>
+            <div id="favorites-list"></div>
         </div>
 
     </main>

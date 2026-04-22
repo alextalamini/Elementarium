@@ -464,3 +464,209 @@ button {
     #particle-toggle-btn:hover {
         background-color: rgba(255, 255, 255, 0.2);
     }
+
+#theme-toggle-btn {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(30, 41, 59, 0.9);
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    #theme-toggle-btn:hover {
+        background: #334155;
+        box-shadow: 0 0 10px #475569;
+    }
+
+body.light-mode {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+    body.light-mode #periodic-table {
+        box-shadow: 0 0 40px rgba(0,0,0,0.06);
+    }
+
+    body.light-mode #report-section {
+        background: #e5e7eb;
+        color: #111827;
+    }
+
+    body.light-mode .review-item {
+        background: #ffffff;
+        color: #111827;
+    }
+
+    body.light-mode #search-results {
+        background: white;
+        color: black;
+    }
+
+    body.light-mode #lesson-card {
+        background: white;
+        color: black;
+    }
+
+    body.light-mode #mute-btn,
+    body.light-mode #particle-toggle-btn,
+    body.light-mode #theme-toggle-btn {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border: 1px solid #cbd5e1;
+    }
+
+        body.light-mode #mute-btn:hover,
+        body.light-mode #particle-toggle-btn:hover,
+        body.light-mode #theme-toggle-btn:hover {
+            background: #e5e7eb;
+            box-shadow: 0 0 10px #cbd5e1;
+        }
+    body.light-mode #question-text,
+    body.light-mode #feedback,
+    body.light-mode #score-display,
+    body.light-mode h1,
+    body.light-mode h2,
+    body.light-mode h3,
+    body.light-mode p {
+        color: #111827;
+    }
+
+    body.light-mode #periodic-table {
+        background: #f9fafb;
+        box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    body.light-mode .answer-btn {
+        background: #ffffff;
+        border: 1px solid #d1d5db;
+    }
+
+        body.light-mode .answer-btn:hover {
+            background: #e5e7eb;
+        }
+
+#info-card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+    #info-card-header-row h2 {
+        margin: 0;
+        flex: 1;
+    }
+
+#favorite-btn {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #f5c542;
+    padding: 0;
+    line-height: 1;
+}
+
+    #favorite-btn:hover {
+        transform: scale(1.1);
+    }
+
+#favorites-btn {
+    position: fixed;
+    top: 140px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(30, 41, 59, 0.9);
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+    #favorites-btn:hover {
+        background: #334155;
+        box-shadow: 0 0 10px #475569;
+    }
+
+body.light-mode #favorites-btn {
+    background: rgba(255, 255, 255, 0.95);
+    color: #111827;
+    border: 1px solid #cbd5e1;
+}
+
+    body.light-mode #favorites-btn:hover {
+        background: #e5e7eb;
+        box-shadow: 0 0 10px #cbd5e1;
+    }
+
+#favorites-panel {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    max-width: 92%;
+    max-height: 75vh;
+    overflow-y: auto;
+    background: rgba(15, 23, 42, 0.98);
+    color: white;
+    border-radius: 16px;
+    padding: 20px;
+    z-index: 3000;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.45);
+}
+
+body.light-mode #favorites-panel {
+    background: rgba(255, 255, 255, 0.98);
+    color: #111827;
+}
+
+#favorites-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+#favorites-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.favorite-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .favorite-card:hover {
+        transform: scale(1.02);
+    }
+
+body.light-mode .favorite-card {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.favorite-card h3 {
+    margin: 0 0 8px 0;
+}
+
+.favorite-card p {
+    margin: 4px 0;
+}
