@@ -2436,42 +2436,55 @@ function getCategoryClass(category) {
     switch (category) {
 
         case "Alkali Metal":
+
             return "alkali";
 
         case "Alkaline Earth Metal":
+
             return "alkaline";
 
         case "Transition Metal":
+
             return "transition";
 
         case "Post-Transition Metal":
+
             return "post-transition";
 
         case "Metalloid":
+
             return "metalloid";
 
         case "Nonmetal":
+
             return "nonmetal";
 
         case "Halogen":
+
             return "halogen";
 
         case "Noble Gas":
+
             return "noble";
 
         case "Lanthanide":
+
             return "lanthanide";
 
         case "Actinide":
+
             return "actinide";
 
         default:
+
             return "";
     }
 }
 
 
 const infoCard = document.getElementById("info-card");
+
+let outsideClickHandler = null;
 
 function showElementCard(e, sourceDiv = null) {
 
@@ -2484,78 +2497,126 @@ function showElementCard(e, sourceDiv = null) {
     document.getElementById("element-name").textContent = e.name;
     document.getElementById("element-symbol").textContent = "Symbol: " + e.symbol;
     document.getElementById("element-number").textContent = "Atomic Number: " + e.number;
-
-    document.getElementById("element-mass").textContent = "Atomic Mass: " + e.mass; // NEW
-
+    document.getElementById("element-mass").textContent = "Atomic Mass: " + e.mass;
     document.getElementById("element-group").textContent = "Group: " + e.group;
     document.getElementById("element-period").textContent = "Period: " + e.period;
     document.getElementById("element-category").textContent = "Category: " + e.category;
-
-    document.getElementById("element-state").textContent = "State: " + e.state; // NEW
-    document.getElementById("element-danger").textContent = "Danger Level: " + e.danger; // NEW
-
+    document.getElementById("element-state").textContent = "State: " + e.state;
+    document.getElementById("element-danger").textContent = "Danger Level: " + e.danger;
     document.getElementById("element-description").textContent = e.description || e.fact;
 
     updateFavoriteButton();
 
+    infoCard.classList.remove("hidden");
+    infoCard.style.display = "block";
+    infoCard.style.position = "fixed";
+    infoCard.style.transform = "none";
+    infoCard.style.visibility = "hidden";
+
+    function positionCard() {
+        const margin = 12;
+        const cardWidth = 300;
+        const cardHeight = infoCard.offsetHeight;
+
+        if (sourceDiv) {
+
+            const rect = sourceDiv.getBoundingClientRect();
+
+            let left = rect.right + margin;
+            let top = rect.top;
+
+            if (left + cardWidth > window.innerWidth - margin) {
+
+                left = rect.left - cardWidth - margin;
+            }
+
+            if (left < margin) {
+
+                left = margin;
+            }
+
+            if (top + cardHeight > window.innerHeight - margin) {
+
+                top = window.innerHeight - cardHeight - margin;
+            }
+
+            if (top < margin) {
+
+                top = margin;
+            }
+
+            infoCard.style.left = left + "px";
+            infoCard.style.top = top + "px";
+            infoCard.style.right = "";
+        }
+        else {
+
+            infoCard.style.left = "50%";
+            infoCard.style.top = "100px";
+            infoCard.style.right = "";
+            infoCard.style.transform = "translateX(-50%)";
+        }
+
+        infoCard.style.visibility = "visible";
+    }
+
     if (e.image) {
+
+        img.onload = function () {
+            positionCard();
+        };
+
         img.src = e.image;
         img.alt = e.name;
         img.style.display = "block";
-    }
 
+        if (img.complete) {
+
+            positionCard();
+        }
+    }
     else {
+
         img.style.display = "none";
+        positionCard();
     }
 
-    infoCard.classList.remove("hidden");
+    if (outsideClickHandler) {
 
-    infoCard.style.position = "fixed";
-    infoCard.style.transform = "none";
-
-    const margin = 12;
-    const cardWidth = 300;
-    const cardHeight = infoCard.offsetHeight;
-
-    if (sourceDiv) {
-        const rect = sourceDiv.getBoundingClientRect();
-
-        let left = rect.right + margin;
-        let top = rect.top;
-
-        if (left + cardWidth > window.innerWidth - margin) {
-            left = rect.left - cardWidth - margin;
-        }
-
-        if (left < margin) {
-            left = margin;
-        }
-
-        if (top + cardHeight > window.innerHeight - margin) {
-            top = window.innerHeight - cardHeight - margin;
-        }
-
-        if (top < margin) {
-            top = margin;
-        }
-
-        infoCard.style.left = left + "px";
-        infoCard.style.top = top + "px";
-        infoCard.style.right = "";
-
+        document.removeEventListener("click", outsideClickHandler);
     }
 
-    else {
-        infoCard.style.left = "50%";
-        infoCard.style.top = "100px";
-        infoCard.style.right = "";
-        infoCard.style.transform = "translateX(-50%)";
-    }
+    outsideClickHandler = function (event) {
+        if (!infoCard.contains(event.target)) {
+
+            infoCard.classList.add("hidden");
+            infoCard.style.display = "none";
+            document.removeEventListener("click", outsideClickHandler);
+            outsideClickHandler = null;
+        }
+    };
+
+    setTimeout(() => {
+        document.addEventListener("click", outsideClickHandler);
+    }, 0);
 }
+
+infoCard.addEventListener("click", function (event) {
+    event.stopPropagation();
+    infoCard.classList.add("hidden");
+    infoCard.style.display = "none";
+
+    if (outsideClickHandler) {
+
+        document.removeEventListener("click", outsideClickHandler);
+        outsideClickHandler = null;
+    }
+});
 
 elements.forEach(e => {
 
     const div = document.createElement("div");
+
     div.classList.add("element");
     div.classList.add(getCategoryClass(e.category));
 
@@ -2577,7 +2638,9 @@ elements.forEach(e => {
 });
 
 function createSeriesMarker(number, symbol, group, period, categoryClass) {
+
     const div = document.createElement("div");
+
     div.classList.add("element");
     div.classList.add(categoryClass);
     div.classList.add("series-marker");
@@ -2594,8 +2657,8 @@ function createSeriesMarker(number, symbol, group, period, categoryClass) {
     table.appendChild(div);
 }
 
-createSeriesMarker(57, "La", 3, 6, "lanthanide");
-createSeriesMarker(89, "Ac", 3, 7, "actinide");
+createSeriesMarker("57 - 71", "La", 3, 6, "lanthanide");
+createSeriesMarker("89 - 103", "Ac", 3, 7, "actinide");
 
 let score = 0;
 let totalQuestions = 0;
@@ -2611,20 +2674,24 @@ let practiceType = null;
 function getDifficultyRange() {
 
     if (totalQuestions < 2) {
+
         return 40;
     }
 
     let percent = (score / totalQuestions) * 100;
 
     if (percent < 50) {
+
         return 40;
     }
 
     else if (percent <= 80) {
+
         return 90;
     }
 
     else {
+
         return 118;
     }
 }
@@ -2632,20 +2699,24 @@ function getDifficultyRange() {
 function categoryQuestionsUnlocked() {
 
     if (totalQuestions < 3) {
+
         return false;
     }
 
     let percent = (score / totalQuestions) * 100;
 
     if (percent < 50) {
+
         return false;
     }
 
     else if (percent <= 80) {
+
         return true;
     }
 
     else {
+
         return true;
     }
 }
@@ -2653,16 +2724,19 @@ function categoryQuestionsUnlocked() {
 function knowledgeQuestionsUnlocked() {
 
     if (totalQuestions < 4) {
+
         return false;
     }
 
     let percent = (score / totalQuestions) * 100;
+
     return percent >= 70;
 }
 
 function getElementsUpToDifficulty() {
 
     let maxNumber = getDifficultyRange();
+
     return elements.filter(e => e.number <= maxNumber);
 }
 
@@ -2674,42 +2748,52 @@ function getRandomFromArray(arr) {
 function getCategoryPool(categoryName) {
 
     if (categoryName === "Alkali Metal") {
+
         return alkaliMetals;
     }
 
     else if (categoryName === "Alkaline Earth Metal") {
+
         return alkalineEarthMetals;
     }
 
     else if (categoryName === "Transition Metal") {
+
         return transitionMetals;
     }
 
     else if (categoryName === "Lanthanide") {
+
         return lanthanides;
     }
 
     else if (categoryName === "Actinide") {
+
         return actinides;
     }
 
     else if (categoryName === "Post-Transition Metal") {
+
         return postTransitionMetals;
     }
 
     else if (categoryName === "Metalloid") {
+
         return metalloids;
     }
 
     else if (categoryName === "Nonmetal") {
+
         return nonmetals;
     }
 
     else if (categoryName === "Halogen") {
+
         return halogens;
     }
 
     else if (categoryName === "Noble Gas") {
+
         return nobleGases;
     }
 
@@ -2732,8 +2816,6 @@ function getElementsInCategory(categoryName) {
     return pool.filter(e => categoryPool.includes(e.name));
 }
 
-
-
 function generateWhichIsAlkaliMetalQuestion() {
 
     let correctPool = getElementsInCategory("Alkali Metal");
@@ -2747,6 +2829,7 @@ function generateWhichIsAlkaliMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2776,6 +2859,7 @@ function generateWhichIsNotAlkaliMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2806,6 +2890,7 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2835,6 +2920,7 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2863,6 +2949,7 @@ function generateWhichIsTransitionMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2892,6 +2979,7 @@ function generateWhichIsNotTransitionMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2920,6 +3008,7 @@ function generateWhichIsLanthanideQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2949,6 +3038,7 @@ function generateWhichIsNotLanthanideQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -2977,6 +3067,7 @@ function generateWhichIsActinideQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3006,6 +3097,7 @@ function generateWhichIsNotActinideQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3034,6 +3126,7 @@ function generateWhichIsPostTransitionMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3063,6 +3156,7 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3092,6 +3186,7 @@ function generateWhichIsMetalloidQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3121,6 +3216,7 @@ function generateWhichIsNotMetalloidQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3149,6 +3245,7 @@ function generateWhichIsNonmetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3178,6 +3275,7 @@ function generateWhichIsNotNonmetalQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3206,6 +3304,7 @@ function generateWhichIsHalogenQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3235,6 +3334,7 @@ function generateWhichIsNotHalogenQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3264,6 +3364,7 @@ function generateWhichIsNobleGasQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3293,6 +3394,7 @@ function generateWhichIsNotNobleGasQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3313,6 +3415,7 @@ function generateKnowledgeQuestion() {
 
     let maxNumber = getDifficultyRange();
     let availableKnowledgeQuestions = knowledgeQuestions.filter(kq => {
+
         let answerElement = elements.find(e => e.name === kq.answer);
 
         return answerElement && answerElement.number <= maxNumber;
@@ -3327,6 +3430,7 @@ function generateKnowledgeQuestion() {
     let correctElement = elements.find(e => e.name === selected.answer);
 
     let wrongPool = elements.filter(e =>
+
         e.number <= maxNumber &&
         e.name !== selected.answer
     );
@@ -3338,6 +3442,7 @@ function generateKnowledgeQuestion() {
         let wrongElement = wrongPool[Math.floor(Math.random() * wrongPool.length)];
 
         if (!choices.includes(wrongElement.name)) {
+
             choices.push(wrongElement.name);
         }
     }
@@ -3366,6 +3471,7 @@ function getRandomElement() {
 function shuffleArray(arr) {
 
     for (let i = arr.length - 1; i > 0; i--) {
+
         let j = Math.floor(Math.random() * (i + 1));
         let temp = arr[i];
         arr[i] = arr[j];
@@ -3385,26 +3491,32 @@ function getWrongAnswers(correctElement, questionType, correctAnswer) {
         let choice = "";
 
         if (questionType === 0) {
+
             choice = randomElement.symbol;
         }
 
         else if (questionType === 1) {
+
             choice = randomElement.name;
         }
 
         else if (questionType === 2) {
+
             choice = randomElement.group.toString();
         }
 
         else if (questionType === 3) {
+
             choice = randomElement.period.toString();
         }
 
         else if (questionType === 4) {
+
             choice = randomElement.category;
         }
 
         if (!wrongAnswers.includes(choice) && choice !== correctAnswer) {
+
             wrongAnswers.push(choice);
         }
     }
@@ -3535,10 +3647,12 @@ function generateOriginalQuestion(forcedType = null) {
     let questionType;
 
     if (forcedType === null) {
+
         questionType = Math.floor(Math.random() * 5);
     }
 
     else {
+
         questionType = forcedType;
     }
 
@@ -3547,30 +3661,35 @@ function generateOriginalQuestion(forcedType = null) {
     let explanation = "";
 
     if (questionType === 0) {
+
         question = `What is the symbol for ${e.name}?`;
         answer = e.symbol;
         explanation = `${e.name} has the chemical symbol ${e.symbol}. Symbols are the abbreviations used on the periodic table.`;
     }
 
     else if (questionType === 1) {
+
         question = `What is the name of the element with symbol ${e.symbol}?`;
         answer = e.name;
         explanation = `${e.symbol} stands for ${e.name}. Each element has its own unique symbol.`;
     }
 
     else if (questionType === 2) {
+
         question = `What group is ${e.name} in?`;
         answer = e.group.toString();
         explanation = `${e.name} is in group ${e.group}. Groups are the vertical columns on the periodic table.`;
     }
 
     else if (questionType === 3) {
+
         question = `What period is ${e.name} in?`;
         answer = e.period.toString();
         explanation = `${e.name} is in period ${e.period}. Periods are the horizontal rows on the periodic table.`;
     }
 
     else {
+
         question = `What category does ${e.name} belong to?`;
         answer = e.category;
         explanation = `${e.name} belongs to the category ${e.category}. Categories describe general chemical behavior and placement.`;
@@ -3912,6 +4031,7 @@ function quitPractice() {
 }
 
 document.getElementById("quit-practice-btn").onclick = () => {
+
     quitPractice();
 };
 
@@ -3950,6 +4070,7 @@ function endQuiz(wasQuit) {
     practiceType = null;
 
     for (let i = 0; i < 4; i++) {
+
         document.getElementById("btn" + i).disabled = true;
     }
 
@@ -3986,11 +4107,13 @@ function showReport(wasQuit) {
     let percent = totalQuestions === 0 ? 0 : Math.round((score / totalQuestions) * 100);
 
     if (wasQuit) {
+
         reportSummary.textContent =
             `You answered ${totalQuestions} question(s) before quitting. Final score: ${score} / ${totalQuestions} (${percent}%).`;
     }
 
     else {
+
         reportSummary.textContent =
             `You completed all ${maxQuestions} questions. Final score: ${score} / ${totalQuestions} (${percent}%).`;
     }
@@ -4001,10 +4124,12 @@ function showReport(wasQuit) {
         div.classList.add("review-item");
 
         if (item.isCorrect) {
+
             div.classList.add("correct");
         }
 
         else {
+
             div.classList.add("wrong");
         }
 
@@ -4017,7 +4142,9 @@ function showReport(wasQuit) {
         `;
 
         if (!item.isCorrect) {
+
             let practiceBtn = document.createElement("button");
+
             practiceBtn.textContent = `Practice more ${getTypeName(item.questionType)} questions`;
             practiceBtn.classList.add("practice-btn");
 
@@ -4050,22 +4177,27 @@ function startPractice(type) {
 }
 
 document.getElementById("btn0").onclick = function () {
+
     selectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn1").onclick = function () {
+
     selectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn2").onclick = function () {
+
     selectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn3").onclick = function () {
+
     selectAnswer(this.textContent, this);
 };
 
 document.getElementById("start-btn").onclick = () => {
+
     startQuiz();
 };
 
@@ -4077,12 +4209,14 @@ document.getElementById("next-btn").onclick = () => {
     if (!quizActive) return;
 
     if (!answered) return;
+
     showQuestion();
 };
 
 document.getElementById("quit-btn").onclick = () => {
 
     if (!quizActive) return;
+
     endQuiz(true);
 };
 
@@ -4096,12 +4230,14 @@ music.volume = 0.25;
 muteBtn.onclick = () => {
 
     if (music.muted) {
+
         music.muted = false;
         muteBtn.textContent = "Mute";
         music.play();
     }
 
     else {
+
         music.muted = true;
         muteBtn.textContent = "Unmute";
     }
@@ -4111,6 +4247,7 @@ muteBtn.onclick = () => {
 document.addEventListener("click", () => {
 
     if (music.paused && !music.muted) {
+
         music.play().catch(() => { });
     }
 }, { once: true });
@@ -4125,11 +4262,13 @@ const overlay = document.getElementById("lesson-overlay");
 lessonBtn.addEventListener("click", () => {
 
     if (quizActive) return;
+
     lessonCard.classList.remove("hidden");
     overlay.classList.remove("hidden");
 });
 
 closeLessonBtn.addEventListener("click", () => {
+
     lessonCard.classList.add("hidden");
     overlay.classList.add("hidden");
 });
@@ -4140,14 +4279,17 @@ const toggleReportBtn = document.getElementById("toggle-report-btn");
 const reportContent = document.getElementById("report-content");
 
 toggleReportBtn.addEventListener("click", () => {
+
     reportMinimized = !reportMinimized;
 
     if (reportMinimized) {
+
         reportContent.classList.add("hidden");
         toggleReportBtn.textContent = "Expand Report";
     }
 
     else {
+
         reportContent.classList.remove("hidden");
         toggleReportBtn.textContent = "Minimize Report";
     }
@@ -4167,25 +4309,31 @@ elementSearch.addEventListener("input", () => {
     searchResults.innerHTML = "";
 
     if (query === "") {
+
         searchResults.classList.add("hidden");
         return;
     }
 
     let matches = elements.filter(e =>
+
         e.name.toLowerCase().includes(query)
     );
 
     if (matches.length === 0) {
+
         searchResults.classList.add("hidden");
         return;
     }
 
     matches.forEach(e => {
+
         const item = document.createElement("div");
+
         item.classList.add("search-result-item");
         item.textContent = `${e.name} (${e.symbol})`;
 
         item.addEventListener("click", (event) => {
+
             event.stopPropagation();
             elementSearch.value = e.name;
             searchResults.classList.add("hidden");
@@ -4207,7 +4355,9 @@ document.addEventListener("click", () => {
 });
 
 function getElementDiv(symbol) {
+
     return [...document.querySelectorAll(".element")]
+
         .find(el => el.querySelector(".symbol").textContent === symbol);
 }
 
@@ -4215,6 +4365,7 @@ const particleBg = document.getElementById("particle-bg");
 
 function spawnBurst() {
     const colors = [
+
         "#ff4d4d", // red
         "#4da6ff", // blue
         "#4dff88", // green
@@ -4227,6 +4378,7 @@ function spawnBurst() {
     const centerY = Math.random() * window.innerHeight;
 
     for (let i = 0; i < burstCount; i++) {
+
         const p = document.createElement("div");
         p.classList.add("particle-burst");
 
@@ -4260,6 +4412,7 @@ function spawnBurst() {
         particleBg.appendChild(p);
 
         setTimeout(() => {
+
             p.remove();
         }, 1200);
     }
@@ -4268,6 +4421,7 @@ function spawnBurst() {
 setInterval(() => {
 
     if (particlesEnabled) {
+
         spawnBurst();
     }
 }, 1800);
@@ -4275,6 +4429,7 @@ setInterval(() => {
 const particleToggleBtn = document.getElementById("particle-toggle-btn");
 
 particleToggleBtn.addEventListener("click", () => {
+
     particlesEnabled = !particlesEnabled;
 
     particleToggleBtn.textContent = particlesEnabled
@@ -4285,16 +4440,22 @@ particleToggleBtn.addEventListener("click", () => {
 const themeToggleBtn = document.getElementById("theme-toggle-btn");
 
 function applyTheme(theme) {
+
     if (theme === "light") {
+
         document.body.classList.add("light-mode");
         themeToggleBtn.textContent = "Dark Mode";
-    } else {
+    }
+
+    else {
+
         document.body.classList.remove("light-mode");
         themeToggleBtn.textContent = "Light Mode";
     }
 }
 
 themeToggleBtn.addEventListener("click", () => {
+
     const isLight = document.body.classList.contains("light-mode");
     const newTheme = isLight ? "dark" : "light";
 
@@ -4313,26 +4474,38 @@ const favoritesBtn = document.getElementById("favorites-btn");
 const favoritesPanel = document.getElementById("favorites-panel");
 const favoritesList = document.getElementById("favorites-list");
 const closeFavoritesBtn = document.getElementById("close-favorites-btn");
+const confirmModal = document.getElementById("confirm-modal");
+const confirmMessage = document.getElementById("confirm-message");
+const confirmYesBtn = document.getElementById("confirm-yes-btn");
+const confirmNoBtn = document.getElementById("confirm-no-btn");
 
 function saveFavorites() {
+
     localStorage.setItem("favoriteElements", JSON.stringify(favorites));
 }
 
 function isFavorite(symbol) {
+
     return favorites.includes(symbol);
 }
 
 function updateFavoriteButton() {
+
     if (!currentElement) return;
 
     if (isFavorite(currentElement.symbol)) {
+
         favoriteBtn.textContent = "★";
-    } else {
+    }
+
+    else {
+
         favoriteBtn.textContent = "☆";
     }
 }
 
 favoriteBtn.addEventListener("click", (event) => {
+
     event.stopPropagation();
 
     if (!currentElement) return;
@@ -4341,8 +4514,12 @@ favoriteBtn.addEventListener("click", (event) => {
     const index = favorites.indexOf(symbol);
 
     if (index === -1) {
+
         favorites.push(symbol);
-    } else {
+    }
+
+    else {
+
         favorites.splice(index, 1);
     }
 
@@ -4351,22 +4528,53 @@ favoriteBtn.addEventListener("click", (event) => {
     renderFavorites();
 });
 
+function showConfirm(message, onYes) {
+
+    confirmMessage.textContent = message;
+    confirmModal.classList.remove("hidden");
+
+    function handleYes() {
+
+        confirmModal.classList.add("hidden");
+        confirmYesBtn.removeEventListener("click", handleYes);
+        confirmNoBtn.removeEventListener("click", handleNo);
+        onYes();
+    }
+
+    function handleNo() {
+
+        confirmModal.classList.add("hidden");
+        confirmYesBtn.removeEventListener("click", handleYes);
+        confirmNoBtn.removeEventListener("click", handleNo);
+    }
+
+    confirmYesBtn.addEventListener("click", handleYes);
+    confirmNoBtn.addEventListener("click", handleNo);
+}
+
 function renderFavorites() {
+
     favoritesList.innerHTML = "";
 
     if (favorites.length === 0) {
+
         favoritesList.innerHTML = "<p>No favorite elements yet.</p>";
+
         return;
     }
 
     favorites.forEach(symbol => {
+
         const element = elements.find(e => e.symbol === symbol);
+
         if (!element) return;
 
         const card = document.createElement("div");
         card.classList.add("favorite-card");
 
         card.innerHTML = `
+
+        <button class="favorite-remove-btn" data-symbol="${element.symbol}">★</button>
             <h3>${element.name} (${element.symbol})</h3>
             <p>Symbol: ${element.symbol}</p>
             <p>Atomic Number: ${element.number}</p>
@@ -4376,10 +4584,46 @@ function renderFavorites() {
             <p>Category: ${element.category}</p>
             <p>Danger: ${element.danger}</p>
             <p>State: ${element.state}</p>
-            
         `;
 
+        const removeBtn = card.querySelector(".favorite-remove-btn");
+
+        removeBtn.addEventListener("click", (event) => {
+
+            event.stopPropagation();
+
+            showConfirm(
+                `Are you sure you want to remove ${element.name} from favorites?`,
+
+                function () {
+                    const index = favorites.indexOf(element.symbol);
+
+                    if (index !== -1) {
+
+                        favorites.splice(index, 1);
+                    }
+
+                    favorites.sort((a, b) => {
+
+                        const elA = elements.find(e => e.symbol === a);
+                        const elB = elements.find(e => e.symbol === b);
+
+                        return elA.number - elB.number;
+                    });
+
+                    saveFavorites();
+                    renderFavorites();
+
+                    if (currentElement && currentElement.symbol === element.symbol) {
+
+                        updateFavoriteButton();
+                    }
+                }
+            );
+        });
+
         card.addEventListener("click", (event) => {
+
             event.stopPropagation();
 
             favoritesPanel.classList.add("hidden");
@@ -4393,32 +4637,51 @@ function renderFavorites() {
 }
 
 favoritesBtn.addEventListener("click", (event) => {
+
     event.stopPropagation();
     renderFavorites();
     favoritesPanel.classList.remove("hidden");
 });
 
 closeFavoritesBtn.addEventListener("click", (event) => {
+
     event.stopPropagation();
     favoritesPanel.classList.add("hidden");
 });
 
 favoritesPanel.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+});
+
+confirmModal.addEventListener("click", () => {
+
+    confirmModal.classList.add("hidden");
+});
+
+document.querySelector(".confirm-box").addEventListener("click", (event) => {
+
     event.stopPropagation();
 });
 
 document.addEventListener("click", () => {
+
     if (!infoCard.classList.contains("hidden")) {
+
         infoCard.classList.add("hidden");
     }
 
     if (!favoritesPanel.classList.contains("hidden")) {
+
         favoritesPanel.classList.add("hidden");
     }
 });
 
 favorites.sort((a, b) => {
+
     const elA = elements.find(e => e.symbol === a);
     const elB = elements.find(e => e.symbol === b);
+
     return elA.number - elB.number;
 });
+
