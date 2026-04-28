@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<!--
+NAME
+    index.html - Main interface for the Elementarium application.
+
+DESCRIPTION
+    This file defines the structure of the Elementarium web application.
+    It includes the quiz system, periodic table display, search feature,
+    element information cards, lesson/help system, and favorites management.
+
+    The layout is designed to work with styles.css for presentation
+    and script.js for interactivity.
+-->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,32 +19,32 @@
     <title>Elementarium</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+    <!-- HEADER -->
     <header>
         <h1>Elementarium</h1>
         <p>Interactive Periodic Table</p>
     </header>
 
+    <!-- BACKGROUND AUDIO -->
     <audio id="bg-music" autoplay loop>
         <source src="nastelbom-ambient-495893.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- PARTICLE BACKGROUND -->
     <div id="particle-bg"></div>
 
-
-
+    <!-- GLOBAL CONTROL BUTTONS -->
     <button id="mute-btn">Mute</button>
-
     <button id="particle-toggle-btn">Particles: ON</button>
-
     <button id="theme-toggle-btn">Light Mode</button>
-
     <button id="favorites-btn">View Favorites</button>
-
-
 
     <main>
 
+        <!-- QUIZ SECTION -->
         <section id="quiz-section">
             <h2 id="quiz-title">Quiz Mode</h2>
 
@@ -56,6 +69,7 @@
             <p id="score-display">Score: 0 / 0</p>
         </section>
 
+        <!-- REPORT SECTION -->
         <section id="report-section" class="hidden">
             <h2>Quiz Report</h2>
             <button id="toggle-report-btn" class="hidden">Minimize Report</button>
@@ -66,18 +80,19 @@
             </div>
         </section>
 
+        <!-- SEARCH SECTION -->
         <div id="search-section">
             <h2>Search for an Element</h2>
             <input type="text" id="element-search" placeholder="Type an element name..." autocomplete="off">
             <div id="search-results" class="hidden"></div>
         </div>
 
+        <!-- PERIODIC TABLE -->
         <section id="periodic-table"></section>
 
-
-
+        <!-- ELEMENT INFO CARD -->
         <div id="info-card" class="hidden">
-            <img id="element-image" src="" alt="">
+            <img id="element-image" src="" alt="Element image">
 
             <div id="info-card-header-row">
                 <h2 id="element-name"></h2>
@@ -86,20 +101,18 @@
 
             <p id="element-symbol"></p>
             <p id="element-number"></p>
-
             <p id="element-mass"></p>
-
             <p id="element-group"></p>
             <p id="element-period"></p>
             <p id="element-category"></p>
             <p id="element-danger"></p>
             <p id="element-state"></p>
-
-
             <p id="element-description"></p>
         </div>
 
+        <!-- LESSON / HELP PANEL -->
         <div id="lesson-overlay" class="hidden"></div>
+
         <div id="lesson-card" class="hidden">
             <button id="close-lesson-btn">X</button>
 
@@ -116,8 +129,10 @@
             <p><strong>How to find the group:</strong> Count which vertical column the element is in. The group number is shown on the card too.</p>
             <p><strong>How to find the period:</strong> Count which horizontal row the element is in. The period number is shown on the card too.</p>
 
-            <strong>How to find the category:</strong> Open the element card or use the color and placement of the element to help identify
-            its family.
+            <p>
+                <strong>How to find the category:</strong> Open the element card or use the color and placement of the element to help identify
+                its family.
+            </p>
 
             <h3>Element Families / Categories</h3>
             <p><strong>Alkali Metals:</strong> These are very reactive metals in Group 1, like Lithium, Sodium, and Potassium.</p>
@@ -125,10 +140,12 @@
             <p><strong>Transition Metals:</strong> These are the large block of metals in the center of the table, usually Groups 3 through 12.</p>
             <p><strong>Lanthanides:</strong> These are the upper detached row at the bottom of the table, elements 57 through 71.</p>
             <p><strong>Actinides:</strong> These are the lower detached row at the bottom of the table, elements 89 through 103.</p>
+
             <p>
                 <strong>Post-Transition Metals:</strong> These are metals to the right of the transition metals, including elements
                 like Aluminum, Tin, and Lead.
             </p>
+
             <p><strong>Metalloids:</strong> These have properties between metals and nonmetals, such as Boron and Silicon.</p>
             <p><strong>Nonmetals:</strong> These include important elements like Hydrogen, Carbon, Nitrogen, Oxygen, Phosphorus, and Sulfur.</p>
             <p><strong>Halogens:</strong> These are very reactive nonmetals in Group 17, like Fluorine, Chlorine, and Bromine.</p>
@@ -142,14 +159,17 @@
             </p>
         </div>
 
+        <!-- FAVORITES PANEL -->
         <div id="favorites-panel" class="hidden">
             <div id="favorites-panel-header">
                 <h2>Favorite Elements</h2>
                 <button id="close-favorites-btn">Close</button>
             </div>
+
             <div id="favorites-list"></div>
         </div>
 
+        <!-- CONFIRMATION MODAL -->
         <div id="confirm-modal" class="confirm-modal hidden">
             <div class="confirm-box">
                 <h3 id="confirm-title">Confirm Removal</h3>
@@ -164,6 +184,8 @@
 
     </main>
 
+    <!-- MAIN SCRIPT -->
     <script src="script.js"></script>
+
 </body>
 </html>

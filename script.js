@@ -1,4 +1,48 @@
-﻿
+﻿/*
+NAME
+    script.js - Main logic and data for the Elementarium application.
+
+DESCRIPTION
+    This file contains the data structure representing all elements
+    in the periodic table along with their properties such as name,
+    symbol, atomic number, category, and descriptive facts.
+
+    The data defined here is used throughout the application for:
+    - Rendering the periodic table
+    - Generating quiz questions
+    - Displaying element information cards
+    - Supporting search functionality
+*/
+
+/*
+DATA STRUCTURE
+
+    elements
+
+DESCRIPTION
+
+    An array of objects where each object represents a chemical element.
+
+FIELDS
+
+    name        --> Full name of the element
+    symbol      --> Chemical symbol
+    number      --> Atomic number
+    mass        --> Atomic mass
+    group       --> Periodic table group
+    period      --> Periodic table period
+    category    --> Classification (e.g., Nonmetal, Noble Gas)
+    state       --> Physical state at room temperature
+    danger      --> Safety/danger rating and description
+    image       --> Path to image file
+    fact        --> Informational description of the element
+
+NOTES
+
+    This structure acts as the central data source for the application.
+    All UI features pull from this array.
+*/
+
 const elements = [
 
     {
@@ -1982,11 +2026,31 @@ const elements = [
 ];
 
 
+/*
+GLOBAL DOM REFERENCES
+*/
+
 const table = document.getElementById("periodic-table");
+
+/*
+APPLICATION STATE VARIABLES
+*/
 
 let particlesEnabled = true;
 
-const alkaliMetals = ["Lithium", "Sodium", "Potassium", "Rubidium", "Cesium", "Francium"];
+
+/*
+ELEMENT CATEGORY GROUPINGS
+
+DESCRIPTION
+
+    These arrays categorize elements by their chemical classification.
+    They are used to:
+    - Generate quiz questions
+    - Apply color styling
+    - Support filtering and logic within the application
+*/
+
 
 const alkalineEarthMetals = ["Beryllium", "Magnesium", "Calcium", "Strontium", "Barium", "Radium"];
 
@@ -2023,8 +2087,29 @@ const halogens = ["Fluorine", "Chlorine", "Bromine", "Iodine", "Astatine", "Tenn
 
 const nobleGases = ["Helium", "Neon", "Argon", "Krypton", "Xenon", "Radon", "Oganesson"];
 
+/*
+DATA STRUCTURE
 
-const knowledgeQuestions = [
+    KnowledgeQuestions
+
+DESCRIPTION
+
+    An array of quiz question objects used in the quiz system.
+
+FIELDS
+
+    question        --> The question presented to the user
+    answer          --> Correct answer
+    explanation     --> Explanation displayed after answering
+
+NOTES
+
+    These questions test general knowledge about elements rather than
+    direct periodic table properties (symbol, group, etc.).
+*/
+
+
+const KnowledgeQuestions = [
 
     {
         question: "Which element is the lightest and most abundant in the universe?",
@@ -2429,11 +2514,45 @@ const knowledgeQuestions = [
         explanation: "Named after Tennessee."
     }
 ];
+/*
+GLOBAL UI REFERENCES
+*/
+
+const infoCard = document.getElementById("info-card");
+let outsideClickHandler = null;
 
 
-function getCategoryClass(category) {
+/**/
+/*
+GetCategoryClass() GetCategoryClass()
 
-    switch (category) {
+NAME
+
+        GetCategoryClass - maps an element category to a CSS class.
+
+SYNOPSIS
+
+        string GetCategoryClass( string a_category );
+            category        --> the category name of the element.
+
+DESCRIPTION
+
+        This function converts an element's category string into
+        a corresponding CSS class name used for styling the element
+        on the periodic table.
+
+        If the category does not match any known case, an empty
+        string is returned.
+
+RETURNS
+
+        Returns a string representing the CSS class name.
+
+*/
+/**/
+function GetCategoryClass(a_category) {
+
+    switch (a_category) {
 
         case "Alkali Metal":
 
@@ -2480,30 +2599,70 @@ function getCategoryClass(category) {
             return "";
     }
 }
+/* string GetCategoryClass( string category ); */
 
 
-const infoCard = document.getElementById("info-card");
+/**/
+/*/**/
+/*
+ShowElementCard() ShowElementCard()
 
-let outsideClickHandler = null;
+NAME
 
-function showElementCard(e, sourceDiv = null) {
+        ShowElementCard - displays the information card for a selected element.
+
+SYNOPSIS
+
+        void ShowElementCard( object a_element, object a_sourceDiv = null );
+            a_element       --> element object containing data.
+            a_sourceDiv     --> the DOM element that was clicked.
+
+DESCRIPTION
+
+        This function displays the information card for a selected element.
+        It updates all text fields, loads the element image, and positions
+        the card relative to the clicked element.
+
+        The function also:
+        - Highlights the selected element
+        - Handles image loading before positioning
+        - Ensures the card stays within screen bounds
+        - Adds an outside-click handler to close the card
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function ShowElementCard(a_element, a_sourceDiv = null) {
 
     if (quizActive) return;
 
-    currentElement = e;
+    currentElement = a_element;
+
+    document.querySelectorAll(".element").forEach(el => {
+
+        el.classList.remove("selected-element");
+    });
+
+    if (a_sourceDiv != null) {
+
+        a_sourceDiv.classList.add("selected-element");
+    }
 
     const img = document.getElementById("element-image");
 
-    document.getElementById("element-name").textContent = e.name;
-    document.getElementById("element-symbol").textContent = "Symbol: " + e.symbol;
-    document.getElementById("element-number").textContent = "Atomic Number: " + e.number;
-    document.getElementById("element-mass").textContent = "Atomic Mass: " + e.mass;
-    document.getElementById("element-group").textContent = "Group: " + e.group;
-    document.getElementById("element-period").textContent = "Period: " + e.period;
-    document.getElementById("element-category").textContent = "Category: " + e.category;
-    document.getElementById("element-state").textContent = "State: " + e.state;
-    document.getElementById("element-danger").textContent = "Danger Level: " + e.danger;
-    document.getElementById("element-description").textContent = e.description || e.fact;
+    document.getElementById("element-name").textContent = a_element.name;
+    document.getElementById("element-symbol").textContent = "Symbol: " + a_element.symbol;
+    document.getElementById("element-number").textContent = "Atomic Number: " + a_element.number;
+    document.getElementById("element-mass").textContent = "Atomic Mass: " + a_element.mass;
+    document.getElementById("element-group").textContent = "Group: " + a_element.group;
+    document.getElementById("element-period").textContent = "Period: " + a_element.period;
+    document.getElementById("element-category").textContent = "Category: " + a_element.category;
+    document.getElementById("element-state").textContent = "State: " + a_element.state;
+    document.getElementById("element-danger").textContent = "Danger Level: " + a_element.danger;
+    document.getElementById("element-description").textContent = a_element.description || a_element.fact;
 
     updateFavoriteButton();
 
@@ -2513,35 +2672,32 @@ function showElementCard(e, sourceDiv = null) {
     infoCard.style.transform = "none";
     infoCard.style.visibility = "hidden";
 
-    function positionCard() {
+    function PositionCard() {
+
         const margin = 12;
         const cardWidth = 300;
         const cardHeight = infoCard.offsetHeight;
 
-        if (sourceDiv) {
+        if (a_sourceDiv) {
 
-            const rect = sourceDiv.getBoundingClientRect();
+            const rect = a_sourceDiv.getBoundingClientRect();
 
             let left = rect.right + margin;
             let top = rect.top;
 
             if (left + cardWidth > window.innerWidth - margin) {
-
                 left = rect.left - cardWidth - margin;
             }
 
             if (left < margin) {
-
                 left = margin;
             }
 
             if (top + cardHeight > window.innerHeight - margin) {
-
                 top = window.innerHeight - cardHeight - margin;
             }
 
             if (top < margin) {
-
                 top = margin;
             }
 
@@ -2549,6 +2705,7 @@ function showElementCard(e, sourceDiv = null) {
             infoCard.style.top = top + "px";
             infoCard.style.right = "";
         }
+
         else {
 
             infoCard.style.left = "50%";
@@ -2560,25 +2717,25 @@ function showElementCard(e, sourceDiv = null) {
         infoCard.style.visibility = "visible";
     }
 
-    if (e.image) {
+    if (a_element.image) {
 
         img.onload = function () {
-            positionCard();
+            PositionCard();
         };
 
-        img.src = e.image;
-        img.alt = e.name;
+        img.src = a_element.image;
+        img.alt = a_element.name;
         img.style.display = "block";
 
         if (img.complete) {
-
-            positionCard();
+            PositionCard();
         }
     }
+
     else {
 
         img.style.display = "none";
-        positionCard();
+        PositionCard();
     }
 
     if (outsideClickHandler) {
@@ -2587,6 +2744,7 @@ function showElementCard(e, sourceDiv = null) {
     }
 
     outsideClickHandler = function (event) {
+
         if (!infoCard.contains(event.target)) {
 
             infoCard.classList.add("hidden");
@@ -2597,11 +2755,21 @@ function showElementCard(e, sourceDiv = null) {
     };
 
     setTimeout(() => {
+
         document.addEventListener("click", outsideClickHandler);
     }, 0);
 }
+/* void ShowElementCard( object a_element, object a_sourceDiv ); */
+
+
+/*
+EVENT HANDLING
+
+    Handles closing the info card when clicked.
+*/
 
 infoCard.addEventListener("click", function (event) {
+
     event.stopPropagation();
     infoCard.classList.add("hidden");
     infoCard.style.display = "none";
@@ -2613,13 +2781,20 @@ infoCard.addEventListener("click", function (event) {
     }
 });
 
+
+/*
+INITIAL TABLE RENDERING
+
+    Creates DOM elements for each periodic table entry
+    and attaches click handlers for interaction.
+*/
+
 elements.forEach(e => {
 
     const div = document.createElement("div");
 
     div.classList.add("element");
-    div.classList.add(getCategoryClass(e.category));
-
+    div.classList.add(GetCategoryClass(e.category));
     div.style.gridColumn = e.group;
     div.style.gridRow = e.period;
 
@@ -2629,36 +2804,73 @@ elements.forEach(e => {
     `;
 
     div.addEventListener("click", (event) => {
+
         event.stopPropagation();
-        const div = getElementDiv(e.symbol);
-        showElementCard(e, div);
+        const div = GetElementDiv(e.symbol);
+
+        ShowElementCard(e, div);
     });
 
     table.appendChild(div);
 });
 
-function createSeriesMarker(number, symbol, group, period, categoryClass) {
+/**/
+/**/
+/*
+CreateSeriesMarker() CreateSeriesMarker()
+
+NAME
+
+        CreateSeriesMarker - creates a placeholder marker for element series rows.
+
+SYNOPSIS
+
+        void CreateSeriesMarker( string a_numberRange, string a_symbol, number a_group, number a_period, string a_categoryClass );
+            a_numberRange   --> the number range displayed on the marker.
+            a_symbol        --> the element symbol displayed on the marker.
+            a_group         --> the grid column where the marker is placed.
+            a_period        --> the grid row where the marker is placed.
+            a_categoryClass --> the CSS class used to style the marker.
+
+DESCRIPTION
+
+        This function creates a special periodic table marker for the
+        lanthanide and actinide series. These markers show where the
+        detached rows connect to the main periodic table.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+
+function CreateSeriesMarker(a_numberRange, a_symbol, a_group, a_period, a_categoryClass) {
 
     const div = document.createElement("div");
 
     div.classList.add("element");
-    div.classList.add(categoryClass);
+    div.classList.add(a_categoryClass);
     div.classList.add("series-marker");
-
-    div.style.gridColumn = group;
-    div.style.gridRow = period;
+    div.style.gridColumn = a_group;
+    div.style.gridRow = a_period;
 
     div.innerHTML = `
-        <div class="number">${number}</div>
-        <div class="symbol">${symbol}</div>
+
+        <div class="number">${a_numberRange}</div>
+        <div class="symbol">${a_symbol}</div>
         <div class="asterisk">*</div>
     `;
 
     table.appendChild(div);
 }
 
-createSeriesMarker("57 - 71", "La", 3, 6, "lanthanide");
-createSeriesMarker("89 - 103", "Ac", 3, 7, "actinide");
+/* void CreateSeriesMarker( string a_numberRange, string a_symbol, number a_group, number a_period, string a_categoryClass ); */
+
+CreateSeriesMarker("57 - 71", "La", 3, 6, "lanthanide");
+CreateSeriesMarker("89 - 103", "Ac", 3, 7, "actinide");
+
+/* ====================== QUIZ STATE ====================== */
 
 let score = 0;
 let totalQuestions = 0;
@@ -2671,7 +2883,35 @@ let quizHistory = [];
 let practiceMode = false;
 let practiceType = null;
 
-function getDifficultyRange() {
+
+/* ====================== DIFFICULTY HELPERS ====================== */
+
+/**/
+/*
+GetDifficultyRange() GetDifficultyRange()
+
+NAME
+
+        GetDifficultyRange - determines how many elements are available.
+
+SYNOPSIS
+
+        number GetDifficultyRange();
+
+DESCRIPTION
+
+        This function checks the user's quiz performance and returns
+        the highest atomic number that should be included in the quiz.
+        Lower scores keep the quiz easier, while higher scores unlock
+        more of the periodic table.
+
+RETURNS
+
+        Returns 40, 90, or 118 depending on the user's score percentage.
+
+*/
+/**/
+function GetDifficultyRange() {
 
     if (totalQuestions < 2) {
 
@@ -2695,8 +2935,35 @@ function getDifficultyRange() {
         return 118;
     }
 }
+/* number GetDifficultyRange(); */
 
-function categoryQuestionsUnlocked() {
+
+/**/
+/*
+CategoryQuestionsUnlocked() CategoryQuestionsUnlocked()
+
+NAME
+
+        CategoryQuestionsUnlocked - checks if category questions are available.
+
+SYNOPSIS
+
+        bool CategoryQuestionsUnlocked();
+
+DESCRIPTION
+
+        This function determines whether category-based quiz questions
+        should be added to the question pool. The user must answer at
+        least three questions and have a score of at least 50 percent.
+
+RETURNS
+
+        Returns true if category questions are unlocked. Otherwise,
+        returns false.
+
+*/
+/**/
+function CategoryQuestionsUnlocked() {
 
     if (totalQuestions < 3) {
 
@@ -2720,8 +2987,35 @@ function categoryQuestionsUnlocked() {
         return true;
     }
 }
+/* bool CategoryQuestionsUnlocked(); */
 
-function knowledgeQuestionsUnlocked() {
+
+/**/
+/*
+KnowledgeQuestionsUnlocked() KnowledgeQuestionsUnlocked()
+
+NAME
+
+        KnowledgeQuestionsUnlocked - checks if knowledge questions are available.
+
+SYNOPSIS
+
+        bool KnowledgeQuestionsUnlocked();
+
+DESCRIPTION
+
+        This function determines whether general knowledge questions
+        should be added to the quiz. The user must answer at least four
+        questions and have a score of at least 70 percent.
+
+RETURNS
+
+        Returns true if knowledge questions are unlocked. Otherwise,
+        returns false.
+
+*/
+/**/
+function KnowledgeQuestionsUnlocked() {
 
     if (totalQuestions < 4) {
 
@@ -2732,95 +3026,289 @@ function knowledgeQuestionsUnlocked() {
 
     return percent >= 70;
 }
+/* bool KnowledgeQuestionsUnlocked(); */
 
-function getElementsUpToDifficulty() {
 
-    let maxNumber = getDifficultyRange();
+/**/
+/*
+GetElementsUpToDifficulty() GetElementsUpToDifficulty()
+
+NAME
+
+        GetElementsUpToDifficulty - gets elements allowed by current difficulty.
+
+SYNOPSIS
+
+        array GetElementsUpToDifficulty();
+
+DESCRIPTION
+
+        This function gets the current difficulty range and returns only
+        the elements whose atomic numbers are within that range.
+
+RETURNS
+
+        Returns an array of element objects.
+
+*/
+/**/
+function GetElementsUpToDifficulty() {
+
+    let maxNumber = GetDifficultyRange();
 
     return elements.filter(e => e.number <= maxNumber);
 }
+/* array GetElementsUpToDifficulty(); */
 
-function getRandomFromArray(arr) {
-   
-    return arr[Math.floor(Math.random() * arr.length)];
+
+/**/
+/*
+GetRandomFromArray() GetRandomFromArray()
+
+NAME
+
+        GetRandomFromArray - selects a random item from an array.
+
+SYNOPSIS
+
+        object GetRandomFromArray( array arr );
+            a_arr             --> the array to select from.
+
+DESCRIPTION
+
+        This function chooses and returns one random item from the
+        supplied array.
+
+RETURNS
+
+        Returns one randomly selected array item.
+
+*/
+/**/
+function GetRandomFromArray(a_arr) {
+
+    return a_arr[Math.floor(Math.random() * a_arr.length)];
 }
+/* object GetRandomFromArray( array a_arr ); */
 
-function getCategoryPool(categoryName) {
 
-    if (categoryName === "Alkali Metal") {
+/* ====================== CATEGORY POOLS ====================== */
+
+/**/
+/*
+GetCategoryPool() GetCategoryPool()
+
+NAME
+
+        GetCategoryPool - returns the element-name pool for a category.
+
+SYNOPSIS
+
+        array GetCategoryPool( string categoryName );
+            a_categoryName    --> the category being requested.
+
+DESCRIPTION
+
+        This function matches a category name to the correct category
+        array. It is used by category quiz questions to determine which
+        elements belong to a selected family.
+
+RETURNS
+
+        Returns an array of element names. If no matching category is
+        found, an empty array is returned.
+
+*/
+/**/
+function GetCategoryPool(a_categoryName) {
+
+    if (a_categoryName === "Alkali Metal") {
 
         return alkaliMetals;
     }
 
-    else if (categoryName === "Alkaline Earth Metal") {
+    else if (a_categoryName === "Alkaline Earth Metal") {
 
         return alkalineEarthMetals;
     }
 
-    else if (categoryName === "Transition Metal") {
+    else if (a_categoryName === "Transition Metal") {
 
         return transitionMetals;
     }
 
-    else if (categoryName === "Lanthanide") {
+    else if (a_categoryName === "Lanthanide") {
 
         return lanthanides;
     }
 
-    else if (categoryName === "Actinide") {
+    else if (a_categoryName === "Actinide") {
 
         return actinides;
     }
 
-    else if (categoryName === "Post-Transition Metal") {
+    else if (a_categoryName === "Post-Transition Metal") {
 
         return postTransitionMetals;
     }
 
-    else if (categoryName === "Metalloid") {
+    else if (a_categoryName === "Metalloid") {
 
         return metalloids;
     }
 
-    else if (categoryName === "Nonmetal") {
+    else if (a_categoryName === "Nonmetal") {
 
         return nonmetals;
     }
 
-    else if (categoryName === "Halogen") {
+    else if (a_categoryName === "Halogen") {
 
         return halogens;
     }
 
-    else if (categoryName === "Noble Gas") {
+    else if (a_categoryName === "Noble Gas") {
 
         return nobleGases;
     }
 
     return [];
 }
+/* array GetCategoryPool( string a_categoryName ); */
 
-function getElementsNotInCategory(categoryName) {
 
-    let pool = getElementsUpToDifficulty();
-    let categoryPool = getCategoryPool(categoryName);
+/**/
+/*
+GetElementsNotInCategory() GetElementsNotInCategory()
 
-    return pool.filter(e => !categoryPool.includes(e.name));
+NAME
+
+        GetElementsNotInCategory - gets elements outside a category.
+
+SYNOPSIS
+
+        array GetElementsNotInCategory( string categoryName );
+            categoryName    --> the category to exclude.
+
+DESCRIPTION
+
+        This function returns all elements within the current difficulty
+        range that do not belong to the selected category.
+
+RETURNS
+
+        Returns an array of element objects not in the category.
+
+*/
+
+/**/
+
+/*
+GetElementsNotInCategory() GetElementsNotInCategory()
+
+NAME
+
+        GetElementsNotInCategory - gets elements outside a category.
+
+SYNOPSIS
+
+        array GetElementsNotInCategory( string a_categoryName );
+            a_categoryName    --> the category to exclude.
+
+DESCRIPTION
+
+        This function returns all elements within the current difficulty
+        range that do not belong to the selected category.
+
+RETURNS
+
+        Returns an array of element objects not in the category.
+
+*/
+/**/
+function GetElementsNotInCategory(a_categoryName) {
+
+    let pool = GetElementsUpToDifficulty();
+    let categoryPool = GetCategoryPool(a_categoryName);
+
+    return pool.filter(a_element => !categoryPool.includes(a_element.name));
 }
+/* array GetElementsNotInCategory( string a_categoryName ); */
 
-function getElementsInCategory(categoryName) {
 
-    let pool = getElementsUpToDifficulty();
-    let categoryPool = getCategoryPool(categoryName);
+/**/
+/*
+GetElementsInCategory() GetElementsInCategory()
 
-    return pool.filter(e => categoryPool.includes(e.name));
+NAME
+
+        GetElementsInCategory - gets elements inside a category.
+
+SYNOPSIS
+
+        array GetElementsInCategory( string a_categoryName );
+            a_categoryName    --> the category to include.
+
+DESCRIPTION
+
+        This function returns all elements within the current difficulty
+        range that belong to the selected category.
+
+RETURNS
+
+        Returns an array of element objects in the category.
+
+*/
+/**/
+function GetElementsInCategory(a_categoryName) {
+
+    let pool = GetElementsUpToDifficulty();
+    let categoryPool = GetCategoryPool(a_categoryName);
+
+    return pool.filter(a_element => categoryPool.includes(a_element.name));
 }
+/* array GetElementsInCategory( string a_categoryName ); */
 
-function generateWhichIsAlkaliMetalQuestion() {
 
-    let correctPool = getElementsInCategory("Alkali Metal");
-    let wrongPool = getElementsNotInCategory("Alkali Metal");
+/* ====================== QUESTION GENERATORS ====================== */
 
+/**/
+/*
+GenerateWhichIsAlkaliMetalQuestion() GenerateWhichIsAlkaliMetalQuestion()
+
+NAME
+
+        GenerateWhichIsAlkaliMetalQuestion - creates a question asking for an alkali metal.
+
+SYNOPSIS
+
+        object GenerateWhichIsAlkaliMetalQuestion();
+
+DESCRIPTION
+
+        This function generates a multiple-choice question where the
+        user must select an element that belongs to the Alkali Metal category.
+
+        It selects:
+        - One correct element from the category
+        - Three incorrect elements from outside the category
+        - Shuffles the answer choices
+
+RETURNS
+
+        Returns a question object containing:
+        - question text
+        - correct answer
+        - answer choices
+        - explanation
+        - question type identifier
+
+*/
+/**/
+function GenerateWhichIsAlkaliMetalQuestion() {
+
+    let correctPool = GetElementsInCategory("Alkali Metal");
+    let wrongPool = GetElementsNotInCategory("Alkali Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2834,7 +3322,7 @@ function generateWhichIsAlkaliMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2845,12 +3333,36 @@ function generateWhichIsAlkaliMetalQuestion() {
         questionType: 5
     };
 }
+/* object GenerateWhichIsAlkaliMetalQuestion(); */
 
-function generateWhichIsNotAlkaliMetalQuestion() {
 
-    let correctPool = getElementsNotInCategory("Alkali Metal");
-    let wrongPool = getElementsInCategory("Alkali Metal");
+/**/
+/*
+GenerateWhichIsNotAlkaliMetalQuestion() GenerateWhichIsNotAlkaliMetalQuestion()
 
+NAME
+
+        GenerateWhichIsNotAlkaliMetalQuestion - creates a question asking for a non-alkali metal.
+
+SYNOPSIS
+
+        object GenerateWhichIsNotAlkaliMetalQuestion();
+
+DESCRIPTION
+
+        This function generates a multiple-choice question where the
+        user must select an element that does NOT belong to the Alkali Metal category.
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GenerateWhichIsNotAlkaliMetalQuestion() {
+
+    let correctPool = GetElementsNotInCategory("Alkali Metal");
+    let wrongPool = GetElementsInCategory("Alkali Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2864,7 +3376,7 @@ function generateWhichIsNotAlkaliMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2875,13 +3387,34 @@ function generateWhichIsNotAlkaliMetalQuestion() {
         questionType: 6
     };
 }
+/* object GenerateWhichIsNotAlkaliMetalQuestion(); */
 
 
-function generateWhichIsAlkalineEarthMetalQuestion() {
+/*
+CATEGORY QUESTION GENERATORS
 
-    let correctPool = getElementsInCategory("Alkaline Earth Metal");
-    let wrongPool = getElementsNotInCategory("Alkaline Earth Metal");
+    The following functions follow the same structure:
+    - Select correct element from category (or outside it)
+    - Generate 3 incorrect options
+    - Shuffle choices
+    - Return standardized question object
 
+    Categories covered:
+    - Alkaline Earth Metals
+    - Transition Metals
+    - Lanthanides
+*/
+
+
+/**/
+/*
+GenerateWhichIsAlkalineEarthMetalQuestion - generates "is" category question.
+*/
+/**/
+function GenerateWhichIsAlkalineEarthMetalQuestion() {
+
+    let correctPool = GetElementsInCategory("Alkaline Earth Metal");
+    let wrongPool = GetElementsNotInCategory("Alkaline Earth Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2895,7 +3428,7 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2906,12 +3439,18 @@ function generateWhichIsAlkalineEarthMetalQuestion() {
         questionType: 7
     };
 }
+/* object GenerateWhichIsAlkalineEarthMetalQuestion(); */
 
-function generateWhichIsNotAlkalineEarthMetalQuestion() {
 
-    let correctPool = getElementsNotInCategory("Alkaline Earth Metal");
-    let wrongPool = getElementsInCategory("Alkaline Earth Metal");
+/**/
+/*
+GenerateWhichIsNotAlkalineEarthMetalQuestion - generates "not" category question.
+*/
+/**/
+function GenerateWhichIsNotAlkalineEarthMetalQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Alkaline Earth Metal");
+    let wrongPool = GetElementsInCategory("Alkaline Earth Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2925,7 +3464,7 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2936,11 +3475,18 @@ function generateWhichIsNotAlkalineEarthMetalQuestion() {
         questionType: 8
     };
 }
-function generateWhichIsTransitionMetalQuestion() {
+/* object GenerateWhichIsNotAlkalineEarthMetalQuestion(); */
 
-    let correctPool = getElementsInCategory("Transition Metal");
-    let wrongPool = getElementsNotInCategory("Transition Metal");
 
+/**/
+/*
+GenerateWhichIsTransitionMetalQuestion - generates "is" transition metal question.
+*/
+/**/
+function GenerateWhichIsTransitionMetalQuestion() {
+
+    let correctPool = GetElementsInCategory("Transition Metal");
+    let wrongPool = GetElementsNotInCategory("Transition Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2954,7 +3500,7 @@ function generateWhichIsTransitionMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2965,12 +3511,18 @@ function generateWhichIsTransitionMetalQuestion() {
         questionType: 9
     };
 }
+/* object GenerateWhichIsTransitionMetalQuestion(); */
 
-function generateWhichIsNotTransitionMetalQuestion() {
 
-    let correctPool = getElementsNotInCategory("Transition Metal");
-    let wrongPool = getElementsInCategory("Transition Metal");
+/**/
+/*
+GenerateWhichIsNotTransitionMetalQuestion - generates "not" transition metal question.
+*/
+/**/
+function GenerateWhichIsNotTransitionMetalQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Transition Metal");
+    let wrongPool = GetElementsInCategory("Transition Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -2984,7 +3536,7 @@ function generateWhichIsNotTransitionMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -2995,11 +3547,18 @@ function generateWhichIsNotTransitionMetalQuestion() {
         questionType: 10
     };
 }
-function generateWhichIsLanthanideQuestion() {
+/* object GenerateWhichIsNotTransitionMetalQuestion(); */
 
-    let correctPool = getElementsInCategory("Lanthanide");
-    let wrongPool = getElementsNotInCategory("Lanthanide");
 
+/**/
+/*
+GenerateWhichIsLanthanideQuestion - generates "is" lanthanide question.
+*/
+/**/
+function GenerateWhichIsLanthanideQuestion() {
+
+    let correctPool = GetElementsInCategory("Lanthanide");
+    let wrongPool = GetElementsNotInCategory("Lanthanide");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3013,7 +3572,7 @@ function generateWhichIsLanthanideQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -3024,12 +3583,18 @@ function generateWhichIsLanthanideQuestion() {
         questionType: 11
     };
 }
+/* object GenerateWhichIsLanthanideQuestion(); */
 
-function generateWhichIsNotLanthanideQuestion() {
 
-    let correctPool = getElementsNotInCategory("Lanthanide");
-    let wrongPool = getElementsInCategory("Lanthanide");
+/**/
+/*
+GenerateWhichIsNotLanthanideQuestion - generates "not" lanthanide question.
+*/
+/**/
+function GenerateWhichIsNotLanthanideQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Lanthanide");
+    let wrongPool = GetElementsInCategory("Lanthanide");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3043,7 +3608,7 @@ function generateWhichIsNotLanthanideQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
 
@@ -3054,11 +3619,53 @@ function generateWhichIsNotLanthanideQuestion() {
         questionType: 12
     };
 }
-function generateWhichIsActinideQuestion() {
+/* object GenerateWhichIsNotLanthanideQuestion(); */
+/*
+CATEGORY QUESTION GENERATORS (CONTINUED)
 
-    let correctPool = getElementsInCategory("Actinide");
-    let wrongPool = getElementsNotInCategory("Actinide");
+    These functions follow the same structure as previous category generators:
+    - Select correct element from category (or outside it)
+    - Generate 3 incorrect choices
+    - Shuffle choices
+    - Return standardized question object
 
+    Categories covered in this section:
+    - Actinides
+    - Post-Transition Metals
+    - Metalloids
+    - Nonmetals
+    - Halogens
+    - Noble Gases
+*/
+
+
+/**/
+/*
+GenerateWhichIsActinideQuestion() GenerateWhichIsActinideQuestion()
+
+NAME
+
+        GenerateWhichIsActinideQuestion - creates a question asking for an actinide.
+
+SYNOPSIS
+
+        object GenerateWhichIsActinideQuestion();
+
+DESCRIPTION
+
+        This function generates a multiple-choice question where the
+        user must select an element belonging to the Actinide category.
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GenerateWhichIsActinideQuestion() {
+
+    let correctPool = GetElementsInCategory("Actinide");
+    let wrongPool = GetElementsNotInCategory("Actinide");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3072,10 +3679,9 @@ function generateWhichIsActinideQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is an Actinide?",
         answer: correctElement.name,
         choices: choices,
@@ -3083,12 +3689,18 @@ function generateWhichIsActinideQuestion() {
         questionType: 13
     };
 }
+/* object GenerateWhichIsActinideQuestion(); */
 
-function generateWhichIsNotActinideQuestion() {
 
-    let correctPool = getElementsNotInCategory("Actinide");
-    let wrongPool = getElementsInCategory("Actinide");
+/**/
+/*
+GenerateWhichIsNotActinideQuestion - generates "not" actinide question.
+*/
+/**/
+function GenerateWhichIsNotActinideQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Actinide");
+    let wrongPool = GetElementsInCategory("Actinide");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3102,10 +3714,9 @@ function generateWhichIsNotActinideQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not an Actinide?",
         answer: correctElement.name,
         choices: choices,
@@ -3113,11 +3724,18 @@ function generateWhichIsNotActinideQuestion() {
         questionType: 14
     };
 }
-function generateWhichIsPostTransitionMetalQuestion() {
+/* object GenerateWhichIsNotActinideQuestion(); */
 
-    let correctPool = getElementsInCategory("Post-Transition Metal");
-    let wrongPool = getElementsNotInCategory("Post-Transition Metal");
 
+/**/
+/*
+GenerateWhichIsPostTransitionMetalQuestion - generates "is" question.
+*/
+/**/
+function GenerateWhichIsPostTransitionMetalQuestion() {
+
+    let correctPool = GetElementsInCategory("Post-Transition Metal");
+    let wrongPool = GetElementsNotInCategory("Post-Transition Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3131,10 +3749,9 @@ function generateWhichIsPostTransitionMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is a Post-Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -3142,12 +3759,18 @@ function generateWhichIsPostTransitionMetalQuestion() {
         questionType: 15
     };
 }
+/* object GenerateWhichIsPostTransitionMetalQuestion(); */
 
-function generateWhichIsNotPostTransitionMetalQuestion() {
 
-    let correctPool = getElementsNotInCategory("Post-Transition Metal");
-    let wrongPool = getElementsInCategory("Post-Transition Metal");
+/**/
+/*
+GenerateWhichIsNotPostTransitionMetalQuestion - generates "not" question.
+*/
+/**/
+function GenerateWhichIsNotPostTransitionMetalQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Post-Transition Metal");
+    let wrongPool = GetElementsInCategory("Post-Transition Metal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3161,10 +3784,9 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not a Post-Transition Metal?",
         answer: correctElement.name,
         choices: choices,
@@ -3172,12 +3794,18 @@ function generateWhichIsNotPostTransitionMetalQuestion() {
         questionType: 16
     };
 }
+/* object GenerateWhichIsNotPostTransitionMetalQuestion(); */
 
-function generateWhichIsMetalloidQuestion() {
 
-    let correctPool = getElementsInCategory("Metalloid");
-    let wrongPool = getElementsNotInCategory("Metalloid");
+/**/
+/*
+GenerateWhichIsMetalloidQuestion - generates "is" metalloid question.
+*/
+/**/
+function GenerateWhichIsMetalloidQuestion() {
 
+    let correctPool = GetElementsInCategory("Metalloid");
+    let wrongPool = GetElementsNotInCategory("Metalloid");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3191,10 +3819,9 @@ function generateWhichIsMetalloidQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is a Metalloid?",
         answer: correctElement.name,
         choices: choices,
@@ -3202,12 +3829,18 @@ function generateWhichIsMetalloidQuestion() {
         questionType: 17
     };
 }
+/* object GenerateWhichIsMetalloidQuestion(); */
 
-function generateWhichIsNotMetalloidQuestion() {
 
-    let correctPool = getElementsNotInCategory("Metalloid");
-    let wrongPool = getElementsInCategory("Metalloid");
+/**/
+/*
+GenerateWhichIsNotMetalloidQuestion - generates "not" metalloid question.
+*/
+/**/
+function GenerateWhichIsNotMetalloidQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Metalloid");
+    let wrongPool = GetElementsInCategory("Metalloid");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3221,10 +3854,9 @@ function generateWhichIsNotMetalloidQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not a Metalloid?",
         answer: correctElement.name,
         choices: choices,
@@ -3232,11 +3864,18 @@ function generateWhichIsNotMetalloidQuestion() {
         questionType: 18
     };
 }
-function generateWhichIsNonmetalQuestion() {
+/* object GenerateWhichIsNotMetalloidQuestion(); */
 
-    let correctPool = getElementsInCategory("Nonmetal");
-    let wrongPool = getElementsNotInCategory("Nonmetal");
 
+/**/
+/*
+GenerateWhichIsNonmetalQuestion - generates "is" nonmetal question.
+*/
+/**/
+function GenerateWhichIsNonmetalQuestion() {
+
+    let correctPool = GetElementsInCategory("Nonmetal");
+    let wrongPool = GetElementsNotInCategory("Nonmetal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3250,10 +3889,9 @@ function generateWhichIsNonmetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is a Nonmetal?",
         answer: correctElement.name,
         choices: choices,
@@ -3261,12 +3899,18 @@ function generateWhichIsNonmetalQuestion() {
         questionType: 19
     };
 }
+/* object GenerateWhichIsNonmetalQuestion(); */
 
-function generateWhichIsNotNonmetalQuestion() {
 
-    let correctPool = getElementsNotInCategory("Nonmetal");
-    let wrongPool = getElementsInCategory("Nonmetal");
+/**/
+/*
+GenerateWhichIsNotNonmetalQuestion - generates "not" nonmetal question.
+*/
+/**/
+function GenerateWhichIsNotNonmetalQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Nonmetal");
+    let wrongPool = GetElementsInCategory("Nonmetal");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3280,10 +3924,9 @@ function generateWhichIsNotNonmetalQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not a Nonmetal?",
         answer: correctElement.name,
         choices: choices,
@@ -3291,11 +3934,18 @@ function generateWhichIsNotNonmetalQuestion() {
         questionType: 20
     };
 }
-function generateWhichIsHalogenQuestion() {
+/* object GenerateWhichIsNotNonmetalQuestion(); */
 
-    let correctPool = getElementsInCategory("Halogen");
-    let wrongPool = getElementsNotInCategory("Halogen");
 
+/**/
+/*
+GenerateWhichIsHalogenQuestion - generates "is" halogen question.
+*/
+/**/
+function GenerateWhichIsHalogenQuestion() {
+
+    let correctPool = GetElementsInCategory("Halogen");
+    let wrongPool = GetElementsNotInCategory("Halogen");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3309,10 +3959,9 @@ function generateWhichIsHalogenQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is a Halogen?",
         answer: correctElement.name,
         choices: choices,
@@ -3320,12 +3969,18 @@ function generateWhichIsHalogenQuestion() {
         questionType: 21
     };
 }
+/* object GenerateWhichIsHalogenQuestion(); */
 
-function generateWhichIsNotHalogenQuestion() {
 
-    let correctPool = getElementsNotInCategory("Halogen");
-    let wrongPool = getElementsInCategory("Halogen");
+/**/
+/*
+GenerateWhichIsNotHalogenQuestion - generates "not" halogen question.
+*/
+/**/
+function GenerateWhichIsNotHalogenQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Halogen");
+    let wrongPool = GetElementsInCategory("Halogen");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3339,10 +3994,9 @@ function generateWhichIsNotHalogenQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not a Halogen?",
         answer: correctElement.name,
         choices: choices,
@@ -3350,12 +4004,18 @@ function generateWhichIsNotHalogenQuestion() {
         questionType: 22
     };
 }
+/* object GenerateWhichIsNotHalogenQuestion(); */
 
-function generateWhichIsNobleGasQuestion() {
 
-    let correctPool = getElementsInCategory("Noble Gas");
-    let wrongPool = getElementsNotInCategory("Noble Gas");
+/**/
+/*
+GenerateWhichIsNobleGasQuestion - generates "is" noble gas question.
+*/
+/**/
+function GenerateWhichIsNobleGasQuestion() {
 
+    let correctPool = GetElementsInCategory("Noble Gas");
+    let wrongPool = GetElementsNotInCategory("Noble Gas");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3369,10 +4029,9 @@ function generateWhichIsNobleGasQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is a Noble Gas?",
         answer: correctElement.name,
         choices: choices,
@@ -3380,12 +4039,18 @@ function generateWhichIsNobleGasQuestion() {
         questionType: 23
     };
 }
+/* object GenerateWhichIsNobleGasQuestion(); */
 
-function generateWhichIsNotNobleGasQuestion() {
 
-    let correctPool = getElementsNotInCategory("Noble Gas");
-    let wrongPool = getElementsInCategory("Noble Gas");
+/**/
+/*
+GenerateWhichIsNotNobleGasQuestion - generates "not" noble gas question.
+*/
+/**/
+function GenerateWhichIsNotNobleGasQuestion() {
 
+    let correctPool = GetElementsNotInCategory("Noble Gas");
+    let wrongPool = GetElementsInCategory("Noble Gas");
     let correctElement = correctPool[Math.floor(Math.random() * correctPool.length)];
     let choices = [correctElement.name];
 
@@ -3399,10 +4064,9 @@ function generateWhichIsNotNobleGasQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: "Which element is not a Noble Gas?",
         answer: correctElement.name,
         choices: choices,
@@ -3410,27 +4074,56 @@ function generateWhichIsNotNobleGasQuestion() {
         questionType: 24
     };
 }
+/* object GenerateWhichIsNotNobleGasQuestion(); */
 
-function generateKnowledgeQuestion() {
 
-    let maxNumber = getDifficultyRange();
-    let availableKnowledgeQuestions = knowledgeQuestions.filter(kq => {
+/**/
+/*
+GenerateKnowledgeQuestion() GenerateKnowledgeQuestion()
 
+NAME
+
+        GenerateKnowledgeQuestion - generates a general knowledge question.
+
+SYNOPSIS
+
+        object GenerateKnowledgeQuestion();
+
+DESCRIPTION
+
+        This function selects a knowledge-based question from the
+        KnowledgeQuestions array that fits within the current difficulty.
+
+        It:
+        - Filters questions by allowed element difficulty
+        - Selects a valid question
+        - Generates 3 incorrect choices
+        - Falls back to a standard question if none are available
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GenerateKnowledgeQuestion() {
+
+    let maxNumber = GetDifficultyRange();
+
+    let availableKnowledgeQuestions = KnowledgeQuestions.filter(kq => {
         let answerElement = elements.find(e => e.name === kq.answer);
-
         return answerElement && answerElement.number <= maxNumber;
     });
 
     if (availableKnowledgeQuestions.length === 0) {
 
-        return generateOriginalQuestion();
+        return GenerateOriginalQuestion();
     }
 
     let selected = availableKnowledgeQuestions[Math.floor(Math.random() * availableKnowledgeQuestions.length)];
     let correctElement = elements.find(e => e.name === selected.answer);
 
     let wrongPool = elements.filter(e =>
-
         e.number <= maxNumber &&
         e.name !== selected.answer
     );
@@ -3447,10 +4140,9 @@ function generateKnowledgeQuestion() {
         }
     }
 
-    shuffleArray(choices);
+    ShuffleArray(choices);
 
     return {
-
         question: selected.question,
         answer: selected.answer,
         choices: choices,
@@ -3458,31 +4150,113 @@ function generateKnowledgeQuestion() {
         questionType: 25
     };
 }
+/* object GenerateKnowledgeQuestion(); */
+/**/
+/*
+GetRandomElement() GetRandomElement()
 
+NAME
 
-function getRandomElement() {
+        GetRandomElement - selects a random element within difficulty range.
 
-    let maxNumber = getDifficultyRange();
+SYNOPSIS
+
+        object GetRandomElement();
+
+DESCRIPTION
+
+        This function filters elements based on the current difficulty
+        level and returns a randomly selected element.
+
+RETURNS
+
+        Returns an element object.
+
+*/
+/**/
+function GetRandomElement() {
+
+    let maxNumber = GetDifficultyRange();
     let availableElements = elements.filter(e => e.number <= maxNumber);
 
     return availableElements[Math.floor(Math.random() * availableElements.length)];
 }
+/* object GetRandomElement(); */
 
-function shuffleArray(arr) {
 
-    for (let i = arr.length - 1; i > 0; i--) {
+/**/
+/*
+ShuffleArray() ShuffleArray()
 
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+NAME
+
+        ShuffleArray - randomizes the order of an array.
+
+SYNOPSIS
+
+        void ShuffleArray( array arr );
+            a_arr     --> array to shuffle.
+
+DESCRIPTION
+
+        This function uses the Fisher-Yates shuffle algorithm to
+        randomly reorder the elements of the array in place.
+
+RETURNS
+
+        None.
+
+*/
+
+/**/
+function ShuffleArray(a_arr) {
+
+    for (let index = a_arr.length - 1; index > 0; index--) {
+
+        let randomIndex = Math.floor(Math.random() * (index + 1));
+        let temp = a_arr[index];
+
+        a_arr[index] = a_arr[randomIndex];
+        a_arr[randomIndex] = temp;
     }
 }
+/* void ShuffleArray( array a_arr ); */
 
-function getWrongAnswers(correctElement, questionType, correctAnswer) {
 
-    let maxNumber = getDifficultyRange();
-    let pool = elements.filter(e => e.number <= maxNumber && e.number !== correctElement.number);
+
+/**/
+/*
+GetWrongAnswers() GetWrongAnswers()
+
+NAME
+
+        GetWrongAnswers - generates incorrect answer choices.
+
+SYNOPSIS
+
+        array GetWrongAnswers( object a_correctElement, number a_questionType, string a_correctAnswer );
+            a_correctElement   --> the correct element object.
+            a_questionType     --> the type of question being asked.
+            a_correctAnswer    --> the correct answer string.
+
+DESCRIPTION
+
+        This function generates three incorrect answer choices based
+        on the question type. It ensures that:
+        - Answers are within the current difficulty range
+        - Answers are unique
+        - Answers do not match the correct answer
+
+RETURNS
+
+        Returns an array of incorrect answers.
+
+*/
+/**/
+function GetWrongAnswers(a_correctElement, a_questionType, a_correctAnswer) {
+
+    let maxNumber = GetDifficultyRange();
+    let pool = elements.filter(a_element => a_element.number <= maxNumber && a_element.number !== a_correctElement.number);
     let wrongAnswers = [];
 
     while (wrongAnswers.length < 3) {
@@ -3490,32 +4264,32 @@ function getWrongAnswers(correctElement, questionType, correctAnswer) {
         let randomElement = pool[Math.floor(Math.random() * pool.length)];
         let choice = "";
 
-        if (questionType === 0) {
+        if (a_questionType === 0) {
 
             choice = randomElement.symbol;
         }
 
-        else if (questionType === 1) {
+        else if (a_questionType === 1) {
 
             choice = randomElement.name;
         }
 
-        else if (questionType === 2) {
+        else if (a_questionType === 2) {
 
             choice = randomElement.group.toString();
         }
 
-        else if (questionType === 3) {
+        else if (a_questionType === 3) {
 
             choice = randomElement.period.toString();
         }
 
-        else if (questionType === 4) {
+        else if (a_questionType === 4) {
 
             choice = randomElement.category;
         }
 
-        if (!wrongAnswers.includes(choice) && choice !== correctAnswer) {
+        if (!wrongAnswers.includes(choice) && choice !== a_correctAnswer) {
 
             wrongAnswers.push(choice);
         }
@@ -3523,88 +4297,128 @@ function getWrongAnswers(correctElement, questionType, correctAnswer) {
 
     return wrongAnswers;
 }
+/* array GetWrongAnswers( object a_correctElement, number a_questionType, string a_correctAnswer ); */
 
-function getTypeName(questionType) {
 
-    if (questionType === 0) return "symbol";
-    if (questionType === 1) return "name";
-    if (questionType === 2) return "group";
-    if (questionType === 3) return "period";
-    if (questionType === 4) return "category";
+/**/
+/**/
+/*
+GetTypeName() GetTypeName()
 
-    if (questionType === 5 || questionType === 6) return "alkali metal";
-    if (questionType === 7 || questionType === 8) return "alkaline earth metal";
-    if (questionType === 9 || questionType === 10) return "transition metal";
-    if (questionType === 11 || questionType === 12) return "lanthanide";
-    if (questionType === 13 || questionType === 14) return "actinide";
-    if (questionType === 15 || questionType === 16) return "post-transition metal";
-    if (questionType === 17 || questionType === 18) return "metalloid";
-    if (questionType === 19 || questionType === 20) return "nonmetal";
-    if (questionType === 21 || questionType === 22) return "halogen";
-    if (questionType === 23 || questionType === 24) return "noble gas";
-    if (questionType === 25) return "knowledge";
+NAME
+
+        GetTypeName - converts question type ID to readable name.
+
+SYNOPSIS
+
+        string GetTypeName( number a_questionType );
+            a_questionType   --> numeric identifier of the question type.
+
+DESCRIPTION
+
+        This function maps a numeric question type to a human-readable
+        string. It is used for display and reporting purposes.
+
+RETURNS
+
+        Returns a string representing the question type.
+
+*/
+/**/
+function GetTypeName(a_questionType) {
+
+    if (a_questionType === 0) return "symbol";
+    if (a_questionType === 1) return "name";
+    if (a_questionType === 2) return "group";
+    if (a_questionType === 3) return "period";
+    if (a_questionType === 4) return "category";
+    if (a_questionType === 5 || a_questionType === 6) return "alkali metal";
+    if (a_questionType === 7 || a_questionType === 8) return "alkaline earth metal";
+    if (a_questionType === 9 || a_questionType === 10) return "transition metal";
+    if (a_questionType === 11 || a_questionType === 12) return "lanthanide";
+    if (a_questionType === 13 || a_questionType === 14) return "actinide";
+    if (a_questionType === 15 || a_questionType === 16) return "post-transition metal";
+    if (a_questionType === 17 || a_questionType === 18) return "metalloid";
+    if (a_questionType === 19 || a_questionType === 20) return "nonmetal";
+    if (a_questionType === 21 || a_questionType === 22) return "halogen";
+    if (a_questionType === 23 || a_questionType === 24) return "noble gas";
+    if (a_questionType === 25) return "knowledge";
 
     return "question";
 }
+/* string GetTypeName( number a_questionType ); */
 
-function generateQuestion(forcedType = null) {
+/**/
+/**/
+/*
+GenerateQuestion() GenerateQuestion()
 
-    if (forcedType !== null) {
+NAME
 
-        if (forcedType === 0 || forcedType === 1 || forcedType === 2 || forcedType === 3 || forcedType === 4) {
+        GenerateQuestion - creates a quiz question based on rules.
 
-            return generateOriginalQuestion(forcedType);
+SYNOPSIS
+
+        object GenerateQuestion( number a_forcedType = null );
+            a_forcedType     --> optional specific question type.
+
+DESCRIPTION
+
+        This function generates a quiz question.
+
+        Behavior:
+        - If a_forcedType is provided, generates that specific type
+        - Otherwise builds a pool of allowed question types
+        - Unlocks category questions based on performance
+        - Unlocks knowledge questions based on performance
+        - Selects a random type from the pool
+        - Calls the appropriate generator function
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GenerateQuestion(a_forcedType = null) {
+
+    if (a_forcedType !== null) {
+
+        if (a_forcedType === 0 || a_forcedType === 1 || a_forcedType === 2 || a_forcedType === 3 || a_forcedType === 4) {
+
+            return GenerateOriginalQuestion(a_forcedType);
         }
-        else if (forcedType === 5) return generateWhichIsAlkaliMetalQuestion();
-        else if (forcedType === 6) return generateWhichIsNotAlkaliMetalQuestion();
-        else if (forcedType === 7) return generateWhichIsAlkalineEarthMetalQuestion();
-        else if (forcedType === 8) return generateWhichIsNotAlkalineEarthMetalQuestion();
-        else if (forcedType === 9) return generateWhichIsTransitionMetalQuestion();
-        else if (forcedType === 10) return generateWhichIsNotTransitionMetalQuestion();
-        else if (forcedType === 11) return generateWhichIsLanthanideQuestion();
-        else if (forcedType === 12) return generateWhichIsNotLanthanideQuestion();
-        else if (forcedType === 13) return generateWhichIsActinideQuestion();
-        else if (forcedType === 14) return generateWhichIsNotActinideQuestion();
-        else if (forcedType === 15) return generateWhichIsPostTransitionMetalQuestion();
-        else if (forcedType === 16) return generateWhichIsNotPostTransitionMetalQuestion();
-        else if (forcedType === 17) return generateWhichIsMetalloidQuestion();
-        else if (forcedType === 18) return generateWhichIsNotMetalloidQuestion();
-        else if (forcedType === 19) return generateWhichIsNonmetalQuestion();
-        else if (forcedType === 20) return generateWhichIsNotNonmetalQuestion();
-        else if (forcedType === 21) return generateWhichIsHalogenQuestion();
-        else if (forcedType === 22) return generateWhichIsNotHalogenQuestion();
-        else if (forcedType === 23) return generateWhichIsNobleGasQuestion();
-        else if (forcedType === 24) return generateWhichIsNotNobleGasQuestion();
-        else if (forcedType === 25) return generateKnowledgeQuestion();
+        else if (a_forcedType === 5) return GenerateWhichIsAlkaliMetalQuestion();
+        else if (a_forcedType === 6) return GenerateWhichIsNotAlkaliMetalQuestion();
+        else if (a_forcedType === 7) return GenerateWhichIsAlkalineEarthMetalQuestion();
+        else if (a_forcedType === 8) return GenerateWhichIsNotAlkalineEarthMetalQuestion();
+        else if (a_forcedType === 9) return GenerateWhichIsTransitionMetalQuestion();
+        else if (a_forcedType === 10) return GenerateWhichIsNotTransitionMetalQuestion();
+        else if (a_forcedType === 11) return GenerateWhichIsLanthanideQuestion();
+        else if (a_forcedType === 12) return GenerateWhichIsNotLanthanideQuestion();
+        else if (a_forcedType === 13) return GenerateWhichIsActinideQuestion();
+        else if (a_forcedType === 14) return GenerateWhichIsNotActinideQuestion();
+        else if (a_forcedType === 15) return GenerateWhichIsPostTransitionMetalQuestion();
+        else if (a_forcedType === 16) return GenerateWhichIsNotPostTransitionMetalQuestion();
+        else if (a_forcedType === 17) return GenerateWhichIsMetalloidQuestion();
+        else if (a_forcedType === 18) return GenerateWhichIsNotMetalloidQuestion();
+        else if (a_forcedType === 19) return GenerateWhichIsNonmetalQuestion();
+        else if (a_forcedType === 20) return GenerateWhichIsNotNonmetalQuestion();
+        else if (a_forcedType === 21) return GenerateWhichIsHalogenQuestion();
+        else if (a_forcedType === 22) return GenerateWhichIsNotHalogenQuestion();
+        else if (a_forcedType === 23) return GenerateWhichIsNobleGasQuestion();
+        else if (a_forcedType === 24) return GenerateWhichIsNotNobleGasQuestion();
+        else if (a_forcedType === 25) return GenerateKnowledgeQuestion();
     }
 
     let questionPool = [0, 1, 2, 3, 4];
 
-    if (categoryQuestionsUnlocked()) {
+    if (CategoryQuestionsUnlocked()) {
 
-        questionPool.push(5);
-        questionPool.push(6);
-        questionPool.push(7);
-        questionPool.push(8);
-        questionPool.push(9);
-        questionPool.push(10);
-        questionPool.push(11);
-        questionPool.push(12);
-        questionPool.push(13);
-        questionPool.push(14);
-        questionPool.push(15);
-        questionPool.push(16);
-        questionPool.push(17);
-        questionPool.push(18);
-        questionPool.push(19);
-        questionPool.push(20);
-        questionPool.push(21);
-        questionPool.push(22);
-        questionPool.push(23);
-        questionPool.push(24);
+        questionPool.push(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24);
     }
 
-    if (knowledgeQuestionsUnlocked()) {
+    if (KnowledgeQuestionsUnlocked()) {
 
         questionPool.push(25);
     }
@@ -3613,47 +4427,82 @@ function generateQuestion(forcedType = null) {
 
     if (chosenType === 0 || chosenType === 1 || chosenType === 2 || chosenType === 3 || chosenType === 4) {
 
-        return generateOriginalQuestion(chosenType);
+        return GenerateOriginalQuestion(chosenType);
     }
 
-    else if (chosenType === 5) return generateWhichIsAlkaliMetalQuestion();
-    else if (chosenType === 6) return generateWhichIsNotAlkaliMetalQuestion();
-    else if (chosenType === 7) return generateWhichIsAlkalineEarthMetalQuestion();
-    else if (chosenType === 8) return generateWhichIsNotAlkalineEarthMetalQuestion();
-    else if (chosenType === 9) return generateWhichIsTransitionMetalQuestion();
-    else if (chosenType === 10) return generateWhichIsNotTransitionMetalQuestion();
-    else if (chosenType === 11) return generateWhichIsLanthanideQuestion();
-    else if (chosenType === 12) return generateWhichIsNotLanthanideQuestion();
-    else if (chosenType === 13) return generateWhichIsActinideQuestion();
-    else if (chosenType === 14) return generateWhichIsNotActinideQuestion();
-    else if (chosenType === 15) return generateWhichIsPostTransitionMetalQuestion();
-    else if (chosenType === 16) return generateWhichIsNotPostTransitionMetalQuestion();
-    else if (chosenType === 17) return generateWhichIsMetalloidQuestion();
-    else if (chosenType === 18) return generateWhichIsNotMetalloidQuestion();
-    else if (chosenType === 19) return generateWhichIsNonmetalQuestion();
-    else if (chosenType === 20) return generateWhichIsNotNonmetalQuestion();
-    else if (chosenType === 21) return generateWhichIsHalogenQuestion();
-    else if (chosenType === 22) return generateWhichIsNotHalogenQuestion();
-    else if (chosenType === 23) return generateWhichIsNobleGasQuestion();
-    else if (chosenType === 24) return generateWhichIsNotNobleGasQuestion();
-    else if (chosenType === 25) return generateKnowledgeQuestion();
+    else if (chosenType === 5) return GenerateWhichIsAlkaliMetalQuestion();
+    else if (chosenType === 6) return GenerateWhichIsNotAlkaliMetalQuestion();
+    else if (chosenType === 7) return GenerateWhichIsAlkalineEarthMetalQuestion();
+    else if (chosenType === 8) return GenerateWhichIsNotAlkalineEarthMetalQuestion();
+    else if (chosenType === 9) return GenerateWhichIsTransitionMetalQuestion();
+    else if (chosenType === 10) return GenerateWhichIsNotTransitionMetalQuestion();
+    else if (chosenType === 11) return GenerateWhichIsLanthanideQuestion();
+    else if (chosenType === 12) return GenerateWhichIsNotLanthanideQuestion();
+    else if (chosenType === 13) return GenerateWhichIsActinideQuestion();
+    else if (chosenType === 14) return GenerateWhichIsNotActinideQuestion();
+    else if (chosenType === 15) return GenerateWhichIsPostTransitionMetalQuestion();
+    else if (chosenType === 16) return GenerateWhichIsNotPostTransitionMetalQuestion();
+    else if (chosenType === 17) return GenerateWhichIsMetalloidQuestion();
+    else if (chosenType === 18) return GenerateWhichIsNotMetalloidQuestion();
+    else if (chosenType === 19) return GenerateWhichIsNonmetalQuestion();
+    else if (chosenType === 20) return GenerateWhichIsNotNonmetalQuestion();
+    else if (chosenType === 21) return GenerateWhichIsHalogenQuestion();
+    else if (chosenType === 22) return GenerateWhichIsNotHalogenQuestion();
+    else if (chosenType === 23) return GenerateWhichIsNobleGasQuestion();
+    else if (chosenType === 24) return GenerateWhichIsNotNobleGasQuestion();
+    else if (chosenType === 25) return GenerateKnowledgeQuestion();
 
-    return generateOriginalQuestion(0);
+    return GenerateOriginalQuestion(0);
 }
+/* object GenerateQuestion( number a_forcedType ); */
 
-function generateOriginalQuestion(forcedType = null) {
+/**/
 
-    let e = getRandomElement();
+/**/
+/*
+GenerateOriginalQuestion() GenerateOriginalQuestion()
+
+NAME
+
+        GenerateOriginalQuestion - creates a basic periodic table question.
+
+SYNOPSIS
+
+        object GenerateOriginalQuestion( number a_forcedType = null );
+            a_forcedType      --> optional question type to generate.
+
+DESCRIPTION
+
+        This function generates one of the original quiz question types.
+        If no forced type is supplied, it randomly chooses from symbol,
+        name, group, period, or category questions.
+
+        It creates:
+        - Question text
+        - Correct answer
+        - Explanation
+        - Multiple-choice answers
+        - Question type identifier
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GenerateOriginalQuestion(a_forcedType = null) {
+
+    let selectedElement = GetRandomElement();
     let questionType;
 
-    if (forcedType === null) {
+    if (a_forcedType === null) {
 
         questionType = Math.floor(Math.random() * 5);
     }
 
     else {
 
-        questionType = forcedType;
+        questionType = a_forcedType;
     }
 
     let question = "";
@@ -3662,44 +4511,43 @@ function generateOriginalQuestion(forcedType = null) {
 
     if (questionType === 0) {
 
-        question = `What is the symbol for ${e.name}?`;
-        answer = e.symbol;
-        explanation = `${e.name} has the chemical symbol ${e.symbol}. Symbols are the abbreviations used on the periodic table.`;
+        question = `What is the symbol for ${selectedElement.name}?`;
+        answer = selectedElement.symbol;
+        explanation = `${selectedElement.name} has the chemical symbol ${selectedElement.symbol}. Symbols are the abbreviations used on the periodic table.`;
     }
 
     else if (questionType === 1) {
 
-        question = `What is the name of the element with symbol ${e.symbol}?`;
-        answer = e.name;
-        explanation = `${e.symbol} stands for ${e.name}. Each element has its own unique symbol.`;
+        question = `What is the name of the element with symbol ${selectedElement.symbol}?`;
+        answer = selectedElement.name;
+        explanation = `${selectedElement.symbol} stands for ${selectedElement.name}. Each element has its own unique symbol.`;
     }
 
     else if (questionType === 2) {
 
-        question = `What group is ${e.name} in?`;
-        answer = e.group.toString();
-        explanation = `${e.name} is in group ${e.group}. Groups are the vertical columns on the periodic table.`;
+        question = `What group is ${selectedElement.name} in?`;
+        answer = selectedElement.group.toString();
+        explanation = `${selectedElement.name} is in group ${selectedElement.group}. Groups are the vertical columns on the periodic table.`;
     }
 
     else if (questionType === 3) {
 
-        question = `What period is ${e.name} in?`;
-        answer = e.period.toString();
-        explanation = `${e.name} is in period ${e.period}. Periods are the horizontal rows on the periodic table.`;
+        question = `What period is ${selectedElement.name} in?`;
+        answer = selectedElement.period.toString();
+        explanation = `${selectedElement.name} is in period ${selectedElement.period}. Periods are the horizontal rows on the periodic table.`;
     }
 
     else {
 
-        question = `What category does ${e.name} belong to?`;
-        answer = e.category;
-        explanation = `${e.name} belongs to the category ${e.category}. Categories describe general chemical behavior and placement.`;
+        question = `What category does ${selectedElement.name} belong to?`;
+        answer = selectedElement.category;
+        explanation = `${selectedElement.name} belongs to the category ${selectedElement.category}. Categories describe general chemical behavior and placement.`;
     }
 
-    let choices = [answer, ...getWrongAnswers(e, questionType, answer)];
-    shuffleArray(choices);
+    let choices = [answer, ...GetWrongAnswers(selectedElement, questionType, answer)];
+    ShuffleArray(choices);
 
     return {
-
         question: question,
         answer: answer,
         choices: choices,
@@ -3707,120 +4555,196 @@ function generateOriginalQuestion(forcedType = null) {
         questionType: questionType
     };
 }
+/* object GenerateOriginalQuestion( number a_forcedType ); */
 
-function generatePracticeQuestion(typeName) {
+/**/
+/*
 
-    if (typeName === "symbol") {
+GeneratePracticeQuestion() GeneratePracticeQuestion()
 
-        return generateQuestion(0);
+NAME
+
+        GeneratePracticeQuestion - creates a practice question by type.
+
+SYNOPSIS
+
+        object GeneratePracticeQuestion( string typeName );
+            a_typeName        --> readable name of the question type.
+
+DESCRIPTION
+
+        This function generates a practice question based on the type
+        selected from the quiz report. Basic types map directly to one
+        question type number.
+
+        Category practice types randomly choose between the "which is"
+        and "which is not" versions of that category question.
+
+        If the type name is not recognized, the function falls back to
+        a symbol question.
+
+RETURNS
+
+        Returns a question object.
+
+*/
+/**/
+function GeneratePracticeQuestion(a_typeName) {
+
+    if (a_typeName === "symbol") {
+
+        return GenerateQuestion(0);
     }
 
-    else if (typeName === "name") {
+    else if (a_typeName === "name") {
 
-        return generateQuestion(1);
+        return GenerateQuestion(1);
     }
 
-    else if (typeName === "group") {
+    else if (a_typeName === "group") {
 
-        return generateQuestion(2);
+        return GenerateQuestion(2);
     }
 
-    else if (typeName === "period") {
+    else if (a_typeName === "period") {
 
-        return generateQuestion(3);
+        return GenerateQuestion(3);
     }
 
-    else if (typeName === "category") {
+    else if (a_typeName === "category") {
 
-        return generateQuestion(4);
+        return GenerateQuestion(4);
     }
 
-    else if (typeName === "alkali metal") {
+    else if (a_typeName === "alkali metal") {
 
         let types = [5, 6];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "alkaline earth metal") {
+    else if (a_typeName === "alkaline earth metal") {
 
         let types = [7, 8];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "transition metal") {
+    else if (a_typeName === "transition metal") {
 
         let types = [9, 10];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "lanthanide") {
+    else if (a_typeName === "lanthanide") {
 
         let types = [11, 12];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "actinide") {
+    else if (a_typeName === "actinide") {
 
         let types = [13, 14];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "post-transition metal") {
+    else if (a_typeName === "post-transition metal") {
 
         let types = [15, 16];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "metalloid") {
+    else if (a_typeName === "metalloid") {
 
         let types = [17, 18];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "nonmetal") {
+    else if (a_typeName === "nonmetal") {
 
         let types = [19, 20];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "halogen") {
+    else if (a_typeName === "halogen") {
 
         let types = [21, 22];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "noble gas") {
+    else if (a_typeName === "noble gas") {
 
         let types = [23, 24];
         let chosenType = types[Math.floor(Math.random() * types.length)];
-        return generateQuestion(chosenType);
+
+        return GenerateQuestion(chosenType);
     }
 
-    else if (typeName === "knowledge") {
+    else if (a_typeName === "knowledge") {
 
-        return generateQuestion(25);
+        return GenerateQuestion(25);
     }
 
     else {
 
-        return generateQuestion(0);
+        return GenerateQuestion(0);
     }
 }
+/* object GeneratePracticeQuestion( string a_typeName ); */
 
-function updateQuizButtons() {
+
+/* ====================== QUIZ UI & CONTROL ====================== */
+
+
+/**/
+/*
+UpdateQuizButtons() UpdateQuizButtons()
+
+NAME
+
+        UpdateQuizButtons - updates UI button states based on quiz mode.
+
+SYNOPSIS
+
+        void UpdateQuizButtons();
+
+DESCRIPTION
+
+        This function updates the visibility and state of all quiz-related
+        buttons and controls. It handles:
+
+        - Enabling/disabling search during quiz
+        - Showing/hiding next button
+        - Disabling lesson button during quiz
+        - Switching between quiz and practice controls
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function UpdateQuizButtons() {
 
     const startBtn = document.getElementById("start-btn");
     const quitBtn = document.getElementById("quit-btn");
-    const quitPracticeBtn = document.getElementById("quit-practice-btn");
+    const QuitPracticeBtn = document.getElementById("quit-practice-btn");
     const lessonBtn = document.getElementById("lesson-btn");
     const nextBtn = document.getElementById("next-btn");
     const searchSection = document.getElementById("search-section");
@@ -3835,6 +4759,7 @@ function updateQuizButtons() {
     }
 
     else {
+
         searchSection.classList.remove("search-disabled");
         elementSearch.disabled = false;
     }
@@ -3850,6 +4775,7 @@ function updateQuizButtons() {
     }
 
     if (quizActive) {
+
         lessonBtn.disabled = true;
         lessonBtn.style.opacity = "0.5";
         lessonBtn.style.cursor = "not-allowed";
@@ -3863,39 +4789,72 @@ function updateQuizButtons() {
     }
 
     if (practiceMode) {
+
         startBtn.classList.add("hidden");
         quitBtn.classList.add("hidden");
-        quitPracticeBtn.classList.remove("hidden");
+        QuitPracticeBtn.classList.remove("hidden");
     }
 
     else if (quizActive) {
+
         startBtn.classList.add("hidden");
         quitBtn.classList.remove("hidden");
-        quitPracticeBtn.classList.add("hidden");
+        QuitPracticeBtn.classList.add("hidden");
     }
 
     else {
+
         startBtn.classList.remove("hidden");
         quitBtn.classList.add("hidden");
-        quitPracticeBtn.classList.add("hidden");
+        QuitPracticeBtn.classList.add("hidden");
     }
 }
+/* void UpdateQuizButtons(); */
 
-function showQuestion() {
+
+/**/
+/*
+ShowQuestion() ShowQuestion()
+
+NAME
+
+        ShowQuestion - displays the next quiz or practice question.
+
+SYNOPSIS
+
+        void ShowQuestion();
+
+DESCRIPTION
+
+        This function generates and displays a new question. It handles:
+
+        - Ending the quiz when max questions is reached
+        - Selecting between quiz mode and practice mode
+        - Updating UI text (title, question, score)
+        - Resetting answer buttons for the new question
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function ShowQuestion() {
 
     if (!practiceMode && questionNumber >= maxQuestions) {
 
-        endQuiz(false);
-
+        EndQuiz(false);
         return;
     }
 
     if (practiceMode) {
-        currentQuestion = generatePracticeQuestion(practiceType);
+
+        currentQuestion = GeneratePracticeQuestion(practiceType);
     }
 
     else {
-        currentQuestion = generateQuestion();
+
+        currentQuestion = GenerateQuestion();
     }
 
     const title = document.getElementById("quiz-title");
@@ -3916,7 +4875,6 @@ function showQuestion() {
 
         document.getElementById("question-text").textContent =
             `Practice Mode (${practiceType}): ${currentQuestion.question}`;
-
         document.getElementById("score-display").textContent = "";
     }
 
@@ -3929,15 +4887,50 @@ function showQuestion() {
     document.getElementById("feedback").textContent = "";
 
     for (let i = 0; i < 4; i++) {
+
         let btn = document.getElementById("btn" + i);
+
         btn.textContent = currentQuestion.choices[i];
         btn.disabled = false;
         btn.classList.remove("correct-choice");
         btn.classList.remove("wrong-choice");
     }
 }
+/* void ShowQuestion(); */
 
-function selectAnswer(choice, buttonClicked) {
+
+/**/
+/**/
+/*
+SelectAnswer() SelectAnswer()
+
+NAME
+
+        SelectAnswer - processes the user's answer selection.
+
+SYNOPSIS
+
+        void SelectAnswer( string a_choice, object a_buttonClicked );
+            a_choice        --> the selected answer text.
+            a_buttonClicked --> the button element clicked.
+
+DESCRIPTION
+
+        This function checks whether the selected answer is correct and:
+
+        - Updates score if in quiz mode
+        - Displays feedback and explanation
+        - Highlights correct and incorrect answers
+        - Stores the result in quiz history
+        - Disables answer buttons after selection
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function SelectAnswer(a_choice, a_buttonClicked) {
 
     if (!quizActive || answered) {
 
@@ -3946,50 +4939,52 @@ function selectAnswer(choice, buttonClicked) {
 
     answered = true;
 
-    // Only count questions in quiz mode
     if (!practiceMode) {
+
         totalQuestions++;
         questionNumber++;
     }
 
-    let isCorrect = choice.toLowerCase() === currentQuestion.answer.toLowerCase();
+    let isCorrect = a_choice.toLowerCase() === currentQuestion.answer.toLowerCase();
 
     if (isCorrect) {
 
         if (!practiceMode) {
+
             score++;
         }
 
-        buttonClicked.classList.add("correct-choice");
+        a_buttonClicked.classList.add("correct-choice");
+
         document.getElementById("feedback").textContent =
             `Correct! ${currentQuestion.explanation}`;
     }
 
     else {
 
-        buttonClicked.classList.add("wrong-choice");
+        a_buttonClicked.classList.add("wrong-choice");
 
-        for (let i = 0; i < 4; i++) {
+        for (let index = 0; index < 4; index++) {
 
-            let btn = document.getElementById("btn" + i);
+            let button = document.getElementById("btn" + index);
 
-            if (btn.textContent.toLowerCase() === currentQuestion.answer.toLowerCase()) {
-                btn.classList.add("correct-choice");
+            if (button.textContent.toLowerCase() === currentQuestion.answer.toLowerCase()) {
+
+                button.classList.add("correct-choice");
             }
         }
 
         document.getElementById("feedback").textContent =
-            `Incorrect. You chose "${choice}", but the correct answer is "${currentQuestion.answer}". ${currentQuestion.explanation}`;
+            `Incorrect. You chose "${a_choice}", but the correct answer is "${currentQuestion.answer}". ${currentQuestion.explanation}`;
     }
 
-    // Only track history in quiz mode
     if (!practiceMode) {
 
         quizHistory.push({
             questionNumber: questionNumber,
             question: currentQuestion.question,
             choices: [...currentQuestion.choices],
-            selectedAnswer: choice,
+            selectedAnswer: a_choice,
             correctAnswer: currentQuestion.answer,
             explanation: currentQuestion.explanation,
             isCorrect: isCorrect,
@@ -4000,18 +4995,48 @@ function selectAnswer(choice, buttonClicked) {
             `Score: ${score} / ${totalQuestions}`;
     }
 
-    for (let i = 0; i < 4; i++) {
+    for (let index = 0; index < 4; index++) {
 
-        document.getElementById("btn" + i).disabled = true;
+        document.getElementById("btn" + index).disabled = true;
     }
 
     if (!practiceMode && questionNumber >= maxQuestions) {
 
-        endQuiz(false);
+        EndQuiz(false);
     }
 }
+/* void SelectAnswer( string a_choice, object a_buttonClicked ); */
 
-function quitPractice() {
+
+/**/
+/*
+QuitPractice() QuitPractice()
+
+NAME
+
+        QuitPractice - exits practice mode and resets UI.
+
+SYNOPSIS
+
+        void QuitPractice();
+
+DESCRIPTION
+
+        This function exits practice mode and resets the application
+        to a non-quiz state. It:
+
+        - Clears practice flags
+        - Resets UI text
+        - Shows the report section
+        - Restores normal controls
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function QuitPractice() {
 
     practiceMode = false;
     practiceType = null;
@@ -4021,21 +5046,43 @@ function quitPractice() {
     document.getElementById("question-text").textContent = "Practice ended. Good work!";
     document.getElementById("score-display").textContent = "";
 
-    updateQuizButtons();
+    UpdateQuizButtons();
 
     document.getElementById("report-section").classList.remove("hidden");
     document.getElementById("toggle-report-btn").classList.remove("hidden");
+
     document.getElementById("toggle-report-btn").textContent = "Minimize Report";
     reportMinimized = false;
+
     document.getElementById("report-content").classList.remove("hidden");
 }
+/* void QuitPractice(); */
 
-document.getElementById("quit-practice-btn").onclick = () => {
+/**/
+/*
+StartQuiz() StartQuiz()
 
-    quitPractice();
-};
+NAME
 
-function startQuiz() {
+        StartQuiz - starts a new quiz session.
+
+SYNOPSIS
+
+        void StartQuiz();
+
+DESCRIPTION
+
+        This function resets all quiz values and prepares the interface
+        for a new quiz. It clears old scores, previous history, feedback,
+        search results, and report content before showing the first question.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function StartQuiz() {
 
     score = 0;
     totalQuestions = 0;
@@ -4055,15 +5102,44 @@ function startQuiz() {
     document.getElementById("element-search").value = "";
     document.getElementById("search-results").classList.add("hidden");
 
-    updateQuizButtons();
-    showQuestion();
+    UpdateQuizButtons();
+    ShowQuestion();
 
     toggleReportBtn.classList.add("hidden");
     reportContent.classList.remove("hidden");
     reportMinimized = false;
 }
+/* void StartQuiz(); */
 
-function endQuiz(wasQuit) {
+
+/**/
+/*
+EndQuiz() EndQuiz()
+
+NAME
+
+        EndQuiz - ends the current quiz session.
+
+SYNOPSIS
+
+        void EndQuiz( bool wasQuit );
+            a_wasQuit         --> true if the user quit early.
+
+DESCRIPTION
+
+        This function stops the quiz, disables the answer buttons,
+        updates the screen message, and displays the quiz report.
+
+        The displayed message changes depending on whether the user
+        completed the quiz or quit before finishing.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function EndQuiz(a_wasQuit) {
 
     quizActive = false;
     practiceMode = false;
@@ -4074,28 +5150,60 @@ function endQuiz(wasQuit) {
         document.getElementById("btn" + i).disabled = true;
     }
 
-    document.getElementById("question-text").textContent = wasQuit
+    document.getElementById("question-text").textContent = a_wasQuit
         ? "Quiz ended early."
         : "Quiz finished.";
 
-    if (wasQuit) {
+    if (a_wasQuit) {
+
         document.getElementById("feedback").textContent = "You quit the quiz. Review your answers below.";
     }
 
     else {
+
         document.getElementById("feedback").textContent = "Nice work. Review your answers below.";
     }
 
-    updateQuizButtons();
-    showReport(wasQuit);
+    UpdateQuizButtons();
+    ShowReport(a_wasQuit);
 
     toggleReportBtn.classList.remove("hidden");
     toggleReportBtn.textContent = "Minimize Report";
     reportMinimized = false;
     reportContent.classList.remove("hidden");
 }
+/* void EndQuiz( bool a_wasQuit ); */
 
-function showReport(wasQuit) {
+
+/**/
+/*
+ShowReport() ShowReport()
+
+NAME
+
+        ShowReport - displays the completed quiz report.
+
+SYNOPSIS
+
+        void ShowReport( bool wasQuit );
+            a_wasQuit         --> true if the user quit early.
+
+DESCRIPTION
+
+        This function builds the quiz report after the quiz ends. It
+        displays the final score, percentage, each question asked, the
+        user's answer, the correct answer, and the explanation.
+
+        For missed questions, it also creates a practice button so the
+        user can review more questions of the same type.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function ShowReport(a_wasQuit) {
 
     let reportSection = document.getElementById("report-section");
     let reportSummary = document.getElementById("report-summary");
@@ -4106,7 +5214,7 @@ function showReport(wasQuit) {
 
     let percent = totalQuestions === 0 ? 0 : Math.round((score / totalQuestions) * 100);
 
-    if (wasQuit) {
+    if (a_wasQuit) {
 
         reportSummary.textContent =
             `You answered ${totalQuestions} question(s) before quitting. Final score: ${score} / ${totalQuestions} (${percent}%).`;
@@ -4145,11 +5253,12 @@ function showReport(wasQuit) {
 
             let practiceBtn = document.createElement("button");
 
-            practiceBtn.textContent = `Practice more ${getTypeName(item.questionType)} questions`;
+            practiceBtn.textContent = `Practice more ${GetTypeName(item.questionType)} questions`;
             practiceBtn.classList.add("practice-btn");
 
             practiceBtn.onclick = () => {
-                startPractice(item.questionType);
+
+                StartPractice(item.questionType);
             };
 
             div.appendChild(practiceBtn);
@@ -4158,47 +5267,89 @@ function showReport(wasQuit) {
         reviewList.appendChild(div);
     });
 }
+/* void ShowReport( bool a_wasQuit ); */
 
-function startPractice(type) {
+
+/**/
+/*
+StartPractice() StartPractice()
+
+NAME
+
+        StartPractice - starts practice mode for a question type.
+
+SYNOPSIS
+
+        void StartPractice( number type );
+            a_type            --> question type identifier to practice.
+
+DESCRIPTION
+
+        This function starts practice mode based on a missed question
+        from the quiz report. It converts the question type into a
+        readable practice type, hides the report, updates the feedback,
+        and displays the first practice question.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function StartPractice(a_type) {
 
     practiceMode = true;
-    practiceType = getTypeName(type);
+    practiceType = GetTypeName(a_type);
     quizActive = true;
     answered = false;
 
     document.getElementById("report-section").classList.add("hidden");
     document.getElementById("feedback").textContent =
         `Practice mode: working on ${practiceType} questions.`;
-    updateQuizButtons();
-    showQuestion();
+
+    UpdateQuizButtons();
+    ShowQuestion();
+
     toggleReportBtn.classList.add("hidden");
     reportContent.classList.remove("hidden");
     reportMinimized = false;
 }
+/* void StartPractice( number a_type ); */
+
+/* ====================== EVENT LISTENERS ====================== */
+
+/*
+EVENT LISTENER SETUP
+
+DESCRIPTION
+
+        These event listeners connect the page buttons to the main quiz
+        functions. They allow the user to start or quit quizzes, answer
+        questions, move to the next question, and leave practice mode.
+*/
+
+document.getElementById("quit-practice-btn").onclick = () => {
+    QuitPractice();
+};
 
 document.getElementById("btn0").onclick = function () {
-
-    selectAnswer(this.textContent, this);
+    SelectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn1").onclick = function () {
-
-    selectAnswer(this.textContent, this);
+    SelectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn2").onclick = function () {
-
-    selectAnswer(this.textContent, this);
+    SelectAnswer(this.textContent, this);
 };
 
 document.getElementById("btn3").onclick = function () {
-
-    selectAnswer(this.textContent, this);
+    SelectAnswer(this.textContent, this);
 };
 
 document.getElementById("start-btn").onclick = () => {
-
-    startQuiz();
+    StartQuiz();
 };
 
 document.getElementById("element-search").value = "";
@@ -4210,17 +5361,30 @@ document.getElementById("next-btn").onclick = () => {
 
     if (!answered) return;
 
-    showQuestion();
+    ShowQuestion();
 };
 
 document.getElementById("quit-btn").onclick = () => {
 
     if (!quizActive) return;
 
-    endQuiz(true);
+    EndQuiz(true);
 };
 
-updateQuizButtons();
+UpdateQuizButtons();
+
+
+/* ====================== AUDIO ====================== */
+
+/*
+AUDIO CONTROLS
+
+DESCRIPTION
+
+        This section manages background music. It sets the starting
+        volume, handles muting and unmuting, and starts playback after
+        the first user click if the browser blocks autoplay.
+*/
 
 const music = document.getElementById("bg-music");
 const muteBtn = document.getElementById("mute-btn");
@@ -4243,20 +5407,31 @@ muteBtn.onclick = () => {
     }
 };
 
-// autoplay fallback (in case browser blocks it)
 document.addEventListener("click", () => {
 
     if (music.paused && !music.muted) {
 
         music.play().catch(() => { });
     }
+
 }, { once: true });
+
+
+/* ====================== LESSON ====================== */
+
+/*
+LESSON WINDOW CONTROLS
+
+DESCRIPTION
+
+        This section opens and closes the lesson/help window. The lesson
+        window is disabled during active quizzes so the user cannot open
+        help while answering quiz questions.
+*/
 
 const lessonBtn = document.getElementById("lesson-btn");
 const lessonCard = document.getElementById("lesson-card");
 const closeLessonBtn = document.getElementById("close-lesson-btn");
-
-
 const overlay = document.getElementById("lesson-overlay");
 
 lessonBtn.addEventListener("click", () => {
@@ -4272,9 +5447,18 @@ closeLessonBtn.addEventListener("click", () => {
     lessonCard.classList.add("hidden");
     overlay.classList.add("hidden");
 });
+/* ====================== REPORT ====================== */
+
+/*
+REPORT CONTROLS
+
+DESCRIPTION
+
+        This section controls whether the quiz report is expanded or
+        minimized after a quiz is completed.
+*/
 
 let reportMinimized = false;
-
 const toggleReportBtn = document.getElementById("toggle-report-btn");
 const reportContent = document.getElementById("report-content");
 
@@ -4296,6 +5480,18 @@ toggleReportBtn.addEventListener("click", () => {
 });
 
 
+/* ====================== SEARCH ====================== */
+
+/*
+SEARCH CONTROLS
+
+DESCRIPTION
+
+        This section handles the element search box. It filters elements
+        by name as the user types and displays matching results. When a
+        result is clicked, the matching element card is opened.
+*/
+
 const elementSearch = document.getElementById("element-search");
 const searchResults = document.getElementById("search-results");
 const searchSection = document.getElementById("search-section");
@@ -4305,23 +5501,23 @@ elementSearch.addEventListener("input", () => {
     if (quizActive) return;
 
     const query = elementSearch.value.trim().toLowerCase();
-
     searchResults.innerHTML = "";
 
     if (query === "") {
 
         searchResults.classList.add("hidden");
+
         return;
     }
 
     let matches = elements.filter(e =>
-
         e.name.toLowerCase().includes(query)
     );
 
     if (matches.length === 0) {
 
         searchResults.classList.add("hidden");
+
         return;
     }
 
@@ -4337,8 +5533,10 @@ elementSearch.addEventListener("input", () => {
             event.stopPropagation();
             elementSearch.value = e.name;
             searchResults.classList.add("hidden");
-            const div = getElementDiv(e.symbol);
-            showElementCard(e, div);
+
+            const div = GetElementDiv(e.symbol);
+
+            ShowElementCard(e, div);
         });
 
         searchResults.appendChild(item);
@@ -4347,30 +5545,42 @@ elementSearch.addEventListener("input", () => {
     searchResults.classList.remove("hidden");
 });
 
-document.addEventListener("click", () => {
 
-    if (!infoCard.classList.contains("hidden")) {
-        infoCard.classList.add("hidden");
-    }
-});
-
-function getElementDiv(symbol) {
-
-    return [...document.querySelectorAll(".element")]
-
-        .find(el => el.querySelector(".symbol").textContent === symbol);
-}
+/* ====================== PARTICLES ====================== */
 
 const particleBg = document.getElementById("particle-bg");
 
-function spawnBurst() {
-    const colors = [
 
-        "#ff4d4d", // red
-        "#4da6ff", // blue
-        "#4dff88", // green
-        "#ffd24d", // yellow
-        "#ff944d"  // orange
+/**/
+/*
+SpawnBurst() SpawnBurst()
+
+NAME
+
+        SpawnBurst - creates a random particle burst animation.
+
+SYNOPSIS
+
+        void SpawnBurst();
+
+DESCRIPTION
+
+        This function creates several small particle elements at a random
+        screen location. Each particle is assigned a random color and
+        animated outward from the center point before being removed.
+
+        The function is used to create the animated background effect.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function SpawnBurst() {
+
+    const colors = [
+        "#ff4d4d", "#4da6ff", "#4dff88", "#ffd24d", "#ff944d"
     ];
 
     const burstCount = Math.floor(Math.random() * 6) + 6;
@@ -4380,17 +5590,16 @@ function spawnBurst() {
     for (let i = 0; i < burstCount; i++) {
 
         const p = document.createElement("div");
+
         p.classList.add("particle-burst");
 
         const color = colors[Math.floor(Math.random() * colors.length)];
-        const burstCount = Math.floor(Math.random() * 4) + 4;
 
         p.style.background = color;
         p.style.boxShadow = `0 0 10px ${color}`;
 
         const angle = Math.random() * Math.PI * 2;
         const distance = Math.random() * 80 + 20;
-
         const dx = Math.cos(angle) * distance;
         const dy = Math.sin(angle) * distance;
 
@@ -4414,16 +5623,20 @@ function spawnBurst() {
         setTimeout(() => {
 
             p.remove();
+
         }, 1200);
     }
 }
+/* void SpawnBurst(); */
+
 
 setInterval(() => {
 
     if (particlesEnabled) {
 
-        spawnBurst();
+        SpawnBurst();
     }
+
 }, 1800);
 
 const particleToggleBtn = document.getElementById("particle-toggle-btn");
@@ -4436,12 +5649,49 @@ particleToggleBtn.addEventListener("click", () => {
         ? "Particles: ON"
         : "Particles: OFF";
 });
+/* ====================== THEME ====================== */
+
+/*
+THEME CONTROLS
+
+DESCRIPTION
+
+        This section manages light and dark mode for the application.
+        It applies the selected theme to the page and stores the user's
+        preference in local storage so it persists between sessions.
+*/
 
 const themeToggleBtn = document.getElementById("theme-toggle-btn");
 
-function applyTheme(theme) {
 
-    if (theme === "light") {
+/**/
+/*
+ApplyTheme() ApplyTheme()
+
+NAME
+
+        ApplyTheme - applies a visual theme to the application.
+
+SYNOPSIS
+
+        void ApplyTheme( string theme );
+            a_theme       --> "light" or "dark".
+
+DESCRIPTION
+
+        This function applies the selected theme by toggling the
+        appropriate CSS class on the document body and updating
+        the toggle button text.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function ApplyTheme(a_theme) {
+
+    if (a_theme === "light") {
 
         document.body.classList.add("light-mode");
         themeToggleBtn.textContent = "Dark Mode";
@@ -4453,18 +5703,34 @@ function applyTheme(theme) {
         themeToggleBtn.textContent = "Light Mode";
     }
 }
+/* void ApplyTheme( string a_theme ); */
+
 
 themeToggleBtn.addEventListener("click", () => {
 
     const isLight = document.body.classList.contains("light-mode");
     const newTheme = isLight ? "dark" : "light";
 
-    applyTheme(newTheme);
+    ApplyTheme(newTheme);
+
     localStorage.setItem("theme", newTheme);
 });
 
 const savedTheme = localStorage.getItem("theme") || "dark";
-applyTheme(savedTheme);
+ApplyTheme(savedTheme);
+
+
+/* ====================== FAVORITES ====================== */
+
+/*
+FAVORITES SYSTEM
+
+DESCRIPTION
+
+        This section manages the user's favorite elements. It allows
+        elements to be added or removed from favorites, stores them
+        in local storage, and renders a panel showing all saved items.
+*/
 
 let currentElement = null;
 let favorites = JSON.parse(localStorage.getItem("favoriteElements")) || [];
@@ -4474,26 +5740,102 @@ const favoritesBtn = document.getElementById("favorites-btn");
 const favoritesPanel = document.getElementById("favorites-panel");
 const favoritesList = document.getElementById("favorites-list");
 const closeFavoritesBtn = document.getElementById("close-favorites-btn");
+
 const confirmModal = document.getElementById("confirm-modal");
 const confirmMessage = document.getElementById("confirm-message");
 const confirmYesBtn = document.getElementById("confirm-yes-btn");
 const confirmNoBtn = document.getElementById("confirm-no-btn");
 
-function saveFavorites() {
+
+/**/
+/*
+SaveFavorites() SaveFavorites()
+
+NAME
+
+        SaveFavorites - stores favorites in local storage.
+
+SYNOPSIS
+
+        void SaveFavorites();
+
+DESCRIPTION
+
+        Saves the current favorites array to local storage so it
+        persists between sessions.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function SaveFavorites() {
 
     localStorage.setItem("favoriteElements", JSON.stringify(favorites));
 }
+/* void SaveFavorites(); */
 
-function isFavorite(symbol) {
 
-    return favorites.includes(symbol);
+/**/
+/*
+IsFavorite() IsFavorite()
+
+NAME
+
+        IsFavorite - checks if an element is favorited.
+
+SYNOPSIS
+
+        bool IsFavorite( string symbol );
+            symbol      --> element symbol.
+
+DESCRIPTION
+
+        This function checks whether a given element symbol exists
+        in the favorites list.
+
+RETURNS
+
+        Returns true if the element is a favorite, otherwise false.
+
+*/
+/**/
+function IsFavorite(a_symbol) {
+
+    return favorites.includes(a_symbol);
 }
+/* bool IsFavorite( string a_symbol ); */
 
+
+/**/
+/*
+updateFavoriteButton() updateFavoriteButton()
+
+NAME
+
+        updateFavoriteButton - updates favorite button display.
+
+SYNOPSIS
+
+        void updateFavoriteButton();
+
+DESCRIPTION
+
+        Updates the favorite button symbol based on whether the
+        currently selected element is in the favorites list.
+
+RETURNS
+
+        None.
+
+*/
+/**/
 function updateFavoriteButton() {
 
     if (!currentElement) return;
 
-    if (isFavorite(currentElement.symbol)) {
+    if (IsFavorite(currentElement.symbol)) {
 
         favoriteBtn.textContent = "★";
     }
@@ -4503,6 +5845,8 @@ function updateFavoriteButton() {
         favoriteBtn.textContent = "☆";
     }
 }
+/* void updateFavoriteButton(); */
+
 
 favoriteBtn.addEventListener("click", (event) => {
 
@@ -4523,36 +5867,89 @@ favoriteBtn.addEventListener("click", (event) => {
         favorites.splice(index, 1);
     }
 
-    saveFavorites();
+    SaveFavorites();
     updateFavoriteButton();
-    renderFavorites();
+    RenderFavorites();
 });
 
-function showConfirm(message, onYes) {
 
-    confirmMessage.textContent = message;
+/**/
+/**/
+/*
+ShowConfirm() ShowConfirm()
+
+NAME
+
+        ShowConfirm - displays confirmation dialog.
+
+SYNOPSIS
+
+        void ShowConfirm( string a_message, function a_onYes );
+            a_message     --> message displayed to the user.
+            a_onYes       --> function to run if confirmed.
+
+DESCRIPTION
+
+        Displays a modal confirmation box. If the user selects yes,
+        the provided callback function is executed.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function ShowConfirm(a_message, a_onYes) {
+
+    confirmMessage.textContent = a_message;
     confirmModal.classList.remove("hidden");
 
-    function handleYes() {
+    function HandleYes() {
 
         confirmModal.classList.add("hidden");
-        confirmYesBtn.removeEventListener("click", handleYes);
-        confirmNoBtn.removeEventListener("click", handleNo);
-        onYes();
+        confirmYesBtn.removeEventListener("click", HandleYes);
+        confirmNoBtn.removeEventListener("click", HandleNo);
+
+        a_onYes();
     }
 
-    function handleNo() {
+    function HandleNo() {
 
         confirmModal.classList.add("hidden");
-        confirmYesBtn.removeEventListener("click", handleYes);
-        confirmNoBtn.removeEventListener("click", handleNo);
+        confirmYesBtn.removeEventListener("click", HandleYes);
+        confirmNoBtn.removeEventListener("click", HandleNo);
     }
 
-    confirmYesBtn.addEventListener("click", handleYes);
-    confirmNoBtn.addEventListener("click", handleNo);
+    confirmYesBtn.addEventListener("click", HandleYes);
+    confirmNoBtn.addEventListener("click", HandleNo);
 }
+/* void ShowConfirm( string a_message, function a_onYes ); */
 
-function renderFavorites() {
+/**/
+/*
+RenderFavorites() RenderFavorites()
+
+NAME
+
+        RenderFavorites - displays all favorite elements.
+
+SYNOPSIS
+
+        void RenderFavorites();
+
+DESCRIPTION
+
+        This function builds and displays the favorites panel by
+        creating a card for each saved element. It also allows
+        removal of favorites and navigation to the element card.
+
+RETURNS
+
+        None.
+
+*/
+/**/
+function RenderFavorites() {
 
     favoritesList.innerHTML = "";
 
@@ -4570,10 +5967,10 @@ function renderFavorites() {
         if (!element) return;
 
         const card = document.createElement("div");
+
         card.classList.add("favorite-card");
 
         card.innerHTML = `
-
         <button class="favorite-remove-btn" data-symbol="${element.symbol}">★</button>
             <h3>${element.name} (${element.symbol})</h3>
             <p>Symbol: ${element.symbol}</p>
@@ -4592,10 +5989,12 @@ function renderFavorites() {
 
             event.stopPropagation();
 
-            showConfirm(
+            ShowConfirm(
+
                 `Are you sure you want to remove ${element.name} from favorites?`,
 
                 function () {
+
                     const index = favorites.indexOf(element.symbol);
 
                     if (index !== -1) {
@@ -4611,8 +6010,8 @@ function renderFavorites() {
                         return elA.number - elB.number;
                     });
 
-                    saveFavorites();
-                    renderFavorites();
+                    SaveFavorites();
+                    RenderFavorites();
 
                     if (currentElement && currentElement.symbol === element.symbol) {
 
@@ -4628,18 +6027,62 @@ function renderFavorites() {
 
             favoritesPanel.classList.add("hidden");
 
-            const div = getElementDiv(element.symbol);
-            showElementCard(element, div);
+            const div = GetElementDiv(element.symbol);
+
+            ShowElementCard(element, div);
         });
 
         favoritesList.appendChild(card);
     });
 }
+/* void RenderFavorites(); */
+
+
+/**/
+/*
+GetElementDiv() GetElementDiv()
+
+NAME
+
+        GetElementDiv - finds DOM element for a symbol.
+
+SYNOPSIS
+
+        object GetElementDiv( string symbol );
+            a_symbol      --> element symbol.
+
+DESCRIPTION
+
+        Finds and returns the corresponding DOM element in the periodic
+        table for the given symbol.
+
+RETURNS
+
+        Returns a DOM element.
+
+*/
+/**/
+function GetElementDiv(a_symbol) {
+
+    return [...document.querySelectorAll(".element")]
+        .find(el => el.querySelector(".symbol").textContent === a_symbol);
+}
+/* object GetElementDiv( string a_symbol ); */
+
+
+/*
+MISC EVENT HANDLING
+
+DESCRIPTION
+
+        Handles opening/closing of favorites panel, confirmation modal,
+        and closing UI elements when clicking outside of them.
+*/
 
 favoritesBtn.addEventListener("click", (event) => {
 
     event.stopPropagation();
-    renderFavorites();
+    RenderFavorites();
     favoritesPanel.classList.remove("hidden");
 });
 
@@ -4685,3 +6128,17 @@ favorites.sort((a, b) => {
     return elA.number - elB.number;
 });
 
+document.addEventListener("click", function (event) {
+
+    const infoCard = document.getElementById("info-card");
+    const clickedElement = event.target.closest(".element");
+
+    if (!infoCard.contains(event.target) && !clickedElement) {
+
+        infoCard.classList.add("hidden");
+
+        document.querySelectorAll(".element").forEach(el => {
+            el.classList.remove("selected-element");
+        });
+    }
+});

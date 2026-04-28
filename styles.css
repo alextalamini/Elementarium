@@ -1,3 +1,23 @@
+﻿/*
+    styles.css
+
+    PURPOSE
+
+        This file controls the visual layout and appearance of the Elementarium
+        periodic table project. It styles the main page, periodic table grid,
+        element cards, quiz area, search area, lesson window, favorites panel,
+        confirmation modal, category colors, light mode, and selected element
+        animation effects.
+
+    NOTES
+
+        This file does not contain function implementations, so the required
+        function documentation blocks are not needed here. The comments in this
+        file are used to separate major visual sections and explain the purpose
+        of related style blocks.
+*/
+
+/* Main page layout and default dark theme colors. */
 body {
     font-family: Arial, sans-serif;
     background: #0f172a;
@@ -7,18 +27,28 @@ body {
     text-align: center;
 }
 
+html,
+body {
+    overflow-x: auto;
+}
+
+
+/* Periodic table grid layout. */
 #periodic-table {
     display: grid;
     grid-template-columns: repeat(18, 70px);
     grid-template-rows: repeat(10, 70px);
     gap: 8px;
-    justify-content: center;
+    width: max-content;
+    min-width: max-content;
     margin: 40px auto;
-    box-shadow: 0 0 40px rgba(255,255,255,0.03);
     padding: 20px;
     border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.03);
 }
 
+
+/* Search box and search result dropdown. */
 #search-section {
     margin: 30px auto 0 auto;
     width: 500px;
@@ -65,6 +95,8 @@ body {
     pointer-events: none;
 }
 
+
+/* Individual element tile styling and hover behavior. */
 .element {
     background: #1e293b;
     border-radius: 10px;
@@ -108,6 +140,8 @@ body {
     font-size: 11px;
 }
 
+
+/* Pop-up information card shown when an element is selected. */
 #info-card {
     position: fixed;
     width: 300px;
@@ -171,6 +205,8 @@ body {
     }
 }
 
+
+/* Lesson button, overlay, and lesson reading card. */
 #lesson-btn {
     margin: 5px;
     padding: 8px 12px;
@@ -233,54 +269,7 @@ body {
 }
 
 
-.hidden {
-    display: none;
-}
-
-
-/* CATEGORY COLORS */
-.alkali {
-    background: #ef4444;
-}
-/* red */
-.alkaline {
-    background: #f97316;
-}
-/* orange */
-.transition {
-    background: #eab308;
-}
-/* yellow */
-.post-transition {
-    background: #22c55e;
-}
-/* green */
-.metalloid {
-    background: #14b8a6;
-}
-/* teal */
-.nonmetal {
-    background: #3b82f6;
-}
-/* blue */
-.halogen {
-    background: #8b5cf6;
-}
-/* purple */
-.noble {
-    background: #ec4899;
-}
-/* pink */
-
-.lanthanide {
-    background: #06b6d4;
-}
-
-.actinide {
-    background: #a855f7;
-}
-/* Quiz stuff*/
-
+/* Quiz layout, answer buttons, feedback, and report section. */
 #quiz-section {
     margin-bottom: 30px;
 }
@@ -399,6 +388,8 @@ button {
     margin-left: 10px;
 }
 
+
+/* Fixed utility buttons for audio, particles, theme, and favorites. */
 #mute-btn {
     position: fixed;
     top: 20px;
@@ -419,6 +410,8 @@ button {
         box-shadow: 0 0 10px #475569;
     }
 
+
+/* Background particle effect and particle toggle controls. */
 #particle-bg {
     position: fixed;
     inset: 0;
@@ -448,6 +441,7 @@ button {
         opacity: 0;
     }
 }
+
 #particle-toggle-btn {
     position: fixed;
     top: 60px;
@@ -486,73 +480,33 @@ button {
         box-shadow: 0 0 10px #475569;
     }
 
-body.light-mode {
-    background: #f3f4f6;
-    color: #111827;
+.answer-btn.correct {
+    background-color: #8be28b;
+    color: black;
+    border-color: #2e8b57;
 }
 
-    body.light-mode #periodic-table {
-        box-shadow: 0 0 40px rgba(0,0,0,0.06);
-    }
+.answer-btn.wrong {
+    background-color: #ff8a8a;
+    color: black;
+    border-color: #b22222;
+}
 
-    body.light-mode #report-section {
-        background: #e5e7eb;
-        color: #111827;
-    }
+.answer-btn:disabled.correct {
+    background-color: #8be28b;
+    color: black;
+    border-color: #2e8b57;
+    opacity: 1;
+}
 
-    body.light-mode .review-item {
-        background: #ffffff;
-        color: #111827;
-    }
+.answer-btn:disabled.wrong {
+    background-color: #ff8a8a;
+    color: black;
+    border-color: #b22222;
+    opacity: 1;
+}
 
-    body.light-mode #search-results {
-        background: white;
-        color: black;
-    }
-
-    body.light-mode #lesson-card {
-        background: white;
-        color: black;
-    }
-
-    body.light-mode #mute-btn,
-    body.light-mode #particle-toggle-btn,
-    body.light-mode #theme-toggle-btn {
-        background: rgba(255, 255, 255, 0.95);
-        color: #111827;
-        border: 1px solid #cbd5e1;
-    }
-
-        body.light-mode #mute-btn:hover,
-        body.light-mode #particle-toggle-btn:hover,
-        body.light-mode #theme-toggle-btn:hover {
-            background: #e5e7eb;
-            box-shadow: 0 0 10px #cbd5e1;
-        }
-    body.light-mode #question-text,
-    body.light-mode #feedback,
-    body.light-mode #score-display,
-    body.light-mode h1,
-    body.light-mode h2,
-    body.light-mode h3,
-    body.light-mode p {
-        color: #111827;
-    }
-
-    body.light-mode #periodic-table {
-        background: #f9fafb;
-        box-shadow: 0 0 20px rgba(0,0,0,0.08);
-    }
-
-    body.light-mode .answer-btn {
-        background: #ffffff;
-        border: 1px solid #d1d5db;
-    }
-
-        body.light-mode .answer-btn:hover {
-            background: #e5e7eb;
-        }
-
+/* Favorite star controls inside the information card. */
 #info-card-header-row {
     display: flex;
     align-items: center;
@@ -600,17 +554,8 @@ body.light-mode {
         box-shadow: 0 0 10px #475569;
     }
 
-body.light-mode #favorites-btn {
-    background: rgba(255, 255, 255, 0.95);
-    color: #111827;
-    border: 1px solid #cbd5e1;
-}
 
-    body.light-mode #favorites-btn:hover {
-        background: #e5e7eb;
-        box-shadow: 0 0 10px #cbd5e1;
-    }
-
+/* Favorites panel and saved favorite element cards. */
 #favorites-panel {
     position: fixed;
     top: 80px;
@@ -626,11 +571,6 @@ body.light-mode #favorites-btn {
     padding: 20px;
     z-index: 3000;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.45);
-}
-
-body.light-mode #favorites-panel {
-    background: rgba(255, 255, 255, 0.98);
-    color: #111827;
 }
 
 #favorites-panel-header {
@@ -653,28 +593,20 @@ body.light-mode #favorites-panel {
     text-align: left;
     cursor: pointer;
     transition: transform 0.2s ease;
+    position: relative;
 }
 
     .favorite-card:hover {
         transform: scale(1.02);
     }
 
-body.light-mode .favorite-card {
-    background: #f3f4f6;
-    color: #111827;
-}
+    .favorite-card h3 {
+        margin: 0 0 8px 0;
+    }
 
-.favorite-card h3 {
-    margin: 0 0 8px 0;
-}
-
-.favorite-card p {
-    margin: 4px 0;
-}
-
-.favorite-card {
-    position: relative;
-}
+    .favorite-card p {
+        margin: 4px 0;
+    }
 
 .favorite-remove-btn {
     position: absolute;
@@ -691,10 +623,8 @@ body.light-mode .favorite-card {
         transform: scale(1.1);
     }
 
-.hidden {
-    display: none;
-}
 
+/* Confirmation modal used before removing a favorite element. */
 .confirm-modal {
     position: fixed;
     top: 0;
@@ -757,31 +687,235 @@ body.light-mode .favorite-card {
     color: black;
 }
 
-/* Light mode modal */
-body.light-mode .confirm-box {
-    background: #ffffff;
-    color: #222;
+/* Category color classes for each element type. */
+.alkali {
+    background: #ef4444;
 }
 
-    body.light-mode .confirm-box h3 {
-        color: #111;
+.alkaline {
+    background: #f97316;
+}
+
+.transition {
+    background: #eab308;
+}
+
+.post-transition {
+    background: #22c55e;
+}
+
+.metalloid {
+    background: #14b8a6;
+}
+
+.nonmetal {
+    background: #3b82f6;
+}
+
+.halogen {
+    background: #8b5cf6;
+}
+
+.noble {
+    background: #ec4899;
+}
+
+.lanthanide {
+    background: #06b6d4;
+}
+
+.actinide {
+    background: #a855f7;
+}
+
+/* Light mode overrides for readable colors on a bright background. */
+body.light-mode {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+    body.light-mode #periodic-table {
+        box-shadow: 0 0 40px rgba(0,0,0,0.06);
     }
 
-    body.light-mode .confirm-box p {
-        color: #333;
+    body.light-mode #report-section {
+        background: #e5e7eb;
+        color: #111827;
     }
 
-/* Buttons */
-body.light-mode #confirm-yes-btn {
-    background: #e74c3c;
-    color: white;
+    body.light-mode .review-item {
+        background: #ffffff;
+        color: #111827;
+    }
+
+    body.light-mode #search-results {
+        background: white;
+        color: black;
+    }
+
+    body.light-mode #lesson-card {
+        background: white;
+        color: black;
+    }
+
+    body.light-mode #mute-btn,
+    body.light-mode #particle-toggle-btn,
+    body.light-mode #theme-toggle-btn {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border: 1px solid #cbd5e1;
+    }
+
+        body.light-mode #mute-btn:hover,
+        body.light-mode #particle-toggle-btn:hover,
+        body.light-mode #theme-toggle-btn:hover {
+            background: #e5e7eb;
+            box-shadow: 0 0 10px #cbd5e1;
+        }
+
+    body.light-mode #question-text,
+    body.light-mode #feedback,
+    body.light-mode #score-display,
+    body.light-mode h1,
+    body.light-mode h2,
+    body.light-mode h3,
+    body.light-mode p {
+        color: #111827;
+    }
+
+    body.light-mode #periodic-table {
+        background: #f9fafb;
+        box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    body.light-mode .answer-btn {
+        background: #ffffff;
+        border: 1px solid #d1d5db;
+    }
+
+        body.light-mode .answer-btn:hover {
+            background: #e5e7eb;
+        }
+
+    body.light-mode #favorites-btn {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border: 1px solid #cbd5e1;
+    }
+
+        body.light-mode #favorites-btn:hover {
+            background: #e5e7eb;
+            box-shadow: 0 0 10px #cbd5e1;
+        }
+
+    body.light-mode #favorites-panel {
+        background: rgba(255, 255, 255, 0.98);
+        color: #111827;
+    }
+
+    body.light-mode .favorite-card {
+        background: #f3f4f6;
+        color: #111827;
+    }
+
+    body.light-mode .confirm-box {
+        background: #ffffff;
+        color: #222;
+    }
+
+        body.light-mode .confirm-box h3 {
+            color: #111;
+        }
+
+        body.light-mode .confirm-box p {
+            color: #333;
+        }
+
+    body.light-mode #confirm-yes-btn {
+        background: #e74c3c;
+        color: white;
+    }
+
+    body.light-mode #confirm-no-btn {
+        background: #dddddd;
+        color: #222;
+    }
+
+    body.light-mode .confirm-modal {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    body.light-mode .answer-btn.correct,
+    body.light-mode .answer-btn.correct-choice {
+        background: #22c55e;
+        color: white;
+        border-color: #16a34a;
+    }
+
+    body.light-mode .answer-btn.wrong,
+    body.light-mode .answer-btn.wrong-choice {
+        background: #ef4444;
+        color: white;
+        border-color: #b91c1c;
+    }
+
+
+/* Visual highlight used to show which element currently has its card open. */
+.element.selected-element {
+    position: relative;
+    transform: scale(1.08);
+    box-shadow: 0 0 12px white, 0 0 24px gold, 0 0 36px rgba(255, 215, 0, 0.8);
+    animation: selectedPulse 1.4s infinite ease-in-out;
 }
 
-body.light-mode #confirm-no-btn {
-    background: #dddddd;
-    color: #222;
+    .element.selected-element::before,
+    .element.selected-element::after {
+        content: "✦";
+        position: absolute;
+        color: gold;
+        font-size: 16px;
+        pointer-events: none;
+        animation: sparkleFloat 1.2s infinite ease-in-out;
+    }
+
+    .element.selected-element::before {
+        top: -10px;
+        left: -8px;
+    }
+
+    .element.selected-element::after {
+        bottom: -10px;
+        right: -8px;
+        animation-delay: 0.4s;
+    }
+
+@keyframes selectedPulse {
+    0% {
+        box-shadow: 0 0 8px white, 0 0 18px gold;
+    }
+
+    50% {
+        box-shadow: 0 0 18px white, 0 0 34px gold;
+    }
+
+    100% {
+        box-shadow: 0 0 8px white, 0 0 18px gold;
+    }
 }
 
-body.light-mode .confirm-modal {
-    background: rgba(0, 0, 0, 0.4);
+@keyframes sparkleFloat {
+    0% {
+        opacity: 0.4;
+        transform: translateY(0) scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.2);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: translateY(0) scale(0.8);
+    }
 }
