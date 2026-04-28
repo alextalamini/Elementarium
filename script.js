@@ -5385,36 +5385,28 @@ DESCRIPTION
         volume, handles muting and unmuting, and starts playback after
         the first user click if the browser blocks autoplay.
 */
-
 const music = document.getElementById("bg-music");
 const muteBtn = document.getElementById("mute-btn");
 
 music.volume = 0.25;
 
+let musicStarted = false;
+
 muteBtn.onclick = () => {
 
-    if (music.muted) {
-
-        music.muted = false;
-        muteBtn.textContent = "Mute";
-        music.play();
-    }
-
-    else {
-
-        music.muted = true;
-        muteBtn.textContent = "Unmute";
-    }
+    music.muted = !music.muted;
+    muteBtn.textContent = music.muted ? "Unmute" : "Mute";
 };
 
 document.addEventListener("click", () => {
 
-    if (music.paused && !music.muted) {
+    if (!musicStarted) {
 
         music.play().catch(() => { });
+        musicStarted = true;
     }
 
-}, { once: true });
+});
 
 
 /* ====================== LESSON ====================== */
